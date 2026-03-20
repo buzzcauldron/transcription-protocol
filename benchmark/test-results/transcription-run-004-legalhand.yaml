@@ -1,0 +1,270 @@
+transcriptionOutput:
+  protocolVersion: "v1.0"
+  metadata:
+    sourcePageId: "CP40.355.AALT.4070"
+    modelId: "claude-4-opus-20260320"
+    timestamp: "2026-03-20T20:10:00Z"
+    protocolVersion: "v1.0"
+    targetLanguage: "lat-Latn"
+    languageSet: []
+    targetEra: "medieval"
+    eraRange: "1340-1380"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: false
+      markExpansions: false
+      captureDeletionsAndInsertions: true
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    mixedContent:
+      mixedLanguage: false
+      mixedEra: false
+    scriptNotes: "Gothic cursive anglicana legal hand, brown ink on parchment, plea roll entry"
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "Anglicana cursive, legal hand, 14th century"
+    scriptMatchesConfig: true
+    conditionNotes: "Parchment in fair condition. Some fading at edges. Dense text with heavy abbreviation. Interlinear additions present."
+    proceedDecision: "proceed"
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-2"
+      position: "body"
+      text: |
+        Cornubie  ¶Radulphus Baro Stafford summonitus fuit ad respondendum domino Regi de placito quod permittat ipsum presentare
+        [insertion: interlinear: "de"]
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: "Pilcrow mark at start. 'de' is interlinear insertion above line 1."
+    - segmentId: 2
+      pageNumber: 1
+      lineRange: "3"
+      position: "body"
+      text: |
+        idoneam personam ad ecclesiam de Suthill que vacat et ad suam spectat donacionem etc Et unde
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 3
+      pageNumber: 1
+      lineRange: "4"
+      position: "body"
+      text: |
+        Johannes de Clone qui sequitur pro domino Rege dicit quod quidam Thomas Corbet fuit seisitus de manerio de Calyngton
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 4
+      pageNumber: 1
+      lineRange: "5-7"
+      position: "body"
+      text: |
+        cum pertinenenciis ad quod advocatio ecclisie predicte pertinet tempore pacis tempore Henrici Regis proavi domini Regis nunc et eandem ecclesiam presen
+        [insertion: interlinear: "ad"]
+        tavit quendam Johannem de Bradelegh clericum suum qui ad presentationem suam fuit admissus et institutus tempore pacis
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: "'presen' continues as 'tavit' on next line after interlinear 'ad'. The interlinear 'ad' is inserted above the line."
+    - segmentId: 5
+      pageNumber: 1
+      lineRange: "8"
+      position: "body"
+      text: |
+        tempore eiusdem domini Regis [uncertain: henricum / Henrici] etc et de ipse Thoma descendit manerium predictum ad quod etc cuidam Petro ut filio et heredi etc
+      confidence: "medium"
+      uncertaintyTokenCount: 1
+      notes: "The name after 'Regis' is abbreviated and could be read as either accusative or genitive form."
+    - segmentId: 6
+      pageNumber: 1
+      lineRange: "9"
+      position: "body"
+      text: |
+        Qui quidem Petrus manerium predictum ad quod etc dedit cuidam Roberto de Stafford in liberum maritagium cum Amicia sorore
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 7
+      pageNumber: 1
+      lineRange: "10"
+      position: "body"
+      text: |
+        eiusdem Petri per quod donum iidem Robertus et Amicia fuerunt seisiti de manerio etc ad quod etc per formam etc tempore pacis
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 8
+      pageNumber: 1
+      lineRange: "11"
+      position: "body"
+      text: |
+        tempore Edwardi Regis avi domini Regis nunc et de ipsis Roberto et Amicia descendit manerium ad quod etc cuidam Nicholao ut
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 9
+      pageNumber: 1
+      lineRange: "12"
+      position: "body"
+      text: |
+        filio et heredi etc qui quidem Nicholaus tunc infra etatem fuit et quia predictus Robertus pater tenuit manerium de Stafford
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 10
+      pageNumber: 1
+      lineRange: "13-16"
+      position: "body"
+      text: |
+        cum pertinenciis de ipso Rege avo etc per baroniam etc idem Rex avus etc post mortem predictorum Roberti et Amicie seisivit in
+        [insertion: interlinear: "et aliis advocationibus etc ratione minoris etatis euisdem Nicholai una cum custodia euisdem Nicholai"]
+        manuum suam predictum manerium de Stafford una cum advocatione predicta  post quam quidem seisinam ipso Nicholao filio
+        [insertion: interlinear: "presentandi"]
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: "Two interlinear insertions. 'euisdem' appears in ground text (possibly scribal variant of 'eiusdem')."
+    - segmentId: 11
+      pageNumber: 1
+      lineRange: "17"
+      position: "body"
+      text: |
+        Roberti infra etatem existente predicta ecclesia vacavit per mortem predicti Johannis de Bradelegh per quod ius accrevit
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 12
+      pageNumber: 1
+      lineRange: "18"
+      position: "body"
+      text: |
+        ipsi Regi avo etc ut in iure ipsius Nicholai ratione minoris etatis eiusdem Nicholai etc et de ipso Rege avo etc
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 13
+      pageNumber: 1
+      lineRange: "19"
+      position: "body"
+      text: |
+        descendit ius etc cuidam Edwardo ut filio et heredi etc Et de ipso Edwardo ipsi domino Regi nunc ut filium
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 14
+      pageNumber: 1
+      lineRange: "20"
+      position: "body"
+      text: |
+        et hereditum etc Et ea ratione pertinent ad ipsum dominum Regem nunc ad ecclesiam predictam ad presens presentare predictus
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 15
+      pageNumber: 1
+      lineRange: "21"
+      position: "body"
+      text: |
+        Radulphus ipsum inuste impedit ad dampnum ipsius Radulphi mille Librarum Et hoc offert verificare pro domino Rege etc
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 16
+      pageNumber: 1
+      lineRange: "22"
+      position: "body"
+      text: |
+        Et Radulphus per Gilbertum de [uncertain: Berdefeld / Berdesfeld] attornatum suum venit et defendit vim et iniuriam quando etc Et dicit quod
+      confidence: "medium"
+      uncertaintyTokenCount: 1
+      notes: "Place name partially abbreviated, reading uncertain."
+    - segmentId: 17
+      pageNumber: 1
+      lineRange: "23"
+      position: "body"
+      text: |
+        ipse non potest dedicere [uncertain: quim / quin] ad predictum dominum Regem nunc hac sola vice pertineat ad ecclesiam predictam
+      confidence: "medium"
+      uncertaintyTokenCount: 1
+      notes: "'quim' or 'quin' — minims ambiguous in anglicana hand."
+    - segmentId: 18
+      pageNumber: 1
+      lineRange: "24"
+      position: "body"
+      text: |
+        presentare prout predictus Johannes qui sequitur etc superius versus eum pro domino Rege narravit set dicit quod ipse
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 19
+      pageNumber: 1
+      lineRange: "25"
+      position: "body"
+      text: |
+        non impedivit ipsum dominum Regem presentare ad ecclesiam predictam Et de hoc ponit se super patriam Et Johannes
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 20
+      pageNumber: 1
+      lineRange: "26"
+      position: "body"
+      text: |
+        qui sequitur etc Similiter Ideo consideratum est quod dominus Rex recuperet versus eum presentationem suam ad ecclesiam predictam
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 21
+      pageNumber: 1
+      lineRange: "27"
+      position: "body"
+      text: |
+        et habeat breve Episcopo Exonie loci Diocesano quod non obstante reclamatione ipsius Radulphi ad presentationem ipsius domini
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 22
+      pageNumber: 1
+      lineRange: "28"
+      position: "body"
+      text: |
+        Regis ad ecclesiam predictam idoneam personam admittat Nihil de misericordia ipsius Radulphi quia venit primo die etc Et
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 23
+      pageNumber: 1
+      lineRange: "29"
+      position: "body"
+      text: |
+        preceptum est [uncertain: vicecomites / vicecomiti] quod venire faciat hic in Octabis Sancti Michaelis XII etc per quos etc Et qui predictum Radulphum
+      confidence: "medium"
+      uncertaintyTokenCount: 1
+      notes: "Case ending on 'vicecomit-' ambiguous under abbreviation."
+    - segmentId: 24
+      pageNumber: 1
+      lineRange: "30"
+      position: "body"
+      text: |
+        nulla etc ad recognoscendum etc Quia tam etc
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 5
+      pass1Reading: "Henrici"
+      pass2Reading: "[uncertain: henricum / Henrici]"
+      resolution: "Abbreviation mark ambiguous for case ending. Added uncertainty token."
+      resolved: true
+    - mismatchId: 2
+      segmentId: 16
+      pass1Reading: "Berdesfeld"
+      pass2Reading: "[uncertain: Berdefeld / Berdesfeld]"
+      resolution: "Middle consonant cluster unclear. Added uncertainty."
+      resolved: true
+  normalizedLayer: null
