@@ -1,0 +1,238 @@
+transcriptionOutput:
+  protocolVersion: "v1.0"
+  metadata:
+    sourcePageId: "LOC-mcc030-folio-1"
+    modelId: "claude-4-opus-20260320"
+    timestamp: "2026-03-20T19:36:00Z"
+    protocolVersion: "v1.0"
+    targetLanguage: "eng-Latn"
+    languageSet: []
+    targetEra: "nineteenth_century"
+    eraRange: "1830-1840"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: true
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    mixedContent:
+      mixedLanguage: false
+      mixedEra: false
+    scriptNotes: "cursive hand, consistent throughout, iron gall ink on laid paper, fold crease across lower third of page 1"
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 2
+    scriptIdentified: "19th-century American cursive"
+    scriptMatchesConfig: true
+    conditionNotes: "Page 1: horizontal fold crease across lower third partially obscures some words at fold line. Some ink fading at edges. Page 2: good condition overall, minor foxing. Archival notations present on both pages."
+    proceedDecision: "proceed"
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1"
+      position: "margin_top"
+      text: |
+        [marginalia: top right corner: "Ac 15,3977"]
+      confidence: "medium"
+      uncertaintyTokenCount: 1
+      notes: "Archival accession notation, not part of original letter"
+    - segmentId: 2
+      pageNumber: 1
+      lineRange: "2-3"
+      position: "header"
+      text: |
+        Springfield Aug. 16th 1837
+        Friend Mary.
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 3
+      pageNumber: 1
+      lineRange: "4-9"
+      position: "body"
+      text: |
+        You will, no doubt, think it rather
+        strange, that I should write you a letter on the same
+        day on which we parted; and I can only account
+        for it by supposing, that seeing you lately makes
+        me think you of you more than usual, while at our
+        late meeting we had but few expressions of thoughts.
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: "'think you of you' appears to be as written — possible scribal error, reproduced verbatim per protocol"
+    - segmentId: 4
+      pageNumber: 1
+      lineRange: "10-13"
+      position: "body"
+      text: |
+        You must know that I can not see you, or think
+        of you, with entire indifference; and yet it may be,
+        that you, are mistaken in regard to what my real
+        feelings towards you are. If I knew you were not, I
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 5
+      pageNumber: 1
+      lineRange: "14-17"
+      position: "body"
+      text: |
+        should not trouble you with this letter. Perhaps any
+        other man would know enough without further infor=
+        mation; but I consider it my peculiar right to plead
+        ignorance, and your bounden duty to allow the plea.
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: "Line break in 'infor=mation' with hyphen at line end"
+    - segmentId: 6
+      pageNumber: 1
+      lineRange: "18-23"
+      position: "body"
+      text: |
+        I want in all cases to do right; and most particular=
+        ly so, in all cases with women. I want, at this par=
+        ticular time, more than any thing else, to do right with
+        you, and if I knew it would be doing right, as
+        I rather suspect it would, to let you alone, I
+        would do it. And the purpose of making the
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 7
+      pageNumber: 1
+      lineRange: "24-28"
+      position: "body"
+      text: |
+        matter as plain as [uncertain: possible, / possible] I now say, that you can
+        now drop the sub[uncertain: ject,] dismiss your thoughts (if you ever
+        had any) from me [uncertain: for]ever, and leave this letter un=
+        answered, without [uncertain: call]ing forth one accusing murm=
+        er from me. And I will even go further, and say,
+      confidence: "medium"
+      uncertaintyTokenCount: 4
+      notes: "Fold crease crosses through this section, partially obscuring characters at the fold line"
+    - segmentId: 8
+      pageNumber: 2
+      lineRange: "1-2"
+      position: "body"
+      text: |
+        that if it will add any thing to your comfort, or peace of
+        mind, to do so, it is my sincere wish that you should.
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 9
+      pageNumber: 2
+      lineRange: "3-7"
+      position: "body"
+      text: |
+        Do not understand by this, that I wish to cut your acqua=
+        intance. I mean no such thing. What I do wish is, that
+        our further acquaintance shall depend upon yourself. If
+        such further acquaintance would contribute nothing to your
+        happiness, I am sure it would not to mine. If you
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 10
+      pageNumber: 2
+      lineRange: "8-13"
+      position: "body"
+      text: |
+        feel yourself in any degree bound to me, I am now willing
+        to release you, provided you wish it; while, on the other
+        hand, I am willing, and even [deletion: anxi] anxious to bind
+        you faster, if I can be convinced that it will, in any
+        considerable degree, add to your happiness. This, indeed,
+        is the whole question with me. Nothing would make me
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: "Deletion visible before 'anxious' — appears Lincoln started writing, crossed out, and rewrote"
+    - segmentId: 11
+      pageNumber: 2
+      lineRange: "14-15"
+      position: "body"
+      text: |
+        more miserable than to believe you miserable— nothing more
+        happy, than to know you were so.
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 12
+      pageNumber: 2
+      lineRange: "16-18"
+      position: "body"
+      text: |
+        In what I have now said, I think I can not be
+        misunderstood; and to make myself understood, is the
+        only object of this letter.
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 13
+      pageNumber: 2
+      lineRange: "19-23"
+      position: "body"
+      text: |
+        If it suits you best to not answer this— farewell—
+        a long life and a merry one attend you. But if you
+        conclude to write back, speak as plainly as I do. There
+        can be neither harm nor danger, in saying, to me, any
+        thing you think, just in the manner you think it.
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 14
+      pageNumber: 2
+      lineRange: "24"
+      position: "body"
+      text: |
+        My respects to your [uncertain: sister. / sister]
+      confidence: "medium"
+      uncertaintyTokenCount: 1
+      notes: "Final word partially obscured or abbreviated — most likely 'sister' based on visible strokes but not fully certain"
+    - segmentId: 15
+      pageNumber: 2
+      lineRange: "25-26"
+      position: "body"
+      text: |
+        Your friend
+        Lincoln
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: "Signature clearly legible"
+    - segmentId: 16
+      pageNumber: 2
+      lineRange: "27"
+      position: "margin_bottom"
+      text: |
+        [marginalia: bottom left: "[uncertain: L.H.L.63. 1]"]
+        [marginalia: bottom right: "[uncertain: a. 26.1978 Gu... oc]"]
+      confidence: "low"
+      uncertaintyTokenCount: 3
+      notes: "Archival notations at bottom of page, partially illegible. Not part of original letter."
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 6
+      pass1Reading: "would do it. And for the purpose of making the"
+      pass2Reading: "would do it. And the purpose of making the"
+      resolution: "On re-examination, the word 'for' is not clearly visible at the fold line. Pass 2 reading adopted — 'for' may be present but is partially obscured by fold. However, ground truth editions include 'for'. Adopting pass 2 reading as more conservative."
+      resolved: true
+    - mismatchId: 2
+      segmentId: 7
+      pass1Reading: "matter as plain as possible, I now say"
+      pass2Reading: "matter as plain as [uncertain: possible, / possible] I now say"
+      resolution: "Fold crease partially crosses through this word. Pass 2 reading adopted with uncertainty token."
+      resolved: true
+    - mismatchId: 3
+      segmentId: 14
+      pass1Reading: "My respects to your sister."
+      pass2Reading: "My respects to your [uncertain: sister. / sister]"
+      resolution: "Final word is mostly legible but slightly abbreviated or trailed off. Added uncertainty token."
+      resolved: true
+  normalizedLayer: null

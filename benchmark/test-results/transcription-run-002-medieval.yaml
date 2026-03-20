@@ -1,0 +1,106 @@
+transcriptionOutput:
+  protocolVersion: "v1.0"
+  metadata:
+    sourcePageId: "Walters-W25-folio-psalm8"
+    modelId: "claude-4-opus-20260320"
+    timestamp: "2026-03-20T19:45:00Z"
+    protocolVersion: "v1.0"
+    targetLanguage: "lat-Latn"
+    languageSet: []
+    targetEra: "medieval"
+    eraRange: "1175-1225"
+    diplomaticProfile: "strict"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    mixedContent:
+      mixedLanguage: false
+      mixedEra: false
+    scriptNotes: "Gothic textualis (bookhand), brown ink with red rubricated initials and psalm headings"
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "Gothic textualis bookhand, late 12th / early 13th century"
+    scriptMatchesConfig: true
+    conditionNotes: "Parchment in good condition. Slight yellowing. Ink well preserved. Red rubric ink intact. No significant damage."
+    proceedDecision: "proceed"
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-7"
+      position: "body"
+      text: |
+        & peperit iniqtatem. Lacum
+        aperuit & effodit eu. & incidit
+        in fouea qua fecit. Conuertet
+        dolor ei in caput ei. & in uerti
+        ce ipsi iniqtas ei descendet. Co
+        fitebor dno scdm iusticia eius.
+        & psalla nomini dni altissimi
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: "End of Psalm 7 (vv. 15-18). Heavy abbreviation preserved per strict profile. Red initial 'L' on Lacum, red initial 'C' on Conuertet, red initial 'C' on Confitebor (split across lines)."
+    - segmentId: 2
+      pageNumber: 1
+      lineRange: "8-10"
+      position: "body"
+      text: |
+        [uncertain: Iuste iudex / Iue iudex] cui cor & renes scrutans ds.
+        supra senes [uncertain: te / re] inuent mundo
+        corde: inpolluta omni sorde.
+      confidence: "medium"
+      uncertaintyTokenCount: 2
+      notes: "Liturgical antiphon text between psalms. Red decorated initial. Text not from standard Vulgate psalms — specific to this psalter's liturgical use. First word partially obscured by decorated initial."
+    - segmentId: 3
+      pageNumber: 1
+      lineRange: "11"
+      position: "body"
+      text: |
+        Dne dns nr. qua   ps d v. viii.
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: "Psalm 8 incipit with rubric 'ps d v. viii.' (psalmus David viii) in red ink. Abbreviated forms: Dne=Domine, dns=Dominus, nr=noster, qua=quam."
+    - segmentId: 4
+      pageNumber: 1
+      lineRange: "12-20"
+      position: "body"
+      text: |
+        admirabile est nomen
+        tuu in uniuisa tra. Q m
+        eleuata e magnificecia tua su
+        per celos. Ex ore infantiu &
+        lactenciu pfecisti laude. ppter
+        inimicos tuos. ut destruas in
+        imicu & ultore. Q m uidebo
+        celos tuos opa digitor tuo.
+        luna & stellas que tu fundasti.
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: "Psalm 8:1-4. Heavy abbreviation throughout. Red initial 'Q' at start (continuing 'quam' from line 11). Red 'E' on 'Ex ore'. Abbreviation marks (tildes) preserved as contracted forms."
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 1
+      pass1Reading: "Conuertat"
+      pass2Reading: "Conuertet"
+      resolution: "On re-examination, the final letter appears to be 'et' ligature, not 'at'. Adopted pass 2 reading."
+      resolved: true
+    - mismatchId: 2
+      segmentId: 2
+      pass1Reading: "Iue iudex cui"
+      pass2Reading: "[uncertain: Iuste iudex / Iue iudex] cui"
+      resolution: "First word partially obscured by decorated initial. Added uncertainty token."
+      resolved: true
+    - mismatchId: 3
+      segmentId: 4
+      pass1Reading: "digitor tuor"
+      pass2Reading: "digitor tuo"
+      resolution: "Final abbreviation mark is ambiguous — could indicate 'tuorum' or 'tuor'. The visible letters appear to end with 'tuo' followed by an abbreviation stroke. Adopted conservative reading."
+      resolved: true
+  normalizedLayer: null

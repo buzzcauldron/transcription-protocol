@@ -1,0 +1,158 @@
+transcriptionOutput:
+  protocolVersion: "v1.0"
+  metadata:
+    sourcePageId: "Folger-Lb534-leaf1r"
+    modelId: "claude-4-opus-20260320"
+    timestamp: "2026-03-20T19:45:00Z"
+    protocolVersion: "v1.0"
+    targetLanguage: "eng-Latn"
+    languageSet: []
+    targetEra: "early_modern"
+    eraRange: "1600-1610"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: true
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    mixedContent:
+      mixedLanguage: false
+      mixedEra: false
+    scriptNotes: "Secretary hand with some italic forms, iron gall ink on paper, Donne's autograph"
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 2
+    scriptIdentified: "Early modern English secretary hand"
+    scriptMatchesConfig: true
+    conditionNotes: "Bifolium laid flat. Paper shows fold creases. Ink bleed-through from verso visible on some areas. Wax seal remnant on address panel (page 2). Overall legible."
+    proceedDecision: "proceed"
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1"
+      position: "margin_top"
+      text: |
+        [marginalia: top left: "122"]
+      confidence: "medium"
+      uncertaintyTokenCount: 1
+      notes: "Archival folio number, not part of original letter"
+    - segmentId: 2
+      pageNumber: 1
+      lineRange: "2-15"
+      position: "body"
+      text: |
+        The honorable fauor that yr lp hath afforded me,
+        in allowinge me the liberty of myne own Chamber,
+        hath giuen me leaue so much to respect and loue
+        my self, that now I can desire to be well. And
+        therfore, for health, not pleasure, (of wch
+        displeasure hath dulld in me all tast and ap=
+        prehension) I humbly beseeche yr lp
+        to slacken my fetters, that as I ame by yr fau=
+        or, myne own keeper, and Surety, so I may be myne
+        owne phisician and Apothecary: wch shall not
+        graunt me Liberty to take the
+        Ayre, about this Towne. The whole world ys a
+        strayte imprisonment to me, whilst I ame barrd yr
+        lps sight. But this fauor may lengthen
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 3
+      pageNumber: 1
+      lineRange: "16-24"
+      position: "body"
+      text: |
+        and better my lyfe, wch I shall much desire to
+        preserue, (becomminge yt no wholy in a [uncertain: Corse / Course]
+        of religion) for that, and my poore familyes
+        sake. And for yr lps most [uncertain: poore] and most
+        [uncertain: penitent Creature / penitent creature] hath noe refuge nor [uncertain: Oratory / oratory]
+        nor shelter, but yor Charitye. yr lps
+        in hope to redeeme by my sorrowe, and desire to do
+        yr lp Seruice, my Offence past. Allmighty god
+        bless yr lps hart, and fill yt wth compassionate
+      confidence: "medium"
+      uncertaintyTokenCount: 4
+      notes: "Secretary hand becomes more compressed in this section. Some letter forms ambiguous between secretary and italic."
+    - segmentId: 4
+      pageNumber: 1
+      lineRange: "25-26"
+      position: "body"
+      text: |
+        desires, and graunt them.
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 5
+      pageNumber: 1
+      lineRange: "27-30"
+      position: "body"
+      text: |
+        yr lps
+        most humble and most
+        [uncertain: thankfull / thankful] Servant
+        Jo: Donne
+      confidence: "medium"
+      uncertaintyTokenCount: 1
+      notes: "Subscription and signature. 'Jo: Donne' clearly legible."
+    - segmentId: 6
+      pageNumber: 1
+      lineRange: "31"
+      position: "margin_bottom"
+      text: |
+        [marginalia: bottom left: "yours Servant"]
+      confidence: "low"
+      uncertaintyTokenCount: 1
+      notes: "Faint text at bottom, possibly later addition or endorsement"
+    - segmentId: 7
+      pageNumber: 2
+      lineRange: "1"
+      position: "margin_top"
+      text: |
+        [marginalia: top right: "L b. 534"]
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: "Archival call number"
+    - segmentId: 8
+      pageNumber: 2
+      lineRange: "2-7"
+      position: "body"
+      text: |
+        To the right honorable
+        my very good Lord and
+        Master, Sr Thomas Eger=
+        ton knight, L: keeper of
+        the great seale of
+        England.
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: "Address panel. Wax seal adjacent. 'Sr' = abbreviation for 'Sir'. 'L:' = abbreviation for 'Lord'."
+    - segmentId: 9
+      pageNumber: 2
+      lineRange: "8"
+      position: "margin_bottom"
+      text: |
+        [marginalia: bottom right: "249"]
+      confidence: "medium"
+      uncertaintyTokenCount: 1
+      notes: "Archival number"
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 3
+      pass1Reading: "preserue, (becomminge yt no wholy in a Corse"
+      pass2Reading: "preserue, (becomminge yt no wholy in a [uncertain: Corse / Course]"
+      resolution: "The vowel between 'C' and 'rse' is ambiguous in secretary hand. Added uncertainty token."
+      resolved: true
+    - mismatchId: 2
+      segmentId: 5
+      pass1Reading: "thankfull Servant"
+      pass2Reading: "[uncertain: thankfull / thankful] Servant"
+      resolution: "Double-l vs single-l ambiguous. Added uncertainty token."
+      resolved: true
+  normalizedLayer: null
