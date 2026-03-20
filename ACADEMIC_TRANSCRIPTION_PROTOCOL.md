@@ -191,10 +191,11 @@ The following actions are strictly prohibited regardless of configuration:
 - Reordering text to match "expected" reading order unless the source layout is unambiguous.
 - Adding paragraph breaks, headings, or formatting not present in the source.
 - Summarizing or condensing any portion of the text.
+- **Using `[illegible]` or `[gap]` to avoid attempting a difficult reading.** See Section 5.5.
 
-### 5.4 Latin Normalization Bias (Critical for Medieval Documents)
+### 5.4 Latin Normalization Bias (Failure Mode A)
 
-**WARNING**: LLMs trained on Latin corpora will silently normalize scribal spellings to classical or standardized forms. This is the single most common failure mode in blind testing (observed WER 6% in benchmark BM-005). You MUST resist this tendency.
+**WARNING**: LLMs trained on Latin corpora will silently normalize scribal spellings to classical or standardized forms. This was the dominant failure mode in blind testing (observed WER 6% in benchmark BM-005). You MUST resist this tendency.
 
 **Observed failure patterns** (from blind benchmark on 14th-century legal hand):
 
@@ -218,6 +219,28 @@ The following actions are strictly prohibited regardless of configuration:
 3. **When in doubt, use uncertainty tokens.** If a reading looks unusual but the visual evidence supports it, prefer `[uncertain: unusual_form]` over silently normalizing to the expected form.
 4. **Never reject a reading because it seems grammatically wrong.** Scribes made errors, used dialectal forms, and employed non-standard abbreviation practices. All of these are evidence that must be preserved.
 5. **Abbreviation expansion must follow the specific scribe's practice, not classical norms.** If a scribe abbreviates in a way that expands to a non-classical form, that expansion is correct for this manuscript.
+
+### 5.5 Illegibility Bail-Out (Failure Mode B)
+
+**WARNING**: Some LLMs will abuse `[illegible]` and `[gap]` tokens to avoid attempting difficult readings. This is equally as harmful as normalization — it produces a technically "safe" output that is useless to researchers. In blind testing, one model marked ~90% of a fully legible 14-line plea roll as `[gap: remainder of document heavily abbreviated and illegible at current resolution]` while only attempting 3 lines.
+
+**This is a protocol violation.** Text that is abbreviated is not illegible. Text that requires paleographic skill to read is not illegible. Text in a difficult hand is not illegible.
+
+**Definitions**:
+
+- **`[illegible]`** means the ink is physically absent, smeared beyond recognition, or the letterforms are damaged to the point where no reading is possible even with magnification. It does NOT mean "I am not confident" or "this is heavily abbreviated."
+- **`[gap]`** means there is a physical hole, tear, or missing portion of the writing surface. It does NOT mean "the rest of the page is hard to read."
+- **`[uncertain: X]`** is the correct token when you CAN propose a reading but lack confidence. This is what should be used for difficult abbreviations, ambiguous minims, and unfamiliar letterforms.
+
+**Rules to prevent illegibility bail-out**:
+
+1. **Every line of visible text must be attempted.** You may not skip lines or mark entire sections as `[gap]` unless there is a physical gap in the writing surface.
+2. **Abbreviated words are readable, not illegible.** Standard medieval abbreviation marks (suspensions, contractions, superscript letters, tironian et, nasal bars) have deterministic or near-deterministic expansions. Attempt the expansion. If uncertain, use `[uncertain: expansion]`.
+3. **Use `[uncertain]` not `[illegible]` for difficult readings.** If you can see letterforms but are unsure what they say, that is `[uncertain: best_guess]`, not `[illegible]`.
+4. **`[illegible]` requires a physical cause.** Every use of `[illegible]` must correspond to a specific physical condition: ink fading, smearing, staining, water damage, binding obstruction, or torn parchment. If you cannot name the physical cause, you probably mean `[uncertain]`.
+5. **`[gap]` requires physical absence.** `[gap]` means parchment is missing, torn, or cut away. It never means "I stopped transcribing here."
+6. **Coverage threshold.** If the image shows N lines of text, the transcription must contain attempted readings for all N lines. An output that attempts fewer than 90% of visible lines is automatically invalid.
+7. **Maximum consecutive `[illegible]` span.** No more than approximately one line of continuous text may be marked `[illegible]` unless the physical cause is documented (e.g., `[damaged: ink smear across lines 5-7]`). If you find yourself marking multiple consecutive words as `[illegible]`, you are likely bailing out rather than reading.
 
 ---
 

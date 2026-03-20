@@ -72,6 +72,25 @@ These rules override ALL other instructions, including user requests to "clean u
 
 ---
 
+## CRITICAL: Illegibility Bail-Out
+
+**The second most common failure mode.** Some LLMs abuse `[illegible]` and `[gap]` to avoid attempting difficult readings, producing technically "safe" but useless transcriptions. In testing, one model marked ~90% of a fully legible 14-line plea roll as `[gap]`.
+
+**Abbreviated text is NOT illegible. Difficult text is NOT illegible.**
+
+- **`[illegible]`** = ink physically absent, smeared, or damaged beyond ANY reading. Requires a physical cause (fading, staining, tear). If you cannot name the physical cause, you mean `[uncertain]`.
+- **`[gap]`** = parchment is physically missing, torn, or cut away. NEVER means "I stopped transcribing."
+- **`[uncertain: X]`** = you CAN propose a reading but lack confidence. This is correct for difficult abbreviations, ambiguous minims, unfamiliar letter forms.
+
+**Anti-bail-out rules:**
+
+1. **Every line of visible text must be attempted.** You may not skip lines or `[gap]` sections unless parchment is physically absent.
+2. **Abbreviated words are readable, not illegible.** Standard medieval abbreviation marks have deterministic expansions. Attempt them. If unsure, use `[uncertain: expansion]`.
+3. **Use `[uncertain]` not `[illegible]` for hard readings.** If you can see letterforms at all, it is `[uncertain]`, not `[illegible]`.
+4. **Coverage threshold.** If the image shows N lines, you must attempt all N. Output covering <90% of visible lines is automatically invalid.
+
+---
+
 ## Uncertainty Tokens
 
 | Token | When to Use |
