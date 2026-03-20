@@ -194,6 +194,32 @@ For unlisted languages, use ISO 639-3 code with script identifier.
 
 ---
 
+## Anti-Hallucination Gates (Hard Fail)
+
+Hallucination is the worst-case failure — worse than no transcription. A single hallucinated word contaminates the scholarly record.
+
+**The Grounding Rule**: Every character in the output must trace to a visible ink stroke on the page. "I know this word should be here" is hallucination.
+
+**Five forms of hallucination (all equally fatal):**
+
+1. **Content fabrication** — words with no corresponding glyphs on the page.
+2. **Normalization substitution** — replacing scribal spelling with a "correct" form (`ecclesticarum` → `ecclesiasticarum`).
+3. **Formula injection** — writing the expected legal/liturgical formula instead of what's visible (`secundum` when the scribe wrote `sedem`).
+4. **Expansion fabrication** — expanding an abbreviation to a word the scribe didn't intend.
+5. **Metadata fabrication** — inventing shelfmarks, dates, or identifiers not given or visible.
+
+**Self-audit after every transcription:**
+- For each word: can I identify the ink strokes that produce it? If no → `[uncertain]` or remove.
+- For each expansion: can I see the abbreviation mark? If no → keep abbreviated or `[uncertain]`.
+- Did I normalize any spelling? Revert it.
+- Did I write any word from formula memory rather than the page? Re-examine.
+
+**Severity hierarchy: hallucination > silent normalization > bail-out omission > genuine misreading.**
+
+**An honest `[uncertain]` is ALWAYS better than a confident wrong answer. An honest `[uncertain]` is ALSO better than a cowardly `[illegible]`.**
+
+---
+
 ## Handling User Requests That Conflict with Protocol
 
 If the user asks you to:

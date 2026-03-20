@@ -257,21 +257,93 @@ Every transcription output must include the fields defined in [OUTPUT_SCHEMA.md]
 
 ---
 
-## 7. Quality Gate
+## 7. Anti-Hallucination Gates
 
-Outputs are evaluated against the rubric defined in [QUALITY_RUBRIC.md](QUALITY_RUBRIC.md). An output fails if any of the following are true:
+Hallucination — producing text not grounded in visible glyphs — is the worst-case failure. A hallucinated transcription is worse than no transcription: it contaminates the scholarly record with fabricated evidence. Every rule below is a hard gate. Any single violation invalidates the entire output.
 
-- Any text is present in the output that is not visible in the source image (fabricated addition).
-- Any `[illegible]`, `[uncertain: ...]`, or `[gap]` token is missing where the source is ambiguous.
-- The `mismatchReport` is absent.
-- Required metadata fields are missing or contain values outside the controlled vocabulary.
-- The `diplomaticProfile` compliance checks fail (e.g., line breaks removed under `strict`).
+### 7.1 The Grounding Rule
+
+**Every character in the output must be traceable to a visible mark on the page.**
+
+- If you cannot point to the specific ink stroke(s) that produced a character, that character must not appear in the output.
+- "I know this word should be here because of context" is hallucination.
+- "This abbreviation usually expands to X" is only valid if the abbreviation mark itself is visible. If the mark is absent or ambiguous, use `[uncertain]`.
+
+### 7.2 Five Forms of Hallucination
+
+All five are protocol violations of equal severity.
+
+| Form | Description | Example |
+|---|---|---|
+| **Content fabrication** | Words inserted that have no corresponding glyphs on the page. | Adding a word to complete a sentence that "makes sense." |
+| **Normalization substitution** | Replacing what the scribe wrote with a "correct" classical/standard form. | `ecclesticarum` → `ecclesiasticarum`. The scribe wrote the first form; the second is fabricated. |
+| **Formula injection** | Inserting expected legal/liturgical/literary formulae instead of reading what is present. | Writing `secundum legem` because that's the standard formula, when the scribe wrote `sedem legem`. |
+| **Expansion fabrication** | Expanding an abbreviation to a word the scribe did not intend, based on what the word "should" be. | Expanding `ten'` as `tenementa` when visible case markers indicate `tenementibus`. |
+| **Metadata fabrication** | Inventing document identifiers, dates, or provenance not visible on the page or provided by the user. | Assigning a shelfmark the model "recognizes" rather than using only what is given or visible. |
+
+### 7.3 Self-Audit Checklist (Mandatory)
+
+After completing the transcription and before emitting output, the model must perform this audit. The audit results must be recorded in the output under `hallucinationAudit`.
+
+For every word in the transcription, verify:
+
+1. **Glyph grounding**: Can I identify the ink strokes on the page that produce this word? If no → remove or mark `[uncertain]`.
+2. **Expansion justification**: If this word is an expanded abbreviation, can I identify the specific abbreviation mark (bar, suspension, superscript, symbol) that I am expanding? If no → revert to the abbreviated form or mark `[uncertain]`.
+3. **Normalization check**: Is this word spelled differently from what I see on the page? Did I "clean up" a scribal form? If yes → revert to the scribal form.
+4. **Formula check**: Did I write this word because it is the expected next word in a known formula, or because I read it from the page? If the former → re-examine the page and correct.
+5. **Confidence calibration**: Am I claiming `high` confidence on a segment where I used contextual knowledge to resolve ambiguity? If yes → downgrade to `medium` or `low`.
+
+```yaml
+hallucinationAudit:
+  totalWords: 250
+  wordsGroundedInGlyphs: 247
+  wordsFromExpansion: 85
+  expansionsWithVisibleMark: 85
+  normalizationReversals: 0
+  formulaSubstitutionsDetected: 0
+  auditPass: true
+```
+
+### 7.4 Hard Fail Conditions
+
+The output is **automatically invalid** if ANY of the following are true:
+
+1. **Any word appears in the output that has no corresponding glyph group on the page.** This includes words added "for sense," words from expected formulae, and words from the model's knowledge of the text.
+2. **Any scribal spelling has been silently replaced** with a classical, standard, or "correct" form without an `[uncertain]` token.
+3. **Any abbreviation has been expanded without a visible abbreviation mark** (suspension, contraction bar, superscript, or recognized symbol) justifying the expansion.
+4. **Metadata fields contain values not provided by the user or visible on the page.** The model must never invent shelfmarks, folio numbers, dates, or repository names.
+5. **The `hallucinationAudit` block is absent or reports `auditPass: false`.**
+6. **The `mismatchReport` is absent.**
+7. **Coverage is below 90%** of visible text lines.
+8. **`[illegible]` or `[gap]` is used without a documented physical cause** (see Section 5.5).
+
+### 7.5 Severity Hierarchy
+
+When errors conflict, this hierarchy determines disposition:
+
+1. **Hallucination** (worst) — any fabricated content invalidates the entire output, regardless of overall accuracy.
+2. **Silent normalization** — substituting "correct" forms is a form of hallucination and is treated as such.
+3. **Omission via bail-out** — marking readable text as `[illegible]` produces an incomplete but non-toxic output. Bad, but less bad than fabrication.
+4. **Genuine misreading** — reading the wrong glyph when the correct one was difficult. This is a normal transcription error, not a protocol violation, provided the misreading was not caused by normalization bias.
+
+**In all cases: an honest `[uncertain]` is better than a confident wrong answer. An honest `[uncertain]` is also better than a cowardly `[illegible]`.**
 
 ---
 
-## 8. Versioning and Reproducibility
+## 8. Quality Gate
 
-- Every transcript must record the protocol version used (this document: `v1.0`).
+Outputs are evaluated against the rubric defined in [QUALITY_RUBRIC.md](QUALITY_RUBRIC.md), subject to the hard fail conditions in Section 7.4. An output that passes the anti-hallucination gates is then evaluated for:
+
+- Per-segment confidence calibration.
+- Uncertainty token placement (tokens present where source is ambiguous).
+- Diplomatic profile compliance (line breaks, abbreviation handling, layout markup).
+- Metadata completeness.
+
+---
+
+## 9. Versioning and Reproducibility
+
+- Every transcript must record the protocol version used (this document: `v1.1`).
 - Re-running the same source with the same configuration must produce structurally equivalent output.
 - Any deviation between runs must be confined to uncertainty tokens and confidence scores, not substantive text changes.
 
