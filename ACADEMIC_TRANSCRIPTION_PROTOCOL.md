@@ -192,6 +192,33 @@ The following actions are strictly prohibited regardless of configuration:
 - Adding paragraph breaks, headings, or formatting not present in the source.
 - Summarizing or condensing any portion of the text.
 
+### 5.4 Latin Normalization Bias (Critical for Medieval Documents)
+
+**WARNING**: LLMs trained on Latin corpora will silently normalize scribal spellings to classical or standardized forms. This is the single most common failure mode in blind testing (observed WER 6% in benchmark BM-005). You MUST resist this tendency.
+
+**Observed failure patterns** (from blind benchmark on 14th-century legal hand):
+
+| What the scribe wrote | What the LLM produced | Error type |
+|---|---|---|
+| `ecclesticarum` | `ecclesiasticarum` | Spelling normalization |
+| `quoruscumque` | `quorumcumque` | Spelling normalization |
+| `iacitiram` | `iacturam` | Spelling normalization |
+| `lettris` | `litteris` | Spelling normalization |
+| `corporus` | `corpus` | Spelling normalization |
+| `preiudicialies` | `preiudiciales` | Spelling normalization |
+| `dignitatus` | `dignitatis` | Spelling normalization |
+| `brevas` | `brevia` | Spelling normalization |
+| `tenementibus` | `tenementa` | Case ending on abbreviation |
+| `sedem` | `secundum` | Rejected unusual reading |
+
+**Rules to prevent this**:
+
+1. **Prefer the visually unusual reading.** If the glyph evidence supports a non-standard spelling (e.g., `ecclesticarum` rather than `ecclesiasticarum`), transcribe the non-standard form. Scribal spellings are data, not errors.
+2. **Do not second-guess case endings.** When expanding an abbreviation, the specific case ending visible in the manuscript (even a single visible letter) overrides what Latin grammar "should" require.
+3. **When in doubt, use uncertainty tokens.** If a reading looks unusual but the visual evidence supports it, prefer `[uncertain: unusual_form]` over silently normalizing to the expected form.
+4. **Never reject a reading because it seems grammatically wrong.** Scribes made errors, used dialectal forms, and employed non-standard abbreviation practices. All of these are evidence that must be preserved.
+5. **Abbreviation expansion must follow the specific scribe's practice, not classical norms.** If a scribe abbreviates in a way that expands to a non-classical form, that expansion is correct for this manuscript.
+
 ---
 
 ## 6. Output Requirements
