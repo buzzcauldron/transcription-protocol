@@ -86,7 +86,13 @@ transcriptionOutput:
       confidence: "medium"   # default typical; use "high" only for unambiguous stretches, "low" when difficult (§1.1)
       uncertaintyTokenCount: <integer matching token count in text>
       notes: null
-  mismatchReport: []
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 1
+      pass1Reading: "<same as final or prior draft>"
+      pass2Reading: "<same as segment text after pass 2>"
+      resolution: "pass2 confirms final text; no edit"
+      resolved: true
 """
 
 

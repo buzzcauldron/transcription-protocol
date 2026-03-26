@@ -96,7 +96,7 @@ OUTPUT FORMAT:
 Emit your response as a structured document following the OUTPUT_SCHEMA. Include:
 - preCheck block
 - For each segment: segmentId, lineRange, text, confidence
-- mismatchReport (even if empty)
+- mismatchReport (non-empty when any segment exists—Pass 2 confirmation or discrepancy per §5.2)
 - metadata block with all configuration values
 ````
 

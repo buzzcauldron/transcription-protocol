@@ -280,6 +280,14 @@ LLMs trained on Latin corpora will silently normalize scribal spellings to class
 4. **Never reject a reading because it seems grammatically wrong.** Scribes made errors, used dialectal forms, and employed non-standard abbreviation practices. All of these are evidence that must be preserved.
 5. **Abbreviation expansion must follow the specific scribe's practice, not classical norms.** If a scribe abbreviates in a way that expands to a non-classical form, that expansion is correct for this manuscript.
 
+#### 5.4.2 Mixed-language documents
+
+When `targetLanguage` is `mixed` (or the page clearly alternates languages), **abbreviation and expansion must follow the language of the immediate syntactic context**, not the dominant language of the page or the model’s prior for “legal Latin” vs English.
+
+- Do **not** apply a Latin suspension or nasal-bar reading to an English clause (or vice versa) unless the visible marks and word context are appropriate for that language.
+- If an ambiguous mark could be read under two conventions, prefer **`[uncertain: …]`** over defaulting to the majority language.
+- Record language switches in `metadata.languageSet` and use **segment `notes`** where a line or clause is chiefly one language inside a mixed page.
+
 ### 5.5 Illegibility Bail-Out (Failure Mode B)
 
 **WARNING**: Some LLMs will abuse `[illegible]` and `[gap]` tokens to avoid attempting difficult readings. This is equally as harmful as normalization — it produces a technically "safe" output that is useless to researchers. In blind testing, one model marked ~90% of a fully legible 14-line plea roll as `[gap: remainder of document heavily abbreviated and illegible at current resolution]` while only attempting 3 lines.
