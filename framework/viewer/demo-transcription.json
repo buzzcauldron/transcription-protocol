@@ -1,0 +1,79 @@
+{
+  "transcriptionOutput": {
+    "protocolVersion": "1.1.0",
+    "metadata": {
+      "sourcePageId": "demo-page-1",
+      "modelId": "demo-model",
+      "timestamp": "2026-03-26T12:00:00Z",
+      "protocolVersion": "1.1.0",
+      "targetLanguage": "eng-Latn",
+      "languageSet": [],
+      "targetEra": "nineteenth_century",
+      "eraRange": null,
+      "diplomaticProfile": "strict",
+      "diplomaticToggles": {
+        "preserveLineBreaks": true,
+        "preserveOriginalAbbreviations": true,
+        "markExpansions": false,
+        "captureDeletionsAndInsertions": false,
+        "captureUnclearGlyphShape": true
+      },
+      "normalizationMode": "diplomatic",
+      "runMode": "standard",
+      "mixedContent": { "mixedLanguage": false, "mixedEra": false },
+      "scriptNotes": null,
+      "englishHandwritingModality": null,
+      "epistemicNotes": null,
+      "schemaRevision": null
+    },
+    "preCheck": {
+      "resolutionAdequate": true,
+      "orientationCorrect": true,
+      "pageBoundariesVisible": true,
+      "pageCount": 1,
+      "scriptIdentified": "demo",
+      "scriptMatchesConfig": true,
+      "conditionNotes": null,
+      "proceedDecision": "proceed",
+      "proceedOverride": false,
+      "abortReason": null
+    },
+    "segments": [
+      {
+        "segmentId": 1,
+        "pageNumber": 1,
+        "lineRange": "1-2",
+        "position": "body",
+        "text": "First line uses segment confidence (high).\nSecond line, same segment — also high.",
+        "confidence": "high",
+        "uncertaintyTokenCount": 0,
+        "notes": null
+      },
+      {
+        "segmentId": 2,
+        "pageNumber": 1,
+        "lineRange": "3-5",
+        "position": "body",
+        "text": "Per-line overrides via lineConfidences (optional).\nMedium on this line.\nLow on this line.",
+        "confidence": "high",
+        "lineConfidences": ["medium", "medium", "low"],
+        "uncertaintyTokenCount": 0,
+        "notes": null
+      },
+      {
+        "segmentId": 3,
+        "pageNumber": 1,
+        "lineRange": "6",
+        "position": "body",
+        "text": "Unknown bucket when confidence is missing or invalid.",
+        "confidence": "not-a-valid-bucket",
+        "uncertaintyTokenCount": 0,
+        "notes": null
+      }
+    ],
+    "mismatchReport": [],
+    "hallucinationAudit": {
+      "note": "demo fixture"
+    }
+  }
+}

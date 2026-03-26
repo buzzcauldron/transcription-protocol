@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Transcription viewer — per-line confidence</title>
+    <link rel="stylesheet" href="transcript-viewer.css" />
+  </head>
+  <body>
+    <div class="tv-root">
+      <header class="tv-toolbar">
+        <label>
+          Load JSON
+          <input id="file-input" type="file" accept="application/json,.json" />
+        </label>
+        <button type="button" id="load-demo">Load demo</button>
+      </header>
+
+      <div class="tv-legend" aria-label="Confidence legend">
+        <span class="tv-legend-title">Line confidence</span>
+        <span class="tv-legend-item">
+          <span class="tv-swatch" data-confidence="high" aria-hidden="true"></span>
+          <span>High — model confidence in this line</span>
+        </span>
+        <span class="tv-legend-item">
+          <span class="tv-swatch" data-confidence="medium" aria-hidden="true"></span>
+          <span>Medium</span>
+        </span>
+        <span class="tv-legend-item">
+          <span class="tv-swatch" data-confidence="low" aria-hidden="true"></span>
+          <span>Low</span>
+        </span>
+        <span class="tv-legend-item">
+          <span class="tv-swatch" data-confidence="unknown" aria-hidden="true"></span>
+          <span>Unknown / invalid</span>
+        </span>
+      </div>
+
+      <div id="output" aria-live="polite"></div>
+    </div>
+
+    <!-- Fallback when opening index.html via file:// (fetch may be blocked); keep in sync with demo-transcription.json -->
+    <script type="application/json" id="tv-embedded-demo">
+{
+  "transcriptionOutput": {
+    "protocolVersion": "1.1.0",
+    "metadata": { "sourcePageId": "demo-page-1", "modelId": "demo", "timestamp": "2026-03-26T12:00:00Z", "protocolVersion": "1.1.0", "targetLanguage": "eng-Latn", "languageSet": [], "targetEra": "nineteenth_century", "eraRange": null, "diplomaticProfile": "strict", "diplomaticToggles": { "preserveLineBreaks": true, "preserveOriginalAbbreviations": true, "markExpansions": false, "captureDeletionsAndInsertions": false, "captureUnclearGlyphShape": true }, "normalizationMode": "diplomatic", "runMode": "standard", "mixedContent": { "mixedLanguage": false, "mixedEra": false }, "scriptNotes": null, "englishHandwritingModality": null, "epistemicNotes": null, "schemaRevision": null },
+    "preCheck": { "resolutionAdequate": true, "orientationCorrect": true, "pageBoundariesVisible": true, "pageCount": 1, "scriptIdentified": "demo", "scriptMatchesConfig": true, "conditionNotes": null, "proceedDecision": "proceed", "proceedOverride": false, "abortReason": null },
+    "segments": [
+      { "segmentId": 1, "pageNumber": 1, "lineRange": "1-2", "position": "body", "text": "First line uses segment confidence (high).\nSecond line, same segment — also high.", "confidence": "high", "uncertaintyTokenCount": 0, "notes": null },
+      { "segmentId": 2, "pageNumber": 1, "lineRange": "3-5", "position": "body", "text": "Per-line overrides via lineConfidences (optional).\nMedium on this line.\nLow on this line.", "confidence": "high", "lineConfidences": ["medium", "medium", "low"], "uncertaintyTokenCount": 0, "notes": null },
+      { "segmentId": 3, "pageNumber": 1, "lineRange": "6", "position": "body", "text": "Unknown bucket when confidence is missing or invalid.", "confidence": "not-a-valid-bucket", "uncertaintyTokenCount": 0, "notes": null }
+    ],
+    "mismatchReport": [],
+    "hallucinationAudit": { "note": "demo fixture" }
+  }
+}
+    </script>
+
+    <script type="module">
+      import {
+        parseJson,
+        renderTranscriptionView,
+      } from "./transcript-viewer.js";
+
+      const output = document.getElementById("output");
+      const fileInput = document.getElementById("file-input");
+      const loadDemo = document.getElementById("load-demo");
+
+      function showFragment(frag) {
+        output.replaceChildren(frag);
+      }
+
+      function showError(msg) {
+        const p = document.createElement("p");
+        p.className = "tv-error";
+        p.textContent = msg;
+        output.replaceChildren(p);
+      }
+
+      async function loadDemoJson() {
+        let text = "";
+        try {
+          const res = await fetch("./demo-transcription.json");
+          if (res.ok) {
+            text = await res.text();
+          }
+        } catch (_) {
+          /* file:// or network blocked */
+        }
+        if (!text) {
+          const el = document.getElementById("tv-embedded-demo");
+          text = el ? el.textContent.trim() : "";
+        }
+        if (!text) {
+          showError("No demo data available.");
+          return;
+        }
+        const parsed = parseJson(text);
+        if (!parsed.ok) {
+          showError(`JSON: ${parsed.error}`);
+          return;
+        }
+        showFragment(renderTranscriptionView(parsed.data));
+      }
+
+      fileInput.addEventListener("change", () => {
+        const f = fileInput.files && fileInput.files[0];
+        if (!f) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          const text = typeof reader.result === "string" ? reader.result : "";
+          const parsed = parseJson(text);
+          if (!parsed.ok) {
+            showError(`JSON: ${parsed.error}`);
+            return;
+          }
+          showFragment(renderTranscriptionView(parsed.data));
+        };
+        reader.readAsText(f);
+      });
+
+      loadDemo.addEventListener("click", () => {
+        loadDemoJson();
+      });
+
+      loadDemoJson();
+    </script>
+  </body>
+</html>
