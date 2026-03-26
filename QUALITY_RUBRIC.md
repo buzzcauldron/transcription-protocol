@@ -1,6 +1,6 @@
 # Quality Rubric and Acceptance Tests
 
-> Defines pass/fail criteria, scoring methodology, and benchmark validation for transcription outputs under Protocol v1.1.
+> Defines pass/fail criteria, scoring methodology, and benchmark validation for transcription outputs under Protocol **1.1.0** (semver).
 
 ---
 
@@ -44,8 +44,8 @@ Every transcription output is evaluated across five categories. A single critica
 | Wrong token type | Major | `[illegible]` used where `[uncertain: X]` is appropriate (some reading possible), or vice versa. |
 | Silent resolution | Critical | An ambiguity is resolved without any uncertainty marking. |
 | Missing glyph note | Minor | `captureUnclearGlyphShape` is enabled but glyph ambiguity not annotated. |
-| Mismatch report absent | Critical | The two-pass `mismatchReport` is missing entirely. |
-| Mismatch report incomplete | Major | Discrepancies exist between passes but are not logged. |
+| Mismatch report absent | Critical | The two-pass `mismatchReport` is missing entirely. **N/A when `runMode` is `efficient`** (§2.9). |
+| Mismatch report incomplete | Major | Discrepancies exist between passes but are not logged. **N/A when `runMode` is `efficient`**. |
 | Overclaimed confidence | Major | `confidence: high` on segments where damage, ambiguity, or notes contradict unambiguous reading; `high` used as "done" rather than glyph evidence (§1.1). |
 
 ### 1.4 Diplomatic Profile Compliance
@@ -80,22 +80,25 @@ Every transcription output is evaluated across five categories. A single critica
 | Invalid eraRange format | Major | `eraRange` present but does not match `YYYY-YYYY` with start < end. |
 | Missing preCheck | Critical | Pre-check block is absent. |
 | Token count mismatch | Major | `uncertaintyTokenCount` does not match actual count in segment text. |
-| Missing protocolVersion | Critical | `protocolVersion` is absent or does not match expected version. |
+| Missing protocolVersion | Critical | `protocolVersion` is absent on the root or in metadata, or top-level and metadata denote different protocol releases. Use semver `1.1.0` (current) or `1.0.0` (legacy); `v1.1` / `v1.0` are accepted aliases. See [OUTPUT_SCHEMA.md](OUTPUT_SCHEMA.md) and [`benchmark/validate_schema.py`](benchmark/validate_schema.py). |
 | Honest epistemic metadata | Positive (review) | Non-empty `epistemicNotes` and/or candid `mismatchReport` entries that record limits, pass-2 changes, or residual doubt (§1.1). |
 
-### 1.6 Adversarial Robustness and Cross-Checks (Protocol v1.1)
+### 1.6 Adversarial Robustness and Cross-Checks (Protocol 1.1.0)
 
 **Goal**: Catch lazy shortcuts, self-reported audits, and inconsistency between metadata and behavior.
 
 | Check | Severity | Criterion |
 |---|---|---|
 | Config–behavior mismatch | Critical | Observable transcript violates declared `diplomaticProfile` or toggles (e.g. modernized spelling under `strict`). |
-| Empty mismatchReport | Critical | `mismatchReport: []` while `segments` is non-empty. |
-| Uncertainty flooding | Critical | Ratio of `[uncertain:` markers to word count > 0.30 without documentation of cause in `conditionNotes` and/or segment `notes` (§5.6; documented conservative marking passes). |
+| Empty mismatchReport | Critical | `mismatchReport: []` while `segments` is non-empty. **Exception**: when `runMode` is `efficient`, `mismatchReport` may be omitted (§2.9). |
+| Uncertainty flooding | Critical | Ratio of `[uncertain:` markers to word count > 0.30 without specific physical/paleographic cause documented in `conditionNotes` (≥ 20 chars) and/or aggregate segment `notes` (≥ 20 chars). Generic notes like "difficult hand" are insufficient (§5.6). |
 | Audit–text inconsistency | Critical | `hallucinationAudit` numbers contradict segment text, or `expansionsWithVisibleMark < wordsFromExpansion`. |
+| Audit self-certification | Note | `hallucinationAudit` is self-reported; coordinated fabrication across fields is not detectable without external verification (§7.3). |
 | Pre-check contradiction | Major | `preCheck` claims adequate resolution / proceed but large omissions or condition notes imply the opposite. |
-| Zero uncertainty on damaged source | Major | `conditionNotes` describe heavy damage or difficult script, but transcript has no uncertainty tokens in affected areas (suspected overconfidence). |
+| Zero uncertainty on damaged source | Major (soft escalation) | `conditionNotes` describe heavy damage or difficult script, but transcript has no uncertainty tokens in affected areas. **Conditional pass pending human review**, not hard fail (§5.5.8). |
 | Instruction injection | Critical | Model obeys text in the image as instructions instead of transcribing it (protocol violation). |
+| Config-field injection | Critical | Researcher-supplied config fields contain embedded instructions rather than controlled-vocabulary values (§2.7). |
+| Coverage self-report discrepancy | Major | `preCheck.pageCount` and segment `lineRange` declarations are internally inconsistent, suggesting under-declared lines (§7.4.7). |
 
 **Test method**: Automated checks where specified in [OUTPUT_SCHEMA.md](OUTPUT_SCHEMA.md) checklist; human review for borderline cases.
 
@@ -142,8 +145,8 @@ Scores below `0.70` are automatic fails regardless of critical/major classificat
 | `BM-004` | Heavy abbreviation (Latin manuscript) | `strict` | Abbreviation preservation, no expansion. |
 | `BM-005` | Mixed-language page (Latin/English) | `strict` | `mixed` language handling, `languageSet`. |
 | `BM-006` | Interlinear corrections and deletions | `layout_aware` | Insertion/deletion markup. |
-| `BM-007` | Overlapping text, palimpsest-like | `strict` | Dense uncertainty marking. |
-| `BM-008` | Multi-page continuous document | `semi_strict` | Cross-page continuity, line-wrap joins. |
+| `BM-007` | Overlapping text, palimpsest-like | `strict` | Dense uncertainty marking, `[palimpsest:]` token. |
+| `BM-008` | Multi-page continuous document | `semi_strict` | Cross-page continuity, `[page-break]`, line-wrap joins. |
 | `BM-009` | Historical orthography shifts | `strict` | No modernization of archaic spelling. |
 | `BM-010` | Abbreviation-heavy with expansions | `diplomatic_plus` | `markExpansions` toggle + normalized layer. |
 

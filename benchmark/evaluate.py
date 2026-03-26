@@ -109,7 +109,7 @@ def count_uncertainty_tokens(segments):
 def main():
     print("=" * 72)
     print("BENCHMARK EVALUATION: Lincoln-Owens Letter (BM-001)")
-    print("Protocol v1.0 | Diplomatic Profile: layout_aware")
+    print("Protocol 1.1.0 | Diplomatic Profile: layout_aware")
     print("=" * 72)
 
     # Assemble full transcription text (body segments only, excluding marginalia)

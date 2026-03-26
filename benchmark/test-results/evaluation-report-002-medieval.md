@@ -1,6 +1,6 @@
 # Evaluation Report: BM-MED-001 — Walters W.25 Psalter (Psalms 7–8)
 
-> Run ID: 002 | Date: 2026-03-20 | Protocol: v1.0
+> Run ID: 002 | Date: 2026-03-20 | Protocol: 1.1.0
 
 ---
 

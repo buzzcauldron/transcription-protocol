@@ -1,6 +1,6 @@
 # Evaluation Report: BM-001 — Lincoln-Owens Letter
 
-> Run ID: 001 | Date: 2026-03-20 | Protocol: v1.0
+> Run ID: 001 | Date: 2026-03-20 | Protocol: 1.0.0 (legacy alias `v1.0` in YAML)
 
 ---
 

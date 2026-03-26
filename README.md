@@ -50,6 +50,8 @@ For batch processing with programmatic quality control:
 
 The protocol’s **conservative epistemic stance** (default skeptical confidence, honest mismatch reporting, optional **`metadata.epistemicNotes`**) is in [ACADEMIC_TRANSCRIPTION_PROTOCOL.md §1.1](ACADEMIC_TRANSCRIPTION_PROTOCOL.md#11-conservative-epistemic-stance).
 
+**Run mode** (`runMode`): Choose `standard` (default -- full two-pass verification, all tokens) or `efficient` (single pass, core tokens only, faster throughput). Efficient mode is incompatible with `layout_aware` and `diplomatic_plus` profiles. See [ACADEMIC_TRANSCRIPTION_PROTOCOL.md §2.9](ACADEMIC_TRANSCRIPTION_PROTOCOL.md#29-run-mode).
+
 ### Target Language
 
 Use ISO 639-3 codes with a script tag. Common values:
@@ -159,13 +161,31 @@ Step-by-step for using **Cursor’s model picker** (no API keys): [`benchmark/CU
 
 ---
 
+## Versioning
+
+The protocol uses **Semantic Versioning** ([semver.org](https://semver.org/)): see the root [`VERSION`](VERSION) file and [`CHANGELOG.md`](CHANGELOG.md). Machine-readable transcript outputs set `protocolVersion` to semver (`1.1.0` is current). The validator also accepts legacy `v1.0` / `v1.1` strings as aliases of `1.0.0` / `1.1.0` ([`benchmark/validate_schema.py`](benchmark/validate_schema.py), [OUTPUT_SCHEMA.md](OUTPUT_SCHEMA.md)).
+
+### Optional: post-hoc normalization
+
+If you already have a diplomatic transcript and want a **separate derivative** normalized layer (searchability, editorial orthography), use the add-on in [`normalization-protocol/`](normalization-protocol/README.md). It has its own version string (`norm-1.0.0`), prompts, and optional validator [`benchmark/validate_normalization.py`](benchmark/validate_normalization.py) — it does not change the core transcription workflow.
+
+---
+
 ## Repository Structure
 
 ```
+VERSION                              Current protocol semver for this repo
+CHANGELOG.md                         Human-readable version history
 ACADEMIC_TRANSCRIPTION_PROTOCOL.md   Core protocol and rules
 PROMPT_TEMPLATES.md                  Copy-paste prompts for chat/API use
 OUTPUT_SCHEMA.md                     Required output structure
 QUALITY_RUBRIC.md                    Pass/fail rubric and benchmark cases
+
+normalization-protocol/              Optional post-hoc normalization (derivative layer)
+  README.md                          Entry point for add-on
+  NORMALIZATION_PROTOCOL.md          Rules for normalizing from diplomatic text
+  NORMALIZATION_OUTPUT_SCHEMA.md   Standalone normalizationOutput shape
+  PROMPT_TEMPLATES.md              Normalizer-only copy-paste prompts
 
 framework/
   FRAMEWORK_PLAN.md                  Automated pipeline architecture

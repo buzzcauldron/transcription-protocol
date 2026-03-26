@@ -1,6 +1,6 @@
 # Output Schema Specification
 
-> Defines the required structure of every transcription output under the Academic Handwriting Transcription Protocol v1.0.
+> Defines the required structure of every transcription output under the Academic Handwriting Transcription Protocol **1.1.0** (semver).
 
 ---
 
@@ -10,11 +10,13 @@ Every transcription output is a single document (JSON or structured markdown) co
 
 ```
 transcriptionOutput:
-  protocolVersion: "v1.0"
+  protocolVersion: "1.1.0"
   metadata: { ... }
   preCheck: { ... }
   segments: [ ... ]
   mismatchReport: [ ... ]
+  pass2Summary: { ... }             # optional shorthand for clean runs (see protocol §5.2)
+  hallucinationAudit: { ... }
   normalizedLayer: [ ... ]          # only when normalizationMode is "normalized"
 ```
 
@@ -29,7 +31,7 @@ metadata:
   sourcePageId: "string"            # unique page identifier
   modelId: "string"                 # model name and version (e.g., "claude-4-opus-20260301")
   timestamp: "ISO-8601"             # UTC timestamp of transcription run
-  protocolVersion: "v1.0"
+  protocolVersion: "1.1.0"          # must match top-level (same protocol); legacy v1.0/v1.1 aliases OK
   targetLanguage: "eng-Latn"        # controlled code
   languageSet: []                   # populated only if targetLanguage is "mixed"
   targetEra: "nineteenth_century"   # canonical tag
@@ -42,26 +44,31 @@ metadata:
     captureDeletionsAndInsertions: false
     captureUnclearGlyphShape: true
   normalizationMode: "diplomatic"   # "diplomatic" or "normalized"
+  runMode: "standard"               # "standard" or "efficient" (protocol §2.9)
   mixedContent:
     mixedLanguage: false
     mixedEra: false
   scriptNotes: "string or null"     # optional paleographic notes from researcher
   englishHandwritingModality: "copperplate" | null   # optional; only when targetLanguage is eng-Latn (or English in mixed)
   epistemicNotes: "string or null"  # optional: run-level limits, residual doubt, unverified regions (protocol §1.1)
+  schemaRevision: "string or null"  # optional: companion-doc revision date (e.g. "2026-03-26") per protocol §9
 ```
 
 ### Validation Rules
 
 | Field | Rule |
 |---|---|
+| `protocolVersion` (top-level and metadata) | Must denote the **same protocol** (semver `1.1.0` current; `1.0.0` legacy). Strings `v1.1` / `v1.0` are accepted aliases and compare equal to `1.1.0` / `1.0.0`. |
 | `targetLanguage` | Must be from controlled vocabulary or valid ISO 639-3 + script pattern. |
 | `epistemicNotes` | Optional. If present, must be a non-empty string or `null`. Summarizes honest limits of the transcript. |
+| `schemaRevision` | Optional. Date string (e.g. `"2026-03-26"`) recording companion-doc version. |
 | `englishHandwritingModality` | If present, must be one of the tags in protocol §2.8, or `null`. Omit or `null` when `targetLanguage` is not English. |
 | `targetEra` | Must be one of the six canonical tags. |
 | `eraRange` | If present, must match `YYYY-YYYY` format with start < end. |
 | `diplomaticProfile` | Must be one of four defined profiles. |
 | `diplomaticToggles` | Toggle values must be boolean. Overrides must be compatible with the selected profile. |
 | `normalizationMode` | Must be `diplomatic` or `normalized`. |
+| `runMode` | Must be `standard` or `efficient`. Default: `standard`. If `efficient`, `diplomaticProfile` must not be `layout_aware` or `diplomatic_plus` (§2.9). |
 | `sourcePageId` | Must be non-empty string. |
 | `modelId` | Must be non-empty string. |
 | `timestamp` | Must be valid ISO 8601. |
@@ -82,10 +89,13 @@ preCheck:
   scriptMatchesConfig: true/false
   conditionNotes: "string or null"  # damage, staining, fading
   proceedDecision: "proceed" / "abort"
+  proceedOverride: true/false       # optional; true when researcher overrides a failed pre-check (§4.1)
   abortReason: "string or null"     # only if proceedDecision is "abort"
 ```
 
 If `proceedDecision` is `abort`, the `segments` array must be empty and the output must explain why in `abortReason`.
+
+When `proceedOverride` is `true`, the run is classified as **reduced validity** — downstream consumers should treat the output as provisional.
 
 ---
 
@@ -123,7 +133,15 @@ segments:
 
 ## 5. Mismatch Report
 
-Required. Documents the two-pass self-check. **Protocol v1.1:** `mismatchReport` **must not** be an empty array when `segments` is non-empty—each segment must be accounted for with either a discrepancy between pass readings or an explicit Pass 2 confirmation (see [ACADEMIC_TRANSCRIPTION_PROTOCOL.md](ACADEMIC_TRANSCRIPTION_PROTOCOL.md) Section 5.2).
+Required when `runMode` is `standard` (the default). Documents the two-pass self-check. **Protocol 1.1.0:** `mismatchReport` **must not** be an empty array when `segments` is non-empty—each segment must be accounted for with either a discrepancy or an explicit Pass 2 confirmation.
+
+**Efficient mode:** When `runMode` is `efficient`, `mismatchReport` may be omitted or `null` (Pass 2 is not required; see protocol §2.9).
+
+There are two legal entry types:
+1. **Discrepancy** — Pass 2 changed a reading (`pass1Reading` ≠ `pass2Reading`).
+2. **Confirmation** — Pass 2 verified with no edits: `resolution: "pass2 confirms final text; no edit"`.
+
+A confirm-only report is **valid** when no edits occurred. An all-"confirmed" report when real edits **did** occur is dishonest and violates §1.1.
 
 ```
 mismatchReport:
@@ -136,6 +154,19 @@ mismatchReport:
 ```
 
 When Pass 2 confirms Pass 1 for a segment with no edits, still emit an entry, e.g. `resolution: "pass2 confirms final text; no change"`.
+
+### Alternative: `pass2Summary` (optional shorthand)
+
+For clean runs with many segments, a single run-level `pass2Summary` may replace per-segment confirmation boilerplate:
+
+```
+pass2Summary:
+  segmentsReviewed: 40
+  segmentsAltered: 0
+  note: "Pass 2 complete; all segments verified, no edits."
+```
+
+When `pass2Summary` is present and `segmentsAltered` is 0, per-segment confirmation entries are optional. When `segmentsAltered` > 0, each altered segment **must** appear in `mismatchReport` as a discrepancy entry.
 
 ### Optional: layout reading order
 
@@ -169,16 +200,49 @@ normalizedLayer:
 
 ---
 
+## 6b. Hallucination Audit Block
+
+Required. The model must perform a self-audit and record results. See protocol §7.3.
+
+```
+hallucinationAudit:
+  totalWords: 250
+  wordsGroundedInGlyphs: 247
+  wordsFromExpansion: 85            # expansion-events, not output words
+  expansionsWithVisibleMark: 85
+  normalizationReversals: 0
+  formulaSubstitutionsDetected: 0
+  auditPass: true                   # convenience boolean; true only when all checks pass
+  checks:                           # recommended structured breakdown
+    glyphGrounding: { pass: true, anomalies: 0 }
+    expansionJustification: { pass: true, anomalies: 0 }
+    normalizationCheck: { pass: true, anomalies: 0 }
+    formulaCheck: { pass: true, anomalies: 0 }
+    confidenceCalibration: { pass: true, anomalies: 0 }
+```
+
+### Audit Validation Rules
+
+| Rule | Description |
+|---|---|
+| `wordsFromExpansion` ≤ `expansionsWithVisibleMark` | If expansions exceed visible marks, the run fails regardless of `auditPass`. |
+| `totalWords` consistency | Should approximate the whitespace-delimited word count across all segment text. |
+| `checks` block | Optional but recommended. When present, `auditPass` must equal logical AND of all check `pass` values. |
+
+**Limitation:** The audit is self-reported by the same model. It catches careless self-contradiction but cannot catch coordinated fabrication. External verification is required for high-stakes runs.
+
+---
+
 ## 7. Full Example
 
 ```yaml
 transcriptionOutput:
-  protocolVersion: "v1.0"
+  protocolVersion: "1.1.0"
   metadata:
     sourcePageId: "MS-1234-folio-12r"
     modelId: "claude-4-opus-20260301"
     timestamp: "2026-03-20T14:30:00Z"
-    protocolVersion: "v1.0"
+    protocolVersion: "1.1.0"
     targetLanguage: "eng-Latn"
     languageSet: []
     targetEra: "nineteenth_century"
@@ -191,12 +255,14 @@ transcriptionOutput:
       captureDeletionsAndInsertions: false
       captureUnclearGlyphShape: true
     normalizationMode: "diplomatic"
+    runMode: "standard"
     mixedContent:
       mixedLanguage: false
       mixedEra: false
     scriptNotes: "cursive copperplate, consistent hand"
     englishHandwritingModality: "copperplate"
     epistemicNotes: null
+    schemaRevision: null
   preCheck:
     resolutionAdequate: true
     orientationCorrect: true
@@ -206,6 +272,7 @@ transcriptionOutput:
     scriptMatchesConfig: true
     conditionNotes: "slight foxing in lower right corner"
     proceedDecision: "proceed"
+    proceedOverride: false
     abortReason: null
   segments:
     - segmentId: 1
@@ -239,6 +306,26 @@ transcriptionOutput:
       pass2Reading: "[uncertain: proposed / postponed] meeting"
       resolution: "adopted pass2 with uncertainty token — second letter could be 'ro' or 'os'"
       resolved: true
+    - mismatchId: 2
+      segmentId: 2
+      pass1Reading: "J. Hartley"
+      pass2Reading: "[uncertain: J. Hartley / J. Hartly]"
+      resolution: "pass2 confirms final text; no edit"
+      resolved: true
+  hallucinationAudit:
+    totalWords: 42
+    wordsGroundedInGlyphs: 40
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+    checks:
+      glyphGrounding: { pass: true, anomalies: 0 }
+      expansionJustification: { pass: true, anomalies: 0 }
+      normalizationCheck: { pass: true, anomalies: 0 }
+      formulaCheck: { pass: true, anomalies: 0 }
+      confidenceCalibration: { pass: true, anomalies: 0 }
   normalizedLayer: null
 ```
 
@@ -248,7 +335,7 @@ transcriptionOutput:
 
 Use this checklist to validate any output programmatically or by inspection:
 
-- [ ] `protocolVersion` present and matches `v1.0`.
+- [ ] `protocolVersion` (top-level and metadata) present, same protocol (`1.1.0` or `1.0.0`, or legacy aliases `v1.1` / `v1.0`).
 - [ ] All metadata fields present and use controlled vocabulary.
 - [ ] `preCheck` block present with all fields.
 - [ ] If `proceedDecision` is `abort`, segments array is empty.
@@ -256,9 +343,12 @@ Use this checklist to validate any output programmatically or by inspection:
 - [ ] Every segment has `segmentId`, `pageNumber`, `lineRange`, `position`, `text`, `confidence`.
 - [ ] `uncertaintyTokenCount` matches actual token count in segment text.
 - [ ] No line range overlaps within the same page.
-- [ ] `mismatchReport` present; **non-empty** when `segments` is non-empty (v1.1).
-- [ ] Uncertainty token density not above protocol threshold unless justified in notes (v1.1).
+- [ ] `mismatchReport` present; **non-empty** when `segments` is non-empty (protocol 1.1.0), unless `pass2Summary` is present with `segmentsAltered: 0`. **Exception**: when `runMode` is `efficient`, `mismatchReport` may be omitted.
+- [ ] `runMode` is `standard` or `efficient`; if `efficient`, `diplomaticProfile` is not `layout_aware` or `diplomatic_plus` (§2.9).
+- [ ] Uncertainty token density not above protocol threshold unless justified in notes (1.1.0).
 - [ ] `epistemicNotes` if non-null is substantive (protocol §1.1).
-- [ ] `hallucinationAudit` numeric fields consistent with segment text when present (v1.1 cross-check).
+- [ ] `hallucinationAudit` present with consistent numeric fields; `wordsFromExpansion` ≤ `expansionsWithVisibleMark`.
+- [ ] If structured `checks` block present, `auditPass` matches logical AND of all check `pass` values.
+- [ ] `proceedOverride` if `true`: override documented in `conditionNotes` (§4.1).
 - [ ] If `normalizationMode` is `normalized`, `normalizedLayer` is present with one-to-one alignment.
 - [ ] `normalizedLayer` entries do not introduce new content.

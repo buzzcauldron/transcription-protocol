@@ -1,3 +1,6 @@
+# TDAD extension: auto-generated workflows, prompts, logs, fixtures (local dev only)
+.tdad/
+
 .DS_Store
 *.jpg
 __pycache__/

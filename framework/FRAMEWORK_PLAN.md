@@ -109,7 +109,7 @@ job:
       captureUnclearGlyphShape: true
     normalizationMode: "diplomatic"
     scriptNotes: null
-    protocolVersion: "v1.0"
+    protocolVersion: "1.0.0"
   pages:
     - sourcePageId: "MS-1234-folio-12r"
       filePath: "scans/folio-12r.tiff"

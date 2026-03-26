@@ -1,10 +1,10 @@
 transcriptionOutput:
-  protocolVersion: "v1.0"
+  protocolVersion: "1.1.0"
   metadata:
     sourcePageId: "Walters-W25-folio-psalm8"
     modelId: "claude-4-opus-20260320"
     timestamp: "2026-03-20T19:45:00Z"
-    protocolVersion: "v1.0"
+    protocolVersion: "1.1.0"
     targetLanguage: "lat-Latn"
     languageSet: []
     targetEra: "medieval"
@@ -103,4 +103,12 @@ transcriptionOutput:
       pass2Reading: "digitor tuo"
       resolution: "Final abbreviation mark is ambiguous — could indicate 'tuorum' or 'tuor'. The visible letters appear to end with 'tuo' followed by an abbreviation stroke. Adopted conservative reading."
       resolved: true
+  hallucinationAudit:
+    totalWords: 120
+    wordsGroundedInGlyphs: 120
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
   normalizedLayer: null

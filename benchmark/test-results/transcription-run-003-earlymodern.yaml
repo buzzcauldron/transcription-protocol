@@ -1,10 +1,10 @@
 transcriptionOutput:
-  protocolVersion: "v1.0"
+  protocolVersion: "1.1.0"
   metadata:
     sourcePageId: "Folger-Lb534-leaf1r"
     modelId: "claude-4-opus-20260320"
     timestamp: "2026-03-20T19:45:00Z"
-    protocolVersion: "v1.0"
+    protocolVersion: "1.1.0"
     targetLanguage: "eng-Latn"
     languageSet: []
     targetEra: "early_modern"
@@ -155,4 +155,12 @@ transcriptionOutput:
       pass2Reading: "[uncertain: thankfull / thankful] Servant"
       resolution: "Double-l vs single-l ambiguous. Added uncertainty token."
       resolved: true
+  hallucinationAudit:
+    totalWords: 180
+    wordsGroundedInGlyphs: 180
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
   normalizedLayer: null

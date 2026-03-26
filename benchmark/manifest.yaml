@@ -22,7 +22,7 @@ cases:
       scriptNotesOptional: "copperplate cursive; two-page letter — transcribe all visible body text"
       englishHandwritingModality: "copperplate"
       sourcePageId: "LOC-mcc-030"
-      protocolVersion: "v1.0"
+      protocolVersion: "1.1.0"
     evaluator: "lincoln"
 
   BM-MED-001:
@@ -42,7 +42,7 @@ cases:
       languageSet: "[]"
       scriptNotesOptional: "Premonstratensian psalter; heavy abbreviation"
       sourcePageId: "Walters-W25-folio"
-      protocolVersion: "v1.0"
+      protocolVersion: "1.1.0"
     evaluator: "medieval"
     optional: true
 

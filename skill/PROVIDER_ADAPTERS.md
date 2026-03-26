@@ -205,7 +205,7 @@ class RunConfig:
     normalization_mode: str
     script_notes: Optional[str]
     source_page_id: str
-    protocol_version: str = "v1.0"
+    protocol_version: str = "1.1.0"
 
 @dataclass
 class TranscriptionOutput:

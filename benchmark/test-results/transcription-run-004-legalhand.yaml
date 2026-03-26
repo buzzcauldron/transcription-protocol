@@ -1,10 +1,10 @@
 transcriptionOutput:
-  protocolVersion: "v1.0"
+  protocolVersion: "1.1.0"
   metadata:
     sourcePageId: "CP40.355.AALT.4070"
     modelId: "claude-4-opus-20260320"
     timestamp: "2026-03-20T20:10:00Z"
-    protocolVersion: "v1.0"
+    protocolVersion: "1.1.0"
     targetLanguage: "lat-Latn"
     languageSet: []
     targetEra: "medieval"
@@ -267,4 +267,12 @@ transcriptionOutput:
       pass2Reading: "[uncertain: Berdefeld / Berdesfeld]"
       resolution: "Middle consonant cluster unclear. Added uncertainty."
       resolved: true
+  hallucinationAudit:
+    totalWords: 280
+    wordsGroundedInGlyphs: 280
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
   normalizedLayer: null
