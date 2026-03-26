@@ -1,0 +1,35 @@
+{
+  "generated": "2026-03-26T17:00:56Z",
+  "rows": [
+    {
+      "case": "BM-001",
+      "model": "anthropic",
+      "schema_ok": false,
+      "addition_count": "\u2014",
+      "omission_count": "\u2014",
+      "disposition": "FAIL",
+      "score": "\u2014",
+      "notes": "ERROR: ANTHROPIC_API_KEY is not set"
+    },
+    {
+      "case": "BM-001",
+      "model": "gemini",
+      "schema_ok": false,
+      "addition_count": "\u2014",
+      "omission_count": "\u2014",
+      "disposition": "FAIL",
+      "score": "\u2014",
+      "notes": "ERROR: GOOGLE_API_KEY is not set"
+    },
+    {
+      "case": "BM-001",
+      "model": "openai",
+      "schema_ok": false,
+      "addition_count": "\u2014",
+      "omission_count": "\u2014",
+      "disposition": "FAIL",
+      "score": "\u2014",
+      "notes": "ERROR: OPENAI_API_KEY is not set"
+    }
+  ]
+}

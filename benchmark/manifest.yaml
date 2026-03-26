@@ -1,0 +1,59 @@
+# Multi-model stress test manifest.
+# Images: BM-001 uses Library of Congress IIIF (verified). Other cases use local paths
+# under benchmark/images/ — see benchmark/images/README.md.
+
+cases:
+  BM-001:
+    description: "Lincoln to Mary S. Owens, 16 Aug 1837 (2 pages)"
+    source_note: "https://www.loc.gov/item/mcc.030/"
+    image_urls:
+      - "https://tile.loc.gov/image-services/iiif/service:mss:mssmcc:030:0001/full/pct:50/0/default.jpg"
+      - "https://tile.loc.gov/image-services/iiif/service:mss:mssmcc:030:0002/full/pct:50/0/default.jpg"
+    image_paths: [] # optional override; filled after download
+    media_type: "image/jpeg"
+    prompt:
+      targetLanguage: "eng-Latn"
+      targetEra: "nineteenth_century"
+      eraRange: "1830-1840"
+      diplomaticProfile: "layout_aware"
+      diplomaticToggles: "{}"
+      normalizationMode: "diplomatic"
+      languageSet: "[]"
+      scriptNotesOptional: "copperplate cursive; two-page letter — transcribe all visible body text"
+      englishHandwritingModality: "copperplate"
+      sourcePageId: "LOC-mcc-030"
+      protocolVersion: "v1.0"
+    evaluator: "lincoln"
+
+  BM-MED-001:
+    description: "Walters W.25 Psalter folio (Psalms 7–8 region)"
+    source_note: "Walters Art Museum MS W.25 (CC0) — download a folio JPEG; place at image_paths[0]"
+    image_urls: []
+    image_paths:
+      - "benchmark/images/BM-MED-001/folio.jpg"
+    media_type: "image/jpeg"
+    prompt:
+      targetLanguage: "lat-Latn"
+      targetEra: "medieval"
+      eraRange: "1175-1225"
+      diplomaticProfile: "strict"
+      diplomaticToggles: "{}"
+      normalizationMode: "diplomatic"
+      languageSet: "[]"
+      scriptNotesOptional: "Premonstratensian psalter; heavy abbreviation"
+      sourcePageId: "Walters-W25-folio"
+      protocolVersion: "v1.0"
+    evaluator: "medieval"
+    optional: true
+
+# Default models (override via CLI --models)
+models:
+  anthropic:
+    provider: "anthropic"
+    model: "claude-sonnet-4-20250514"
+  openai:
+    provider: "openai"
+    model: "gpt-4o"
+  gemini:
+    provider: "gemini"
+    model: "gemini-2.0-flash"

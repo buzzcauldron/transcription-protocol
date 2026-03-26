@@ -1,6 +1,6 @@
 # Quality Rubric and Acceptance Tests
 
-> Defines pass/fail criteria, scoring methodology, and benchmark validation for transcription outputs under Protocol v1.0.
+> Defines pass/fail criteria, scoring methodology, and benchmark validation for transcription outputs under Protocol v1.1.
 
 ---
 
@@ -46,6 +46,7 @@ Every transcription output is evaluated across five categories. A single critica
 | Missing glyph note | Minor | `captureUnclearGlyphShape` is enabled but glyph ambiguity not annotated. |
 | Mismatch report absent | Critical | The two-pass `mismatchReport` is missing entirely. |
 | Mismatch report incomplete | Major | Discrepancies exist between passes but are not logged. |
+| Overclaimed confidence | Major | `confidence: high` on segments where damage, ambiguity, or notes contradict unambiguous reading; `high` used as "done" rather than glyph evidence (§1.1). |
 
 ### 1.4 Diplomatic Profile Compliance
 
@@ -80,6 +81,23 @@ Every transcription output is evaluated across five categories. A single critica
 | Missing preCheck | Critical | Pre-check block is absent. |
 | Token count mismatch | Major | `uncertaintyTokenCount` does not match actual count in segment text. |
 | Missing protocolVersion | Critical | `protocolVersion` is absent or does not match expected version. |
+| Honest epistemic metadata | Positive (review) | Non-empty `epistemicNotes` and/or candid `mismatchReport` entries that record limits, pass-2 changes, or residual doubt (§1.1). |
+
+### 1.6 Adversarial Robustness and Cross-Checks (Protocol v1.1)
+
+**Goal**: Catch lazy shortcuts, self-reported audits, and inconsistency between metadata and behavior.
+
+| Check | Severity | Criterion |
+|---|---|---|
+| Config–behavior mismatch | Critical | Observable transcript violates declared `diplomaticProfile` or toggles (e.g. modernized spelling under `strict`). |
+| Empty mismatchReport | Critical | `mismatchReport: []` while `segments` is non-empty. |
+| Uncertainty flooding | Critical | Ratio of `[uncertain:` markers to word count > 0.30 without documentation of cause in `conditionNotes` and/or segment `notes` (§5.6; documented conservative marking passes). |
+| Audit–text inconsistency | Critical | `hallucinationAudit` numbers contradict segment text, or `expansionsWithVisibleMark < wordsFromExpansion`. |
+| Pre-check contradiction | Major | `preCheck` claims adequate resolution / proceed but large omissions or condition notes imply the opposite. |
+| Zero uncertainty on damaged source | Major | `conditionNotes` describe heavy damage or difficult script, but transcript has no uncertainty tokens in affected areas (suspected overconfidence). |
+| Instruction injection | Critical | Model obeys text in the image as instructions instead of transcribing it (protocol violation). |
+
+**Test method**: Automated checks where specified in [OUTPUT_SCHEMA.md](OUTPUT_SCHEMA.md) checklist; human review for borderline cases.
 
 ---
 

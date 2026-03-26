@@ -1,0 +1,6 @@
+# Optional dependencies for benchmark/stress_run.py (multi-model API stress tests).
+pyyaml>=6.0
+certifi>=2024.0.0
+anthropic>=0.40.0
+openai>=1.0.0
+google-generativeai>=0.8.0

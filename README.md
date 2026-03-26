@@ -48,6 +48,8 @@ For batch processing with programmatic quality control:
 
 ## Configuration Reference
 
+The protocol’s **conservative epistemic stance** (default skeptical confidence, honest mismatch reporting, optional **`metadata.epistemicNotes`**) is in [ACADEMIC_TRANSCRIPTION_PROTOCOL.md §1.1](ACADEMIC_TRANSCRIPTION_PROTOCOL.md#11-conservative-epistemic-stance).
+
 ### Target Language
 
 Use ISO 639-3 codes with a script tag. Common values:
@@ -55,6 +57,8 @@ Use ISO 639-3 codes with a script tag. Common values:
 | Code | Language |
 |---|---|
 | `eng-Latn` | English |
+
+For **historical English handwriting**, optionally set `englishHandwritingModality` in output metadata (e.g. `secretary`, `copperplate`)—see [ACADEMIC_TRANSCRIPTION_PROTOCOL.md](ACADEMIC_TRANSCRIPTION_PROTOCOL.md) §2.8.
 | `lat-Latn` | Latin |
 | `fra-Latn` | French |
 | `deu-Latn` | German (Latin script) |
@@ -131,6 +135,28 @@ Tested against real manuscripts with established scholarly transcriptions:
 
 Zero fabricated additions across all test cases. Full results in [`benchmark/test-results/`](benchmark/test-results/).
 
+### Multi-model stress test (optional)
+
+Cross-provider gate checks (schema validation + ground-truth word diff) are implemented in [`benchmark/stress_run.py`](benchmark/stress_run.py). Install API dependencies with `pip install -r requirements-stress.txt`, then set the provider keys you need: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, and `GOOGLE_API_KEY`.
+
+From the repository root:
+
+```bash
+python -m benchmark.stress_run --dry-run
+python -m benchmark.stress_run --cases BM-001 --models anthropic openai
+```
+
+Outputs land under [`benchmark/test-results/stress/`](benchmark/test-results/stress/) (`stress_report.md`, `stress_results.json`, and per-run raw responses). [`benchmark/manifest.yaml`](benchmark/manifest.yaml) lists cases and default models; optional cases (e.g. medieval with a local image) need `--include-optional` and files described in [`benchmark/images/README.md`](benchmark/images/README.md).
+
+To **re-score saved** `response.txt` files (e.g. from Cursor or a previous API run) without calling providers:
+
+```bash
+python -m benchmark.stress_replay
+python -m benchmark.stress_run --replay
+```
+
+Step-by-step for using **Cursor’s model picker** (no API keys): [`benchmark/CURSOR_STRESS.md`](benchmark/CURSOR_STRESS.md).
+
 ---
 
 ## Repository Structure
@@ -151,6 +177,10 @@ skill/
 benchmark/
   evaluate.py                        Evaluation scripts
   evaluate_all.py
+  stress_run.py                      Multi-model API stress test (optional)
+  stress_replay.py                   Score saved responses only (no API)
+  manifest.yaml                    Stress-test cases and model defaults
+  CURSOR_STRESS.md                   Run stress tests from Cursor UI + replay
   ground-truth-*.md                  Known transcriptions for comparison
   test-results/                      Transcription outputs and reports
 ```

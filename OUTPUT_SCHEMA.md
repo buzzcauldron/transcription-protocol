@@ -46,6 +46,8 @@ metadata:
     mixedLanguage: false
     mixedEra: false
   scriptNotes: "string or null"     # optional paleographic notes from researcher
+  englishHandwritingModality: "copperplate" | null   # optional; only when targetLanguage is eng-Latn (or English in mixed)
+  epistemicNotes: "string or null"  # optional: run-level limits, residual doubt, unverified regions (protocol §1.1)
 ```
 
 ### Validation Rules
@@ -53,6 +55,8 @@ metadata:
 | Field | Rule |
 |---|---|
 | `targetLanguage` | Must be from controlled vocabulary or valid ISO 639-3 + script pattern. |
+| `epistemicNotes` | Optional. If present, must be a non-empty string or `null`. Summarizes honest limits of the transcript. |
+| `englishHandwritingModality` | If present, must be one of the tags in protocol §2.8, or `null`. Omit or `null` when `targetLanguage` is not English. |
 | `targetEra` | Must be one of the six canonical tags. |
 | `eraRange` | If present, must match `YYYY-YYYY` format with start < end. |
 | `diplomaticProfile` | Must be one of four defined profiles. |
@@ -119,7 +123,7 @@ segments:
 
 ## 5. Mismatch Report
 
-Required, even if empty. Documents discrepancies found during the two-pass self-check.
+Required. Documents the two-pass self-check. **Protocol v1.1:** `mismatchReport` **must not** be an empty array when `segments` is non-empty—each segment must be accounted for with either a discrepancy between pass readings or an explicit Pass 2 confirmation (see [ACADEMIC_TRANSCRIPTION_PROTOCOL.md](ACADEMIC_TRANSCRIPTION_PROTOCOL.md) Section 5.2).
 
 ```
 mismatchReport:
@@ -131,10 +135,14 @@ mismatchReport:
     resolved: true
 ```
 
-If no mismatches were found:
+When Pass 2 confirms Pass 1 for a segment with no edits, still emit an entry, e.g. `resolution: "pass2 confirms final text; no change"`.
+
+### Optional: layout reading order
+
+For `layout_aware` / `diplomatic_plus`, metadata may include:
 
 ```
-mismatchReport: []
+readingOrderNotes: "Main text column first; margin_left bottom to top; interlinear insertions after host line"
 ```
 
 ---
@@ -187,6 +195,8 @@ transcriptionOutput:
       mixedLanguage: false
       mixedEra: false
     scriptNotes: "cursive copperplate, consistent hand"
+    englishHandwritingModality: "copperplate"
+    epistemicNotes: null
   preCheck:
     resolutionAdequate: true
     orientationCorrect: true
@@ -246,6 +256,9 @@ Use this checklist to validate any output programmatically or by inspection:
 - [ ] Every segment has `segmentId`, `pageNumber`, `lineRange`, `position`, `text`, `confidence`.
 - [ ] `uncertaintyTokenCount` matches actual token count in segment text.
 - [ ] No line range overlaps within the same page.
-- [ ] `mismatchReport` present (may be empty array).
+- [ ] `mismatchReport` present; **non-empty** when `segments` is non-empty (v1.1).
+- [ ] Uncertainty token density not above protocol threshold unless justified in notes (v1.1).
+- [ ] `epistemicNotes` if non-null is substantive (protocol §1.1).
+- [ ] `hallucinationAudit` numeric fields consistent with segment text when present (v1.1 cross-check).
 - [ ] If `normalizationMode` is `normalized`, `normalizedLayer` is present with one-to-one alignment.
 - [ ] `normalizedLayer` entries do not introduce new content.
