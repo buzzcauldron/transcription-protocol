@@ -9,6 +9,7 @@ Usage (from repository root):
   python -m benchmark.stress_run --replay
 
 Requires API keys in the environment for selected providers (not for --replay).
+Loads repo-root ``.env`` when present (see ``.env.example``; requires ``python-dotenv`` from requirements-stress.txt).
 """
 
 from __future__ import annotations
@@ -28,7 +29,7 @@ except ImportError:
 
 from .prompt_builder import build_zones
 from .providers import PROVIDERS
-from .stress_common import load_manifest, repo_root, write_report_md
+from .stress_common import load_env_file, load_manifest, repo_root, write_report_md
 from .stress_gate import gates_from_raw
 
 
@@ -66,6 +67,7 @@ def ensure_images(case_id: str, case_cfg: dict, root: Path) -> list[str]:
 
 def main() -> int:
     root = repo_root()
+    load_env_file(root)
     if str(root) not in sys.path:
         sys.path.insert(0, str(root))
 

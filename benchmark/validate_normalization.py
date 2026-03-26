@@ -16,13 +16,23 @@ except ImportError:  # pragma: no cover
     yaml = None  # type: ignore
 
 # Supported add-on protocol versions (normalization-protocol/NORMALIZATION_PROTOCOL.md)
-VALID_NORMALIZATION_PROTOCOL_VERSIONS = ("norm-1.0.0",)
+VALID_NORMALIZATION_PROTOCOL_VERSIONS = ("norm-1.0.0", "norm-1.1.0")
 
-REQUIRED_POLICY_KEYS = (
+# norm-1.0.0 policy keys (no editorialLevel)
+REQUIRED_POLICY_KEYS_LEGACY = (
     "orthographyTarget",
     "abbreviationHandling",
     "lineBreakHandling",
     "registerNotes",
+)
+
+# norm-1.1.0+ adds required editorialLevel (see NORMALIZATION_PROTOCOL §2)
+REQUIRED_POLICY_KEYS_V11 = ("editorialLevel",) + REQUIRED_POLICY_KEYS_LEGACY
+
+VALID_EDITORIAL_LEVELS = (
+    "mechanical",
+    "conservative_editorial",
+    "scholarly_editorial",
 )
 
 VALID_LINE_BREAK_HANDLING = ("preserve", "reflow_to_spaces", "other")
@@ -64,8 +74,19 @@ def validate_normalization_output(
     if not isinstance(pol, dict):
         errors.append("normalizationPolicy must be an object")
     else:
-        for k in REQUIRED_POLICY_KEYS:
+        policy_keys = (
+            REQUIRED_POLICY_KEYS_V11
+            if nv == "norm-1.1.0"
+            else REQUIRED_POLICY_KEYS_LEGACY
+        )
+        for k in policy_keys:
             _req(pol, k, errors)
+        el = pol.get("editorialLevel")
+        if el is not None and el not in VALID_EDITORIAL_LEVELS:
+            errors.append(
+                f"normalizationPolicy.editorialLevel must be one of {VALID_EDITORIAL_LEVELS}, "
+                f"got {el!r}"
+            )
         lb = pol.get("lineBreakHandling")
         if lb is not None and lb not in VALID_LINE_BREAK_HANDLING:
             errors.append(

@@ -158,18 +158,18 @@ For each segment:
 
 **Step 5: Two-Pass Verification** (standard mode only — skip if `runMode` is `efficient`)
 
-Re-read every segment against the image. Log every discrepancy in `mismatchReport`, even trivially resolved ones.
+Re-read every segment against the image. Log every discrepancy in `mismatchReport`, even trivially resolved ones — **or**, for clean runs with many segments, use `pass2Summary` with `segmentsAltered: 0` instead of per-segment confirmation entries (protocol §5.2). In **efficient** mode, Pass 2 and `mismatchReport` may be omitted (protocol §2.9).
 
 During Pass 2, specifically check for:
 - Words where you may have unconsciously normalized scribal spelling
 - Abbreviation expansions where you chose a classical form over what the visible letters indicate
 - Case endings that you may have "corrected"
 
-The mismatch report must always be present.
-
 **Step 6: Emit Output**
 
-Produce structured output with: metadata, preCheck, segments, mismatchReport, and (if applicable) normalizedLayer.
+Produce structured output with: metadata, preCheck, **segments** (the full diplomatic transcription for the page or run), `mismatchReport` and/or `pass2Summary` when required by `runMode`, `hallucinationAudit`, and (if applicable) normalizedLayer.
+
+- **Final deliverable:** The authoritative text for downstream use is the **complete diplomatic transcription** in `segments` (whole source coverage per protocol). `mismatchReport`, `pass2Summary`, and `hallucinationAudit` support verification and provenance; they do not replace segment text as the transcript body (protocol §5.2.1).
 
 ---
 

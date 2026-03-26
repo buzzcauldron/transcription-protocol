@@ -343,16 +343,22 @@ def validate_transcription_output(root: Dict[str, Any]) -> Tuple[bool, List[str]
                 )
 
     mr = root.get("mismatchReport")
+    p2s_early = root.get("pass2Summary")
+    pass2_clean = isinstance(p2s_early, dict) and p2s_early.get("segmentsAltered") == 0
+
     if mr is None:
         # Standard mode: Pass 2 / mismatchReport only when there is body text to verify (§5.2, §7.4.6).
         # Aborted runs (empty segments) need not include mismatchReport.
+        # Omission is allowed when pass2Summary has segmentsAltered: 0 (clean pass-2 shorthand; protocol §5.2).
         if (
             not is_efficient
             and isinstance(segs, list)
             and len(segs) > 0
+            and not pass2_clean
         ):
             errors.append(
-                "mismatchReport is required when segments is non-empty (protocol 1.1.0 §5.2)"
+                "mismatchReport is required when segments is non-empty (protocol 1.1.0 §5.2), "
+                "unless pass2Summary is present with segmentsAltered: 0"
             )
     elif not isinstance(mr, list):
         errors.append("mismatchReport must be a list")
@@ -363,8 +369,7 @@ def validate_transcription_output(root: Dict[str, Any]) -> Tuple[bool, List[str]
         and len(mr) == 0
         and not is_efficient
     ):
-        p2s = root.get("pass2Summary")
-        if not (isinstance(p2s, dict) and p2s.get("segmentsAltered") == 0):
+        if not pass2_clean:
             errors.append(
                 "mismatchReport must not be empty when segments is non-empty "
                 "(protocol 1.1.0 §5.2) unless pass2Summary is present with segmentsAltered: 0"
@@ -378,17 +383,23 @@ def validate_transcription_output(root: Dict[str, Any]) -> Tuple[bool, List[str]
             errors.append("pass2Summary.segmentsReviewed must be an integer")
         if sa is not None and not isinstance(sa, int):
             errors.append("pass2Summary.segmentsAltered must be an integer")
-        if isinstance(sa, int) and sa > 0 and isinstance(mr, list):
-            altered_ids = {
-                e.get("segmentId")
-                for e in mr
-                if isinstance(e, dict) and e.get("segmentId") is not None
-            }
-            if len(altered_ids) < sa:
+        if isinstance(sa, int) and sa > 0:
+            if not isinstance(mr, list):
                 errors.append(
-                    f"pass2Summary.segmentsAltered is {sa} but mismatchReport "
-                    f"only covers {len(altered_ids)} segment(s)"
+                    "pass2Summary.segmentsAltered > 0 requires mismatchReport listing each altered segment "
+                    "(protocol §5.2)"
                 )
+            else:
+                altered_ids = {
+                    e.get("segmentId")
+                    for e in mr
+                    if isinstance(e, dict) and e.get("segmentId") is not None
+                }
+                if len(altered_ids) < sa:
+                    errors.append(
+                        f"pass2Summary.segmentsAltered is {sa} but mismatchReport "
+                        f"only covers {len(altered_ids)} segment(s)"
+                    )
 
     audit = root.get("hallucinationAudit")
     if audit is None:
@@ -399,6 +410,28 @@ def validate_transcription_output(root: Dict[str, Any]) -> Tuple[bool, List[str]
         errors.append("hallucinationAudit must be an object")
     else:
         ap = audit.get("auditPass")
+        checks = audit.get("checks")
+        check_pass_bools: list[bool] = []
+        if isinstance(checks, dict):
+            for ck_name, ck_val in checks.items():
+                if not isinstance(ck_val, dict) or "pass" not in ck_val:
+                    continue
+                pv = ck_val.get("pass")
+                if pv is True:
+                    check_pass_bools.append(True)
+                elif pv is False:
+                    check_pass_bools.append(False)
+                else:
+                    errors.append(
+                        f"hallucinationAudit.checks.{ck_name}.pass must be boolean true or false"
+                    )
+        if check_pass_bools:
+            expected_audit_pass = all(check_pass_bools)
+            if ap is not expected_audit_pass:
+                errors.append(
+                    "hallucinationAudit.auditPass must equal the logical AND of "
+                    "checks.*.pass (OUTPUT_SCHEMA §6b; protocol §7.3)"
+                )
         if ap is not True:
             errors.append(
                 "hallucinationAudit.auditPass must be true (protocol §7.4 item 5; "
@@ -415,14 +448,6 @@ def validate_transcription_output(root: Dict[str, Any]) -> Tuple[bool, List[str]
                 f"hallucinationAudit: expansionsWithVisibleMark ({ewm}) < "
                 f"wordsFromExpansion ({wfe}) — expansion without visible mark (§7.3)"
             )
-        checks = audit.get("checks")
-        if isinstance(checks, dict) and ap is True:
-            for ck_name, ck_val in checks.items():
-                if isinstance(ck_val, dict) and ck_val.get("pass") is False:
-                    errors.append(
-                        f"hallucinationAudit.auditPass is true but "
-                        f"checks.{ck_name}.pass is false"
-                    )
 
     if isinstance(segs, list) and segs:
         flood_err = _uncertainty_flood_error(

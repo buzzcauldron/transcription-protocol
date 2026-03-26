@@ -8,6 +8,8 @@
 
 Every transcription output is a single document (JSON or structured markdown) containing the blocks below. All blocks are required unless marked optional.
 
+The **`segments`** array holds the **full diplomatic transcription** of the page or run (body text in reading order, including uncertainty tokens). Other top-level keys supply metadata, pre-check, the Pass 2 verification trail (`mismatchReport`, optional `pass2Summary`), and `hallucinationAudit` — process and provenance around that text, not a substitute for it (see protocol §5.2.1).
+
 ```
 transcriptionOutput:
   protocolVersion: "1.1.0"

@@ -28,7 +28,14 @@ All notable changes to the **Academic Handwriting Transcription Protocol** use [
 
 ## Repository add-ons (separate from transcript `protocolVersion`)
 
+### `norm-1.1.0` normalization add-on — 2026-03-26
+
+- **Editorial levels** as the primary control: `normalizationPolicy.editorialLevel` is `mechanical` \| `conservative_editorial` \| `scholarly_editorial` ([NORMALIZATION_PROTOCOL.md](normalization-protocol/NORMALIZATION_PROTOCOL.md) §2). Diplomatic transcription rules are not duplicated in the normalization docs.
+- **One-way dependency** ([NORMALIZATION_PROTOCOL.md](normalization-protocol/NORMALIZATION_PROTOCOL.md) §1.1): editorial normalization may only follow diplomatic `transcriptionOutput`; no valid protocol path from `normalizationOutput` / `normalizedText` back to diplomatic transcription.
+- Schema and examples updated in [`normalization-protocol/NORMALIZATION_OUTPUT_SCHEMA.md`](normalization-protocol/NORMALIZATION_OUTPUT_SCHEMA.md); prompts in [`PROMPT_TEMPLATES.md`](normalization-protocol/PROMPT_TEMPLATES.md).
+- [`benchmark/validate_normalization.py`](benchmark/validate_normalization.py) accepts both add-on versions; **`norm-1.1.0` requires `editorialLevel`** in policy; **`norm-1.0.0` does not** (legacy). New work should use `norm-1.1.0`.
+
 ### `norm-1.0.0` normalization add-on — 2026-03-26
 
-- New [`normalization-protocol/`](normalization-protocol/README.md): post-hoc **derivative** normalization from existing diplomatic `transcriptionOutput`; own `normalizationProtocolVersion` (`norm-1.0.0`), prompts, and [`NORMALIZATION_OUTPUT_SCHEMA.md`](normalization-protocol/NORMALIZATION_OUTPUT_SCHEMA.md).
+- Initial [`normalization-protocol/`](normalization-protocol/README.md): post-hoc **derivative** normalization from existing diplomatic `transcriptionOutput`; superseded for new work by **`norm-1.1.0`** (editorial levels).
 - Optional validator [`benchmark/validate_normalization.py`](benchmark/validate_normalization.py) (does not change [`benchmark/validate_schema.py`](benchmark/validate_schema.py)).

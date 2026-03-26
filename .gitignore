@@ -1,5 +1,10 @@
-# TDAD extension: auto-generated workflows, prompts, logs, fixtures (local dev only)
+# TDAD extension: auto-generated workflows, prompts, logs, fixtures (local dev only).
+# Do not commit or force-add; not part of protocol distribution.
 .tdad/
+
+# Local API keys for stress tests (copy from .env.example)
+.env
+.env.local
 
 .DS_Store
 *.jpg

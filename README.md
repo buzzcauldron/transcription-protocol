@@ -139,7 +139,7 @@ Zero fabricated additions across all test cases. Full results in [`benchmark/tes
 
 ### Multi-model stress test (optional)
 
-Cross-provider gate checks (schema validation + ground-truth word diff) are implemented in [`benchmark/stress_run.py`](benchmark/stress_run.py). Install API dependencies with `pip install -r requirements-stress.txt`, then set the provider keys you need: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, and `GOOGLE_API_KEY`.
+Cross-provider gate checks (schema validation + ground-truth word diff) are implemented in [`benchmark/stress_run.py`](benchmark/stress_run.py). Install API dependencies with `pip install -r requirements-stress.txt`, then set the provider keys you need: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, and `GOOGLE_API_KEY`. The runner loads a repo-root **`.env`** if present (copy from [`.env.example`](.env.example)); otherwise export variables in your shell.
 
 From the repository root:
 
@@ -167,7 +167,7 @@ The protocol uses **Semantic Versioning** ([semver.org](https://semver.org/)): s
 
 ### Optional: post-hoc normalization
 
-If you already have a diplomatic transcript and want a **separate derivative** normalized layer (searchability, editorial orthography), use the add-on in [`normalization-protocol/`](normalization-protocol/README.md). It has its own version string (`norm-1.0.0`), prompts, and optional validator [`benchmark/validate_normalization.py`](benchmark/validate_normalization.py) — it does not change the core transcription workflow.
+If you already have a diplomatic transcript and want a **separate derivative** normalized layer (searchability, editorial orthography), use the add-on in [`normalization-protocol/`](normalization-protocol/README.md). It has its own version string (current `norm-1.1.0`, **editorial levels** in policy), prompts, and optional validator [`benchmark/validate_normalization.py`](benchmark/validate_normalization.py) — it does not change the core transcription workflow.
 
 ---
 

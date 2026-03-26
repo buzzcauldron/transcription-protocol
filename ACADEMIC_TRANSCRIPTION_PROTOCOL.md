@@ -116,7 +116,7 @@ Optional refinement: `eraRange` (e.g., `1600-1699`) for tighter paleographic cal
 
 The diplomatic transcript is always the authoritative record.
 
-**Post-hoc normalization (optional add-on):** If you complete a run with `normalizationMode: diplomatic` and later want a standalone normalized artifact (different tool, model, or session), use the separate [normalization protocol](normalization-protocol/README.md) and `normalizationOutput` schema. It does not replace or relax §1 rules for the original transcription pass.
+**Post-hoc normalization (optional add-on):** If you complete a run with `normalizationMode: diplomatic` and later want a standalone normalized artifact (different tool, model, or session), use the separate [normalization protocol](normalization-protocol/README.md) and `normalizationOutput` schema. It does not replace or relax §1 rules for the original transcription pass. The diplomatic transcript remains the **sole** protocol-defined record for image-grounded transcription; the normalization add-on does **not** define any reverse workflow from normalized text back to diplomatic output.
 
 ### 2.6 Configuration–Behavior Coupling
 
@@ -272,7 +272,7 @@ For each segment:
 
 ### 5.2 Two-Pass Self-Check
 
-**Run mode gate:** When `runMode` is `efficient`, Pass 2 is **not required**. `mismatchReport` and `pass2Summary` may be omitted or set to `null`. Skip to §5.3. All other rules in this section apply only when `runMode` is `standard` (the default).
+**Run mode gate:** When `runMode` is `efficient`, Pass 2 is **not required**. `mismatchReport` and `pass2Summary` may be omitted or set to `null`. Continue to §5.2.1, then §5.3. All other rules in this section apply only when `runMode` is `standard` (the default).
 
 After completing the initial transcription:
 
@@ -312,6 +312,12 @@ mismatchReport:
     pass2: "the [uncertain: compleat / complete] works"
     resolution: "adopted pass2 reading with uncertainty token"
 ```
+
+### 5.2.1 Primary deliverable (whole transcription)
+
+After pre-check, segment transcription, Pass 2 (when required), and the `hallucinationAudit`, the **researcher-facing diplomatic record** is the **whole transcription** formed by the **`segments` array**: concatenate `segments[].text` in declared reading order (using `segmentId`, `pageNumber`, and any `readingOrderNotes` or segment `notes` for layout). Inline tokens such as `[page-break]` belong in that text where the protocol allows them.
+
+**Process blocks** — `mismatchReport`, optional `pass2Summary`, and `hallucinationAudit` — document verification and self-audit (“process tracing”). They **do not replace** segment text as the locus of the transcription. Downstream tools may extract a single continuous diplomatic string from segments; they must not treat the audit trail alone as the transcript body. This is consistent with §2.5: the diplomatic transcript remains authoritative.
 
 ### 5.3 Forbidden Actions
 
@@ -560,7 +566,7 @@ Outputs are evaluated against the rubric defined in [QUALITY_RUBRIC.md](QUALITY_
 
 - Every transcript must record the protocol version used (`protocolVersion`, semver). Current release: **`1.1.0`**. Legacy outputs may use `v1.1` (alias of `1.1.0`).
 - Companion documents ([OUTPUT_SCHEMA.md](OUTPUT_SCHEMA.md), [QUALITY_RUBRIC.md](QUALITY_RUBRIC.md), [PROMPT_TEMPLATES.md](PROMPT_TEMPLATES.md)) are versioned alongside this protocol. When comparing transcripts, validators should verify that both the `protocolVersion` and the **schema revision** match. Outputs may optionally record `metadata.schemaRevision` (e.g. `"2026-03-26"`) if companion docs are updated independently of the protocol version.
-- Optional **derivative** normalization outputs use a distinct add-on version (`normalizationProtocolVersion`, e.g. `norm-1.0.0`) documented in [normalization-protocol/NORMALIZATION_PROTOCOL.md](normalization-protocol/NORMALIZATION_PROTOCOL.md); they are validated separately from diplomatic `transcriptionOutput`.
+- Optional **derivative** normalization outputs use a distinct add-on version (`normalizationProtocolVersion`, e.g. `norm-1.1.0`) documented in [normalization-protocol/NORMALIZATION_PROTOCOL.md](normalization-protocol/NORMALIZATION_PROTOCOL.md); they are validated separately from diplomatic `transcriptionOutput`.
 - Re-running the same source with the same configuration must produce structurally equivalent output.
 - Any deviation between runs must be confined to uncertainty tokens and confidence scores, not substantive text changes.
 
