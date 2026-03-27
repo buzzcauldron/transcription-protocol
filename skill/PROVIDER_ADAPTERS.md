@@ -15,6 +15,19 @@ All transcription prompts are decomposed into four zones. Provider adapters map 
 | `outputSchema` | Required output structure and field definitions. | PROMPT_TEMPLATES Section "OUTPUT FORMAT" + OUTPUT_SCHEMA.md. |
 | `qaChecklist` | Self-check or verification steps the model must perform. | PROMPT_TEMPLATES Section "WORKFLOW" or "CHECKS". |
 
+### Configuration injection hardening (implementation)
+
+Protocol §2.7 requires researcher-supplied configuration to be treated as **data**, not instructions. **Adapters** should enforce this; the serialized transcript alone cannot prove compliance.
+
+| Practice | Detail |
+|---|---|
+| **Enums** | Validate `targetLanguage`, `targetEra`, `diplomaticProfile`, `runMode`, `normalizationMode`, and other controlled fields against OUTPUT_SCHEMA **before** building prompts; reject unknown values. |
+| **Free-text fields** | `scriptNotes`, `conditionNotes` (when supplied by researcher upstream), `eraRange`, `epistemicNotes`: apply reasonable **length limits**; strip or reject **control characters** (e.g. ASCII 0–31 except allowed newlines/tabs in notes). |
+| **Role separation** | Keep immutable protocol rules in **`system` / `systemRules`**. Put variable configuration and researcher notes in **`taskInput` / user** content so user strings are not the sole or privileged “system” message. |
+| **No instruction smuggling** | Do not concatenate untrusted strings into the system prompt without validation; a value that looks like a valid code but embeds a payload is a deployment bug. |
+
+Residual risks (on-page jailbreak text in the image, coordinated audit fabrication) are documented in [ADVERSARIAL_LIMITS.md](../ADVERSARIAL_LIMITS.md).
+
 ---
 
 ## 2. Claude Adapter

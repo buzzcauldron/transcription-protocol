@@ -9,7 +9,11 @@ import re
 from typing import Any, Dict, List, Tuple
 
 UNCERTAIN_PATTERN = re.compile(r"\[uncertain:", re.IGNORECASE)
-# Whitespace-delimited words (rough, for density check)
+# Each [uncertain: …] block counts as one word slot for §5.6 (OUTPUT_SCHEMA §4a).
+_UNCERTAIN_BLOCK = re.compile(r"\[uncertain:[^\]]*\]", re.IGNORECASE)
+# Any remaining bracket markup [...] stripped for word count.
+_BRACKET_SPAN = re.compile(r"\[[^\]]*\]")
+# Whitespace-delimited tokens after normative stripping (OUTPUT_SCHEMA §4a).
 WORD_PATTERN = re.compile(r"\S+")
 
 VALID_LANGUAGES_PREFIXES = (
@@ -131,6 +135,13 @@ def _aggregate_segment_notes_len(segs: List[Dict[str, Any]]) -> int:
     return total
 
 
+def _normative_word_count_for_density(diplomatic_text: str) -> int:
+    """Protocol §5.6 / OUTPUT_SCHEMA §4a: word count after uncertain-block and markup stripping."""
+    t = _UNCERTAIN_BLOCK.sub(" \u00b5 ", diplomatic_text)
+    t = _BRACKET_SPAN.sub(" ", t)
+    return len(WORD_PATTERN.findall(t))
+
+
 def _uncertainty_flood_error(
     full_text: str,
     pre: Dict[str, Any] | None,
@@ -139,12 +150,11 @@ def _uncertainty_flood_error(
     """Protocol §5.6: too many [uncertain: tokens vs words; carve-out when documented."""
     if not full_text.strip():
         return None
-    words = WORD_PATTERN.findall(full_text)
-    n_words = len(words)
+    n_words = _normative_word_count_for_density(full_text)
     if n_words == 0:
         return None
     n_unc = len(UNCERTAIN_PATTERN.findall(full_text))
-    ratio = n_unc / n_words
+    ratio = n_unc / max(n_words, 1)
     if ratio <= UNCERTAINTY_FLOOD_THRESHOLD:
         return None
     cn = (pre or {}).get("conditionNotes")
@@ -160,9 +170,10 @@ def _uncertainty_flood_error(
     if long_condition_notes or long_segment_notes:
         return None
     return (
-        f"uncertainty flooding: {n_unc} [uncertain: markers vs ~{n_words} tokens "
-        f"(>{UNCERTAINTY_FLOOD_THRESHOLD:.0%}); document the specific physical/paleographic "
-        f"cause in conditionNotes (>=20 chars) or segment notes (aggregate >=20 chars)"
+        f"uncertainty flooding: {n_unc} [uncertain: markers vs {n_words} normative words "
+        f"(§5.6 / OUTPUT_SCHEMA §4a; >{UNCERTAINTY_FLOOD_THRESHOLD:.0%}); document the specific "
+        f"physical/paleographic cause in conditionNotes (>=20 chars) or segment notes "
+        f"(aggregate >=20 chars)"
     )
 
 
