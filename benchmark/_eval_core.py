@@ -1,6 +1,6 @@
 """
 Shared word-level comparison helpers for benchmark and stress tests.
-Aligned with benchmark/evaluate.py and QUALITY_RUBRIC addition/omission logic.
+Aligned with benchmark/evaluate.py and quality-rubric addition/omission logic.
 """
 from __future__ import annotations
 

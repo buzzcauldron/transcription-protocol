@@ -1,5 +1,6 @@
 # Program Framework Plan
 
+> **Document:** `framework/FRAMEWORK_PLAN.md` · **Protocol alignment:** 1.1.0 (see repo [`VERSION`](../VERSION)).  
 > Automation pipeline for dual-pass transcription, diffing, adjudication, validation, and export.
 
 ---
@@ -130,7 +131,7 @@ Two independent transcription runs per page, using the Transcriber prompt templa
 
 **Provider routing**: The framework selects which LLM provider to use for each pass from `providerConfig`. Passes must be independent — Transcriber B must not see Transcriber A's output.
 
-**Per-pass output**: A complete transcription document conforming to OUTPUT_SCHEMA.
+**Per-pass output**: A complete transcription document conforming to `transcription-output-schema-v1.1.0.md`.
 
 **Concurrency**: Passes A and B run in parallel. No information flows between them.
 
@@ -179,7 +180,7 @@ Triggered only when conflicts exist. Uses the Arbitrator prompt template.
 
 ### 2.5 Validation Gate
 
-The canonical transcript is evaluated against the full Quality Rubric (see QUALITY_RUBRIC.md).
+The canonical transcript is evaluated against the full Quality Rubric (see `quality-rubric-v1.1.0.md`).
 
 **Automated checks**:
 1. Schema validation (all required fields, controlled vocabulary, format rules).
@@ -203,7 +204,7 @@ The canonical transcript is evaluated against the full Quality Rubric (see QUALI
 export/
   {jobId}/
     {sourcePageId}/
-      transcript.yaml          # canonical transcript (OUTPUT_SCHEMA format)
+      transcript.yaml          # canonical transcript (transcription-output-schema format)
       transcript.txt           # plain text extract (diplomatic only)
       normalized.txt           # normalized text (if normalizationMode is "normalized")
       validation_report.yaml   # rubric results, score, disposition
@@ -338,8 +339,8 @@ Job Manifest (config + pages)
 ## 5. Configuration Reference
 
 All configuration fields and their validation rules are defined in:
-- [ACADEMIC_TRANSCRIPTION_PROTOCOL.md](../ACADEMIC_TRANSCRIPTION_PROTOCOL.md) — Section 2.
-- [OUTPUT_SCHEMA.md](../OUTPUT_SCHEMA.md) — Section 2.
-- [QUALITY_RUBRIC.md](../QUALITY_RUBRIC.md) — full rubric.
-- [PROMPT_TEMPLATES.md](../PROMPT_TEMPLATES.md) — template variables.
+- [diplomatic-transcription-protocol-v1.1.0.md](../diplomatic-transcription-protocol-v1.1.0.md) — Section 2.
+- [transcription-output-schema-v1.1.0.md](../transcription-output-schema-v1.1.0.md) — Section 2.
+- [quality-rubric-v1.1.0.md](../quality-rubric-v1.1.0.md) — full rubric and adversarial limits.
+- [prompt-templates-v1.1.0.md](../prompt-templates-v1.1.0.md) — template variables.
 - [skill/PROVIDER_ADAPTERS.md](../skill/PROVIDER_ADAPTERS.md) — API mappings.

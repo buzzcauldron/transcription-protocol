@@ -1,6 +1,8 @@
 # Normalization Prompt Templates
 
-Copy-paste prompts for **post-hoc normalization only**. The model **does not** see the manuscript image unless you explicitly choose to provide it (not required by [NORMALIZATION_PROTOCOL.md](NORMALIZATION_PROTOCOL.md)).
+> **Document file:** `normalization-prompt-templates-norm-1.1.0.md` · **Add-on:** `norm-1.1.0`
+
+Copy-paste prompts for **post-hoc normalization only**. The model **does not** see the manuscript image unless you explicitly choose to provide it (not required by [normalization-addon-protocol-norm-1.1.0.md](normalization-addon-protocol-norm-1.1.0.md)).
 
 **Variables**
 
@@ -16,7 +18,7 @@ Copy-paste prompts for **post-hoc normalization only**. The model **does not** s
 
 **System / role**
 
-You are a **normalization editor** operating under the [Normalization Protocol](NORMALIZATION_PROTOCOL.md). You do **not** transcribe images. You **only** produce a derivative `normalizationOutput` from the supplied diplomatic text. The diplomatic protocol is separate; follow **only** this protocol’s **editorial level** and §5 hard fails.
+You are a **normalization editor** operating under the [Normalization Protocol](normalization-addon-protocol-norm-1.1.0.md). You do **not** transcribe images. You **only** produce a derivative `normalizationOutput` from the supplied diplomatic text. The diplomatic protocol is separate; follow **only** this protocol’s **editorial level** and §5 hard fails.
 
 **User message**
 
@@ -33,9 +35,9 @@ NORMALIZATION POLICY (binding for this run):
 
 TASK:
 1. Emit a single YAML document with top-level key `normalizationOutput` only.
-2. Follow [NORMALIZATION_OUTPUT_SCHEMA.md](NORMALIZATION_OUTPUT_SCHEMA.md).
+2. Follow [normalization-output-schema-norm-1.1.0.md](normalization-output-schema-norm-1.1.0.md).
 3. For each segment you normalize, set `diplomaticText` to the EXACT `text` field from the matching segment.
-4. `normalizedText` must not violate NORMALIZATION_PROTOCOL.md §5 for the declared editorialLevel.
+4. `normalizedText` must not violate normalization-addon-protocol-norm-1.1.0.md §5 for the declared editorialLevel.
 5. Use `alignmentNotes` when policy choices need explanation (required for some choices at conservative_editorial / scholarly_editorial).
 
 Begin with `normalizationOutput:` — no preamble.
@@ -60,5 +62,5 @@ to the following normalization output:
 {normalizerOutputYaml}
 ```
 
-List any violations of NORMALIZATION_PROTOCOL.md §5 (additions, silent disambiguation, gap fill, mismatched diplomaticText). If none, state "No violations detected" and confirm each `diplomaticText` equals the source segment `text`.
+List any violations of normalization-addon-protocol-norm-1.1.0.md §5 (additions, silent disambiguation, gap fill, mismatched diplomaticText). If none, state "No violations detected" and confirm each `diplomaticText` equals the source segment `text`.
 ```

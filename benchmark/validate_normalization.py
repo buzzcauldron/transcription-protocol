@@ -15,7 +15,7 @@ try:
 except ImportError:  # pragma: no cover
     yaml = None  # type: ignore
 
-# Supported add-on protocol versions (normalization-protocol/NORMALIZATION_PROTOCOL.md)
+# Supported add-on protocol versions (normalization-protocol/normalization-addon-protocol-norm-1.1.0.md)
 VALID_NORMALIZATION_PROTOCOL_VERSIONS = ("norm-1.0.0", "norm-1.1.0")
 
 # norm-1.0.0 policy keys (no editorialLevel)
@@ -26,7 +26,7 @@ REQUIRED_POLICY_KEYS_LEGACY = (
     "registerNotes",
 )
 
-# norm-1.1.0+ adds required editorialLevel (see NORMALIZATION_PROTOCOL §2)
+# norm-1.1.0+ adds required editorialLevel (see normalization-addon-protocol-norm-1.1.0.md §2)
 REQUIRED_POLICY_KEYS_V11 = ("editorialLevel",) + REQUIRED_POLICY_KEYS_LEGACY
 
 VALID_EDITORIAL_LEVELS = (

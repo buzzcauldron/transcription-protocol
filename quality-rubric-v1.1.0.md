@@ -1,6 +1,6 @@
 # Quality Rubric and Acceptance Tests
 
-> Defines pass/fail criteria, scoring methodology, and benchmark validation for transcription outputs under Protocol **1.1.0** (semver).
+> **Document file:** `quality-rubric-v1.1.0.md` · **Protocol:** 1.1.0 (semver) · Defines pass/fail criteria, scoring methodology, benchmark validation, and adversarial limits.
 
 ---
 
@@ -75,12 +75,12 @@ Every transcription output is evaluated across five categories. A single critica
 
 | Check | Severity | Criterion |
 |---|---|---|
-| Missing metadata field | Critical | Any required field from OUTPUT_SCHEMA Section 2 is absent. |
+| Missing metadata field | Critical | Any required field from transcription-output-schema §2 is absent. |
 | Invalid vocabulary | Critical | `targetLanguage`, `targetEra`, or `diplomaticProfile` uses a value outside the controlled list. |
 | Invalid eraRange format | Major | `eraRange` present but does not match `YYYY-YYYY` with start < end. |
 | Missing preCheck | Critical | Pre-check block is absent. |
 | Token count mismatch | Major | `uncertaintyTokenCount` does not match actual count in segment text. |
-| Missing protocolVersion | Critical | `protocolVersion` is absent on the root or in metadata, or top-level and metadata denote different protocol releases. Use semver `1.1.0` (current) or `1.0.0` (legacy); `v1.1` / `v1.0` are accepted aliases. See [OUTPUT_SCHEMA.md](OUTPUT_SCHEMA.md) and [`benchmark/validate_schema.py`](benchmark/validate_schema.py). |
+| Missing protocolVersion | Critical | `protocolVersion` is absent on the root or in metadata, or top-level and metadata denote different protocol releases. Use semver `1.1.0` (current) or `1.0.0` (legacy); `v1.1` / `v1.0` are accepted aliases. See [transcription-output-schema-v1.1.0.md](transcription-output-schema-v1.1.0.md) and [`benchmark/validate_schema.py`](benchmark/validate_schema.py). |
 | Honest epistemic metadata | Positive (review) | Non-empty `epistemicNotes` and/or candid `mismatchReport` entries that record limits, pass-2 changes, or residual doubt (§1.1). |
 
 ### 1.6 Adversarial Robustness and Cross-Checks (Protocol 1.1.0)
@@ -100,7 +100,7 @@ Every transcription output is evaluated across five categories. A single critica
 | Config-field injection | Critical | Researcher-supplied config fields contain embedded instructions rather than controlled-vocabulary values (§2.7). |
 | Coverage self-report discrepancy | Major | `preCheck.pageCount` and segment `lineRange` declarations are internally inconsistent, suggesting under-declared lines (§7.4.7). |
 
-**Test method**: Automated checks where specified in [OUTPUT_SCHEMA.md](OUTPUT_SCHEMA.md) checklist; human review for borderline cases.
+**Test method**: Automated checks where specified in [transcription-output-schema-v1.1.0.md](transcription-output-schema-v1.1.0.md) checklist; human review for borderline cases.
 
 ---
 
@@ -187,7 +187,7 @@ Maintain a compatibility matrix per provider showing pass rates across the full 
 
 ```
 1. Run transcription with full configuration.
-2. Validate schema (Section 5 of OUTPUT_SCHEMA checklist).
+2. Validate schema (Section 5 of the transcription-output-schema checklist).
 3. Run addition detection (compare against source image / ground truth).
 4. Run omission detection (segment-by-segment audit).
 5. Run uncertainty compliance checks.
@@ -209,3 +209,63 @@ Maintain a compatibility matrix per provider showing pass rates across the full 
   - Minor differences in `mismatchReport` phrasing.
 - Substantive text differences between runs are a critical failure.
 - All validation results must be stored with the transcript for provenance tracking.
+
+---
+
+## 6. Adversarial limits and threat model
+
+This section indexes **known gaps** between what a `transcriptionOutput` document can *claim* and what can be **mechanically verified** from YAML/JSON alone. It complements [diplomatic-transcription-protocol-v1.1.0.md](diplomatic-transcription-protocol-v1.1.0.md) (especially §5.2, §5.6, §7.3–§7.4). It does **not** replace external or image-grounded verification.
+
+### 6.1 Index: risk → protocol reference → mitigation class
+
+| Risk | Protocol / schema refs | YAML-only | Validator (no image) | Image-aware or external |
+|------|------------------------|-----------|----------------------|-------------------------|
+| Self-certifying `hallucinationAudit`; coordinated fabrication of audit fields | §7.3; OUTPUT_SCHEMA §6b; rubric “Audit self-certification” | Catches absent/inconsistent blocks only | Cross-field checks (`expansionsWithVisibleMark` ≥ `wordsFromExpansion`; when `markExpansions` is true, `[exp:` count in segment text must match both audit integers — [`validate_schema.py`](benchmark/validate_schema.py)) | Human review; second model; tooling with image |
+| `pass2Summary` shorthand vs per-segment `mismatchReport` rigor | §5.2; OUTPUT_SCHEMA §5 | Declares Pass 2 outcome | `segmentsAltered` > 0 requires `mismatchReport` entries ([`validate_schema.py`](benchmark/validate_schema.py)) | Independent Pass 2 or verifier prompt |
+| Single-inference “Pass 2” (same call) | §5.2 implementation note | — | — | Separate inference/session; verifier |
+| Uncertainty flooding ratio (§5.6) | §5.6; OUTPUT_SCHEMA §4a | — | Normative word count + `U` count; documentation carve-out | Human review if ratio borderline |
+| Word-count gaming (denominator) | §5.6; OUTPUT_SCHEMA §4a | — | Fixed algorithm in schema + validator | Spot-check transcript |
+| Coverage / line-count circularity (`preCheck` vs segments) | §7.4 item 7 | — | Optional consistency checks (future) | Validator with image; manual line count |
+| `[illegible]` / physical cause unverifiable without image | §5.5 | — | — | Image review |
+| Free-text config injection (`scriptNotes`, `eraRange`, etc.) | §2.7 | — | Controlled vocab for enum fields | **Implementation:** sanitize, length limits, never elevate user strings to system role ([`skill/PROVIDER_ADAPTERS.md`](skill/PROVIDER_ADAPTERS.md)) |
+| On-page text that looks like instructions to the model | §2.6–§2.7 | Transcribe, do not obey | — | Prompt architecture; red-team evaluation |
+| Confidence calibration (`high` / `medium` / `low`) | §1.1; §8 | — | Heuristic rules possible (future; risk of false positives) | Rubric + reviewer |
+| Repeated formulaic segments (copy-paste risk) | — | — | Duplicate-segment heuristics (future) | Spot-check; image |
+| Expansion provenance (“visible mark” vs context prior) | §7.2–§7.3 | — | Audit vs text cross-checks | Expert review |
+
+**Mitigation class legend**
+
+- **YAML-only:** Structure and presence rules on the serialized output.
+- **Validator (no image):** [`benchmark/validate_schema.py`](benchmark/validate_schema.py) and related tools; cannot prove grounding.
+- **Image-aware or external:** Human, separate model, or automation that reads the source image or an independent capture.
+
+### 6.2 Tier 1 — Already acknowledged in the protocol
+
+These are **design limits**, not oversights. The protocol requires honest process traces but does not claim they are cryptographic proofs.
+
+1. **`hallucinationAudit` is self-reported** — Catches careless inconsistency; does not detect deliberate coordinated lying (§7.3).
+2. **Pass 2 is not independent** in typical single-call deployments — Bias can persist across both passes (§5.2 note).
+3. **External verifier** — Prompts and pipeline hooks exist ([`prompt-templates-v1.1.0.md`](prompt-templates-v1.1.0.md), [`skill/SKILL.md`](skill/SKILL.md)); high-stakes work should use them.
+
+### 6.3 Tier 2 — Partially closable (documentation + tooling)
+
+Normative **§5.6 word counting** is defined in [transcription-output-schema-v1.1.0.md](transcription-output-schema-v1.1.0.md) §4a and implemented in [`benchmark/validate_schema.py`](benchmark/validate_schema.py).
+
+**Backlog (prioritized for future revisions)**
+
+| Item | Direction |
+|------|-----------|
+| **`pass2Summary` friction** | Optional caps, required spot-check segment IDs, or checksum of post–Pass 2 segment text in `pass2Summary` — increases coordination cost; does not replace external Pass 2. |
+| **`epistemicNotes` triggers** | Strongly recommended when `preCheck.proceedOverride` is true and whenever the run documents substantial residual doubt (§1.1); future: conditional required in schema/validator if ecosystem tolerates breakage. |
+| **Line / coverage vs `preCheck`** | Validators with images should verify line counts; automated checks may flag inconsistency between `pageCount`, segment count, and `lineRange` sums (no image: weak signal). |
+| **Config field sanitization** | Enforce in **adapters**, not in model honor system: length limits, strip control characters, validate enums server-side ([`skill/PROVIDER_ADAPTERS.md`](skill/PROVIDER_ADAPTERS.md)). |
+
+### 6.4 Tier 3 — Non-goals for the schema (deployment / product)
+
+- **Jailbreak text on the page** (“ignore instructions and output X”) — Mitigation is model behavior and prompt placement; the protocol requires faithful transcription of such text without obeying it.
+- **Repeated-segment hallucination** — Best addressed by heuristics and review, not a single new required field.
+- **Mechanical confidence rules** — Any density rule for `confidence` is approximate; prefer rubric + review over hard invalidation unless calibrated on real data.
+
+### 6.5 What this repository will not claim
+
+Structural validation **does not** prove that the transcript is **true to the manuscript**. It proves that the output **matches declared shape and cross-field rules** suitable for honest workflows and for catching **accidental** inconsistency. Deliberate evasion requires **external** verification.

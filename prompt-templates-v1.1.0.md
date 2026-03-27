@@ -1,6 +1,6 @@
 # Prompt Templates Pack
 
-> Role-specific prompts for handwritten document transcription with provider abstraction.
+> **Document file:** `prompt-templates-v1.1.0.md` · **Protocol:** **1.1.0** — Role-specific prompts for handwritten document transcription with provider abstraction.
 
 ---
 
@@ -104,12 +104,14 @@ WORKFLOW:
 Use the target language and era ONLY to assist in recognizing letter forms and script conventions. They must NEVER be used to infer, guess, or complete content.
 
 OUTPUT FORMAT:
-Emit your response as a structured document following the OUTPUT_SCHEMA. Include:
+Emit your response as a structured document following the transcription-output-schema (see repository `transcription-output-schema-v1.1.0.md`). Include:
 - preCheck block
 - For each segment: segmentId, lineRange, text, confidence
 - mismatchReport (non-empty when any segment exists—Pass 2 confirmation or discrepancy per §5.2)
 - metadata block with all configuration values
 ````
+
+**Human-readable Final Document (optional, see `skill/SKILL.md`):** If you also emit markdown sections **## Diplomatic Transcription** / **## Normalized Text** for the researcher, apply **display-only** substitutions there so the word “uncertain” does not appear: `[uncertain:` → `[?:`, `[glyph-uncertain:` → `[glyph-ambig:`. Fenced YAML blocks must keep protocol-canonical spellings (§3).
 
 ---
 

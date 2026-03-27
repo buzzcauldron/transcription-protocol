@@ -1,7 +1,7 @@
 ---
 name: academic-transcription
 description: >-
-  Transcribe handwritten documents with extreme accuracy for academic researchers.
+  Transcribe handwritten documents with extreme accuracy for academic researchers (protocol 1.1.0).
   Defaults to efficient single-pass mode, runs normalization automatically, and
   produces a consolidated final document. Enforces strict no-addition rules,
   diplomatic transcription profiles, and uncertainty marking. Use when transcribing
@@ -17,7 +17,8 @@ platforms:
 
 # Academic Handwriting Transcription
 
-> This document works as a **Cursor Agent Skill**, a **Claude Project instruction** (paste into Project Instructions), or a **system prompt** for any LLM with vision. No code dependencies required.
+> **Document:** `skill/SKILL.md` · **Protocol:** 1.1.0 (see repo [`VERSION`](../VERSION) and [`diplomatic-transcription-protocol-v1.1.0.md`](../diplomatic-transcription-protocol-v1.1.0.md)).  
+> This file works as a **Cursor Agent Skill**, a **Claude Project instruction** (paste into Project Instructions), or a **system prompt** for any LLM with vision. No code dependencies required.
 
 ## Quick Start
 
@@ -35,7 +36,7 @@ When the user provides a handwritten document image for transcription:
 4. Self-verify using the **Two-Pass Check** only if `runMode` is `standard`.
 5. Emit the `transcriptionOutput` in the required schema.
 6. **Normalize** — automatically run the normalization protocol (conservative_editorial, reflow_to_spaces) on the diplomatic segments to produce a `normalizationOutput`.
-7. **Emit the final document** — produce a single consolidated readable document combining both outputs (see §Final Document below).
+7. **Emit the final document** — produce a single consolidated readable document combining both outputs (see §Final Document below). Anything the user reads **after** internal thinking must include the **full diplomatic text** in markdown, not YAML alone (see Step 6). In that markdown, apply the **Final Document display pass** (token aliases below) so the human transcript avoids the substring “uncertain” while YAML stays protocol-canonical.
 
 ---
 
@@ -176,6 +177,8 @@ Produce structured output with: metadata, preCheck, **segments** (the full diplo
 
 - **Final deliverable:** The authoritative text for downstream use is the **complete diplomatic transcription** in `segments` (whole source coverage per protocol). `mismatchReport`, `pass2Summary`, and `hallucinationAudit` support verification and provenance; they do not replace segment text as the transcript body (protocol §5.2.1).
 
+**After thinking / reasoning (user-visible reply):** On platforms that separate internal reasoning from the final answer (e.g. extended thinking, chain-of-thought), everything the **researcher actually reads** begins **after** that reasoning block. In that user-visible portion you **must** include the **complete diplomatic text** in plain, readable form — not only inside YAML `segments`. Do this by opening with the **## Diplomatic Transcription** section from the **Final Document** section below (all segment `text` fields concatenated in reading order, line breaks preserved, segments separated by a blank line when there are several), **before** or **immediately alongside** the fenced `transcriptionOutput` YAML. Apply the **Final Document display pass** to that markdown transcript only (see **Final Document** §Display pass); fenced YAML must remain **verbatim** protocol tokens (`[uncertain: …]`, `[glyph-uncertain: …]`, etc.). Do not end the visible reply with metadata-only or a summary that omits the full diplomatic transcript.
+
 ---
 
 ## Diplomatic Profiles
@@ -277,6 +280,18 @@ After emitting the `transcriptionOutput`, automatically produce a `normalization
 
 After both `transcriptionOutput` and `normalizationOutput` are complete, emit a single consolidated **Final Document** in clean markdown. This is the primary deliverable the researcher reads. The structured YAML blocks above serve as machine-readable provenance; the final document is the human-readable result.
 
+**Authoritative layer:** For validators, normalization, and interchange, **`transcriptionOutput` / `normalizationOutput` YAML** (segment `text`, `diplomaticText`, `normalizedText`) is canonical and must use protocol spellings from §3 — including `[uncertain: …]` and `[glyph-uncertain: …]`. This is a **rendering convention**, not a `protocolVersion` change.
+
+**Display pass (markdown prose sections only):** In **## Diplomatic Transcription** and **## Normalized Text**, copy segment text through these **string substitutions** so the human-readable transcript does not contain the word “uncertain”. Apply in order: first replace every `[glyph-uncertain:` with `[glyph-ambig:`, then replace every `[uncertain:` with `[?:`. Do not alter `[illegible]`, `[gap]`, `[damaged: …]`, `[exp: …]`, or other tokens. If a token appears nested (e.g. inside `[palimpsest: …]`), apply the same replacements to the inner text so no `uncertain` substring remains in those sections.
+
+| Canonical (YAML / segments) | Shown in Final Document sections |
+|----------------------------|-----------------------------------|
+| `[uncertain: X]` | `[?: X]` |
+| `[uncertain: X / Y]` | `[?: X / Y]` |
+| `[glyph-uncertain: description]` | `[glyph-ambig: description]` |
+
+If you emit YAML first for tooling, still include this Final Document (or at minimum the **## Diplomatic Transcription** section) in the same user-visible message so the diplomatic line is never YAML-only. When `normalizationMode` is `diplomatic` and there is no `normalizationOutput`, the Final Document still contains **## Diplomatic Transcription** in full; omit **## Normalized Text** in that case.
+
 **Format:**
 
 ```markdown
@@ -290,29 +305,29 @@ After both `transcriptionOutput` and `normalizationOutput` are complete, emit a 
 
 ## Diplomatic Transcription
 
-{For each segment, emit the segment text as-is, preserving line breaks.
+{For each segment, copy segment `text` in reading order, preserving line breaks.
  Separate segments with a blank line. Prefix each with a subtle header
- only if there are multiple segments.}
+ only if there are multiple segments. Apply the Display pass above — e.g. `[uncertain: magistrate]` → `[?: magistrate]`.}
 
 ---
 
 ## Normalized Text
 
 {For each normalized segment, emit normalizedText as flowing prose.
- Retain [uncertain: …], [illegible], [gap] tokens inline.
+ Apply the same Display pass. Retain `[?: …]`, [illegible], [gap] tokens inline (after substitution).
  Separate segments with a blank line.}
 
 ---
 
 ## Notes
 
-- **Uncertainty:** {count} tokens across {segment count} segments.
+- **Inline doubt markup:** {count} doubt tokens (`[?: …]` / `[glyph-ambig: …]`, etc.) across {segment count} segments.
 - **Condition:** {conditionNotes, if any}
 - **Epistemic limits:** {epistemicNotes, if any, or "None stated."}
 - **Normalization level:** {editorialLevel} — {brief description of what that level permits}
 ```
 
-Omit the "Notes" section if there is nothing noteworthy to report (no uncertainty tokens, no condition issues, no epistemic notes). Keep the document concise — it should be scannable.
+Omit the "Notes" section if there is nothing noteworthy to report (no `[?: …]` / `[glyph-ambig: …]` tokens, no condition issues, no epistemic notes). Keep the document concise — it should be scannable.
 
 ---
 

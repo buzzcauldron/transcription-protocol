@@ -1,6 +1,6 @@
 # Output Schema Specification
 
-> Defines the required structure of every transcription output under the Academic Handwriting Transcription Protocol **1.1.0** (semver).
+> **Document file:** `transcription-output-schema-v1.1.0.md` · **Protocol:** **1.1.0** (semver) — Required structure of every diplomatic `transcriptionOutput`.
 
 ---
 

@@ -1,4 +1,4 @@
-"""Build transcriber system + user text from manifest prompt block (PROMPT_TEMPLATES.md)."""
+"""Build transcriber system + user text from manifest prompt block (prompt-templates-v1.1.0.md)."""
 
 from __future__ import annotations
 

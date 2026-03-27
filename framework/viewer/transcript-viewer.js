@@ -1,5 +1,5 @@
 /**
- * Per-line confidence from OUTPUT_SCHEMA segments:
+ * Per-line confidence from transcription-output-schema segments:
  * - Default: each line (split of segment.text on newlines) uses segment.confidence.
  * - Optional: segment.lineConfidences (same length as lines) overrides per line
  *   when present (forward-compatible if the schema gains per-line scores later).

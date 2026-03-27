@@ -1,6 +1,6 @@
 # Academic Handwriting Transcription Protocol
 
-> Version **1.1.0** (semver) — Strict no-addition transcription standard for LLM-assisted manuscript work.
+> **Document file:** `diplomatic-transcription-protocol-v1.1.0.md` · **Protocol version:** **1.1.0** (semver; matches repo [`VERSION`](VERSION)) — Strict no-addition transcription standard for LLM-assisted manuscript work.
 
 ---
 
@@ -19,7 +19,7 @@ Handwritten sources are **under-determined**: glyph evidence is often partial, a
 - **Silent certainty is a failure mode.** When in doubt, mark doubt with the appropriate token; do not present a best guess as firm text without marking.
 - **Confidence calibration bias**: Per-segment `confidence: high` should be **exceptional**—reserved for stretches where glyph evidence is unambiguous. For typical manuscript work, default to **`medium`**. Use **`low`** when damage, dense abbreviation, unfamiliar script, or paleographic difficulty applies. **Do not** use `high` to mean “finished,” “the model is sure,” or “reads well in context.”
 - **Admitting error is mandatory when applicable**: If Pass 2 (or any review pass) changes a reading relative to an earlier draft, that fact belongs in **`mismatchReport`** with an honest `resolution`. Cosmetically empty or all-“confirmed” reports when real edits occurred is a protocol violation.
-- **Run-level honesty**: Outputs may include **`epistemicNotes`** (metadata) summarizing residual uncertainty, regions that could not be fully verified, or explicit limits of the transcript (see [OUTPUT_SCHEMA.md](OUTPUT_SCHEMA.md)). Stating limits strengthens the scholarly record; it does not weaken it.
+- **Run-level honesty**: Outputs may include **`epistemicNotes`** (metadata) summarizing residual uncertainty, regions that could not be fully verified, or explicit limits of the transcript (see [transcription-output-schema-v1.1.0.md](transcription-output-schema-v1.1.0.md)). Stating limits strengthens the scholarly record; it does not weaken it.
 
 **Principle**: Prefer **under-confidence** (extra marking, lower confidence tiers) to **over-confidence** (silent resolution, inflated `high` ratings). This is consistent with Section 5.6: documented conservative marking is not the same as evasive uncertainty flooding.
 
@@ -438,7 +438,7 @@ These stubs document **known risks**; future protocol revisions should add scrip
 
 ## 6. Output Requirements
 
-Every transcription output must include the fields defined in [OUTPUT_SCHEMA.md](OUTPUT_SCHEMA.md). At minimum:
+Every transcription output must include the fields defined in [transcription-output-schema-v1.1.0.md](transcription-output-schema-v1.1.0.md). At minimum:
 
 - Run configuration metadata (`targetLanguage`, `targetEra`, `diplomaticProfile`, active toggles).
 - Page and line indexing for every transcribed line.
@@ -555,7 +555,7 @@ When errors conflict, this hierarchy determines disposition:
 
 ## 8. Quality Gate
 
-Outputs are evaluated against the rubric defined in [QUALITY_RUBRIC.md](QUALITY_RUBRIC.md), subject to the hard fail conditions in Section 7.4. An output that passes the anti-hallucination gates is then evaluated for:
+Outputs are evaluated against the rubric defined in [quality-rubric-v1.1.0.md](quality-rubric-v1.1.0.md), subject to the hard fail conditions in Section 7.4. An output that passes the anti-hallucination gates is then evaluated for:
 
 - Per-segment confidence calibration.
 - Uncertainty token placement (tokens present where source is ambiguous).
@@ -567,8 +567,8 @@ Outputs are evaluated against the rubric defined in [QUALITY_RUBRIC.md](QUALITY_
 ## 9. Versioning and Reproducibility
 
 - Every transcript must record the protocol version used (`protocolVersion`, semver). Current release: **`1.1.0`**. Legacy outputs may use `v1.1` (alias of `1.1.0`).
-- Companion documents ([OUTPUT_SCHEMA.md](OUTPUT_SCHEMA.md), [QUALITY_RUBRIC.md](QUALITY_RUBRIC.md), [PROMPT_TEMPLATES.md](PROMPT_TEMPLATES.md)) are versioned alongside this protocol. When comparing transcripts, validators should verify that both the `protocolVersion` and the **schema revision** match. Outputs may optionally record `metadata.schemaRevision` (e.g. `"2026-03-26"`) if companion docs are updated independently of the protocol version.
-- Optional **derivative** normalization outputs use a distinct add-on version (`normalizationProtocolVersion`, e.g. `norm-1.1.0`) documented in [normalization-protocol/NORMALIZATION_PROTOCOL.md](normalization-protocol/NORMALIZATION_PROTOCOL.md); they are validated separately from diplomatic `transcriptionOutput`.
+- Companion documents ([transcription-output-schema-v1.1.0.md](transcription-output-schema-v1.1.0.md), [quality-rubric-v1.1.0.md](quality-rubric-v1.1.0.md), [prompt-templates-v1.1.0.md](prompt-templates-v1.1.0.md)) are versioned alongside this protocol. When comparing transcripts, validators should verify that both the `protocolVersion` and the **schema revision** match. Outputs may optionally record `metadata.schemaRevision` (e.g. `"2026-03-26"`) if companion docs are updated independently of the protocol version.
+- Optional **derivative** normalization outputs use a distinct add-on version (`normalizationProtocolVersion`, e.g. `norm-1.1.0`) documented in [normalization-protocol/normalization-addon-protocol-norm-1.1.0.md](normalization-protocol/normalization-addon-protocol-norm-1.1.0.md); they are validated separately from diplomatic `transcriptionOutput`.
 - Re-running the same source with the same configuration must produce structurally equivalent output.
 - Any deviation between runs must be confined to uncertainty tokens and confidence scores, not substantive text changes.
 
@@ -576,9 +576,9 @@ Outputs are evaluated against the rubric defined in [QUALITY_RUBRIC.md](QUALITY_
 
 ## References
 
-- Prompt templates: [PROMPT_TEMPLATES.md](PROMPT_TEMPLATES.md)
-- Output schema: [OUTPUT_SCHEMA.md](OUTPUT_SCHEMA.md)
-- Quality rubric: [QUALITY_RUBRIC.md](QUALITY_RUBRIC.md)
+- Prompt templates: [prompt-templates-v1.1.0.md](prompt-templates-v1.1.0.md)
+- Output schema: [transcription-output-schema-v1.1.0.md](transcription-output-schema-v1.1.0.md)
+- Quality rubric (includes adversarial limits): [quality-rubric-v1.1.0.md](quality-rubric-v1.1.0.md)
 - Framework plan: [framework/FRAMEWORK_PLAN.md](framework/FRAMEWORK_PLAN.md)
 - Agent Skill: [skill/SKILL.md](skill/SKILL.md)
 - Provider adapters: [skill/PROVIDER_ADAPTERS.md](skill/PROVIDER_ADAPTERS.md)

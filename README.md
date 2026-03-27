@@ -1,5 +1,7 @@
 # Academic Handwriting Transcription Protocol
 
+> **Repository protocol version:** **1.1.0** (see [`VERSION`](VERSION); canonical spec files use descriptive `*-v1.1.0.md` names at repo root).
+
 A strict no-addition transcription system for LLM-assisted manuscript work, built for academic researchers who need extreme fidelity to handwritten source material.
 
 **Core guarantee**: the model will never add, infer, complete, or modernize text. Every ambiguity is explicitly marked. Every output is auditable.
@@ -14,10 +16,10 @@ There are three ways to use this protocol, from simplest to most automated.
 
 No installation required. Works with Claude, ChatGPT, Gemini, or any LLM that accepts image uploads.
 
-1. Open [PROMPT_TEMPLATES.md](PROMPT_TEMPLATES.md) and copy the **Transcriber Prompt** (Section 1).
+1. Open [prompt-templates-v1.1.0.md](prompt-templates-v1.1.0.md) and copy the **Transcriber Prompt** (Section 1).
 2. Fill in the configuration variables at the top:
-   - `{targetLanguage}` — e.g., `eng-Latn` for English, `lat-Latn` for Latin ([full list](ACADEMIC_TRANSCRIPTION_PROTOCOL.md#21-target-language))
-   - `{targetEra}` — e.g., `medieval`, `early_modern`, `nineteenth_century` ([full list](ACADEMIC_TRANSCRIPTION_PROTOCOL.md#22-target-era))
+   - `{targetLanguage}` — e.g., `eng-Latn` for English, `lat-Latn` for Latin ([full list](diplomatic-transcription-protocol-v1.1.0.md#21-target-language))
+   - `{targetEra}` — e.g., `medieval`, `early_modern`, `nineteenth_century` ([full list](diplomatic-transcription-protocol-v1.1.0.md#22-target-era))
    - `{diplomaticProfile}` — start with `strict` ([options explained below](#diplomatic-profiles))
    - `{normalizationMode}` — use `diplomatic` unless you need a searchable modernized layer
    - `{sourcePageId}` — any identifier for your page (e.g., `MS-1234-folio-5r`)
@@ -48,9 +50,9 @@ For batch processing with programmatic quality control:
 
 ## Configuration Reference
 
-The protocol’s **conservative epistemic stance** (default skeptical confidence, honest mismatch reporting, optional **`metadata.epistemicNotes`**) is in [ACADEMIC_TRANSCRIPTION_PROTOCOL.md §1.1](ACADEMIC_TRANSCRIPTION_PROTOCOL.md#11-conservative-epistemic-stance).
+The protocol’s **conservative epistemic stance** (default skeptical confidence, honest mismatch reporting, optional **`metadata.epistemicNotes`**) is in [diplomatic-transcription-protocol-v1.1.0.md §1.1](diplomatic-transcription-protocol-v1.1.0.md#11-conservative-epistemic-stance).
 
-**Run mode** (`runMode`): Choose `standard` (default -- full two-pass verification, all tokens) or `efficient` (single pass, core tokens only, faster throughput). Efficient mode is incompatible with `layout_aware` and `diplomatic_plus` profiles. See [ACADEMIC_TRANSCRIPTION_PROTOCOL.md §2.9](ACADEMIC_TRANSCRIPTION_PROTOCOL.md#29-run-mode).
+**Run mode** (`runMode`): Choose `standard` (default -- full two-pass verification, all tokens) or `efficient` (single pass, core tokens only, faster throughput). Efficient mode is incompatible with `layout_aware` and `diplomatic_plus` profiles. See [diplomatic-transcription-protocol-v1.1.0.md §2.9](diplomatic-transcription-protocol-v1.1.0.md#29-run-mode).
 
 ### Target Language
 
@@ -60,7 +62,7 @@ Use ISO 639-3 codes with a script tag. Common values:
 |---|---|
 | `eng-Latn` | English |
 
-For **historical English handwriting**, optionally set `englishHandwritingModality` in output metadata (e.g. `secretary`, `copperplate`)—see [ACADEMIC_TRANSCRIPTION_PROTOCOL.md](ACADEMIC_TRANSCRIPTION_PROTOCOL.md) §2.8.
+For **historical English handwriting**, optionally set `englishHandwritingModality` in output metadata (e.g. `secretary`, `copperplate`)—see [diplomatic-transcription-protocol-v1.1.0.md](diplomatic-transcription-protocol-v1.1.0.md) §2.8.
 | `lat-Latn` | Latin |
 | `fra-Latn` | French |
 | `deu-Latn` | German (Latin script) |
@@ -163,7 +165,7 @@ Step-by-step for using **Cursor’s model picker** (no API keys): [`benchmark/CU
 
 ## Versioning
 
-The protocol uses **Semantic Versioning** ([semver.org](https://semver.org/)): see the root [`VERSION`](VERSION) file and [`CHANGELOG.md`](CHANGELOG.md). Machine-readable transcript outputs set `protocolVersion` to semver (`1.1.0` is current). The validator also accepts legacy `v1.0` / `v1.1` strings as aliases of `1.0.0` / `1.1.0` ([`benchmark/validate_schema.py`](benchmark/validate_schema.py), [OUTPUT_SCHEMA.md](OUTPUT_SCHEMA.md)).
+The protocol uses **Semantic Versioning** ([semver.org](https://semver.org/)): see the root [`VERSION`](VERSION) file and [`CHANGELOG.md`](CHANGELOG.md). Machine-readable transcript outputs set `protocolVersion` to semver (`1.1.0` is current). The validator also accepts legacy `v1.0` / `v1.1` strings as aliases of `1.0.0` / `1.1.0` ([`benchmark/validate_schema.py`](benchmark/validate_schema.py), [transcription-output-schema-v1.1.0.md](transcription-output-schema-v1.1.0.md)).
 
 ### Optional: post-hoc normalization
 
@@ -176,16 +178,16 @@ If you already have a diplomatic transcript and want a **separate derivative** n
 ```
 VERSION                              Current protocol semver for this repo
 CHANGELOG.md                         Human-readable version history
-ACADEMIC_TRANSCRIPTION_PROTOCOL.md   Core protocol and rules
-PROMPT_TEMPLATES.md                  Copy-paste prompts for chat/API use
-OUTPUT_SCHEMA.md                     Required output structure
-QUALITY_RUBRIC.md                    Pass/fail rubric and benchmark cases
+diplomatic-transcription-protocol-v1.1.0.md   Core protocol and rules
+prompt-templates-v1.1.0.md                      Copy-paste prompts for chat/API use
+transcription-output-schema-v1.1.0.md         Required diplomatic output structure
+quality-rubric-v1.1.0.md                      Pass/fail rubric, benchmarks, adversarial limits
 
 normalization-protocol/              Optional post-hoc normalization (derivative layer)
   README.md                          Entry point for add-on
-  NORMALIZATION_PROTOCOL.md          Rules for normalizing from diplomatic text
-  NORMALIZATION_OUTPUT_SCHEMA.md   Standalone normalizationOutput shape
-  PROMPT_TEMPLATES.md              Normalizer-only copy-paste prompts
+  normalization-addon-protocol-norm-1.1.0.md          Rules (`norm-1.1.0`)
+  normalization-output-schema-norm-1.1.0.md            Standalone normalizationOutput shape
+  normalization-prompt-templates-norm-1.1.0.md        Normalizer-only copy-paste prompts
 
 framework/
   FRAMEWORK_PLAN.md                  Automated pipeline architecture

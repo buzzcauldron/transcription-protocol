@@ -8,7 +8,7 @@ For **BM-001** (Lincoln letter), download or use the two LoC IIIF URLs from [`ma
 
 ## 2. Prompt
 
-Use the transcriber rules from [`PROMPT_TEMPLATES.md`](../PROMPT_TEMPLATES.md) and the **CONFIGURATION** block from `manifest.yaml` → `cases.BM-001.prompt` (language, era, diplomatic profile, `sourcePageId`, etc.). Include the **OUTPUT FORMAT** section so the model emits valid YAML (`transcriptionOutput`, `metadata`, `preCheck`, `segments`, `mismatchReport`).
+Use the transcriber rules from [`prompt-templates-v1.1.0.md`](../prompt-templates-v1.1.0.md) and the **CONFIGURATION** block from `manifest.yaml` → `cases.BM-001.prompt` (language, era, diplomatic profile, `sourcePageId`, etc.). Include the **OUTPUT FORMAT** section so the model emits valid YAML (`transcriptionOutput`, `metadata`, `preCheck`, `segments`, `mismatchReport`).
 
 The same text is assembled in code by [`prompt_builder.py`](prompt_builder.py) (`SYSTEM_RULES` + `build_user_text`).
 
