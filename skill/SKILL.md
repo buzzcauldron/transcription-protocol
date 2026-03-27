@@ -2,10 +2,12 @@
 name: academic-transcription
 description: >-
   Transcribe handwritten documents with extreme accuracy for academic researchers.
-  Enforces strict no-addition rules, diplomatic transcription profiles, uncertainty
-  marking, and dual-pass verification. Use when transcribing manuscripts, letters,
-  archival documents, or any handwritten source material, or when the user mentions
-  transcription, paleography, diplomatic editing, or manuscript digitization.
+  Defaults to efficient single-pass mode, runs normalization automatically, and
+  produces a consolidated final document. Enforces strict no-addition rules,
+  diplomatic transcription profiles, and uncertainty marking. Use when transcribing
+  manuscripts, letters, archival documents, or any handwritten source material, or
+  when the user mentions transcription, paleography, diplomatic editing, or
+  manuscript digitization.
 platforms:
   - cursor-agent-skill
   - claude-project-instructions
@@ -21,16 +23,19 @@ platforms:
 
 When the user provides a handwritten document image for transcription:
 
-1. **Select run mode**: Ask the user — **Standard** (full two-pass verification, all tokens) or **Efficient** (single pass, core tokens only)? Default: `standard`. Note: `efficient` mode is incompatible with `layout_aware` and `diplomatic_plus` profiles.
-2. Confirm run configuration with the user (or use defaults):
-   - `targetLanguage` — ask or infer from context. Default: `eng-Latn`.
-   - `targetEra` — ask or infer. Default: `nineteenth_century`.
-   - `diplomaticProfile` — ask or use `strict`.
+1. **Infer configuration** from context — do not ask unless genuinely ambiguous:
+   - `runMode` — default: `efficient` (single pass, core tokens). Use `standard` only when the user explicitly requests two-pass verification.
+   - `targetLanguage` — infer from the image or conversation. Default: `eng-Latn`.
+   - `targetEra` — infer from the image or conversation. Default: `nineteenth_century`.
+   - `diplomaticProfile` — default: `strict`. (Efficient mode is incompatible with `layout_aware` / `diplomatic_plus`.)
    - `normalizationMode` — default: `diplomatic`.
-3. Run the **Pre-Transcription Checklist**.
-4. Transcribe using the **Transcriber** workflow below.
-5. Self-verify using the **Two-Pass Check** (skip if `runMode` is `efficient`).
-6. Emit output in the required schema.
+   - State the configuration you chose in a brief line before starting (e.g. "Running efficient/strict on what appears to be 19th-century English copperplate."). Only pause to ask the user if the language or era is truly unclear from the image.
+2. Run the **Pre-Transcription Checklist**.
+3. Transcribe using the **Transcriber** workflow below.
+4. Self-verify using the **Two-Pass Check** only if `runMode` is `standard`.
+5. Emit the `transcriptionOutput` in the required schema.
+6. **Normalize** — automatically run the normalization protocol (conservative_editorial, reflow_to_spaces) on the diplomatic segments to produce a `normalizationOutput`.
+7. **Emit the final document** — produce a single consolidated readable document combining both outputs (see §Final Document below).
 
 ---
 
@@ -135,9 +140,9 @@ Profile-specific tokens (use only when enabled):
 
 ## Transcription Workflow
 
-**Step 1: Confirm Configuration**
+**Step 1: State Configuration**
 
-Establish: `targetLanguage`, `targetEra`, `diplomaticProfile`, `diplomaticToggles`, `normalizationMode`.
+Use the inferred or default values for `targetLanguage`, `targetEra`, `diplomaticProfile`, `diplomaticToggles`, `normalizationMode`, `runMode`. State them in one line and proceed.
 
 **Step 2: Pre-Check**
 
@@ -247,6 +252,70 @@ Hallucination is the worst-case failure — worse than no transcription. A singl
 
 ---
 
+## Normalization Workflow
+
+After emitting the `transcriptionOutput`, automatically produce a `normalizationOutput` using the normalization protocol (`norm-1.1.0`). This step does not require re-examining the image — it operates on the diplomatic segments you just produced.
+
+**Default normalization policy** (override if the user specifies otherwise):
+
+- `editorialLevel`: `conservative_editorial`
+- `orthographyTarget`: infer from `targetLanguage` (e.g. "modern English orthography" for `eng-Latn`, "classical Latin lemmas" for `lat-Latn`)
+- `abbreviationHandling`: `"Expand only where diplomatic uses [exp: ...] with visible mark"` (or `"none"` if no `[exp:]` tokens appear)
+- `lineBreakHandling`: `reflow_to_spaces`
+- `registerNotes`: `null`
+
+**Procedure:**
+
+1. For each diplomatic segment, copy `text` verbatim into `diplomaticText`.
+2. Produce `normalizedText` obeying the editorial level and §5 hard fails of the normalization protocol: no additions, no silent disambiguation of `[uncertain: A / B]`, no gap fill.
+3. Record `alignmentNotes` when policy choices need justification.
+4. Emit the complete `normalizationOutput` YAML block.
+
+---
+
+## Final Document
+
+After both `transcriptionOutput` and `normalizationOutput` are complete, emit a single consolidated **Final Document** in clean markdown. This is the primary deliverable the researcher reads. The structured YAML blocks above serve as machine-readable provenance; the final document is the human-readable result.
+
+**Format:**
+
+```markdown
+# Transcription: {sourcePageId}
+
+**Date:** {timestamp} | **Protocol:** {protocolVersion} | **Profile:** {diplomaticProfile} | **Mode:** {runMode}
+**Language:** {targetLanguage} | **Era:** {targetEra} | **Script:** {scriptIdentified}
+**Condition:** {conditionNotes or "Good"}
+
+---
+
+## Diplomatic Transcription
+
+{For each segment, emit the segment text as-is, preserving line breaks.
+ Separate segments with a blank line. Prefix each with a subtle header
+ only if there are multiple segments.}
+
+---
+
+## Normalized Text
+
+{For each normalized segment, emit normalizedText as flowing prose.
+ Retain [uncertain: …], [illegible], [gap] tokens inline.
+ Separate segments with a blank line.}
+
+---
+
+## Notes
+
+- **Uncertainty:** {count} tokens across {segment count} segments.
+- **Condition:** {conditionNotes, if any}
+- **Epistemic limits:** {epistemicNotes, if any, or "None stated."}
+- **Normalization level:** {editorialLevel} — {brief description of what that level permits}
+```
+
+Omit the "Notes" section if there is nothing noteworthy to report (no uncertainty tokens, no condition issues, no epistemic notes). Keep the document concise — it should be scannable.
+
+---
+
 ## Handling User Requests That Conflict with Protocol
 
 If the user asks you to:
@@ -254,7 +323,7 @@ If the user asks you to:
 - "Fill in the missing word" → Decline. Mark with `[illegible]` or `[gap]`.
 - "Make it more readable" → Offer `diplomatic_plus` profile with a normalized layer, but preserve the diplomatic transcript.
 - "Skip the metadata" → Decline. Explain metadata is required for academic reproducibility.
-- "Just give me the text" → Provide the diplomatic transcript text but still include the structured output with metadata.
+- "Just give me the text" → Provide the final document, but the structured YAML still exists above it.
 
 ---
 
