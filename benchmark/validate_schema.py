@@ -9,6 +9,15 @@ import re
 from typing import Any, Dict, List, Tuple
 
 UNCERTAIN_PATTERN = re.compile(r"\[uncertain:", re.IGNORECASE)
+_ILLEGIBLE_OPEN = re.compile(r"\[illegible", re.IGNORECASE)
+_GLYPH_UNCERTAIN_OPEN = re.compile(r"\[glyph-uncertain", re.IGNORECASE)
+_EXPANSION_OPEN = re.compile(r"\[exp:", re.IGNORECASE)
+# conditionNotes hints for §7.3 suspected-overconfidence warning (soft escalation signal).
+_PRECHECK_DIFFICULTY_HINTS = re.compile(
+    r"abbreviat|damage|difficult|fading|fade|worn|\bheavy\b|foxing|stain|tear|crease|"
+    r"poor|obscur|\billeg|lacun|blemish|discolor|blot|smudge|fragment",
+    re.IGNORECASE,
+)
 # Each [uncertain: …] block counts as one word slot for §5.6 (OUTPUT_SCHEMA §4a).
 _UNCERTAIN_BLOCK = re.compile(r"\[uncertain:[^\]]*\]", re.IGNORECASE)
 # Any remaining bracket markup [...] stripped for word count.
@@ -124,6 +133,76 @@ def _concat_segment_texts(segs: List[Dict[str, Any]]) -> str:
     return "\n".join(parts)
 
 
+def _count_expansion_opens(full_text: str) -> int:
+    """Each `[exp:` begins one expansion event (protocol §7.3 wordsFromExpansion)."""
+    return len(_EXPANSION_OPEN.findall(full_text))
+
+
+def _audit_int(val: Any) -> int | None:
+    """Integer fields in hallucinationAudit; reject bool; allow integral floats."""
+    if val is None or isinstance(val, bool):
+        return None
+    if isinstance(val, int):
+        return val
+    if isinstance(val, float) and val.is_integer():
+        return int(val)
+    return None
+
+
+def _has_multiline_body_segment(segs: List[Dict[str, Any]]) -> bool:
+    for seg in segs:
+        if not isinstance(seg, dict) or seg.get("position") != "body":
+            continue
+        t = seg.get("text")
+        if not isinstance(t, str) or not t.strip():
+            continue
+        lines = [ln for ln in t.splitlines() if ln.strip()]
+        if len(lines) >= 2:
+            return True
+    return False
+
+
+def _precheck_suggests_difficulty(pre: Dict[str, Any]) -> bool:
+    cn = pre.get("conditionNotes")
+    if cn is None or not isinstance(cn, str):
+        return False
+    s = cn.strip()
+    if len(s) < MIN_CONDITION_NOTES_LEN:
+        return False
+    return bool(_PRECHECK_DIFFICULTY_HINTS.search(s))
+
+
+def _zero_core_uncertainty_in_text(full_text: str) -> bool:
+    if UNCERTAIN_PATTERN.search(full_text):
+        return False
+    if _ILLEGIBLE_OPEN.search(full_text):
+        return False
+    if _GLYPH_UNCERTAIN_OPEN.search(full_text):
+        return False
+    return True
+
+
+def _suspected_overconfidence_warning(
+    segs: List[Dict[str, Any]],
+    pre: Dict[str, Any] | None,
+    full_text: str,
+) -> str | None:
+    """§7.3 / §7.4 soft escalation: review signal, not a schema hard fail."""
+    if not segs or not pre:
+        return None
+    if not _has_multiline_body_segment(segs):
+        return None
+    if not _precheck_suggests_difficulty(pre):
+        return None
+    if not _zero_core_uncertainty_in_text(full_text):
+        return None
+    return (
+        "suspected overconfidence (soft escalation §7.3–§7.4): multiline body text, "
+        "conditionNotes suggest damage/abbreviation/difficulty, but zero "
+        "[uncertain] / [illegible] / [glyph-uncertain] tokens — flag for human review"
+    )
+
+
 def _aggregate_segment_notes_len(segs: List[Dict[str, Any]]) -> int:
     total = 0
     for seg in segs:
@@ -185,8 +264,11 @@ def _req(d: Dict[str, Any], key: str, errors: List[str]) -> Any:
     return d[key]
 
 
-def validate_transcription_output(root: Dict[str, Any]) -> Tuple[bool, List[str]]:
+def validate_transcription_output(root: Dict[str, Any]) -> Tuple[bool, List[str], List[str]]:
+    """Return (ok, errors, warnings). Warnings are soft escalations (e.g. §7.3); they do not set ok=False."""
     errors: List[str] = []
+    warnings: List[str] = []
+    mark_expansions = False
 
     pv = root.get("protocolVersion")
     canon_pv = _canonical_protocol_version(pv)
@@ -275,6 +357,9 @@ def validate_transcription_output(root: Dict[str, Any]) -> Tuple[bool, List[str]
                 "metadata.protocolVersion must denote the same protocol as "
                 "transcriptionOutput.protocolVersion (e.g. v1.1 and 1.1.0 are equivalent)"
             )
+        dt = meta.get("diplomaticToggles")
+        if isinstance(dt, dict) and dt.get("markExpansions") is True:
+            mark_expansions = True
 
     pre = root.get("preCheck")
     if not isinstance(pre, dict):
@@ -460,6 +545,30 @@ def validate_transcription_output(root: Dict[str, Any]) -> Tuple[bool, List[str]
                 f"wordsFromExpansion ({wfe}) — expansion without visible mark (§7.3)"
             )
 
+    if (
+        mark_expansions
+        and isinstance(segs, list)
+        and isinstance(audit, dict)
+    ):
+        full_seg_text = _concat_segment_texts(
+            [s for s in segs if isinstance(s, dict)]
+        )
+        n_exp = _count_expansion_opens(full_seg_text)
+        wi = _audit_int(audit.get("wordsFromExpansion"))
+        ei = _audit_int(audit.get("expansionsWithVisibleMark"))
+        if wi is None or ei is None:
+            errors.append(
+                "hallucinationAudit.wordsFromExpansion and expansionsWithVisibleMark "
+                f"must be integers when markExpansions is true "
+                f"({n_exp} [exp: event(s) in segment text; protocol §7.3)"
+            )
+        elif wi != n_exp or ei != n_exp:
+            errors.append(
+                "hallucinationAudit inconsistent with segment text: "
+                f"found {n_exp} [exp: …] expansion event(s), but "
+                f"wordsFromExpansion={wi}, expansionsWithVisibleMark={ei} (protocol §7.3)"
+            )
+
     if isinstance(segs, list) and segs:
         flood_err = _uncertainty_flood_error(
             _concat_segment_texts(segs),
@@ -469,5 +578,13 @@ def validate_transcription_output(root: Dict[str, Any]) -> Tuple[bool, List[str]
         if flood_err:
             errors.append(flood_err)
 
+        ow = _suspected_overconfidence_warning(
+            [s for s in segs if isinstance(s, dict)],
+            pre if isinstance(pre, dict) else None,
+            _concat_segment_texts([s for s in segs if isinstance(s, dict)]),
+        )
+        if ow:
+            warnings.append(ow)
+
     ok = len(errors) == 0
-    return ok, errors
+    return ok, errors, warnings

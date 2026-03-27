@@ -47,11 +47,13 @@ def gates_from_raw(raw: str, evaluator: str) -> Dict[str, Any]:
             "notes": " ".join(notes_parts),
         }
 
-    schema_ok, schema_errors = validate_transcription_output(root_out)
+    schema_ok, schema_errors, schema_warnings = validate_transcription_output(root_out)
     if not schema_ok:
         notes_parts.append("; ".join(schema_errors[:5]))
         if len(schema_errors) > 5:
             notes_parts.append(f"(+{len(schema_errors) - 5} more)")
+    if schema_warnings:
+        notes_parts.append("Warnings: " + "; ".join(schema_warnings))
 
     segs = root_out.get("segments") or []
     if not isinstance(segs, list):

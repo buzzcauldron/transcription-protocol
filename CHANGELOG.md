@@ -20,6 +20,12 @@ All notable changes to the **Academic Handwriting Transcription Protocol** use [
 - **§2.9:** Explicit **when not to use `efficient` mode** guidance (heavy abbreviation, complex layout, caret insertions, multi-page/palimpsest needs).
 - **`benchmark/validate_schema.py`:** When `runMode` is `efficient`, segment `text` must not contain standard-only tokens (`[exp: …]`, `[wrap-join]`, `[deletion: …]`, `[insertion: …]`, `[marginalia: …]`, `[superscript: …]`, `[page-break]`, `[palimpsest: …]`, `[line-end-hyphen]`; protocol §2.9, §3).
 
+### Repository tooling — 2026-03-27
+
+- **`benchmark/validate_schema.py`:** `validate_transcription_output` returns `(ok, errors, warnings)`. When `metadata.diplomaticToggles.markExpansions` is `true`, the number of `[exp:` openings in concatenated segment text must equal `hallucinationAudit.wordsFromExpansion` and `hallucinationAudit.expansionsWithVisibleMark` (protocol §7.3 audit–text consistency).
+- **Soft escalation warnings (non-failing):** multiline body segments, `preCheck.conditionNotes` matching damage/abbreviation/difficulty heuristics, and zero `[uncertain]` / `[illegible]` / `[glyph-uncertain]` tokens together emit a §7.3–§7.4 suspected-overconfidence warning (surfaced in [`benchmark/stress_gate.py`](benchmark/stress_gate.py) notes).
+- **Protocol §2.4:** Guidance on consistent treatment of scribal `&c` when `markExpansions` is `true`.
+
 ## [1.0.0] — initial release
 
 - Core transcription rules: no addition, uncertainty tokens, diplomatic profiles, segments, pre-check, YAML output shape as documented in companion specs.

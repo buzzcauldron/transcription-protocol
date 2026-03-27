@@ -228,6 +228,7 @@ hallucinationAudit:
 | Rule | Description |
 |---|---|
 | `wordsFromExpansion` ≤ `expansionsWithVisibleMark` | If expansions exceed visible marks, the run fails regardless of `auditPass`. |
+| `[exp:` count vs audit (when `markExpansions` is true) | Count of `[exp:` openings in concatenated `segments[].text` must equal `wordsFromExpansion` and `expansionsWithVisibleMark` (protocol §7.3; [`validate_schema.py`](benchmark/validate_schema.py)). |
 | `totalWords` consistency | Should approximate the whitespace-delimited word count across all segment text. |
 | `checks` block | Optional but recommended. When present, `auditPass` must equal logical AND of all check `pass` values. |
 
@@ -349,7 +350,7 @@ Use this checklist to validate any output programmatically or by inspection:
 - [ ] `runMode` is `standard` or `efficient`; if `efficient`, `diplomaticProfile` is not `layout_aware` or `diplomatic_plus` (§2.9).
 - [ ] Uncertainty token density not above protocol threshold unless justified in notes (1.1.0).
 - [ ] `epistemicNotes` if non-null is substantive (protocol §1.1).
-- [ ] `hallucinationAudit` present with consistent numeric fields; `wordsFromExpansion` ≤ `expansionsWithVisibleMark`.
+- [ ] `hallucinationAudit` present with consistent numeric fields; `wordsFromExpansion` ≤ `expansionsWithVisibleMark`; if `markExpansions` is true, `[exp:` count in segment text matches both expansion audit integers.
 - [ ] If structured `checks` block present, `auditPass` matches logical AND of all check `pass` values.
 - [ ] `proceedOverride` if `true`: override documented in `conditionNotes` (§4.1).
 - [ ] If `normalizationMode` is `normalized`, `normalizedLayer` is present with one-to-one alignment.

@@ -8,7 +8,7 @@ This document indexes **known gaps** between what a `transcriptionOutput` docume
 
 | Risk | Protocol / schema refs | YAML-only | Validator (no image) | Image-aware or external |
 |------|------------------------|-----------|----------------------|-------------------------|
-| Self-certifying `hallucinationAudit`; coordinated fabrication of audit fields | §7.3; OUTPUT_SCHEMA §6b; rubric “Audit self-certification” | Catches absent/inconsistent blocks only | Cross-field checks (e.g. expansions vs visible marks) | Human review; second model; tooling with image |
+| Self-certifying `hallucinationAudit`; coordinated fabrication of audit fields | §7.3; OUTPUT_SCHEMA §6b; rubric “Audit self-certification” | Catches absent/inconsistent blocks only | Cross-field checks (`expansionsWithVisibleMark` ≥ `wordsFromExpansion`; when `markExpansions` is true, `[exp:` count in segment text must match both audit integers — [`validate_schema.py`](benchmark/validate_schema.py)) | Human review; second model; tooling with image |
 | `pass2Summary` shorthand vs per-segment `mismatchReport` rigor | §5.2; OUTPUT_SCHEMA §5 | Declares Pass 2 outcome | `segmentsAltered` > 0 requires `mismatchReport` entries ([`validate_schema.py`](benchmark/validate_schema.py)) | Independent Pass 2 or verifier prompt |
 | Single-inference “Pass 2” (same call) | §5.2 implementation note | — | — | Separate inference/session; verifier |
 | Uncertainty flooding ratio (§5.6) | §5.6; OUTPUT_SCHEMA §4a | — | Normative word count + `U` count; documentation carve-out | Human review if ratio borderline |

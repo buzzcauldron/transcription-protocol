@@ -105,6 +105,8 @@ Optional refinement: `eraRange` (e.g., `1600-1699`) for tighter paleographic cal
 | `captureDeletionsAndInsertions` | `false` (`true` in `layout_aware`, `diplomatic_plus`) | Encode strikethroughs, carets, and interlinear additions. |
 | `captureUnclearGlyphShape` | `true` | Emit `[glyph-uncertain: description]` for ambiguous letter forms. |
 
+**`&c` (et cetera) and `markExpansions`:** Paleographers treat scribal `&c` variously as a logogram or as an abbreviation. The protocol does not mandate one reading, but it **does** require **consistency** when `markExpansions` is `true` and other suspensions in the same run use `[exp: …]`: either keep `&c` literal everywhere (no `[exp:]`), or expand every instance with a grounded `[exp: …]` (language-appropriate) the same way as other marked expansions. Mixing bare `&c` beside sibling `[exp: …]` tags without a segment-level justification in `notes` or `epistemicNotes` is a diplomatic inconsistency (rubric: abbreviation handling).
+
 ### 2.5 Normalization Mode
 
 `normalizationMode` — controls whether a secondary normalized view is produced.
