@@ -46,6 +46,7 @@ normalizationOutput:
 | `source.sourcePageId` | Must match the diplomatic transcript’s `metadata.sourcePageId`. |
 | `source.sourceProtocolVersion` | Diplomatic `protocolVersion` (semver or legacy alias) of the source transcript. |
 | `normalizationPolicy` | Required object; all keys above must be present (`null` allowed only where noted). |
+| `normalizationPolicy.orthographyTarget` | Describes target spelling or script norms **within the document language(s)** only; must not encode translation into another language ([normalization-addon-protocol-norm-1.1.0.md §1.2](normalization-addon-protocol-norm-1.1.0.md)). |
 | `normalizationPolicy.editorialLevel` | **Required** when `normalizationProtocolVersion` is `norm-1.1.0`. Omit on legacy `norm-1.0.0`. When present: one of `mechanical`, `conservative_editorial`, `scholarly_editorial` — see [normalization-addon-protocol-norm-1.1.0.md §2](normalization-addon-protocol-norm-1.1.0.md). |
 | `normalizedSegments` | Ordered list; each item must include `segmentId`, `diplomaticText`, `normalizedText`. |
 
@@ -55,7 +56,7 @@ normalizationOutput:
 |-------|------|
 | `segmentId` | Integer matching `segments[].segmentId` in the diplomatic transcript. |
 | `diplomaticText` | **Must exactly equal** the `text` field of the corresponding diplomatic segment (string equality after same normalization as validator: exact). |
-| `normalizedText` | Derivative only; must obey [normalization-addon-protocol-norm-1.1.0.md §5](normalization-addon-protocol-norm-1.1.0.md) for the declared `editorialLevel`. |
+| `normalizedText` | Derivative only; **same natural language(s) as the diplomatic segment** — translation is invalid ([normalization-addon-protocol-norm-1.1.0.md §1.2](normalization-addon-protocol-norm-1.1.0.md), §5). Must obey [normalization-addon-protocol-norm-1.1.0.md §5](normalization-addon-protocol-norm-1.1.0.md) for the declared `editorialLevel`. |
 | `alignmentNotes` | Optional; **required** when policy choices need justification (e.g. picking one branch of `[uncertain: A / B]` at `conservative_editorial` or `scholarly_editorial`, or documenting scholarly choices at `scholarly_editorial`). |
 
 ---
@@ -103,6 +104,7 @@ normalizationOutput:
 - [ ] Every in-scope `segmentId` from the diplomatic transcript has exactly one row.
 - [ ] Each `diplomaticText` equals the diplomatic segment `text` (when validator is run with `--transcript`).
 - [ ] No `normalizedText` introduces content absent from diplomatic evidence (manual review; automated checks are limited).
+- [ ] **No translation:** `normalizedText` does not render the segment in a different natural language than the diplomatic line (add-on §1.2, §5.7).
 - [ ] `metadata.timestamp` valid ISO 8601.
 
 ---

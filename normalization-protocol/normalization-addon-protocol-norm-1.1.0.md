@@ -23,6 +23,14 @@ Editorial normalization is **strictly downstream** of an existing diplomatic tra
 
 `normalizedText` is **not** admissible as primary evidence for readings. For protocol-defined, image-grounded transcription, only diplomatic `segments[].text` (and the manuscript image) holds that authority.
 
+### 1.2 Document language only — no translation
+
+Normalization **always** operates **in the language(s) of the diplomatic transcript**. The `normalizedText` for each segment must express the same linguistic content in those languages—using orthographic, whitespace, and editorial conventions appropriate to the declared policy **within** those languages.
+
+**Translation** (rendering the text in a different natural language than the diplomatic line, e.g. Latin → English, or replacing one language with another) is **not** part of this protocol. It is **out of scope** for `normalizationOutput` and **invalid** as a compliant normalization pass. Mixed-language pages (`languageSet`, code-switching in `segments[].text`) must remain mixed in `normalizedText` the same way; do not unify into a single target language.
+
+`orthographyTarget` and related policy fields describe spelling, script, or register norms **within** the source language(s) (e.g. modern English spelling for English diplomatic text; classical Latin lemma forms for Latin diplomatic text)—not a request to translate.
+
 ---
 
 ## 2. Editorial levels (required choice)
@@ -93,6 +101,8 @@ A `normalizationOutput` is **invalid** if any of the following hold:
 
 6. **Missing or invalid editorial level** — For `norm-1.1.0`, `normalizationPolicy.editorialLevel` is **required** and must be one of `mechanical`, `conservative_editorial`, `scholarly_editorial`. Legacy `norm-1.0.0` artifacts may omit it; if present, the same enum applies.
 
+7. **Translation** — `normalizedText` substitutes or paraphrases the diplomatic content in a **different natural language** than the one(s) the diplomatic segment is written in (per `targetLanguage` / segment content and `languageSet` for mixed pages). Orthographic modernization **within** the same language is not translation; replacing the source language with another is.
+
 ---
 
 ## 6. Policy block (required)
@@ -100,7 +110,7 @@ A `normalizationOutput` is **invalid** if any of the following hold:
 See [normalization-output-schema-norm-1.1.0.md](normalization-output-schema-norm-1.1.0.md). The policy **must** name:
 
 - **`editorialLevel`** — §2.
-- **`orthographyTarget`** — Target orthography or `none` / `unchanged` for mechanical-only runs.
+- **`orthographyTarget`** — Target orthography **within the document language(s)** or `none` / `unchanged` for mechanical-only runs. Must not encode or imply cross-language translation (see §1.2).
 - **`abbreviationHandling`** — How `[exp:]` and abbreviations are realized; `none` for **mechanical**.
 - **`lineBreakHandling`** — `preserve` | `reflow_to_spaces` | `other`.
 - **`registerNotes`** — Optional register; may be `null`.

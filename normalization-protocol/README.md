@@ -24,6 +24,7 @@ See [normalization-addon-protocol-norm-1.1.0.md §2](normalization-addon-protoco
 
 ## What this is not
 
+- Not **translation** — `normalizedText` stays in the **document language(s)** as the diplomatic transcript; switching to another language is out of scope and invalid (see [normalization-addon-protocol-norm-1.1.0.md §1.2](normalization-addon-protocol-norm-1.1.0.md)).
 - Not a license to “fix” or modernize the diplomatic layer during the initial image-to-text pass.
 - Not a path to reconstruct or derive diplomatic `transcriptionOutput` from normalized text; the workflow is **one-way** (diplomatic → normalization only). See [normalization-addon-protocol-norm-1.1.0.md §1.1](normalization-addon-protocol-norm-1.1.0.md).
 - Not merged into `validate_schema.py`; optional validation lives in [`benchmark/validate_normalization.py`](../benchmark/validate_normalization.py).

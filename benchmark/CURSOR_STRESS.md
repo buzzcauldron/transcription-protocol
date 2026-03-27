@@ -57,6 +57,10 @@ This reads every `response.txt` under `benchmark/test-results/stress/<case>/...`
 
 **Dependencies:** `pyyaml` only (same as [`requirements-stress.txt`](../requirements-stress.txt) without the API SDKs). Install with `pip install pyyaml` if needed.
 
+## Claude Code CLI
+
+To use the **same manifest + prompt zones** with the **`claude`** terminal command (Claude Code), see [`CLAUDE_CLI.md`](CLAUDE_CLI.md).
+
 ## Notes
 
 - Cursor model names and vision support depend on your plan; the methodology matches the automated harness: **same inputs + same gates**.

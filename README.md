@@ -4,6 +4,8 @@
 
 A strict no-addition transcription system for LLM-assisted manuscript work, built for academic researchers who need extreme fidelity to handwritten source material.
 
+The **design intent** is **evidence-grade text** researchers can reuse in **later computational work**—corpus linguistics, quantitative text analysis, digital editions, linked open data, machine-learning features, or custom pipelines—without re-transcribing from images. Machine-readable `transcriptionOutput` (metadata, segments, uncertainty tokens, verification and audit blocks) keeps runs **reproducible** and **tool-friendly**; this protocol does not prescribe any particular stack.
+
 **Core guarantee**: the model will never add, infer, complete, or modernize text. Every ambiguity is explicitly marked. Every output is auditable.
 
 ---
@@ -161,6 +163,8 @@ python -m benchmark.stress_run --replay
 
 Step-by-step for using **Cursor’s model picker** (no API keys): [`benchmark/CURSOR_STRESS.md`](benchmark/CURSOR_STRESS.md).
 
+To drive the **same prompts** through **Claude Code** in the terminal (`claude`): [`benchmark/CLAUDE_CLI.md`](benchmark/CLAUDE_CLI.md) (`python -m benchmark.claude_cli --case BM-001`).
+
 ---
 
 ## Versioning
@@ -169,7 +173,7 @@ The protocol uses **Semantic Versioning** ([semver.org](https://semver.org/)): s
 
 ### Optional: post-hoc normalization
 
-If you already have a diplomatic transcript and want a **separate derivative** normalized layer (searchability, editorial orthography), use the add-on in [`normalization-protocol/`](normalization-protocol/README.md). It has its own version string (current `norm-1.1.0`, **editorial levels** in policy), prompts, and optional validator [`benchmark/validate_normalization.py`](benchmark/validate_normalization.py) — it does not change the core transcription workflow.
+If you already have a diplomatic transcript and want a **separate derivative** normalized layer (searchability, editorial orthography **within the document language(s)**), use the add-on in [`normalization-protocol/`](normalization-protocol/README.md). It has its own version string (current `norm-1.1.0`, **editorial levels** in policy), prompts, and optional validator [`benchmark/validate_normalization.py`](benchmark/validate_normalization.py) — it does not change the core transcription workflow. **Translation is not part of normalization** under this protocol.
 
 ---
 
@@ -201,8 +205,10 @@ benchmark/
   evaluate_all.py
   stress_run.py                      Multi-model API stress test (optional)
   stress_replay.py                   Score saved responses only (no API)
+  claude_cli.py                      Build prompts for Claude Code CLI (`claude -p`)
   manifest.yaml                    Stress-test cases and model defaults
   CURSOR_STRESS.md                   Run stress tests from Cursor UI + replay
+  CLAUDE_CLI.md                      Same harness via Claude Code terminal
   ground-truth-*.md                  Known transcriptions for comparison
   test-results/                      Transcription outputs and reports
 ```

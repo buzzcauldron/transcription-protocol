@@ -2,6 +2,10 @@
 
 > **Document file:** `diplomatic-transcription-protocol-v1.1.0.md` · **Protocol version:** **1.1.0** (semver; matches repo [`VERSION`](VERSION)) — Strict no-addition transcription standard for LLM-assisted manuscript work.
 
+### Purpose and audience
+
+This protocol defines **image-grounded diplomatic transcription** for **human scholarship** and for **downstream computational reuse**. Accurate line-by-line text, honest uncertainty marking, and structured `transcriptionOutput` let researchers **import the same transcript** into analyses, corpora, or editions **after** the transcription pass, with provenance and tokens preserved for tooling. Transcription here is **not** statistical modeling or interpretation: it is faithful reproduction with explicit limits. Optional **normalization** (orthography, reflow, in-language editorial levels) is a **derivative** layer only—see [normalization-protocol/README.md](normalization-protocol/README.md); it does not replace diplomatic strings for evidence, and **translation** is out of scope.
+
 ---
 
 ## 1. Governing Principle
@@ -118,7 +122,7 @@ Optional refinement: `eraRange` (e.g., `1600-1699`) for tighter paleographic cal
 
 The diplomatic transcript is always the authoritative record.
 
-**Post-hoc normalization (optional add-on):** If you complete a run with `normalizationMode: diplomatic` and later want a standalone normalized artifact (different tool, model, or session), use the separate [normalization protocol](normalization-protocol/README.md) and `normalizationOutput` schema. It does not replace or relax §1 rules for the original transcription pass. The diplomatic transcript remains the **sole** protocol-defined record for image-grounded transcription; the normalization add-on does **not** define any reverse workflow from normalized text back to diplomatic output.
+**Post-hoc normalization (optional add-on):** If you complete a run with `normalizationMode: diplomatic` and later want a standalone normalized artifact (different tool, model, or session), use the separate [normalization protocol](normalization-protocol/README.md) and `normalizationOutput` schema. Normalization is **always in the document language(s)**—orthography, reflow, and licensed expansions only; **translation into another language is not part of this protocol** (see normalization add-on §1.2). It does not replace or relax §1 rules for the original transcription pass. The diplomatic transcript remains the **sole** protocol-defined record for image-grounded transcription; the normalization add-on does **not** define any reverse workflow from normalized text back to diplomatic output.
 
 ### 2.6 Configuration–Behavior Coupling
 

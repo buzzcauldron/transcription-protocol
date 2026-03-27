@@ -6,6 +6,10 @@ All notable changes to the **Academic Handwriting Transcription Protocol** use [
 
 ## [1.1.0] — 2026-03-26
 
+### Normalization — document language only (2026-03-28)
+
+- [normalization-addon-protocol-norm-1.1.0.md](normalization-protocol/normalization-addon-protocol-norm-1.1.0.md) **§1.2** and **§5** item 7: normalization **never** translates into another language; `orthographyTarget` is intra-language only. README, schema checklist, skill workflow, and normalizer prompts updated accordingly.
+
 ### Documentation layout (filenames)
 
 - Core specs use **descriptive, versioned filenames** at repo root (e.g. `diplomatic-transcription-protocol-v1.1.0.md`, `transcription-output-schema-v1.1.0.md`, `quality-rubric-v1.1.0.md`, `prompt-templates-v1.1.0.md`). Each file states **protocol 1.1.0** in its header.

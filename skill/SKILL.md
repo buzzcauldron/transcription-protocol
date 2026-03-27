@@ -1,7 +1,8 @@
 ---
 name: academic-transcription
 description: >-
-  Transcribe handwritten documents with extreme accuracy for academic researchers (protocol 1.1.0).
+  Transcribe handwritten documents with extreme accuracy for academic researchers (protocol 1.1.0);
+  outputs are structured for research corpora and downstream computational reuse.
   Defaults to efficient single-pass mode, runs normalization automatically, and
   produces a consolidated final document. Enforces strict no-addition rules,
   diplomatic transcription profiles, and uncertainty marking. Use when transcribing
@@ -257,12 +258,12 @@ Hallucination is the worst-case failure — worse than no transcription. A singl
 
 ## Normalization Workflow
 
-After emitting the `transcriptionOutput`, automatically produce a `normalizationOutput` using the normalization protocol (`norm-1.1.0`). This step does not require re-examining the image — it operates on the diplomatic segments you just produced.
+After emitting the `transcriptionOutput`, automatically produce a `normalizationOutput` using the normalization protocol (`norm-1.1.0`). This step does not require re-examining the image — it operates on the diplomatic segments you just produced. **Normalization is always in the document language(s)** — orthography, reflow, and licensed expansions only; **never translate** the text into another language (normalization add-on §1.2).
 
 **Default normalization policy** (override if the user specifies otherwise):
 
 - `editorialLevel`: `conservative_editorial`
-- `orthographyTarget`: infer from `targetLanguage` (e.g. "modern English orthography" for `eng-Latn`, "classical Latin lemmas" for `lat-Latn`)
+- `orthographyTarget`: infer **within** `targetLanguage` / `languageSet` only (e.g. "modern English orthography" for English diplomatic text, "classical Latin lemmas for Latin diplomatic text") — not translation
 - `abbreviationHandling`: `"Expand only where diplomatic uses [exp: ...] with visible mark"` (or `"none"` if no `[exp:]` tokens appear)
 - `lineBreakHandling`: `reflow_to_spaces`
 - `registerNotes`: `null`
