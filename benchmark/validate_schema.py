@@ -417,9 +417,15 @@ def validate_transcription_output(root: Dict[str, Any]) -> Tuple[bool, List[str]
             ):
                 _req(seg, k, errors)
             if seg.get("confidence") not in VALID_CONFIDENCE:
-                errors.append(f"segment {i} confidence invalid")
+                errors.append(
+                    f"segment {i} confidence invalid: got {seg.get('confidence')!r}, "
+                    f"expected one of {VALID_CONFIDENCE}"
+                )
             if seg.get("position") not in VALID_POSITION:
-                errors.append(f"segment {i} position invalid")
+                errors.append(
+                    f"segment {i} position invalid: got {seg.get('position')!r}, "
+                    f"expected one of {VALID_POSITION}"
+                )
 
     run_mode = (meta or {}).get("runMode", "standard") if isinstance(meta, dict) else "standard"
     is_efficient = run_mode == "efficient"
