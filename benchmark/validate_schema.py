@@ -101,6 +101,7 @@ MIN_CONDITION_NOTES_LEN = 20
 MIN_SEGMENT_NOTES_AGGREGATE_LEN = 20
 
 # Protocol §2.9 / §3: extended & special tokens must not appear in segment text when runMode is efficient.
+# Core token `[crop]` (§3) is intentionally allowed in efficient mode and is not listed here.
 _EFFICIENT_FORBIDDEN_TOKEN_CHECKS: Tuple[Tuple[re.Pattern[str], str], ...] = (
     (re.compile(r"\[exp:", re.IGNORECASE), "[exp: …]"),
     (re.compile(r"\[wrap-join\]", re.IGNORECASE), "[wrap-join]"),

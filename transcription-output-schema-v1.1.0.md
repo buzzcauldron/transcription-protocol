@@ -1,6 +1,6 @@
 # Output Schema Specification
 
-> **Document file:** `transcription-output-schema-v1.1.0.md` · **Protocol:** **1.1.0** (semver) — Required structure of every diplomatic `transcriptionOutput`.
+> **Document file:** `transcription-output-schema-v1.1.0.md` · **Protocol:** **1.1.0** (semver; matches repo [`VERSION`](../VERSION)) — Required structure of every diplomatic `transcriptionOutput`.
 
 ---
 
@@ -135,7 +135,7 @@ segments:
 
 ## 5. Mismatch Report
 
-Required when `runMode` is `standard` (the default). Documents the two-pass self-check. **Protocol 1.1.0:** `mismatchReport` **must not** be an empty array when `segments` is non-empty—each segment must be accounted for with either a discrepancy or an explicit Pass 2 confirmation.
+Required when `runMode` is `standard` (the default). Documents the two-pass self-check. **`mismatchReport` must not** be an empty array when `segments` is non-empty—each segment must be accounted for with either a discrepancy or an explicit Pass 2 confirmation.
 
 **Efficient mode:** When `runMode` is `efficient`, `mismatchReport` may be omitted or `null` (Pass 2 is not required; see protocol §2.9).
 
@@ -346,9 +346,9 @@ Use this checklist to validate any output programmatically or by inspection:
 - [ ] Every segment has `segmentId`, `pageNumber`, `lineRange`, `position`, `text`, `confidence`.
 - [ ] `uncertaintyTokenCount` matches actual token count in segment text.
 - [ ] No line range overlaps within the same page.
-- [ ] `mismatchReport` present; **non-empty** when `segments` is non-empty (protocol 1.1.0), unless `pass2Summary` is present with `segmentsAltered: 0`. **Exception**: when `runMode` is `efficient`, `mismatchReport` may be omitted.
+- [ ] `mismatchReport` present; **non-empty** when `segments` is non-empty (protocol §5.2), unless `pass2Summary` is present with `segmentsAltered: 0`. **Exception**: when `runMode` is `efficient`, `mismatchReport` may be omitted.
 - [ ] `runMode` is `standard` or `efficient`; if `efficient`, `diplomaticProfile` is not `layout_aware` or `diplomatic_plus` (§2.9).
-- [ ] Uncertainty token density not above protocol threshold unless justified in notes (1.1.0).
+- [ ] Uncertainty token density not above protocol threshold unless justified in notes (protocol §5.6).
 - [ ] `epistemicNotes` if non-null is substantive (protocol §1.1).
 - [ ] `hallucinationAudit` present with consistent numeric fields; `wordsFromExpansion` ≤ `expansionsWithVisibleMark`; if `markExpansions` is true, `[exp:` count in segment text matches both expansion audit integers.
 - [ ] If structured `checks` block present, `auditPass` matches logical AND of all check `pass` values.

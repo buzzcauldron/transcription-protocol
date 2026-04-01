@@ -173,7 +173,7 @@ When `targetLanguage` is `eng-Latn` (or English appears in `languageSet` for a m
 **`efficient` mode** is designed for high-throughput work on clear, straightforward manuscripts where the overhead of two-pass verification and extended markup is not justified. It relaxes two process requirements:
 
 1. **Single pass**: Pass 2 verification (§5.2) is not required. `mismatchReport` and `pass2Summary` may be omitted or `null`. The model still performs a careful single-pass transcription with full uncertainty marking.
-2. **Core tokens only**: Only core uncertainty tokens are available (see §3). Profile-specific tokens (`[exp:]`, `[wrap-join]`, `[deletion:]`, `[insertion:]`, `[marginalia:]`, `[superscript:]`) and special tokens (`[page-break]`, `[palimpsest:]`, `[line-end-hyphen]`) are unavailable.
+2. **Core tokens only**: Only core uncertainty tokens are available (see §3), including `[crop]` / `[crop: …]` for binding-edge or scan truncation. Profile-specific tokens (`[exp:]`, `[wrap-join]`, `[deletion:]`, `[insertion:]`, `[marginalia:]`, `[superscript:]`) and special tokens (`[page-break]`, `[palimpsest:]`, `[line-end-hyphen]`) are unavailable.
 
 **What is NOT relaxed** in efficient mode:
 
@@ -214,6 +214,8 @@ When any portion of the source is unclear, damaged, or ambiguous, use exactly th
 | `[gap: description]` | Gap with physical description. | `[gap: torn corner, ~2 lines missing]` |
 | `[damaged: description]` | Visible but physically compromised text. | `[damaged: ink smear over 3 words]` |
 | `[glyph-uncertain: description]` | Individual letter form is ambiguous. | `[glyph-uncertain: could be 'a' or 'o']` |
+| `[crop]` | Writing is cut off at the **image boundary** (binding, gutter, or scan crop): the line continues beyond the visible frame; the writing surface itself is not necessarily missing. | `...witness [crop]` |
+| `[crop: description]` | Same as `[crop]` with a short note (e.g. binding edge, gutter). | `[crop: spine not visible]` |
 
 ### Extended tokens (standard mode only)
 
@@ -247,7 +249,7 @@ Before transcribing, the model must assess the source image and report:
 2. **Orientation**: Is the page correctly oriented (not rotated/inverted)?
 3. **Page boundaries**: Are all edges of the written area visible?
 4. **Page count**: How many pages are in this submission?
-5. **Script identification**: What script/hand is used? Does it match `targetLanguage` and `targetEra`?
+5. **Script identification**: What script/hand is used? Does it match `targetLanguage` and `targetEra`? **If not**, the run must not pretend they match: either **correct** `metadata.targetLanguage` / `metadata.targetEra` (and related fields such as `englishHandwritingModality` when applicable) so they reflect what is visible, **or** set `preCheck.scriptMatchesConfig` to `false` and record the discrepancy in `preCheck.conditionNotes`. No particular language/era pair is required by the protocol—only **consistency** between declared configuration and observable script.
 6. **Condition notes**: Any damage, staining, fading, or obstruction that will affect transcription.
 
 If the image fails checks 1–3, the model must report the failure and request a better scan rather than proceeding with degraded accuracy.
@@ -414,6 +416,7 @@ These stubs document **known risks**; future protocol revisions should add scrip
 
 - **`[illegible]`** means the ink is physically absent, smeared beyond recognition, or the letterforms are damaged to the point where no reading is possible even with magnification. It does NOT mean "I am not confident" or "this is heavily abbreviated."
 - **`[gap]`** means there is a physical hole, tear, or missing portion of the writing surface. It does NOT mean "the rest of the page is hard to read."
+- **`[crop]`** means visible writing is **truncated by the image edge or scan** (binding, gutter, or frame), not that ink is unreadable and not that parchment is physically absent. Use **`[illegible]`** only when letterforms cannot be read despite being (partly) in frame; use **`[gap]`** only when material is physically missing.
 - **`[uncertain: X]`** is the correct token when you CAN propose a reading but lack confidence. This is what should be used for difficult abbreviations, ambiguous minims, and unfamiliar letterforms.
 
 **Rules to prevent illegibility bail-out**:
@@ -431,7 +434,7 @@ These stubs document **known risks**; future protocol revisions should add scrip
 
 **Attack**: The model wraps most words in `[uncertain: …]` to avoid grounding penalties while producing a useless transcript.
 
-**Rule — uncertainty density:** Let **word count** be the number of whitespace-delimited words in the diplomatic transcript. For counting purposes, **strip markup tokens**: each `[uncertain: X]` or `[uncertain: X / Y]` contributes **one** word slot (the best-reading word); the bracket syntax, alternate readings, and token keywords (`uncertain`, `illegible`, `gap`, `damaged`, `glyph-uncertain`, `exp`, `wrap-join`, `deletion`, `insertion`, `marginalia`, `superscript`) are **not** counted as words. Let **U** be the number of `[uncertain:` tokens (including variants with `/`). If **U / max(word count, 1) > 0.30**, the output **fails the quality gate** unless ambiguity is **documented**:
+**Rule — uncertainty density:** Let **word count** be the number of whitespace-delimited words in the diplomatic transcript. For counting purposes, **strip markup tokens**: each `[uncertain: X]` or `[uncertain: X / Y]` contributes **one** word slot (the best-reading word); the bracket syntax, alternate readings, and token keywords (`uncertain`, `illegible`, `gap`, `damaged`, `glyph-uncertain`, `crop`, `exp`, `wrap-join`, `deletion`, `insertion`, `marginalia`, `superscript`) are **not** counted as words. Let **U** be the number of `[uncertain:` tokens (including variants with `/`). If **U / max(word count, 1) > 0.30**, the output **fails the quality gate** unless ambiguity is **documented**:
 
 - **Sufficient documentation** means `preCheck.conditionNotes` of **≥ 20 characters** describing a physical or paleographic cause, **and/or** aggregate segment `notes` of **≥ 20 characters** explaining the affected regions.
 - A single generic sentence (e.g. "difficult hand") is **not** sufficient; the documentation must identify the specific condition (water damage, abraded ink, extreme abbreviation density, unfamiliar script variant, etc.) that warrants high uncertainty density.

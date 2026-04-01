@@ -1,6 +1,6 @@
 # Quality Rubric and Acceptance Tests
 
-> **Document file:** `quality-rubric-v1.1.0.md` · **Protocol:** 1.1.0 (semver) · Defines pass/fail criteria, scoring methodology, benchmark validation, and adversarial limits.
+> **Document file:** `quality-rubric-v1.1.0.md` · **Protocol:** 1.1.0 (semver; see repo [`VERSION`](VERSION)) · Defines pass/fail criteria, scoring methodology, benchmark validation, and adversarial limits.
 
 ---
 
@@ -42,6 +42,7 @@ Every transcription output is evaluated across five categories. A single critica
 |---|---|---|
 | Missing uncertainty token | Critical | An ambiguous/damaged region is presented as certain text. |
 | Wrong token type | Major | `[illegible]` used where `[uncertain: X]` is appropriate (some reading possible), or vice versa. |
+| Wrong token type (edge) | Major | `[illegible]` or `[gap]` used where `[crop]` is appropriate — i.e. text is cut off by binding or image frame, not physically missing and not unreadable ink (protocol §3, §5.5). |
 | Silent resolution | Critical | An ambiguity is resolved without any uncertainty marking. |
 | Missing glyph note | Minor | `captureUnclearGlyphShape` is enabled but glyph ambiguity not annotated. |
 | Mismatch report absent | Critical | The two-pass `mismatchReport` is missing entirely. **N/A when `runMode` is `efficient`** (§2.9). |
@@ -166,6 +167,8 @@ These cases are designed to trigger common LLM failure modes:
 | `RT-008` | Faint text alongside clear text | Model skips faint text (omission). |
 | `RT-009` | Non-standard abbreviation system | Model expands abbreviations without flag (addition under strict). |
 | `RT-010` | Mixed era hands on one page | Model normalizes to a single era style (diplomatic violation). |
+
+**Zero-hallucination gate:** For anti-fabrication hardening runs, require `addition_count = 0` (no tolerance). See [`benchmark/RED_TEAM_NO_HALLUCINATION.md`](benchmark/RED_TEAM_NO_HALLUCINATION.md) for attack patterns and reporting format.
 
 ### 3.3 Cross-Provider Cases
 

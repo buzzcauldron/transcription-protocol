@@ -27,9 +27,9 @@ When the user provides a handwritten document image for transcription:
 
 1. **Infer configuration** from context — do not ask unless genuinely ambiguous:
    - `runMode` — default: `efficient` (single pass, core tokens). Use `standard` only when the user explicitly requests two-pass verification.
-   - `targetLanguage` — infer from the image or conversation. Default: `eng-Latn`.
-   - `targetEra` — infer from the image or conversation. Default: `nineteenth_century`.
-   - `diplomaticProfile` — default: `strict`. (Efficient mode is incompatible with `layout_aware` / `diplomatic_plus`.)
+   - `targetLanguage` — infer from the image or conversation. Default: `eng-Latn` only when the hand is English Latin script; if the page is Latin, French, etc., set the matching code (e.g. `lat-Latn`). **No language/era is mandatory**—config must match the source.
+   - `targetEra` — infer from the image or conversation. Default: `nineteenth_century` only as a frequent English hand default; use `medieval`, `early_modern`, etc. when the script and content warrant it.
+   - `diplomaticProfile` — default: `strict`. **Routing (protocol §2.9):** if the page has **marginalia**, **clerk indexing** (e.g. names in the margin of a deed), **interlinear insertions**, or **spatial deletions/superscripts** that require `[marginalia:]`, `[insertion:]`, `[deletion:]`, or `[superscript: …]`, set **`runMode: standard`** and **`diplomaticProfile: layout_aware`** (or **`diplomatic_plus`** if a normalized layer is in scope). Record that routing in **`metadata.scriptNotes`** or **`metadata.epistemicNotes`**. Do **not** pair **`efficient`** with **`layout_aware`** / **`diplomatic_plus`** — the validator rejects it.
    - `normalizationMode` — default: `diplomatic`.
    - State the configuration you chose in a brief line before starting (e.g. "Running efficient/strict on what appears to be 19th-century English copperplate."). Only pause to ask the user if the language or era is truly unclear from the image.
 2. Run the **Pre-Transcription Checklist**.
@@ -90,6 +90,12 @@ High density of `[uncertain: …]` is acceptable when **specifically documented*
 
 ---
 
+## CRITICAL: Long s and scribal letterforms (Latin / English Latin script)
+
+Historical hands often use the **long s** (Unicode **U+017F**, **ſ**). **Transcribe it as visible:** do not silently replace **ſ** with round **s**, and do not “fix” archaic **s**/**ſ** patterns to modern spelling. The same anti-normalization discipline as for Latin spellings applies: visible glyph evidence wins over typographic habit.
+
+---
+
 ## CRITICAL: Illegibility Bail-Out
 
 **The second most common failure mode.** Some LLMs abuse `[illegible]` and `[gap]` to avoid attempting difficult readings, producing technically "safe" but useless transcriptions. In testing, one model marked ~90% of a fully legible 14-line plea roll as `[gap]`.
@@ -111,7 +117,7 @@ High density of `[uncertain: …]` is acceptable when **specifically documented*
 
 ## Uncertainty Tokens
 
-**Efficient mode**: When `runMode` is `efficient`, only core tokens (the first eight rows below) are available. Profile-specific and special tokens are unavailable.
+**Efficient mode**: When `runMode` is `efficient`, only core tokens (the table below through `[glyph-uncertain: …]` and `[crop]`) are available. Profile-specific and special tokens are unavailable.
 
 | Token | When to Use |
 |---|---|
@@ -123,6 +129,14 @@ High density of `[uncertain: …]` is acceptable when **specifically documented*
 | `[gap: description]` | Gap with physical description. |
 | `[damaged: description]` | Visible but compromised text. |
 | `[glyph-uncertain: description]` | Ambiguous individual letter form. |
+| `[crop]` | Writing cut off at **image edge** (binding, gutter, scan); line continues beyond the frame. |
+| `[crop: description]` | Same, with a short note (e.g. binding edge). |
+
+**Choosing `[crop]` vs `[gap]` vs `[illegible]` (binding / edge):**
+
+- **`[crop]`** — Text is **truncated by the photograph or scan** (spine, gutter, or crop). You are not claiming the parchment is missing; you are marking **visibility limits**.
+- **`[gap]`** — **Physical** hole, tear, or missing writing surface **in what is shown** — not the same as “we cannot see past the binding.”
+- **`[illegible]`** — Ink or damage makes letterforms **unreadable in the visible area** — not a substitute for “edge not in frame” (that is `[crop]`).
 
 Profile-specific tokens (use only when enabled):
 
@@ -149,6 +163,8 @@ Use the inferred or default values for `targetLanguage`, `targetEra`, `diplomati
 **Step 2: Pre-Check**
 
 Assess and report: resolution adequacy, orientation, page boundaries, page count, script identification, condition notes. If the image is inadequate, request a better scan.
+
+**If visible script/hand contradicts** the stated `targetLanguage` / `targetEra` (e.g. configuration implied medieval Latin but the page is 19th-century English): **update `metadata.targetLanguage` and `metadata.targetEra` to match what you see**, then transcribe under that config. Set `preCheck.scriptMatchesConfig` to `true` only when metadata matches your identification; if you must keep a researcher’s wrong enum for provenance, set `scriptMatchesConfig: false` and explain in `conditionNotes`. Do not treat any single era/language pair as a required “initial check”—only **consistency** between image and declared metadata matters.
 
 **Step 3: Segment**
 

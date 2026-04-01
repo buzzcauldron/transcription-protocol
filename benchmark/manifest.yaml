@@ -46,6 +46,28 @@ cases:
     evaluator: "medieval"
     optional: true
 
+  BM-CROP:
+    description: "Binding / edge crop — text truncated by frame (use [crop] not [gap])"
+    source_note: "Place a public-domain manuscript crop or deed scan with a visible spine/gutter at benchmark/images/BM-CROP/page.jpg (optional stress case)."
+    image_urls: []
+    image_paths:
+      - "benchmark/images/BM-CROP/page.jpg"
+    media_type: "image/jpeg"
+    prompt:
+      targetLanguage: "eng-Latn"
+      targetEra: "nineteenth_century"
+      eraRange: "1820-1860"
+      diplomaticProfile: "strict"
+      diplomaticToggles: "{}"
+      normalizationMode: "diplomatic"
+      languageSet: "[]"
+      scriptNotesOptional: "Stress: mark lines lost to binding or scan edge with [crop] per protocol §3"
+      sourcePageId: "BM-CROP-edge"
+      protocolVersion: "1.1.0"
+      runMode: "efficient"
+    evaluator: "lincoln"
+    optional: true
+
 # Default models (override via CLI --models)
 models:
   anthropic:

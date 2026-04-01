@@ -141,6 +141,8 @@ Tested against real manuscripts with established scholarly transcriptions:
 
 Zero fabricated additions across all test cases. Full results in [`benchmark/test-results/`](benchmark/test-results/).
 
+**External line tools:** If you use a line detector (e.g. [Glyph Machina](https://glyphmachina.com/)) only to suggest line boundaries before protocol transcription, see [`benchmark/EXTERNAL_LINE_TOOLS.md`](benchmark/EXTERNAL_LINE_TOOLS.md) for how that relates to `lineRange` and what not to treat as canonical text.
+
 ### Multi-model stress test (optional)
 
 Cross-provider gate checks (schema validation + ground-truth word diff) are implemented in [`benchmark/stress_run.py`](benchmark/stress_run.py). Install API dependencies with `pip install -r requirements-stress.txt`, then set the provider keys you need: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, and `GOOGLE_API_KEY`. The runner loads a repo-root **`.env`** if present (copy from [`.env.example`](.env.example)); otherwise export variables in your shell.
@@ -165,11 +167,15 @@ Step-by-step for using **Cursor’s model picker** (no API keys): [`benchmark/CU
 
 To drive the **same prompts** through **Claude Code** in the terminal (`claude`): [`benchmark/CLAUDE_CLI.md`](benchmark/CLAUDE_CLI.md) (`python -m benchmark.claude_cli --case BM-001`).
 
+For anti-fabrication hardening, use the red-team gate: [`benchmark/RED_TEAM_NO_HALLUCINATION.md`](benchmark/RED_TEAM_NO_HALLUCINATION.md).
+
 ---
 
 ## Versioning
 
-The protocol uses **Semantic Versioning** ([semver.org](https://semver.org/)): see the root [`VERSION`](VERSION) file and [`CHANGELOG.md`](CHANGELOG.md). Machine-readable transcript outputs set `protocolVersion` to semver (`1.1.0` is current). The validator also accepts legacy `v1.0` / `v1.1` strings as aliases of `1.0.0` / `1.1.0` ([`benchmark/validate_schema.py`](benchmark/validate_schema.py), [transcription-output-schema-v1.1.0.md](transcription-output-schema-v1.1.0.md)).
+The protocol uses **Semantic Versioning** ([semver.org](https://semver.org/)): see the root [`VERSION`](VERSION) file and [`CHANGELOG.md`](CHANGELOG.md). Machine-readable transcript outputs set `protocolVersion` to semver (`1.1.0` is current). The validator accepts legacy `v1.0` / `v1.1` strings as aliases of `1.0.0` / `1.1.0` ([`benchmark/validate_schema.py`](benchmark/validate_schema.py), [transcription-output-schema-v1.1.0.md](transcription-output-schema-v1.1.0.md)).
+
+**Benchmarks:** Optional case **`BM-CROP`** in [`benchmark/manifest.yaml`](benchmark/manifest.yaml) targets binding-edge / scan **`[crop]`** tokens; see [`benchmark/test-results/BM-CROP.md`](benchmark/test-results/BM-CROP.md).
 
 ### Optional: post-hoc normalization
 
@@ -209,6 +215,8 @@ benchmark/
   manifest.yaml                    Stress-test cases and model defaults
   CURSOR_STRESS.md                   Run stress tests from Cursor UI + replay
   CLAUDE_CLI.md                      Same harness via Claude Code terminal
+  EXTERNAL_LINE_TOOLS.md             Optional: line detectors vs protocol transcript text
+  validate_lines_xml.py              Optional: well-formed XML + TextLine counts (PageXML export)
   ground-truth-*.md                  Known transcriptions for comparison
   test-results/                      Transcription outputs and reports
 ```
