@@ -1,6 +1,6 @@
 # Quality Rubric and Acceptance Tests
 
-> **Document file:** `quality-rubric-v1.1.0.md` · **Protocol:** 1.1.0 (semver; see repo [`VERSION`](VERSION)) · Defines pass/fail criteria, scoring methodology, benchmark validation, and adversarial limits.
+> **Document file:** `quality-rubric-v1.1.0.md` · **Protocol:** 1.1.0 (semver; see repo [`VERSION`](VERSION)) · Defines pass/fail criteria, scoring methodology, benchmark validation, and adversarial limits. · **Author:** Seth Strickland
 
 ---
 

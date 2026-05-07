@@ -1,6 +1,6 @@
 # Output Schema Specification
 
-> **Document file:** `transcription-output-schema-v1.1.0.md` · **Protocol:** **1.1.0** (semver; matches repo [`VERSION`](../VERSION)) — Required structure of every diplomatic `transcriptionOutput`.
+> **Document file:** `transcription-output-schema-v1.1.0.md` · **Protocol:** **1.1.0** (semver; matches repo [`VERSION`](../VERSION)) — Required structure of every diplomatic `transcriptionOutput`. · **Author:** Seth Strickland
 
 ---
 

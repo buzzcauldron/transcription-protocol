@@ -1,6 +1,6 @@
 # Academic Handwriting Transcription Protocol
 
-> **Document file:** `diplomatic-transcription-protocol-v1.1.0.md` · **Protocol version:** **1.1.0** (semver; matches repo [`VERSION`](VERSION)) — Strict no-addition transcription standard for LLM-assisted manuscript work.
+> **Document file:** `diplomatic-transcription-protocol-v1.1.0.md` · **Protocol version:** **1.1.0** (semver; matches repo [`VERSION`](VERSION)) — Strict no-addition transcription standard for LLM-assisted manuscript work. · **Author:** Seth Strickland
 
 ### Purpose and audience
 

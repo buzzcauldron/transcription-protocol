@@ -1,6 +1,6 @@
 # Prompt Templates Pack
 
-> **Document file:** `prompt-templates-v1.1.0.md` · **Protocol:** **1.1.0** — Role-specific prompts for handwritten document transcription with provider abstraction.
+> **Document file:** `prompt-templates-v1.1.0.md` · **Protocol:** **1.1.0** — Role-specific prompts for handwritten document transcription with provider abstraction. · **Author:** Seth Strickland
 
 ---
 
