@@ -206,6 +206,8 @@ The protocol uses **Semantic Versioning** ([semver.org](https://semver.org/)): s
 
 **Benchmarks:** Optional case **`BM-CROP`** in [`benchmark/manifest.yaml`](benchmark/manifest.yaml) targets binding-edge / scan **`[crop]`** tokens; see [`benchmark/test-results/BM-CROP.md`](benchmark/test-results/BM-CROP.md).
 
+For **high-stakes** or **very long** runs, split work across pages or sessions, use the **Verifier** prompt in a separate call, and allow higher output limits—see [diplomatic-transcription-protocol-v1.1.0.md](diplomatic-transcription-protocol-v1.1.0.md) §5.2 and [quality-rubric-v1.1.0.md](quality-rubric-v1.1.0.md) §6.2.1.
+
 ### Optional: post-hoc normalization
 
 If you already have a diplomatic transcript and want a **separate derivative** normalized layer (searchability, editorial orthography **within the document language(s)**), use the add-on in [`normalization-protocol/`](normalization-protocol/README.md). It has its own version string (current `norm-1.1.0`, **editorial levels** in policy), prompts, and optional validator [`benchmark/validate_normalization.py`](benchmark/validate_normalization.py) — it does not change the core transcription workflow. **Translation is not part of normalization** under this protocol.

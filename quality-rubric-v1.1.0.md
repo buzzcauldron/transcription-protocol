@@ -250,6 +250,10 @@ These are **design limits**, not oversights. The protocol requires honest proces
 2. **Pass 2 is not independent** in typical single-call deployments — Bias can persist across both passes (§5.2 note).
 3. **External verifier** — Prompts and pipeline hooks exist ([`prompt-templates-v1.1.0.md`](prompt-templates-v1.1.0.md), [`skill/SKILL.md`](skill/SKILL.md)); high-stakes work should use them.
 
+### 6.2.1 Known LLM architectural limits (normative pointers)
+
+Single autoregressive completions cannot reliably perform **exact** display-pass substitution across very long markdown, honor **coverage** rules without inventing text when **damage** dominates (see [diplomatic-transcription-protocol-v1.1.0.md](diplomatic-transcription-protocol-v1.1.0.md) §5.5–§5.6), or avoid **uncertainty-density** tension on idiosyncratic shorthand without **documented** cause (§5.6 carve-out). **Tiered output** and **verifier sessions** are operational mitigations ([`skill/SKILL.md`](skill/SKILL.md) Final Document; Verifier prompt §2).
+
 ### 6.3 Tier 2 — Partially closable (documentation + tooling)
 
 Normative **§5.6 word counting** is defined in [transcription-output-schema-v1.1.0.md](transcription-output-schema-v1.1.0.md) §4a and implemented in [`benchmark/validate_schema.py`](benchmark/validate_schema.py).

@@ -120,6 +120,10 @@ Emit your response as a structured document following the transcription-output-s
 
 **Human-readable Final Document (optional, see `skill/SKILL.md`):** If you also emit markdown sections **## Diplomatic Transcription** / **## Normalized Text** for the researcher, apply **display-only** substitutions there so the word “uncertain” does not appear: `[uncertain:` → `[?:`, `[glyph-uncertain:` → `[glyph-ambig:`. Fenced YAML blocks must keep protocol-canonical spellings (§3).
 
+**Footnote — literal text on the page:** Substitutions apply to **protocol markup** in the diplomatic transcript. If the manuscript **visibly contains** bracket text that would collide (e.g. a note literally reading `[uncertain: …]`), transcribe it verbatim in YAML and, in markdown only, set that visible passage in **inline code** or a **quote block** so you do not treat it as an uncertainty token (protocol §3, `skill/SKILL.md` Final Document).
+
+**Pass 2 / verifier:** A single response cannot prove an independent second pass against the image; use **§2 Verifier** in a **separate** session for evidence-grade review. Schema output checks structure only.
+
 ---
 
 ## 2. Verifier Prompt

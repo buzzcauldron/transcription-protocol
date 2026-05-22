@@ -38,6 +38,14 @@ Per **Phase 1** adoption (no protocol semver bump; spec filenames unchanged):
 - **Optional stress case `BM-CROP`** in [benchmark/manifest.yaml](benchmark/manifest.yaml); notes in [benchmark/test-results/BM-CROP.md](benchmark/test-results/BM-CROP.md) and [benchmark/images/README.md](benchmark/images/README.md).
 - **Pre-check vs metadata:** protocol §4, [skill/SKILL.md](skill/SKILL.md), [prompt-templates-v1.1.0.md](prompt-templates-v1.1.0.md), and [benchmark/prompt_builder.py](benchmark/prompt_builder.py) — when visible script/language/era **does not** match declared `targetLanguage` / `targetEra`, align metadata with the image or set `scriptMatchesConfig: false` and document; no fixed “medieval Latin” requirement. Regression: [`tests/test_validate_schema_precheck.py`](tests/test_validate_schema_precheck.py).
 
+### Adversarial mitigations (documentation only, 2026-04-01)
+
+- **§5.2 / §5.5 / §5.6** ([diplomatic-transcription-protocol-v1.1.0.md](diplomatic-transcription-protocol-v1.1.0.md)): single-inference Pass 2 is not proof of verification; coverage vs catastrophic damage; explicit §5.6 carve-out for idiosyncratic shorthand; §3 collision note for literal bracket text on the page.
+- **[skill/SKILL.md](skill/SKILL.md):** `runMode` guidance, Pass 2 honesty, display-pass collision (code/quote), tiered Final Document / output limits, optional normalization when budget-constrained.
+- **[prompt-templates-v1.1.0.md](prompt-templates-v1.1.0.md):** Final Document footnote; verifier vs single-call.
+- **[quality-rubric-v1.1.0.md](quality-rubric-v1.1.0.md) §6.2.1:** Known LLM architectural limits (cross-links).
+- **[README.md](README.md):** high-stakes / long-run pointer.
+
 ### Documentation & tooling
 
 - **§2.9:** Explicit **when not to use `efficient` mode** guidance (heavy abbreviation, complex layout, caret insertions, multi-page/palimpsest needs).

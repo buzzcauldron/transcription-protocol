@@ -120,8 +120,35 @@ def transcribe_gemini(
     return text or ""
 
 
+def transcribe_mistral(
+    system: str,
+    user_text: str,
+    image_paths: List[str],
+    model: str,
+) -> str:
+    from mistralai import Mistral
+
+    key = os.environ.get("MISTRAL_API_KEY")
+    if not key:
+        raise RuntimeError("MISTRAL_API_KEY is not set")
+    client = Mistral(api_key=key)
+    content: list = [{"type": "text", "text": f"{system}\n\n{user_text}"}]
+    for img in image_paths:
+        b64, mt = _b64_path(img)
+        content.append({
+            "type": "image_url",
+            "image_url": {"url": f"data:{mt};base64,{b64}"},
+        })
+    resp = client.chat.complete(
+        model=model,
+        messages=[{"role": "user", "content": content}],
+    )
+    return resp.choices[0].message.content or ""
+
+
 PROVIDERS = {
     "anthropic": transcribe_anthropic,
     "openai": transcribe_openai,
     "gemini": transcribe_gemini,
+    "mistral": transcribe_mistral,
 }
