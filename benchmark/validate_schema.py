@@ -93,6 +93,8 @@ VALID_POSITION = (
     "margin_bottom",
     "interlinear",
     "footnote",
+    "table_row",
+    "table_header",
 )
 
 UNCERTAINTY_FLOOD_THRESHOLD = 0.30
