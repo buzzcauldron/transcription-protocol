@@ -2,7 +2,41 @@
 
 from __future__ import annotations
 
+import json
 from typing import Any, Dict
+
+
+def _render_toggles(prompt_cfg: Dict[str, Any]) -> str:
+    """Build the diplomaticToggles YAML block from actual config values.
+
+    The schema template used to hardcode ``preserveOriginalAbbreviations: true``.
+    That caused models to echo ``true`` in their output metadata even when the
+    configuration said ``false``, because the output-schema example dominated
+    over the configuration block.  This function renders the *real* values from
+    the config so the model sees a consistent, binding example.
+    """
+    defaults: Dict[str, Any] = {
+        "preserveLineBreaks": True,
+        "preserveOriginalAbbreviations": True,
+        "markExpansions": False,
+        "captureDeletionsAndInsertions": False,
+        "captureUnclearGlyphShape": True,
+    }
+    raw = prompt_cfg.get("diplomaticToggles", {})
+    if isinstance(raw, str):
+        try:
+            parsed: Dict[str, Any] = json.loads(raw)
+        except Exception:
+            parsed = {}
+    elif isinstance(raw, dict):
+        parsed = dict(raw)
+    else:
+        parsed = {}
+    merged = {**defaults, **parsed}
+    lines = ["    diplomaticToggles:"]
+    for k, v in merged.items():
+        lines.append(f"      {k}: {str(v).lower()}")
+    return "\n".join(lines)
 
 # Zones per skill/PROVIDER_ADAPTERS.md — system = immutable rules; user = config + output schema body.
 
@@ -86,8 +120,16 @@ Use the target language and era ONLY to recognize letter forms. They must NEVER 
 Begin your response with the YAML document. Do not include conversational preamble before the YAML.
 Emit raw YAML only in the transcriptionOutput structure — do not wrap in markdown code fences unless unavoidable."""
 
-SCHEMA_USER_SUFFIX = """
+_SCHEMA_USER_PREFIX = """
 OUTPUT FORMAT (required — follow exactly; all fields mandatory unless noted):
+
+BINDING RULE — diplomaticToggles: The toggle values shown below come directly
+from your CONFIGURATION block above.  You MUST echo them back exactly as shown;
+do NOT substitute protocol defaults.  In particular, if
+preserveOriginalAbbreviations is false, your output metadata MUST say false AND
+your transcription text MUST contain only fully expanded words — no Unicode
+combining diacritics (U+0305 macron, U+0303 tilde, etc.), no superscript
+abbreviation letters.
 
 transcriptionOutput:
   protocolVersion: "1.1.0"
@@ -101,13 +143,10 @@ transcriptionOutput:
     targetEra: "<from configuration>"
     eraRange: "<from configuration or null>"
     diplomaticProfile: "<from configuration>"
-    diplomaticToggles:
-      preserveLineBreaks: true
-      preserveOriginalAbbreviations: true
-      markExpansions: false
-      captureDeletionsAndInsertions: false
-      captureUnclearGlyphShape: true
-    normalizationMode: "<from configuration>"
+"""
+
+# _SCHEMA_USER_SUFFIX_TAIL is appended after the dynamically-rendered toggle block.
+_SCHEMA_USER_SUFFIX_TAIL = """    normalizationMode: "<from configuration>"
     runMode: "<from configuration, default standard>"
     mixedContent: { mixedLanguage: false, mixedEra: false }
     scriptNotes: null
@@ -152,9 +191,11 @@ transcriptionOutput:
     auditPass: true   # must be true — false is a hard fail (§7.4)
 """
 
-# Same as SCHEMA_USER_SUFFIX but efficient mode: no Pass 2 block required (§2.9).
-SCHEMA_USER_SUFFIX_EFFICIENT = """
+_SCHEMA_USER_PREFIX_EFFICIENT = """
 OUTPUT FORMAT (required — follow exactly; all fields mandatory unless noted):
+
+BINDING RULE — diplomaticToggles: Echo your CONFIGURATION toggle values exactly
+into your output metadata.  Do NOT substitute defaults.
 
 transcriptionOutput:
   protocolVersion: "1.1.0"
@@ -168,13 +209,9 @@ transcriptionOutput:
     targetEra: "<from configuration>"
     eraRange: "<from configuration or null>"
     diplomaticProfile: "<strict or semi_strict only; not layout_aware or diplomatic_plus>"
-    diplomaticToggles:
-      preserveLineBreaks: true
-      preserveOriginalAbbreviations: true
-      markExpansions: false
-      captureDeletionsAndInsertions: false
-      captureUnclearGlyphShape: true
-    normalizationMode: "<from configuration>"
+"""
+
+_SCHEMA_USER_SUFFIX_TAIL_EFFICIENT = """    normalizationMode: "<from configuration>"
     runMode: "efficient"
     mixedContent: { mixedLanguage: false, mixedEra: false }
     scriptNotes: null
@@ -241,9 +278,12 @@ def build_user_text(prompt_cfg: Dict[str, Any], multi_page_note: str | None = No
     if multi_page_note:
         parts.append(f"- Note: {multi_page_note}")
     rm = _run_mode_from_cfg(prompt_cfg)
-    parts.append(
-        SCHEMA_USER_SUFFIX_EFFICIENT if rm == "efficient" else SCHEMA_USER_SUFFIX
-    )
+    toggle_block = _render_toggles(prompt_cfg)
+    if rm == "efficient":
+        schema = _SCHEMA_USER_PREFIX_EFFICIENT + toggle_block + _SCHEMA_USER_SUFFIX_TAIL_EFFICIENT
+    else:
+        schema = _SCHEMA_USER_PREFIX + toggle_block + _SCHEMA_USER_SUFFIX_TAIL
+    parts.append(schema)
     return "\n".join(parts)
 
 
