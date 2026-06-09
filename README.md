@@ -4,11 +4,50 @@
 
 A strict no-addition transcription system for LLM-assisted manuscript work, built for academic researchers who need extreme fidelity to handwritten source material.
 
-The **design intent** is **evidence-grade text** researchers can reuse in **later computational work**—corpus linguistics, quantitative text analysis, digital editions, linked open data, machine-learning features, or custom pipelines—without re-transcribing from images. Machine-readable `transcriptionOutput` (metadata, segments, uncertainty tokens, verification and audit blocks) keeps runs **reproducible** and **tool-friendly**; this protocol does not prescribe any particular stack.
+The **design intent** is **evidence-grade text** researchers can reuse in **later computational work** — corpus linguistics, quantitative text analysis, digital editions, linked open data, machine-learning features, or custom pipelines — without re-transcribing from images. Machine-readable `transcriptionOutput` (metadata, segments, uncertainty tokens, verification and audit blocks) keeps runs **reproducible** and **tool-friendly**; this protocol does not prescribe any particular stack.
 
 **Core guarantee**: the model will never add, infer, complete, or modernize text. Every ambiguity is explicitly marked. Every output is auditable.
 
----
+This repository contains the **specification, prompts, schema, rubric, and evaluation harness** needed to run and reproduce the protocol. As with any living standard, the hosted Cursor skill and the latest tagged version incorporate refinements made after earlier releases — see [What's in 1.1.0](#whats-in-110) and [`CHANGELOG.md`](CHANGELOG.md).
+
+## What's in 1.1.0
+
+The protocol uses [Semantic Versioning](https://semver.org/). Notable refinements in the current `1.1.0` line over the initial release:
+
+1. **Formal semver for `protocolVersion`** — canonical `1.0.0` / `1.1.0`; legacy `v1.0` / `v1.1` accepted as aliases (the validator maps them).
+2. **`runMode`** (`standard` | `efficient`) — efficient single-pass mode for throughput, with guard rails that forbid standard-only tokens and incompatible profiles.
+3. **Conservative epistemic stance** — default skeptical confidence, honest mismatch reporting, optional `metadata.epistemicNotes` (protocol §1.1).
+4. **Crop tokens `[crop]` / `[crop: …]`** — text truncated by image edge, binding, or scan, distinct from `[gap]` and `[illegible]` (Phase 1, protocol §3).
+5. **Diplomatic vs expansion firewall** — `preserveOriginalAbbreviations` is a hard split; the evaluator refuses to score diplomatic output against expanded ground truth (avoids 20–40 pt CER inflation).
+
+Full history: [`CHANGELOG.md`](CHANGELOG.md).
+
+## Benchmark results
+
+Tested against real manuscripts with established scholarly transcriptions:
+
+| Document | Era | Language | Accuracy | Additions | Result |
+|---|---|---|---|---|---|
+| Lincoln letter (1837) | 19th century | `eng-Latn` | 99.80% | **0** | CONDITIONAL_PASS |
+| Walters W.25 Psalter (~1200) | Medieval | `lat-Latn` | 100% | **0** | PASS |
+| Donne letter (1602) | Early modern | `eng-Latn` | 100% | **0** | PASS |
+
+Zero fabricated additions across all test cases. Full results in [`benchmark/test-results/`](benchmark/test-results/).
+
+**External line tools:** If you use a line detector (e.g. [Glyph Machina](https://glyphmachina.com/)) only to suggest line boundaries before protocol transcription, see [`benchmark/EXTERNAL_LINE_TOOLS.md`](benchmark/EXTERNAL_LINE_TOOLS.md) for how that relates to `lineRange` and what not to treat as canonical text.
+
+## Dependencies
+
+The **core protocol needs no installation** — it is markdown specs plus copy-paste prompts (Option A below). Optional tooling:
+
+| Use | Install | Notes |
+|---|---|---|
+| Schema validation | `pip install pyyaml` | [`benchmark/validate_schema.py`](benchmark/validate_schema.py), [`benchmark/validate_lines_xml.py`](benchmark/validate_lines_xml.py) |
+| Multi-model stress tests | `pip install -r requirements-stress.txt` | `pyyaml`, `python-dotenv`, `certifi`, `anthropic`, `openai`, `google-generativeai` |
+| Provider keys | `.env` (copy from [`.env.example`](.env.example)) | `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GOOGLE_API_KEY` |
+| Pipeline integration (lineation → HTR → protocol, TEI export) | [`transcriber-shell`](https://github.com/buzzcauldron/transcription-shell) | separate package; vendors this protocol |
+
+No API keys are required for Option A (chat) or for replaying saved responses.
 
 ## Quick Start
 
@@ -48,8 +87,6 @@ For batch processing with programmatic quality control:
 2. Implement the adapter interface from [skill/PROVIDER_ADAPTERS.md](skill/PROVIDER_ADAPTERS.md) for your chosen LLM provider(s).
 3. The pipeline runs dual independent transcriptions, diffs them, adjudicates conflicts, validates outputs against the quality rubric, and exports researcher-ready packages.
 
----
-
 ## Configuration Reference
 
 The protocol’s **conservative epistemic stance** (default skeptical confidence, honest mismatch reporting, optional **`metadata.epistemicNotes`**) is in [diplomatic-transcription-protocol-v1.1.0.md §1.1](diplomatic-transcription-protocol-v1.1.0.md#11-conservative-epistemic-stance).
@@ -63,8 +100,6 @@ Use ISO 639-3 codes with a script tag. Common values:
 | Code | Language |
 |---|---|
 | `eng-Latn` | English |
-
-For **historical English handwriting**, optionally set `englishHandwritingModality` in output metadata (e.g. `secretary`, `copperplate`)—see [diplomatic-transcription-protocol-v1.1.0.md](diplomatic-transcription-protocol-v1.1.0.md) §2.8.
 | `lat-Latn` | Latin |
 | `fra-Latn` | French |
 | `deu-Latn` | German (Latin script) |
@@ -74,7 +109,7 @@ For **historical English handwriting**, optionally set `englishHandwritingModali
 | `heb-Hebr` | Hebrew |
 | `mixed` | Multiple languages (add `languageSet` array) |
 
-For unlisted languages, use the ISO 639-3 code with a hyphenated script identifier.
+For unlisted languages, use the ISO 639-3 code with a hyphenated script identifier. For **historical English handwriting**, optionally set `englishHandwritingModality` in output metadata (e.g. `secretary`, `copperplate`) — see [diplomatic-transcription-protocol-v1.1.0.md](diplomatic-transcription-protocol-v1.1.0.md) §2.8.
 
 ### Target Era
 
@@ -125,8 +160,6 @@ Fine-tune behavior within your chosen profile:
 
 Full expansion rules — what the model must and must not output when `preserveOriginalAbbreviations: false` — are in [diplomatic-transcription-protocol-v1.1.0.md §2.4.1](diplomatic-transcription-protocol-v1.1.0.md#241-expansion-mode-preserveoriginalabbreviations-false).
 
----
-
 ## How Uncertainty Is Marked
 
 The protocol uses a fixed set of tokens. The model cannot improvise alternatives or silently skip unclear text.
@@ -138,25 +171,14 @@ The protocol uses a fixed set of tokens. The model cannot improvise alternatives
 | `[uncertain: X]` | Best reading, low confidence |
 | `[uncertain: X / Y]` | Two or more plausible readings |
 | `[gap]` | Physical gap or tear |
+| `[crop]` / `[crop: description]` | Text truncated by image edge, binding, or scan |
 | `[damaged: description]` | Visible but compromised text |
 
----
+## Reproducing the benchmarks
 
-## Benchmark Results
+This is the "run it end-to-end" path: schema validation plus ground-truth word diffs across providers.
 
-Tested against real manuscripts with established scholarly transcriptions:
-
-| Document | Era | Language | Accuracy | Additions | Result |
-|---|---|---|---|---|---|
-| Lincoln letter (1837) | 19th century | `eng-Latn` | 99.80% | **0** | CONDITIONAL_PASS |
-| Walters W.25 Psalter (~1200) | Medieval | `lat-Latn` | 100% | **0** | PASS |
-| Donne letter (1602) | Early modern | `eng-Latn` | 100% | **0** | PASS |
-
-Zero fabricated additions across all test cases. Full results in [`benchmark/test-results/`](benchmark/test-results/).
-
-**External line tools:** If you use a line detector (e.g. [Glyph Machina](https://glyphmachina.com/)) only to suggest line boundaries before protocol transcription, see [`benchmark/EXTERNAL_LINE_TOOLS.md`](benchmark/EXTERNAL_LINE_TOOLS.md) for how that relates to `lineRange` and what not to treat as canonical text.
-
-### Multi-model stress test (optional)
+### Multi-model stress test
 
 Cross-provider gate checks (schema validation + ground-truth word diff) are implemented in [`benchmark/stress_run.py`](benchmark/stress_run.py). Install API dependencies with `pip install -r requirements-stress.txt`, then set the provider keys you need: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, and `GOOGLE_API_KEY`. The runner loads a repo-root **`.env`** if present (copy from [`.env.example`](.env.example)); otherwise export variables in your shell.
 
@@ -176,13 +198,7 @@ python -m benchmark.stress_replay
 python -m benchmark.stress_run --replay
 ```
 
-Step-by-step for using **Cursor’s model picker** (no API keys): [`benchmark/CURSOR_STRESS.md`](benchmark/CURSOR_STRESS.md).
-
-To drive the **same prompts** through **Claude Code** in the terminal (`claude`): [`benchmark/CLAUDE_CLI.md`](benchmark/CLAUDE_CLI.md) (`python -m benchmark.claude_cli --case BM-001`).
-
-For anti-fabrication hardening, use the red-team gate: [`benchmark/RED_TEAM_NO_HALLUCINATION.md`](benchmark/RED_TEAM_NO_HALLUCINATION.md).
-
----
+Step-by-step for using **Cursor’s model picker** (no API keys): [`benchmark/CURSOR_STRESS.md`](benchmark/CURSOR_STRESS.md). To drive the **same prompts** through **Claude Code** in the terminal (`claude`): [`benchmark/CLAUDE_CLI.md`](benchmark/CLAUDE_CLI.md) (`python -m benchmark.claude_cli --case BM-001`). For anti-fabrication hardening, use the red-team gate: [`benchmark/RED_TEAM_NO_HALLUCINATION.md`](benchmark/RED_TEAM_NO_HALLUCINATION.md).
 
 ## Versioning
 
@@ -193,8 +209,6 @@ The protocol uses **Semantic Versioning** ([semver.org](https://semver.org/)): s
 ### Optional: post-hoc normalization
 
 If you already have a diplomatic transcript and want a **separate derivative** normalized layer (searchability, editorial orthography **within the document language(s)**), use the add-on in [`normalization-protocol/`](normalization-protocol/README.md). It has its own version string (current `norm-1.1.0`, **editorial levels** in policy), prompts, and optional validator [`benchmark/validate_normalization.py`](benchmark/validate_normalization.py) — it does not change the core transcription workflow. **Translation is not part of normalization** under this protocol.
-
----
 
 ## Repository Structure
 
@@ -234,8 +248,6 @@ benchmark/
   test-results/                      Transcription outputs and reports
 ```
 
----
-
 ## Worked Example
 
 Here is a typical output for a 19th-century English letter under `strict` profile:
@@ -258,8 +270,6 @@ segments:
 ```
 
 The model preserved original spelling, flagged ambiguous words with `[uncertain: ...]`, and marked unreadable text with `[illegible: ...]` -- adding nothing.
-
----
 
 ## TEI Export
 
@@ -285,8 +295,11 @@ The `n` attribute on `<lb/>` corresponds to the protocol `lineRange` start (e.g.
 
 `confidence` maps to `@cert` on the enclosing element.
 
----
+## Credits & License
 
-## License
+- **Transcription protocol, prompts, schema, and rubric** — this repository.
+- **Pipeline integration** — [`transcriber-shell`](https://github.com/buzzcauldron/transcription-shell) (lineation → HTR → protocol; `yaml-to-tei`).
+- **External line detection** — [Glyph Machina](https://glyphmachina.com/) (line boundaries only; not canonical text — see [`benchmark/EXTERNAL_LINE_TOOLS.md`](benchmark/EXTERNAL_LINE_TOOLS.md)).
+- **Benchmark source images** — public domain / open license: Library of Congress, Walters Art Museum (CC0), Folger Shakespeare Library (CC BY-SA 4.0).
 
-Protocol documents and evaluation scripts are available for academic and non-commercial use. Benchmark source images are public domain (Library of Congress, Walters Art Museum CC0, Folger Shakespeare Library CC BY-SA 4.0).
+Protocol documents and evaluation scripts are available for **academic and non-commercial use**.
