@@ -107,10 +107,23 @@ Fine-tune behavior within your chosen profile:
 | Toggle | Default | Effect |
 |---|---|---|
 | `preserveLineBreaks` | `true` | Keep original line breaks |
-| `preserveOriginalAbbreviations` | `true` | Reproduce abbreviations as-is |
-| `markExpansions` | `false` | Tag expanded abbreviations with `[exp: ...]` |
+| `preserveOriginalAbbreviations` | `true` | **Diplomatic mode**: reproduce abbreviations as-is using Unicode combining chars. Set `false` for **expansion mode** — see below. |
+| `markExpansions` | `false` | Tag expanded abbreviations with `[exp: ...]` (only when `preserveOriginalAbbreviations: true`) |
 | `captureDeletionsAndInsertions` | profile-dependent | Encode strikethroughs and interlinear additions |
 | `captureUnclearGlyphShape` | `true` | Note ambiguous letter forms with `[glyph-uncertain: ...]` |
+
+### Diplomatic vs Expansion Mode
+
+`preserveOriginalAbbreviations` controls how abbreviations appear in output text — this is a **hard split**, not a style preference:
+
+| Mode | Toggle value | Output text | Use when |
+|---|---|---|---|
+| **Diplomatic** (default) | `true` | `dn̄s` (Unicode combining chars preserved) | Paleographic analysis, diplomatic editions, any run not compared to expanded GT |
+| **Expansion** | `false` | `dominus` (full word written out) | Scoring against expanded PAGE XML ground truth, corpus linguistics, search indexes |
+
+**Evaluation firewall:** Do not compare diplomatic output against expanded ground truth — the CER will be inflated by 20–40 points. The evaluator (`benchmark/evaluate.py`) enforces this as a hard gate. Prompt config files designed for use with `transcriber-shell` are provided in pairs (e.g. `prompt_charter.yaml` / `prompt_charter_expanded.yaml`) so the intended mode is unambiguous from the filename.
+
+Full expansion rules — what the model must and must not output when `preserveOriginalAbbreviations: false` — are in [diplomatic-transcription-protocol-v1.1.0.md §2.4.1](diplomatic-transcription-protocol-v1.1.0.md#241-expansion-mode-preserveoriginalabbreviations-false).
 
 ---
 
@@ -245,6 +258,32 @@ segments:
 ```
 
 The model preserved original spelling, flagged ambiguous words with `[uncertain: ...]`, and marked unreadable text with `[illegible: ...]` -- adding nothing.
+
+---
+
+## TEI Export
+
+The `transcriptionOutput` YAML can be converted to TEI P5 XML via `transcriber-shell yaml-to-tei` (or `scripts/latin_ms/yaml_to_tei.py`). Each segment maps to a `<p rend="{position}">` element in the TEI body. When a segment carries a `lineRange`, physical manuscript lines are encoded as `<lb n="N"/>` milestones:
+
+```xml
+<p rend="body">
+  <lb n="3"/>prima linea
+  <lb n="4"/>secunda linea
+  <lb n="5"/>tertia linea
+</p>
+```
+
+The `n` attribute on `<lb/>` corresponds to the protocol `lineRange` start (e.g. `lineRange: "3-5"` → `n="3"`, `n="4"`, `n="5"`). Segments without `lineRange` that contain a single line set the element text directly. Special positions are handled as follows:
+
+| Protocol position | TEI element |
+|---|---|
+| `body` | `<p rend="body">` |
+| `header` / `footer` | `<p rend="header">` / `<p rend="footer">` |
+| `margin_left` / `margin_right` / etc. | `<p rend="marginLeft">` etc. |
+| `interlinear` | `<add place="above">` |
+| `table_row` / `table_header` | `<table><row><cell>` |
+
+`confidence` maps to `@cert` on the enclosing element.
 
 ---
 

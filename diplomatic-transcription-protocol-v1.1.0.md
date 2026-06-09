@@ -104,12 +104,27 @@ Optional refinement: `eraRange` (e.g., `1600-1699`) for tighter paleographic cal
 | Toggle | Default | Notes |
 |---|---|---|
 | `preserveLineBreaks` | `true` | `false` only allowed in `semi_strict` or above. |
-| `preserveOriginalAbbreviations` | `true` | When `true`, abbreviations are reproduced as-is. |
-| `markExpansions` | `false` | When `true`, expanded abbreviations use `[exp: ...]` tags. Only meaningful if `preserveOriginalAbbreviations` is `true`. |
+| `preserveOriginalAbbreviations` | `true` | **Diplomatic mode** (default): reproduce abbreviations verbatim using Unicode combining characters. **Expansion mode** (`false`): write out each abbreviation as its complete expanded word — see §2.4.1. |
+| `markExpansions` | `false` | When `true`, expanded abbreviations use `[exp: ...]` tags. Only meaningful when `preserveOriginalAbbreviations` is `true` (to annotate optional inline expansions alongside preserved abbreviated forms). |
 | `captureDeletionsAndInsertions` | `false` (`true` in `layout_aware`, `diplomatic_plus`) | Encode strikethroughs, carets, and interlinear additions. |
 | `captureUnclearGlyphShape` | `true` | Emit `[glyph-uncertain: description]` for ambiguous letter forms. |
 
 **`&c` (et cetera) and `markExpansions`:** Paleographers treat scribal `&c` variously as a logogram or as an abbreviation. The protocol does not mandate one reading, but it **does** require **consistency** when `markExpansions` is `true` and other suspensions in the same run use `[exp: …]`: either keep `&c` literal everywhere (no `[exp:]`), or expand every instance with a grounded `[exp: …]` (language-appropriate) the same way as other marked expansions. Mixing bare `&c` beside sibling `[exp: …]` tags without a segment-level justification in `notes` or `epistemicNotes` is a diplomatic inconsistency (rubric: abbreviation handling).
+
+#### 2.4.1 Expansion Mode (`preserveOriginalAbbreviations: false`)
+
+When set to `false`, the transcriber **must** write out every abbreviation as its complete, unabbreviated word. This mode is required when outputs will be evaluated against expanded ground-truth corpora (e.g. PAGE XML ground truth from Glyph Machina or AALT) — comparing diplomatic (abbreviated) output against expanded GT inflates CER by 20–40 points and produces meaningless scores.
+
+**Rules for expansion mode:**
+
+1. **No Unicode combining diacritics in output text.** Do not output U+0305 (combining overline/macron), U+0303 (combining tilde), or superscript abbreviation letters. These marks are the diplomatic representation; in expansion mode they must be resolved to full words.
+2. **Expand to the specific inflected form visible.** The case ending visible on the parchment (even a single surviving letter) takes precedence over what Latin grammar "should" require — do not normalise to nominative.
+3. **When expansion is ambiguous, use `[uncertain: word1 / word2]`**, not the abbreviated form. "Ambiguous" means two different full words are equally supported by the visible mark; it does not mean "I am not confident" — confident uncertain readings still get `[uncertain:]`.
+4. **`etc` is a conventional scribal contraction**, not an abbreviation requiring expansion. Write `etc` verbatim.
+5. **Proper names are not abbreviations.** If a proper noun is abbreviated, attempt the expansion only when a specific mark is visible; otherwise use `[uncertain: expanded / abbreviated]` or leave the abbreviated form with a note.
+6. **Corpus-specific expansion tables** should be supplied in the `scriptNotesOptional` field of the prompt configuration (see prompt configs in `scripts/latin_ms/` of `transcription-shell`).
+
+**Evaluation firewall:** A pipeline that accepts output YAMLs for scoring against expanded GT **must** reject any YAML whose `metadata.diplomaticToggles.preserveOriginalAbbreviations` is `true`. This is a hard gate — the modes are not interchangeable. Prompt config files in `transcription-shell` are provided in pairs (e.g. `prompt_charter.yaml` / `prompt_charter_expanded.yaml`) to make the intended mode explicit from the filename.
 
 ### 2.5 Normalization Mode
 
