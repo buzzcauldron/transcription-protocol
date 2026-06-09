@@ -1,0 +1,122 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "LOC-mcc-030"
+    modelId: "gemini-1.5-pro"
+    timestamp: "2024-10-27T12:00:00Z"
+    targetLanguage: "eng-Latn"
+    languageSet: []
+    targetEra: "nineteenth_century"
+    eraRange: "1830-1840"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: { mixedLanguage: false, mixedEra: false }
+    scriptNotes: "copperplate cursive; two-page letter — transcribe all visible body text"
+    englishHandwritingModality: "copperplate"
+    epistemicNotes: "The transcription preserves the physical damage (tears and gaps) at the bottom of Page 1 and Page 2 using [gap] tokens. Long s (ſ) is preserved where clearly written."
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 2
+    scriptIdentified: "copperplate cursive"
+    scriptMatchesConfig: true
+    conditionNotes: "Page 1 has a vertical tear down the middle of the bottom third, resulting in missing letters/words. Page 2 has a small hole/tear near the bottom."
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-27"
+      position: "body"
+      text: |
+        Springfield Aug. 16[superscript:th] 1837
+
+        Friend Mary
+                    You will, no doubt, think it rather
+        strange, that I should write you a letter on the same
+        day on which we parted; and I can only account
+        for it by supposing, that seeing you lately makes
+        me think of you now than usual, while at our
+        late meeting we had but few expreſsions of thoughts.
+        You must know that I can not see you, or think
+        of you, with entire indifference; and yet it may be,
+        that you are mistaken in regard to what my real
+        feelings towards you are. If I knew you were not, I
+        should not trouble you with this letter. Perhaps any
+        other man would know enough without further infor=
+        mation; but I consider it my peculiar right to plead
+        ignorance, and your bounden duty to allow the plea.
+        I want in all cases to do right; and most particular=
+        ly so, in all cases with women. I want, at this par=
+        ticular time, more than any thing else, to do right with
+        you, and if I knew it would be doing right, as
+        I rather suspect it would, to let you alone, I
+        would do it. An[gap] the purpose of making the
+        matter as plain as[gap]er, I now say, that you can
+        now drop the subj[gap]ismiss your thoughts (if you ever
+        had any) from me[gap]ver, and leave this letter un=
+        answered, without[gap]ing forth one accusing mur=
+        mer from me. An[gap]will even go further, and say,
+      confidence: "medium"
+      uncertaintyTokenCount: 6
+      notes: "Vertical tear at the bottom of the page splits lines 22-27."
+    - segmentId: 2
+      pageNumber: 2
+      lineRange: "1-26"
+      position: "body"
+      text: |
+        that if it will add any thing to your comfort, or peace of
+        mind, to do so, it is my sincere wish that you should
+        Do not understand by this, that I wish to cut your acquai=
+        intance. I mean no such thing. What I do wish is, that
+        our further acquaintance shall depend upon yourself. If
+        such further acquaintance would contribute nothing to your
+        happineſs, I am sure it would not to mine. If you
+        feel yourself in any degree bound to me, I am now willing
+        to release you, provided you wish it; while, on the other
+        hand, I am willing, and even anxious to bind
+        you faster, if I can be convinced that it will, in any
+        considerable degree, add to your happineſs. This, indeed,
+        is the whole question with me.
+        more miserable than to believe you miserable— nothing more
+        happy, than to know you were so.
+              In what I have now said, I think I can not be
+        misunderstood; and to make myself understood, is the
+        only object of this letter.
+              If it suits you best to not answer this— farewell—
+        a long life and a merry one attend you. But if you
+        conclude to write back, speak as plainly as I do. Then
+        can be neither harm nor danger, in saying, to me, any
+        thing you think, just in the [gap] you think it.
+              My respects to your [gap] [uncertain: S.]
+                                            Your friend
+                                                  Lincoln
+      confidence: "medium"
+      uncertaintyTokenCount: 2
+      notes: "Small tear/hole on line 23 and 24."
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 1
+      pass1Reading: "expreſsions"
+      pass2Reading: "expreſsions"
+      resolution: "pass2 confirms long s spelling"
+      resolved: true
+  hallucinationAudit:
+    totalWords: 385
+    wordsGroundedInGlyphs: 385
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```

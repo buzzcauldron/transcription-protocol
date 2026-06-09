@@ -24,15 +24,34 @@ Full history: [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Benchmark results
 
-Tested against real manuscripts with established scholarly transcriptions:
+Tested against real manuscripts with established scholarly transcriptions. **Every run below is blind** — the model transcribed from the image alone, with the ground truth used only for scoring afterward, never supplied as input (full per-run reports in [`benchmark/test-results/`](benchmark/test-results/)). All runs used a frontier model (Claude 4 Opus):
 
-| Document | Era | Language | Accuracy | Additions | Result |
+| Document | Era / hand | Lang | Accuracy | Additions | Disposition |
 |---|---|---|---|---|---|
-| Lincoln letter (1837) | 19th century | `eng-Latn` | 99.80% | **0** | CONDITIONAL_PASS |
-| Walters W.25 Psalter (~1200) | Medieval | `lat-Latn` | 100% | **0** | PASS |
-| Donne letter (1602) | Early modern | `eng-Latn` | 100% | **0** | PASS |
+| [Lincoln → Owens letter (1837)](benchmark/test-results/evaluation-report-001.md) | 19th c. | `eng-Latn` | 99.80% words (1 omission at fold crease) | **0** | CONDITIONAL_PASS |
+| [Walters W.25 Psalter (~1200)](benchmark/test-results/evaluation-report-002-medieval.md) | Medieval | `lat-Latn` | 100% words | **0** | PASS |
+| [Donne → Egerton letter (1602)](benchmark/test-results/evaluation-report-003-earlymodern.md) | Early modern secretary | `eng-Latn` | 100% words | **0** | PASS |
+| [KB27.335 plea roll (c. 1340–80)](benchmark/test-results/evaluation-report-005-kb27-blind.md) | Medieval legal anglicana | `lat-Latn` | 1.82% CER / 6.00% WER (15 substitutions) | **0** | **FAIL** |
 
-Zero fabricated additions across all test cases. Full results in [`benchmark/test-results/`](benchmark/test-results/).
+**Zero fabricated additions across all four cases** — the protocol's core guarantee held even where accuracy dropped. The two clean letters and the Psalter pass outright; the Lincoln letter's single omission sits on a fold crease and routes to human review.
+
+**The legal-hand result is the one to watch:** KB27.335 (Gothic anglicana plea roll) FAILs the 6% WER gate. All 15 errors are *substitutions*, not additions or omissions — the model silently normalized scribal Latin to classical forms (`ecclesticarum` → `ecclesiasticarum`, `lettris` → `litteris`). This **Latin normalization bias** is the dominant failure mode for medieval legal hands and drove the anti-normalization rules now in the protocol (§5.4) and the skill.
+
+> A second legal-hand run (CP40.355) scored 0% CER/WER but is **excluded from this table because it was not blind** — its ground-truth PAGE XML was read into context before transcription. Its report stays in [`benchmark/test-results/`](benchmark/test-results/evaluation-report-004-legalhand.md) with that caveat.
+
+### Compliance is model-dependent (cross-model blind check)
+
+The frontier-model pass above is **not** automatic for cheaper/faster models. Re-running the blind harness on **BM-001 (Lincoln)** image-only across Gemini tiers — **none clears the gate**:
+
+| Model | Schema valid | Disposition | Dominant failure mode |
+|---|---|---|---|
+| Claude 4 Opus *(reference)* | ✓ | CONDITIONAL_PASS | — |
+| `gemini-2.5-pro` | ✓ | **FAIL** | schema-valid, but heavy substitution / Latin normalization |
+| `gemini-2.5-flash` | ✓ | **FAIL** | garbles and duplicates words; archival markings dumped into body text |
+| `gemini-3.5-flash` | ✗ | **FAIL** | omits required `protocolVersion` |
+| `gemini-2.5-flash-lite` | ✗ | **FAIL** | omits `confidence` / `uncertaintyTokenCount` / `mismatchReport` / `hallucinationAudit` |
+
+Bigger/newer Gemini trades one failure for another (garbling → substitution → schema breakage); none meets the bar a frontier model does. The **disposition is stable (all FAIL)**, but the exact word-diff counts vary run-to-run — these are noisy single samples at default temperature, scored with the coarse stress-harness word-diff against the Basler body text (inflated by archival text and formatting; not directly comparable to the curated CER above). Raw responses and the latest matrix are under [`benchmark/test-results/stress/`](benchmark/test-results/stress/); reproduce via [Reproducing the benchmarks](#reproducing-the-benchmarks).
 
 **External line tools:** If you use a line detector (e.g. [Glyph Machina](https://glyphmachina.com/)) only to suggest line boundaries before protocol transcription, see [`benchmark/EXTERNAL_LINE_TOOLS.md`](benchmark/EXTERNAL_LINE_TOOLS.md) for how that relates to `lineRange` and what not to treat as canonical text.
 
