@@ -119,19 +119,7 @@ No installation required. Works with Claude, ChatGPT, Gemini, or any LLM that ac
 3. Paste the filled-in prompt into your chat, attach the manuscript image, and send.
 4. For verification, open a **new chat session** and paste the **Verifier Prompt** (Section 2) along with the same image and the transcription output.
 
-### Option B: Install as a Cursor Agent Skill
-
-For repeated use inside Cursor IDE:
-
-```bash
-# Clone into your personal skills directory
-git clone https://github.com/buzzcauldron/transcription-protocol.git \
-  ~/.cursor/skills/academic-transcription
-```
-
-The skill auto-activates when you mention transcription, paleography, or manuscript work. Attach a manuscript image and the agent will follow the protocol automatically.
-
-### Option C: Build an Automated Pipeline
+### Option B: Build an Automated Pipeline
 
 For batch processing with programmatic quality control:
 
