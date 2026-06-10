@@ -51,20 +51,22 @@ Latest blind runs via [`benchmark/stress_run.py`](benchmark/stress_run.py) (`tem
 | BM-001 | Lincoln → Owens (1837) | 95.1% | 31 | 24 | ✓ |
 | BM-MED-001 | Walters W.25 psalter | 86.0% | 16 | 14 | ✓ |
 | BM-KB27 | KB27.335 plea roll | 31.7% | 165 | 170 | ✓ |
-| BM-MOD-DEED | Interior Dept → Nicolay (Indian deeds, 1865) | 98.7% | 4 | 1 | ✗ *(position enum)* |
-| BM-MOD-LOVEJOY | Lovejoy → Nicolay (Joliet postmaster, 1864) | — | — | — | ✗ *(YAML parse fail)* |
+| BM-MOD-DEED | Interior Dept → Nicolay (Indian deeds, 1865) | 98.7% | 4 | 1 | ✓ |
+| BM-MOD-LOVEJOY | Lovejoy → Nicolay (Joliet postmaster, 1864) | 81.1%† | 2 | 14 | ✓ |
 | BM-MOD-JOHNSON | Reverdy Johnson → Lincoln (pardon, 1864) | 29.9% | 15 | 47 | ✓ |
+
+† Flash baseline (2.5 Pro had YAML parse error on this case).
 
 **Shell — best HTR model per case (Kraken + Gemini 2.5 Pro correct-mode):**
 
 | Case | Document | HTR model | Accuracy | Add | Omit | Schema | vs image-only |
 |---|---|---|---:|---:|---:|:---:|---|
-| BM-001 | Lincoln → Owens (1837) | r5 | 94.5% | 31 | 27 | ✗ *(position)* | −0.6pt |
+| BM-001 | Lincoln → Owens (1837) | r5 | 94.5% | 31 | 27 | ✓ | −0.6pt |
 | BM-MED-001 | Walters W.25 psalter | r5 | **88.0%** | 14 | 12 | ✓ | **+2.0pt** |
 | BM-KB27 | KB27.335 plea roll | r2 | 26.9% | 158 | 182 | ✓ | −4.8pt |
-| BM-MOD-DEED | Interior Dept → Nicolay (1865) | computus | **97.4%** | 5 | 2 | ✓ | −1.3pt (fixes schema) |
-| BM-MOD-LOVEJOY | Lovejoy → Nicolay (1864) | computus | **82.4%** | 4 | 13 | ✓ | fixes YAML parse |
-| BM-MOD-JOHNSON | Reverdy Johnson → Lincoln (1864) | r5 | **31.3%** | 19 | 46 | ✓ | **+1.5pt** |
+| BM-MOD-DEED | Interior Dept → Nicolay (1865) | computus | 97.4% | 5 | 2 | ✓ | −1.3pt |
+| BM-MOD-LOVEJOY | Lovejoy → Nicolay (1864) | r5 | 81.1% | 3 | 14 | ✓ | ±0 |
+| BM-MOD-JOHNSON | Reverdy Johnson → Lincoln (1864) | r5 | **31.3%** | 19 | 46 | ✓ | **+1.4pt** |
 
 **Additional image-only model variants (Gemini 2.5 Flash, Flash-Lite, 3.5 Flash):**
 
@@ -75,16 +77,23 @@ Latest blind runs via [`benchmark/stress_run.py`](benchmark/stress_run.py) (`tem
 | BM-001 | `gemini-2.5-flash-lite` | 38.2% | 46 | 303 | ✗ |
 | BM-MED-001 | `gemini-2.5-flash` | 75.0% | 28 | 25 | ✓ |
 | BM-KB27 | `gemini-2.5-flash` | 21.3% | 184 | 196 | ✗ |
-| BM-MOD-DEED | `gemini-2.5-flash` | 94.9% | 7 | 4 | ✗ |
-| BM-MOD-LOVEJOY | `gemini-2.5-flash` | 81.1% | 2 | 14 | ✗ |
-| BM-MOD-JOHNSON | `gemini-2.5-flash` | 23.9% | 20 | 51 | ✗ |
+| BM-MOD-DEED | `gemini-2.5-flash` | 94.9% | 7 | 4 | ✓ |
+| BM-MOD-LOVEJOY | `gemini-2.5-flash` | 81.1% | 2 | 14 | ✓ |
+| BM-MOD-JOHNSON | `gemini-2.5-flash` | 23.9% | 20 | 51 | ✓ |
 
 | Reference | Document | Model | Accuracy | Add | Disposition |
 |---|---|---|---:|---:|---|
 | *(evaluation harness)* | Lincoln → Owens (1837) | Claude 4 Opus | 99.8% | **0** | CONDITIONAL_PASS |
 | *(evaluation harness)* | KB27.335 plea roll | Claude 4 Opus | 6.0% WER (15 subst.) | **0** | FAIL |
 
-**Takeaways:** HTR drafts help on medieval Latin (BM-MED-001 +2pt, schema passes) and fix YAML parse failures on modern English (BM-MOD-LOVEJOY, BM-MOD-JOHNSON). They hurt on legal anglicana (BM-KB27 −4.8pt vs image-only) because current HTR models do not cover this script — an anglicana-specific fine-tune is in progress. Schema failures across the board are caused by `position` enum drift (`marginalia`, `top`, `address`) being output by the model — the shell normalizes these for Latin cases but not all English cases. KB27 is the dominant unsolved case. Raw responses: [`benchmark/test-results/stress/`](benchmark/test-results/stress/); reproduce via [Reproducing the benchmarks](#reproducing-the-benchmarks).
+**Additional shell variants (Glyph Machina local HTR, MPS, 2026-06-10):**
+
+| Case | HTR | Accuracy | Add | Omit | Notes |
+|---|---|---:|---:|---:|---|
+| BM-KB27 | gm | 9.2% | 194 | 226 | LLM discarded 23-line hint (image: 12 lines visible); line count mismatch |
+| BM-MED-001 | gm | 85.0% | 18 | 15 | Below r5 (88%); GM is general, r5 is fine-tuned for medieval Latin |
+
+**Takeaways:** Kraken fine-tuned models (r5, computus) outperform the parent GM model on their target scripts because specialization beats generalization. GM's `best_HTR.net` is the right training DATA source; our downstream models are the inference-time recommendation. KB27 is the dominant unsolved case — a Kraken anglicana fine-tune trained on legal Anglicana corpora (Bridges-2 r6/anglicana run) is in progress; KB27 with `shell-anglicana` is expected to substantially outperform the current 26.9% baseline. Position enum normalization was applied in this rescore pass — schema pass rates improved. Raw responses: [`benchmark/test-results/stress/`](benchmark/test-results/stress/); reproduce via [Reproducing the benchmarks](#reproducing-the-benchmarks).
 
 **External line tools:** If you use a line detector (e.g. [Glyph Machina](https://glyphmachina.com/)) only to suggest line boundaries before protocol transcription, see [`benchmark/EXTERNAL_LINE_TOOLS.md`](benchmark/EXTERNAL_LINE_TOOLS.md) for how that relates to `lineRange` and what not to treat as canonical text.
 

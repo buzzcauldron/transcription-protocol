@@ -97,6 +97,43 @@ VALID_POSITION = (
     "table_header",
 )
 
+# LLM-emitted position variants that map to canonical VALID_POSITION values.
+# Applied before validation so saved responses with these values are not penalised.
+_POSITION_ALIASES: Dict[str, str] = {
+    "main": "body", "main_body": "body", "center": "body",
+    "full_page": "body", "full_text": "body", "text": "body",
+    "left_margin": "margin_left", "right_margin": "margin_right",
+    "top_margin": "margin_top", "bottom_margin": "margin_bottom",
+    # Bare direction words.
+    "top": "margin_top", "bottom": "margin_bottom",
+    "left": "margin_left", "right": "margin_right",
+    # Centered header variants.
+    "top_center": "header", "top_centered": "header",
+    # Marginalia variants.
+    "marginalia": "margin_left", "margin": "margin_left",
+    "marginalia_left": "margin_left", "marginalia_right": "margin_right",
+    "marginalia_top": "margin_top", "marginalia_bottom": "margin_bottom",
+    # Corner spellings.
+    "top_left_corner": "margin_top", "top_right_corner": "margin_top",
+    "bottom_left_corner": "margin_bottom", "bottom_right_corner": "margin_bottom",
+    "top_left": "margin_top", "top_right": "margin_top",
+    "bottom_left": "margin_bottom", "bottom_right": "margin_bottom",
+    # Epistolary / document-structure labels.
+    "address": "header", "heading": "header", "title": "header",
+    "date_line": "header", "salutation": "body", "closing": "body",
+    "valediction": "body", "signature": "body", "attestation": "footer",
+}
+
+
+def _canonicalize_position(val: Any) -> Any:
+    """Normalise common LLM position variants to canonical VALID_POSITION values."""
+    if not isinstance(val, str):
+        return val
+    s = val.strip().lower().replace("-", "_").replace(" ", "_")
+    while "__" in s:
+        s = s.replace("__", "_")
+    return _POSITION_ALIASES.get(s, s)
+
 UNCERTAINTY_FLOOD_THRESHOLD = 0.30
 MIN_CONDITION_NOTES_LEN = 20
 # Aggregate length of segment `notes` — same threshold spirit as conditionNotes (§5.6 / §1.1 carve-out).
@@ -424,7 +461,7 @@ def validate_transcription_output(root: Dict[str, Any]) -> Tuple[bool, List[str]
                     f"segment {i} confidence invalid: got {seg.get('confidence')!r}, "
                     f"expected one of {VALID_CONFIDENCE}"
                 )
-            if seg.get("position") not in VALID_POSITION:
+            if _canonicalize_position(seg.get("position")) not in VALID_POSITION:
                 errors.append(
                     f"segment {i} position invalid: got {seg.get('position')!r}, "
                     f"expected one of {VALID_POSITION}"

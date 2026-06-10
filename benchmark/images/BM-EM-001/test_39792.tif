@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="wgs84_pos: http://www.w3.org/2003/01/geo/wgs84_pos#  org: https://www.w3.org/TR/vocab-org/#org:  xs: http://www.w3.org/2001/XMLSchema#  ldp: http://www.w3.org/ns/ldp#  dc11: http://purl.org/dc/elements/1.1/  dcterms: http://purl.org/dc/terms/  nfo: http://www.semanticdesktop.org/ontologies/2007/03/22/nfo/v1.1/  ebucore: http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#  fedora: http://fedora.info/definitions/v4/repository#  owl: http://www.w3.org/2002/07/owl#  ore: http://www.openarchives.org/ore/terms/  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#  rdau: http://rdaregistry.info/Elements/u/  islandora: http://islandora.ca/  pcdm: http://pcdm.org/models#  use: http://pcdm.org/use#  iana: http://www.iana.org/assignments/relation/  premis: http://www.loc.gov/premis/rdf/v1#  premis3: http://www.loc.gov/premis/rdf/v3/  co: http://purl.org/co/  content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# " style="--bd-color-base:#000000;--bd-color-text:#000000;--bd-color-highlights:#ffffff;--bd-color-secondaryhighlights:#f2edea;--bd-color-link:#e03100;--bd-color-linkalt:#63666a;--bd-color-body:#ffffff;--bd-color-borders:#ffffff;--bd-color-borderslight:#c8c9c7;">
+  <head>
+    <meta charset="utf-8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YNJVN37L2M"></script>
+<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments)};gtag("js", new Date());gtag("set", "developer_id.dMDhkMT", true);gtag("config", "G-YNJVN37L2M", {"groups":"default","page_location":"/404.html?page=" + document.location.pathname + document.location.search + "&from=" + document.referrer});</script>
+<meta name="description" content="We can&#039;t find the page you&#039;re looking for. Go back to our homepage, or contact us for help." />
+<link rel="canonical" href="https://digitalcollections.folger.edu/how-were-they-lost-what-treachery-was-used" />
+<meta name="Generator" content="Drupal 10 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link rel="preconnect" href="https://challenges.cloudflare.com" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<link rel="icon" href="/sites/default/files/favicon-32x32_0.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://digitalcollections.folger.edu/how-were-they-lost-what-treachery-was-used" />
+<script>window.a2a_config=window.a2a_config||{};a2a_config.callbacks=[];a2a_config.overlays=[];a2a_config.templates={};</script>
+
+    <title>How were they lost? What treachery was used? | Digital Collections</title>
+    <link rel="stylesheet" media="all" href="/sites/default/files/css/css_hXnXuXspuQ1jxL-U61_WECVYe0xzG1EH57QDUiqfVaQ.css?delta=0&amp;language=en&amp;theme=bd_client_theme&amp;include=eJyFT9FqxDAM-6E0-aTgNG4biOPDclf69-sdBzfWwV5sWRK2TLW60jgTvUFcTIeHUnNRdbjRI4OAtHYt1Cf42dtYn4a5Nx6efWPhv2Q1Tu-eqUob4bOykFnTVIypzrZLuWuzdjXc-UVN7qwwQCsj97ZuHl7HZ5WHjisj4m__NAmP_crWdxkIy_UzHQy9PvmB48HlOf5viNiaBJxwllQIHL4aH0ivGkXr3vkbw3CQWA" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_7-weyhkGbTEdHw2IIxTYg5d9LEek131lrG9mbON6Qag.css?delta=1&amp;language=en&amp;theme=bd_client_theme&amp;include=eJyFT9FqxDAM-6E0-aTgNG4biOPDclf69-sdBzfWwV5sWRK2TLW60jgTvUFcTIeHUnNRdbjRI4OAtHYt1Cf42dtYn4a5Nx6efWPhv2Q1Tu-eqUob4bOykFnTVIypzrZLuWuzdjXc-UVN7qwwQCsj97ZuHl7HZ5WHjisj4m__NAmP_crWdxkIy_UzHQy9PvmB48HlOf5viNiaBJxwllQIHL4aH0ivGkXr3vkbw3CQWA" />
+
+    
+  </head>
+  <body class="layout-no-sidebars user-logged-out path-not-frontpage path--flysystem path-how-were-they-lost-what-treachery-was-used--digital-collections page-node-type--page">
+    <a href="#main-content" class="visually-hidden-focusable skip-link">
+      Skip to main content
+    </a>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div id="page-wrapper">
+  <div id="page">
+    <header id="header" class="header" role="banner" aria-label="Site header">
+                      <nav class="navbar navbar-dark bg-primary navbar-expand-lg" id="navbar-main">
+                    <div class="container">
+                        <section class="region region-header">
+    <div id="block-bd-client-theme-branding" class="clearfix block block-branding block-config-provider--system block-plugin-id--">
+  <div class="block__inner block-branding__inner">
+
+    <div class="block__content block-branding__content site-branding"><a href="https://www.folger.edu/" title="Home" itemprop="url" class="site-branding__logo-link"><img src="/sites/default/files/FSL_LimitedSpace_Lockup1_RedF_BlkSig_RGB_right-padding_1.png" alt="Home" itemprop="logo" class="site-branding__logo-img" /></a><span class="site-branding__text"><strong class="site-branding__name">
+                <a href="/" title="Home" itemprop="url" rel="home" class="site-branding__name-link">
+
+                                                                                                                <span class="site-branding__name__word-count--1 site-branding__name__word--digital">Digital</span>
+                                                          <span class="site-branding__name__word-count--2 site-branding__name__word--collections">Collections</span>
+                  
+                </a>
+              </strong></span></div></div>
+</div>
+
+  </section>
+
+                          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#CollapsingNavbar" aria-controls="CollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars" aria-hidden="true"></i></button>
+              <div class="collapse navbar-collapse justify-content-end" id="CollapsingNavbar">
+                  <section class="region region-primary-menu">
+    <nav role="navigation" aria-labelledby="block-bd-client-theme-main-menu-menu" id="block-bd-client-theme-main-menu" class="block block-menu navigation menu--main">
+      
+  <h2 id="block-bd-client-theme-main-menu-menu">Main menu</h2>
+  
+
+        
+              <ul id="block-bd-client-theme-main-menu" class="clearfix nav navbar-nav">
+                    <li class="nav-item">
+                          <a href="/browse-collections" class="nav-link    nav-link--browse-collections "><span>All collections</span></a>
+              </li>
+                <li class="nav-item menu-item--expanded dropdown">
+                          <span class="nav-link dropdown-toggle nav-link-" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Browse</span>
+                        <ul class="dropdown-menu">
+                    <li class="dropdown-item">
+                          <a href="/taxonomy/vocab/person/all" class="    nav-link--taxonomy-vocab-person-all "><span>Browse by name</span></a>
+              </li>
+                <li class="dropdown-item">
+                          <a href="/taxonomy/vocab/genre/all" class="    nav-link--taxonomy-vocab-genre-all "><span>Browse by genre or form</span></a>
+              </li>
+                <li class="dropdown-item">
+                          <a href="/taxonomy/vocab/subject/all" class="    nav-link--taxonomy-vocab-subject-all "><span>Browse by subject</span></a>
+              </li>
+                <li class="dropdown-item">
+                          <a href="/taxonomy/vocab/place_of_creation/all" class="    nav-link--taxonomy-vocab-place-of-creation-all "><span>Browse by place of creation</span></a>
+              </li>
+                <li class="dropdown-item">
+                          <a href="/taxonomy/vocab/bindings_terms/all" class="    nav-link--taxonomy-vocab-bindings-terms-all "><span>Browse by bindings term</span></a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="nav-item">
+                          <a href="/advanced-search" class="nav-link    nav-link--advanced-search "><span>Advanced Search</span></a>
+              </li>
+                <li class="nav-item menu-item--expanded dropdown">
+                          <span class="nav-link dropdown-toggle nav-link-" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Media groups</span>
+                        <ul class="dropdown-menu">
+                    <li class="dropdown-item">
+                          <a href="/bookmark-lists" class="    nav-link--bookmark-lists "><span>View all media groups</span></a>
+              </li>
+        </ul>
+  
+              </li>
+                <li class="nav-item">
+                          <a href="https://folgerpedia.folger.edu/Digital_collections" class="nav-link    nav-link-https--folgerpediafolgeredu-digital-collections "><span>Help and FAQ</span></a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+  </section>
+
+                	          </div>
+                                            </div>
+                  </nav>
+          </header>
+                        <div class="highlighted">
+              <aside class="container section clearfix" role="complementary">
+            <div class="views-exposed-form block block-views block-views-exposed-filter-blocksolr-search-content-page-1" data-drupal-selector="views-exposed-form-solr-search-content-page-1" id="block-bd-client-theme-exposedformsolr-search-contentpage-1">
+  
+    
+      <div class="content">
+      
+<form action="/solr-search/content" method="get" id="views-exposed-form-solr-search-content-page-1" accept-charset="UTF-8">
+  <div class="d-flex flex-wrap">
+  
+
+
+
+
+
+  <div class="js-form-item js-form-type-select form-type-select js-form-item-field-member-of form-item-field-member-of form-no-label mb-3">
+                    
+<select aria-label="Select Collection for Search" data-drupal-selector="edit-field-member-of" id="edit-field-member-of" name="field_member_of" class="form-select"><option value="all"> - Any collection - </option><option value="136935">A catalogue of tragedies, comedies, operas, and farces performed by His Majesty&#039;s Company at the Theatre Royal in Drury Lane, 1794-1808. [manuscript]</option><option value="164486">A dramatic register of theatres and dramatic performances from the beginning to the present, compiled ca. 1790-1805. [manuscript]</option><option value="88">All pictures</option><option value="83">Art &amp; Objects</option><option value="203563">Autograph letters signed from Edwin Booth to various recipients, 1858-1893.</option><option value="58546">Autograph letters signed from Mary Hatton Helsby to various recipients, 1651-1668. [manuscript]</option><option value="201663">Autograph letters signed from Thomas Booth, London, to John Booth, 1683-1689.</option><option value="201621">Autograph letters signed from William Booth, London, to John Booth, 1628-1647 (bulk 1628-1629).</option><option value="203743">Autograph letters signed from William Winter to various recipients, 1864-1917.</option><option value="97">Bindings</option><option value="74">Books</option><option value="89">British Book Illustrations</option><option value="256981">C. Walter Hodges collection of Elizabethan and other theatre drawings [graphic]</option><option value="203726">Collection of German papers relating to William Shakespeare, 1777-1912.</option><option value="212046">Collection of letters from members of the Este family of Modena and the Farnese family of Parma and Piacenza, 1592-1805.</option><option value="164422">Diaries of Drury Lane Theater performances kept by Richard Cross and William Hopkins, 1747-1760, 1762-1764, 1768-1776. [manuscript]</option><option value="86">Drawings</option><option value="192414">E. Williams watermark collection, including papers of the Hale family of King&#039;s Walden and other papers, ca. 1570-1699.</option><option value="93">First folios</option><option value="99">Folger archives</option><option value="96">Fourth folios</option><option value="250154">Imagery in the works of Shakespeare and other Elizabethan authors by Caroline Frances Eleanor Spurgeon, ca. 1925-1942. [manuscript]</option><option value="75">Incunabula</option><option value="202519">Letters from the Privy Council, 1545-1621.</option><option value="247072">List of plays for their majesties&#039; Covent Garden Theatre, 1803-1805. [manuscript]</option><option value="80">Manuscripts</option><option value="101">Microfilm images</option><option value="248088">Miscellaneous documents of Drury Lane Theatre, 1774-1827. [manuscript]</option><option value="147774">Newdigate family collection of newsletters, 1673/4-1715.</option><option value="90">Objects</option><option value="87">Paintings</option><option value="259771">Papers of Delia Salter Bacon, 1820-1952 (bulk 1827-1859). [manuscript]</option><option value="201348">Papers of Jacob Tonson, 1680-1737.</option><option value="50478">Papers of Nathaniel Bacon, 1574-1650 (bulk 1590-1622).</option><option value="202762">Papers of Robert Bennet, 1603-1678.</option><option value="169423">Papers of the Bacon-Townshend family of Stiffkey, Norfolk, 1550-1640.</option><option value="78126">Papers of the Bagot family of Blithfield, Staffordshire, 1428-1671 (bulk 1557-1671).</option><option value="102947">Papers of the Cavendish-Talbot family, 1333-1705 (bulk 1548-1676).</option><option value="203747">Papers of the Ferrers Family of Tamworth Castle, 1371-1806 (bulk 16th - 17th century).</option><option value="201718">Papers of the Goodricke family of Ribston Hall, Nidderdale, Yorkshire, 1639?-1689.</option><option value="188714">Papers of the More family of Loseley Park, Surrey, 1489-1682 (bulk 1538-1630).</option><option value="201903">Papers of the Rattray family of Craighall, 1593-1699.</option><option value="184918">Papers of the Rich family, 1485-ca. 1820 (bulk 1649-1715).</option><option value="85">Photos</option><option value="82">Post-1700 manuscripts</option><option value="79">Post-1830 imprints</option><option value="81">Pre-1701 manuscripts</option><option value="78">Pre-1831 imprints</option><option value="84">Prints</option><option value="92">Quartos</option><option value="227552">Records of Covent Garden Theatre, 1740-1832.</option><option value="203607">Records of Drury Lane Theatre, 1766-1880. </option><option value="247706">Records of Drury Lane Theatre: Grants of rent charges, 1793-1821</option><option value="100">Reference images</option><option value="203578">Robert Young collection relating to William Winter, ca. 1745-2005 (bulk 1880-1906).</option><option value="94">Second folios</option><option value="91">Shakespeare</option><option value="76">STC imprints</option><option value="136030">Strozzi transcript of Storia Fiorentina, o storia di Fiorenze de suoi tempi, 1527-1537, 17th or 18th century. [manuscript]</option><option value="246305">Theatrical notebooks, 1770-1829, of John Genest, written ca. 1812-1829. [manuscript]</option><option value="95">Third folios</option><option value="210081">Transcribed manuscripts</option><option value="77">Wing imprints</option></select>
+                      </div>
+
+
+
+
+
+
+  <div class="js-form-item js-form-type-textfield form-type-textfield js-form-item-search-api-fulltext form-item-search-api-fulltext mb-3">
+          <label for="edit-search-api-fulltext">Fulltext search</label>
+                    <input data-drupal-selector="edit-search-api-fulltext" type="text" id="edit-search-api-fulltext" name="search_api_fulltext" value="" size="30" maxlength="128" class="form-control" />
+
+                      </div>
+
+
+
+
+
+
+  <div class="js-form-item js-form-type-select form-type-select js-form-item-name-1 form-item-name-1 mb-3">
+          <label for="edit-name-1">Record type</label>
+                    
+<select data-drupal-selector="edit-name-1" id="edit-name-1" name="name_1" class="form-select"><option value="All" selected="selected">- Any record type -</option><option value="1">Search for images</option><option value="2">Search for volumes</option></select>
+                      </div>
+<input tabindex="-1" aria-hidden="true" data-drupal-selector="edit-sort-by" type="hidden" name="sort_by" value="search_api_relevance" class="form-control" />
+<input tabindex="-1" aria-hidden="true" data-drupal-selector="edit-sort-order" type="hidden" name="sort_order" value="DESC" class="form-control" />
+<input tabindex="-1" aria-hidden="true" data-drupal-selector="edit-items-per-page" type="hidden" name="items_per_page" value="10" class="form-control" />
+<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper mb-3" id="edit-actions"><button data-drupal-selector="edit-submit-solr-search-content" type="submit" id="edit-submit-solr-search-content" value="Search" class="button js-form-submit form-submit btn btn-primary">Search</button>
+</div>
+
+</div>
+
+</form>
+
+    </div>
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+
+
+        </aside>
+            </div>
+        <div id="main-wrapper" class="layout-main-wrapper clearfix">
+              <div id="main" class="container">
+            <div id="block-bd-client-theme-breadcrumbs" class="site__islandora_breadcrumbs block block-system block-system-breadcrumb-block">
+  
+    
+      <div class="content">
+      
+
+  <nav role="navigation" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+            <a href="/">Home</a>
+          </li>
+                                                                          <li class="breadcrumb-item">
+            <a href="/_flysystem/fedora">Fedora</a>
+          </li>
+                                                    <li class="breadcrumb-item">
+            <a href="/_flysystem/fedora">2024</a>
+          </li>
+                                          <li class="breadcrumb-item active">
+          How were they lost? What treachery ...
+        </li>
+              </ol>
+  </nav>
+
+    </div>
+  </div>
+
+
+          <div class="row row-offcanvas row-offcanvas-left clearfix">
+              <main class="main-content col" id="content" role="main">
+                <section class="section">
+                  <a id="main-content" tabindex="-1"></a>
+                    <div id="block-bd-client-theme-content" class="block block-system block-system-main-block">
+  
+    
+      <div class="content">
+      <article data-history-node-id="59" about="/how-were-they-lost-what-treachery-was-used" class="node node--id-59 node--type-page node--view-mode-full" role="article">
+  <div class="node__container">
+
+    <header><h1 class="node__title"><span class="field field--name-title field--type-string field--label-hidden">How were they lost? What treachery was used?</span>
+</h1></header>
+
+    <div class="node__content">
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">
+        <p>We can't find the page you're looking for. Go back to our homepage, or contact us for help.</p>
+</div>
+      <div id="field-page-parent-title">
+
+
+
+
+
+  <div class="js-form-item js-form-type-item form-type-item js-form-item- form-item- mb-3">
+          <label></label>
+                    
+                      </div>
+</div>
+
+
+<div class="views-element-container"><div class="view view-eva view-video-media-evas view-id-video_media_evas view-display-id-entity_view_1 js-view-dom-id-0a08fe0d344f6a173ced7ae0a2ca714ce2695c9f5697896295dfbd0533e7a3c4">
+  
+    
+
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  </div>
+</div>
+<div class="views-element-container"><div class="view view-eva view-video-media-evas view-id-video_media_evas view-display-id-entity_view_2 js-view-dom-id-7e833576c782532a682aa2b0bc860728e45281042ee635323bbff2f979815acb">
+  
+    
+
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  </div>
+</div>
+<div class="views-element-container"><div class="view view-eva view-video-media-evas view-id-video_media_evas view-display-id-service_file js-view-dom-id-e5050136332af20346194b02572595626ab7972cdbcb70fdb6d62a22e1f8ae8b">
+  
+    
+
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  </div>
+</div>
+</div></div>
+</article>
+
+    </div>
+  </div>
+
+
+                </section>
+              </main>
+                                  </div>
+        </div>
+          </div>
+        <footer class="site-footer">
+              <div class="container">
+                      <div class="site-footer__top clearfix">
+                <section class="row region region-footer-first">
+    <div id="block-bd-client-theme-sitebranding" class="clearfix block block-branding block-config-provider--system block-plugin-id--">
+  <div class="block__inner block-branding__inner">
+
+    <div class="block__content block-branding__content site-branding"><a href="https://www.folger.edu/" title="Home" itemprop="url" class="site-branding__logo-link"><img src="/sites/default/files/FSL_LimitedSpace_Lockup1_RedF_BlkSig_RGB_right-padding_1.png" alt="Home" itemprop="logo" class="site-branding__logo-img" /></a><span class="site-branding__text"><strong class="site-branding__name">
+                <a href="/" title="Home" itemprop="url" rel="home" class="site-branding__name-link">
+
+                                                                                                                <span class="site-branding__name__word-count--1 site-branding__name__word--digital">Digital</span>
+                                                          <span class="site-branding__name__word-count--2 site-branding__name__word--collections">Collections</span>
+                  
+                </a>
+              </strong></span></div></div>
+</div>
+<div id="block-bd-client-theme-footercontact" class="block block-fixed-block-content block-fixed-block-contentcarapace-fb-footer-contact">
+  
+    
+      <div class="content">
+      
+            <div class="clearfix text-formatted field field--name-field-carapace-cb-inst-address field--type-text field--label-hidden field__item">
+        <p>201 East Capitol Street, SE <br>Washington, DC 20003</p></div>
+      <div id="field-page-parent-title">
+
+
+
+
+
+  <div class="js-form-item js-form-type-item form-type-item js-form-item- form-item- mb-3">
+          <label></label>
+                    
+                      </div>
+</div>
+
+      <div class="field field--name-field-carapace-cb-phone field--type-string field--label-hidden field__items">
+              <div class="field__item">202-544-4600  main line</div>
+              <div class="field__item">202-544-7077  box office</div>
+          </div>
+  
+    </div>
+  </div>
+<div id="block-bd-client-theme-footercopyright" class="block block-fixed-block-content block-fixed-block-contentcarapace-fb-copyright">
+  
+    
+      <div class="content">
+      <div id="field-page-parent-title">
+
+
+
+
+
+  <div class="js-form-item js-form-type-item form-type-item js-form-item- form-item- mb-3">
+          <label></label>
+                    
+                      </div>
+</div>
+
+    </div>
+  </div>
+
+  </section>
+
+              <div class="region region-footer-cols">
+                  <section class="row region region-footer-second">
+    <nav role="navigation" aria-labelledby="block-bd-client-theme-footer-menu" id="block-bd-client-theme-footer" class="block block-menu navigation menu--footer">
+            
+  <h2 class="visually-hidden" id="block-bd-client-theme-footer-menu">Footer menu</h2>
+  
+
+        
+              <ul class="clearfix nav flex-row" data-component-id="bootstrap_barrio:menu_columns">
+                    <li class="nav-item">
+                <a href="https://www.folger.edu/research/ask-a-librarian/" class="nav-link nav-link-https--wwwfolgeredu-research-ask-a-librarian-">Contact us</a>
+              </li>
+        </ul>
+  
+
+
+
+  </nav>
+<div id="block-bd-client-theme-footersocialmedia" class="block block-footer__social-media block-config-provider--fixed-block-content block-plugin-id-- block--view-mode-full has-title">
+  <div class="block__inner block-social__inner"><div class="block__content block-social__content"><a href="https://www.facebook.com/folgershakespearelibrary" aria-label="Facebook" target="_blank" class="social-icon__link"><?xml version="1.0" encoding="UTF-8"?>
+          <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"><path d="M11.863 0C5.313 0 0 5.313 0 11.863c0 6.551 5.313 11.864 11.863 11.864 6.551 0 11.864-5.313 11.864-11.864C23.727 5.313 18.418 0 11.863 0zm3.14 11.813H12.95v7.328H9.906v-7.328H8.457V9.226h1.45V7.55c0-1.2.57-3.07 3.073-3.07l2.254.007V7h-1.636c-.27 0-.649.133-.649.703v1.524h2.32zm0 0" fill="#1877f2"/></svg>
+          </a><a href="https://www.youtube.com/@FolgerLibrary" aria-label="YouTube" target="_blank" class="social-icon__link">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0" y="0" viewBox="0 0 71.412 50" xml:space="preserve" width="38" height="36"><style type="text/css" id="style3"></style><g id="g5" transform="scale(.58824)"><path d="M118.9 13.3c-1.4-5.2-5.5-9.3-10.7-10.7C98.7 0 60.7 0 60.7 0s-38 0-47.5 2.5C8.1 3.9 3.9 8.1 2.5 13.3 0 22.8 0 42.5 0 42.5s0 19.8 2.5 29.2C3.9 76.9 8 81 13.2 82.4 22.8 85 60.7 85 60.7 85s38 0 47.5-2.5c5.2-1.4 9.3-5.5 10.7-10.7 2.5-9.5 2.5-29.2 2.5-29.2s.1-19.8-2.5-29.3z" id="path7" fill="red"/><path id="polygon9" fill="#fff" d="M80.2 42.5L48.6 24.3v36.4z"/></g></svg>
+         </a><a href="https://www.instagram.com/folgerlibrary/" aria-label="Instagram" target="_blank" class="social-icon__link">
+          <svg width="34" height="34" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"><title>IG Logo</title><g fill-rule="evenodd"><path d="M18 0c-4.889 0-5.501.02-7.421.108C8.663.196 7.354.5 6.209.945a8.823 8.823 0 0 0-3.188 2.076A8.83 8.83 0 0 0 .945 6.209C.5 7.354.195 8.663.108 10.58.021 12.499 0 13.11 0 18s.02 5.501.108 7.421c.088 1.916.392 3.225.837 4.37a8.823 8.823 0 0 0 2.076 3.188c1 1 2.005 1.616 3.188 2.076 1.145.445 2.454.75 4.37.837 1.92.087 2.532.108 7.421.108s5.501-.02 7.421-.108c1.916-.088 3.225-.392 4.37-.837a8.824 8.824 0 0 0 3.188-2.076c1-1 1.616-2.005 2.076-3.188.445-1.145.75-2.454.837-4.37.087-1.92.108-2.532.108-7.421s-.02-5.501-.108-7.421c-.088-1.916-.392-3.225-.837-4.37a8.824 8.824 0 0 0-2.076-3.188A8.83 8.83 0 0 0 29.791.945C28.646.5 27.337.195 25.42.108 23.501.021 22.89 0 18 0zm0 3.243c4.806 0 5.376.019 7.274.105 1.755.08 2.708.373 3.342.62.84.326 1.44.717 2.07 1.346.63.63 1.02 1.23 1.346 2.07.247.634.54 1.587.62 3.342.086 1.898.105 2.468.105 7.274s-.019 5.376-.105 7.274c-.08 1.755-.373 2.708-.62 3.342a5.576 5.576 0 0 1-1.346 2.07c-.63.63-1.23 1.02-2.07 1.346-.634.247-1.587.54-3.342.62-1.898.086-2.467.105-7.274.105s-5.376-.019-7.274-.105c-1.755-.08-2.708-.373-3.342-.62a5.576 5.576 0 0 1-2.07-1.346 5.577 5.577 0 0 1-1.346-2.07c-.247-.634-.54-1.587-.62-3.342-.086-1.898-.105-2.468-.105-7.274s.019-5.376.105-7.274c.08-1.755.373-2.708.62-3.342.326-.84.717-1.44 1.346-2.07.63-.63 1.23-1.02 2.07-1.346.634-.247 1.587-.54 3.342-.62 1.898-.086 2.468-.105 7.274-.105z"/><path d="M18 24.006a6.006 6.006 0 1 1 0-12.012 6.006 6.006 0 0 1 0 12.012zm0-15.258a9.252 9.252 0 1 0 0 18.504 9.252 9.252 0 0 0 0-18.504zm11.944-.168a2.187 2.187 0 1 1-4.374 0 2.187 2.187 0 0 1 4.374 0"/></g></svg>
+          </a></div></div>
+</div>
+
+  </section>
+
+                  <section class="row region region-footer-third">
+    <nav role="navigation" aria-labelledby="block-useraccountmenu-menu" id="block-useraccountmenu" class="block block-menu navigation menu--account">
+            
+  <h2 class="visually-hidden" id="block-useraccountmenu-menu">User account menu</h2>
+  
+
+        
+              <div id="block-useraccountmenu" class="clearfix nav navbar-nav">
+              <li class="nav-item">
+                <a href="/user/login" class="nav-link--user-login" data-drupal-link-system-path="user/login">Log in</a>
+        </li>
+            </div>
+      
+
+
+  </nav>
+
+  </section>
+
+              </div>
+            </div>
+                                      </div>
+          </footer>
+
+          <div class="site-disclaimer">
+        <div class="container">
+            <section class="row region region-footer-disclaimer">
+    <div id="block-bd-client-theme-disclaimer" class="block block-fixed-block-content block-fixed-block-contentcarapace-fb-disclaimer">
+  
+    
+      <div class="content">
+      <div id="field-page-parent-title">
+
+
+
+
+
+  <div class="js-form-item js-form-type-item form-type-item js-form-item- form-item- mb-3">
+          <label></label>
+                    
+                      </div>
+</div>
+
+    </div>
+  </div>
+
+  </section>
+
+        </div>
+      </div>
+      </div>
+</div>
+
+  </div>
+
+    
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","pathPrefix":"","currentPath":"_flysystem\/fedora","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en","currentQuery":{"file":"2024\/039792.tif"}},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"google_analytics":{"account":"G-YNJVN37L2M","trackOutbound":true,"trackMailto":true,"trackTel":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"ajaxTrustedUrl":{"\/solr-search\/content":true},"user":{"uid":0,"permissionsHash":"7a94d9f51790bda1b395c5c8b69fe9d25c4b712f872a2f4fa35fa5f33c345965"}}</script>
+<script src="/core/assets/vendor/jquery/jquery.min.js?v=3.7.1"></script>
+<script src="/core/misc/drupalSettingsLoader.js?v=10.5.10"></script>
+<script src="/core/misc/drupal.js?v=10.5.10"></script>
+<script src="/core/misc/drupal.init.js?v=10.5.10"></script>
+<script src="https://static.addtoany.com/menu/page.js" defer></script>
+<script src="/modules/contrib/addtoany/js/addtoany.js?v=10.5.10"></script>
+<script src="/themes/bd/bd-base-theme/bd_bootstrap_sass/js/popper.min.js?v=10.5.10"></script>
+<script src="/themes/bd/bd-base-theme/bd_bootstrap_sass/js/bootstrap.min.js?v=10.5.10"></script>
+<script src="/themes/bd/bd-base-theme/bd_bootstrap_sass/js/barrio.js?v=10.5.10"></script>
+<script src="/themes/bd/bd-base-theme/bd_bootstrap_sass/js/custom.js?v=10.5.10"></script>
+<script src="/themes/custom/bd_client_theme/js/popper.min.js?v=10.5.10"></script>
+<script src="/themes/custom/bd_client_theme/js/bootstrap.min.js?v=10.5.10"></script>
+<script src="/themes/custom/bd_client_theme/js/barrio.js?v=10.5.10"></script>
+<script src="/themes/custom/bd_client_theme/js/custom.js?v=10.5.10"></script>
+<script src="/modules/contrib/google_analytics/js/google_analytics.js?v=10.5.10"></script>
+
+  </body>
+</html>

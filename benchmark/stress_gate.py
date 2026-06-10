@@ -92,11 +92,13 @@ def gates_from_raw(raw: str, evaluator: str) -> Dict[str, Any]:
             omission_count = metrics.get("omission_count", "")
             disposition = metrics.get("disposition", "")
             score = metrics.get("score", "")
+            accuracy_percent = metrics.get("accuracy_percent", "")
             if not schema_ok:
                 disposition = "FAIL"
 
     return {
         "schema_ok": schema_ok,
+        "accuracy_percent": accuracy_percent,
         "addition_count": addition_count,
         "omission_count": omission_count,
         "disposition": disposition,

@@ -42,15 +42,18 @@ def write_report_md(
         "",
         f"Generated: {started} (UTC)",
         "",
-        "| Case | Model | Schema OK | Additions | Omissions | Disposition | Score | Notes |",
-        "|------|-------|-----------|-----------|------------|-------------|-------|-------|",
+        "| Case | Model | Schema OK | Accuracy% | Additions | Omissions | Disposition | Notes |",
+        "|------|-------|-----------|-----------|-----------|------------|-------------|-------|",
     ]
     for r in rows:
         notes = (r.get("notes") or "").replace("|", "\\|")
+        acc = r.get("accuracy_percent", "")
+        acc_str = f"{acc:.1f}%" if isinstance(acc, (int, float)) else "—"
         lines.append(
             f"| {r.get('case', '')} | {r.get('model', '')} | {r.get('schema_ok', '')} | "
+            f"{acc_str} | "
             f"{r.get('addition_count', '')} | {r.get('omission_count', '')} | "
-            f"{r.get('disposition', '')} | {r.get('score', '')} | {notes} |"
+            f"{r.get('disposition', '')} | {notes} |"
         )
     lines.append("")
     path.parent.mkdir(parents=True, exist_ok=True)
