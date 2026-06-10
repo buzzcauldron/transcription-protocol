@@ -1,7 +1,7 @@
 {
-  "caseId": "BM-001",
+  "caseId": "BM-MED-001",
   "modelKey": "gemini-pro",
   "provider": "gemini",
   "modelId": "gemini-2.5-pro",
-  "started": "2026-06-10T13:59:12Z"
+  "started": "2026-06-10T14:16:49Z"
 }

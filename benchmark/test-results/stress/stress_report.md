@@ -1,10 +1,19 @@
 # Stress test compatibility matrix
 
-Generated: 2026-06-09T14:05:05Z (UTC)
+Generated: 2026-06-10T14:28:33Z (UTC)
 
 | Case | Model | Schema OK | Additions | Omissions | Disposition | Score | Notes |
 |------|-------|-----------|-----------|------------|-------------|-------|-------|
-| BM-001 | gemini (gemini-2.5-flash) | True | 85 | 65 | FAIL | 0.0 | — |
-| BM-001 | gemini-pro (gemini-2.5-pro) | True | 59 | 57 | FAIL | 0.0 | — |
-| BM-001 | gemini-3.5-flash (gemini-3.5-flash) | False | 19 | 32 | FAIL | 0.0 | missing required field: protocolVersion; metadata.protocolVersion must be one of ['1.0.0', '1.1.0', 'v1.0', 'v1.1'], got None |
-| BM-001 | gemini-flash-lite (gemini-2.5-flash-lite) | False | 46 | 303 | FAIL | 0.0 | missing required field: confidence; missing required field: uncertaintyTokenCount; segment 0 confidence invalid: got None, expected one of ('high', 'medium', 'low'); mismatchReport is required when segments is non-empty (protocol 1.1.0 §5.2), unless pass2Summary is present with segmentsAltered: 0; hallucinationAudit is required (protocol §7.4 item 5; hard fail if absent) |
+| BM-MOD-LOVEJOY | gemini (gemini-2.5-flash) | False | 2 | 14 | FAIL | 0.0 | segment 1 position invalid: got 'address', expected one of ('body', 'header', 'footer', 'margin_left', 'margin_right', 'margin_top', 'margin_bottom', 'interlinear', 'footnote', 'table_row', 'table_header') |
+| BM-MOD-LOVEJOY | gemini-pro (gemini-2.5-pro) | False | — | — | FAIL | — | YAML parse error: while parsing a block mapping
+  in "<unicode string>", line 38, column 7:
+        - segmentId: 1
+          ^
+expected <block end>, but found '<block mapping start>'
+  in "<unicode string>", line 45, column 9:
+            Friend Nicolay:
+            ^ |
+| BM-MOD-JOHNSON | gemini (gemini-2.5-flash) | False | 20 | 51 | FAIL | 0.0 | segment 1 position invalid: got 'marginalia', expected one of ('body', 'header', 'footer', 'margin_left', 'margin_right', 'margin_top', 'margin_bottom', 'interlinear', 'footnote', 'table_row', 'table_header') |
+| BM-MOD-JOHNSON | gemini-pro (gemini-2.5-pro) | True | 15 | 47 | FAIL | 0.0 | — |
+| BM-MOD-DEED | gemini (gemini-2.5-flash) | False | 7 | 4 | FAIL | 0.0 | segment 1 position invalid: got 'marginalia', expected one of ('body', 'header', 'footer', 'margin_left', 'margin_right', 'margin_top', 'margin_bottom', 'interlinear', 'footnote', 'table_row', 'table_header') |
+| BM-MOD-DEED | gemini-pro (gemini-2.5-pro) | False | 4 | 1 | FAIL | 0.05 | segment 1 position invalid: got 'bottom_left_corner', expected one of ('body', 'header', 'footer', 'margin_left', 'margin_right', 'margin_top', 'margin_bottom', 'interlinear', 'footnote', 'table_row', 'table_header') |

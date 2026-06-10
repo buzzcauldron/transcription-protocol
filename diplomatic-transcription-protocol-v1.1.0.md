@@ -124,7 +124,7 @@ When set to `false`, the transcriber **must** write out every abbreviation as it
 5. **Proper names are not abbreviations.** If a proper noun is abbreviated, attempt the expansion only when a specific mark is visible; otherwise use `[uncertain: expanded / abbreviated]` or leave the abbreviated form with a note.
 6. **Corpus-specific expansion tables** should be supplied in the `scriptNotesOptional` field of the prompt configuration (see prompt configs in `scripts/latin_ms/` of `transcription-shell`).
 
-**Evaluation firewall:** A pipeline that accepts output YAMLs for scoring against expanded GT **must** reject any YAML whose `metadata.diplomaticToggles.preserveOriginalAbbreviations` is `true`. This is a hard gate — the modes are not interchangeable. Prompt config files in `transcription-shell` are provided in pairs (e.g. `prompt_charter.yaml` / `prompt_charter_expanded.yaml`) to make the intended mode explicit from the filename.
+**Evaluation firewall:** A pipeline that accepts output YAMLs for scoring against expanded GT **must** reject any YAML whose `metadata.diplomaticToggles.preserveOriginalAbbreviations` is `true`. This is a hard gate — the modes are not interchangeable. Prompt config files in `transcription-shell` are provided in pairs (e.g. `prompt_charter.yaml` / `prompt_charter_expanded.yaml`) to make the intended mode explicit from the filename. The reference implementation is [`benchmark/stress_gate.py`](benchmark/stress_gate.py) (`medieval` / `legal` evaluators); ground-truth strings must never be injected into model prompts ([`tests/test_stress_redteam.py`](tests/test_stress_redteam.py)).
 
 ### 2.5 Normalization Mode
 

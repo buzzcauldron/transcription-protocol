@@ -1,0 +1,120 @@
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "Walters-W25-folio"
+    modelId: "google/gemini-1.5-pro-001"
+    timestamp: "2024-07-26T16:00:00.000Z"
+    protocolVersion: "1.1.0"
+    targetLanguage: "lat-Latn"
+    languageSet: []
+    targetEra: "medieval"
+    eraRange: "1175-1225"
+    diplomaticProfile: "strict"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: false
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: { mixedLanguage: false, mixedEra: false }
+    scriptNotes: null
+    englishHandwritingModality: null
+    epistemicNotes: null
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "Gothic textualis"
+    scriptMatchesConfig: true
+    conditionNotes: null
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-20"
+      position: "body"
+      text: |
+        et peperit iniquitatem. Lacum
+        aperuit et effodit eum et incidit
+        in foueam quam fecit. Conuertetur
+        dolor eius in caput eius et in uerticem
+        et ipſius iniquitas eius deſcendet. Confitebor
+        domino ſecundum iuſtitiam eius.
+        et pſallam nomini domini altiſſimi.
+        Ave cui cor et renes ſcrutantur deus.
+        ſupra ſenes te inuenitur mundo
+        corde. impolluta omni ſorde.
+        Domine dominus noſter quam pſalmus david. viii.
+        admirabile eſt nomen
+        tuum in uniuerſa terra. Quoniam
+        eleuata eſt magnificentia tua ſuper
+        celos. Ex ore infantium et
+        lactentium perfeciſti laudem propter
+        inimicos tuos. ut deſtruas in
+        imicum et ultorem. Quoniam uidebo
+        celos tuos opera digitorum tuorum.
+        lunam et ſtellas que tu fundaſti.
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: null
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 1
+      pass1Reading: |
+        et peperit iniquitatem. Lacum
+        aperuit et effodit eum et incidit
+        in foueam quam fecit. Conuertetur
+        dolor eius in caput eius et in uerticem
+        et ipſius iniquitas eius deſcendet. Confitebor
+        domino ſecundum iuſtitiam eius.
+        et pſallam nomini domini altiſſimi.
+        Ave cui cor et renes ſcrutantur deus.
+        ſupra ſenes te inuenitur mundo
+        corde. impolluta omni ſorde.
+        Domine dominus noſter quam pſalmus david. viii.
+        admirabile eſt nomen
+        tuum in uniuerſa terra. Quoniam
+        eleuata eſt magnificentia tua ſuper
+        celos. Ex ore infantium et
+        lactentium perfeciſti laudem propter
+        inimicos tuos. ut deſtruas in
+        imicum et ultorem. Quoniam uidebo
+        celos tuos opera digitorum tuorum.
+        lunam et ſtellas que tu fundaſti.
+      pass2Reading: |
+        et peperit iniquitatem. Lacum
+        aperuit et effodit eum et incidit
+        in foueam quam fecit. Conuertetur
+        dolor eius in caput eius et in uerticem
+        et ipſius iniquitas eius deſcendet. Confitebor
+        domino ſecundum iuſtitiam eius.
+        et pſallam nomini domini altiſſimi.
+        Ave cui cor et renes ſcrutantur deus.
+        ſupra ſenes te inuenitur mundo
+        corde. impolluta omni ſorde.
+        Domine dominus noſter quam pſalmus david. viii.
+        admirabile eſt nomen
+        tuum in uniuerſa terra. Quoniam
+        eleuata eſt magnificentia tua ſuper
+        celos. Ex ore infantium et
+        lactentium perfeciſti laudem propter
+        inimicos tuos. ut deſtruas in
+        imicum et ultorem. Quoniam uidebo
+        celos tuos opera digitorum tuorum.
+        lunam et ſtellas que tu fundaſti.
+      resolution: "pass2 confirms final text; no edit"
+      resolved: true
+  hallucinationAudit:
+    totalWords: 110
+    wordsGroundedInGlyphs: 61
+    wordsFromExpansion: 49
+    expansionsWithVisibleMark: 49
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true

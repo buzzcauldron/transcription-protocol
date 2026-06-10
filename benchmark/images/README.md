@@ -12,6 +12,10 @@ The stress runner skips `BM-MED-001` if this file is missing unless you pass `--
 
 Images are fetched automatically from Library of Congress IIIF URLs listed in `benchmark/manifest.yaml`.
 
+## BM-MOD-* (Lovejoy, Johnson, deed letter)
+
+Optional modern English cases (`BM-MOD-LOVEJOY`, `BM-MOD-JOHNSON`, `BM-MOD-DEED`) download single-page LoC IIIF JPEGs automatically. Ground truth is firewalled in `benchmark/ground_truth.py` (By the People transcripts) — do not paste those strings into model prompts.
+
 ## BM-CROP
 
 Optional benchmark for **binding-edge / scan crop** behavior (`[crop]` token). Add a suitable page image at:

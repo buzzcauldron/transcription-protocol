@@ -1,0 +1,92 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "LOC-mal-3010000"
+    modelId: "claude-3-opus-20240229"
+    timestamp: "2024-07-29T12:00:00Z"
+    protocolVersion: "1.1.0"
+    targetLanguage: "eng-Latn"
+    languageSet: []
+    targetEra: "nineteenth_century"
+    eraRange: "1860-1865"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: { mixedLanguage: false, mixedEra: false }
+    scriptNotes: null
+    englishHandwritingModality: "copperplate"
+    epistemicNotes: null
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "copperplate"
+    scriptMatchesConfig: true
+    conditionNotes: null
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-13"
+      position: "body"
+      text: |
+        Washington D.C.
+        February 2nd 1864
+        Friend Nicolay:
+        I understand the President
+        has removed the Post Master at Joliet,
+        Ill. Will you ask him if he can
+        consistently suspend the matter for a
+        few days till I can see him?
+        I hope to be on my pegs again
+        shortly.
+        Yours Truly
+        Owen Lovejoy
+        pr Alex.
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 2
+      pageNumber: 1
+      lineRange: "15-17"
+      position: "address"
+      text: |
+        Col. Nicolay
+        Executive Mansion
+        Washington D.C.
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: null
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 1
+      pass1Reading: "Washington D.C.\nFebruary 2nd 1864\nFriend Nicolay:\nI understand the President\nhas removed the Post Master at Joliet,\nIll. Will you ask him if he can\nconsistently suspend the matter for a\nfew days till I can see him?\nI hope to be on my pegs again\nshortly.\nYours Truly\nOwen Lovejoy\npr Alex."
+      pass2Reading: "Washington D.C.\nFebruary 2nd 1864\nFriend Nicolay:\nI understand the President\nhas removed the Post Master at Joliet,\nIll. Will you ask him if he can\nconsistently suspend the matter for a\nfew days till I can see him?\nI hope to be on my pegs again\nshortly.\nYours Truly\nOwen Lovejoy\npr Alex."
+      resolution: "pass2 confirms final text; no edit"
+      resolved: true
+    - mismatchId: 2
+      segmentId: 2
+      pass1Reading: "Col. Nicolay\nExecutive Mansion\nWashington D.C."
+      pass2Reading: "Col. Nicolay\nExecutive Mansion\nWashington D.C."
+      resolution: "pass2 confirms final text; no edit"
+      resolved: true
+  hallucinationAudit:
+    totalWords: 64
+    wordsGroundedInGlyphs: 64
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```

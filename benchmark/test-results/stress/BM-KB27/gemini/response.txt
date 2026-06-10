@@ -1,0 +1,75 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "KB27-335-AALT-0235"
+    modelId: "gemma-2-9b-it"
+    timestamp: "2024-05-29T12:00:00Z"
+    targetLanguage: "lat-Latn"
+    languageSet: []
+    targetEra: "medieval"
+    eraRange: "1330-1380"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: false
+      markExpansions: false
+      captureDeletionsAndInsertions: true
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: { mixedLanguage: false, mixedEra: false }
+    scriptNotes: "14th-c. King's Bench plea roll, Gothic anglicana cursiva; heavy legal abbreviation. EXPANSION mode: write out every abbreviation as its full Latin word; do NOT output combining macrons/tildes. Read proper nouns and regnal years letter-by-letter; never guess to produce fluent Latin."
+    englishHandwritingModality: null
+    epistemicNotes: null
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "Gothic anglicana cursiva"
+    scriptMatchesConfig: true
+    conditionNotes: "Ink is faded in some areas, and the hand is dense with legal abbreviations, but generally legible."
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-10"
+      position: "body"
+      text: |
+        Lond. Minus Rex per Johannem de Lincolnia quem Regem
+        de placito quare ad dominum Regem et consilium Regis nunc Anglie omnia terras et tenementa
+        ad advocacionem ecclesie de Althorp beneficium ecclesie predicte quondam que de domino Rege tenentur in capite una feoda
+        Regis alienavit in manu Regis apud panem Regem jamdiu defunctum et placito Salvo domino Regi et jure
+        dignitatis Regis medio annis et in sectam de forisfactura videlicet et de Regis donacionem quamplura jura
+        alienacionem advocacionem ecclesie illius que quidem advocacio de domino Rege tenet in capite una licentia Regis
+        ad Johannem Rychenam obtinuit pro et a qua eadem advocacionem ad se ipsam in manum suam apud panem Regem
+        de qua omnia est majestatis ac de et in eadem ad hunc diem tenet et per plures bullas et litteras domini Regis
+        et patentes Regis predicti alias missas idem Regem exivit et medio defenso fecit et a quibus placitum super
+        eandem bullam et litteram predictam machinacionem missam idem Regem placuit ad effectum et Regem consumpit
+        et Regem multipliciter de injuria colore et jure dignitatem Regis predicti exheredacionem manifestam et contra
+        pacem Regis et de jure non venit et de placito fuit unde Rex plura ad capere annis et de videlicet
+        terras et per non est mutacionem et feoda Regis et de non plura ad capere annis videlicet et de
+        apud bullas et per de jure corpus anno eodem domino Rege et de in placitum per non videlicet
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: null
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 1
+      pass1Reading: "Lond. Minus Rex per Johannem de Lincolnia quem Regem\nde placito quare ad dominum Regem et consilium Regis nunc Anglie omnia terras et tenementa\nad advocacionem ecclesie de Althorp beneficium ecclesie predicte quondam que de domino Rege tenentur in capite una feoda\nRegis alienavit in manu Regis apud panem Regem jamdiu defunctum et placito Salvo domino Regi et jure\ndignitatis Regis medio annis et in sectam de forisfactura videlicet et de Regis donacionem quamplura jura\nalienacionem advocacionem ecclesie illius que quidem advocacio de domino Rege tenet in capite una licentia Regis\nad Johannem Rychenam obtinuit pro et a qua eadem advocacionem ad se ipsam in manum suam apud panem Regem\nde qua omnia est majestatis ac de et in eadem ad hunc diem tenet et per plures bullas et litteras domini Regis\net patentes Regis predicti alias missas idem Regem exivit et medio defenso fecit et a quibus placitum super\neandem bullam et litteram predictam machinacionem missam idem Regem placuit ad effectum et Regem consumpit\net Regem multipliciter de injuria colore et jure dignitatem Regis predicti exheredacionem manifestam et contra\npacem Regis et de jure non venit et de placito fuit unde Rex plura ad capere annis et de videlicet\nterras et per non est mutacionem et feoda Regis et de non plura ad capere annis videlicet et de\napud bullas et per de jure corpus anno eodem domino Rege et de in placitum per non videlicet"
+      pass2Reading: "Lond. Minus Rex per Johannem de Lincolnia quem Regem\nde placito quare ad dominum Regem et consilium Regis nunc Anglie omnia terras et tenementa\nad advocacionem ecclesie de Althorp beneficium ecclesie predicte quondam que de domino Rege tenentur in capite una feoda\nRegis alienavit in manu Regis apud panem Regem jamdiu defunctum et placito Salvo domino Regi et jure\ndignitatis Regis medio annis et in sectam de forisfactura videlicet et de Regis donacionem quamplura jura\nalienacionem advocacionem ecclesie illius que quidem advocacio de domino Rege tenet in capite una licentia Regis\nad Johannem Rychenam obtinuit pro et a qua eadem advocacionem ad se ipsam in manum suam apud panem Regem\nde qua omnia est majestatis ac de et in eadem ad hunc diem tenet et per plures bullas et litteras domini Regis\net patentes Regis predicti alias missas idem Regem exivit et medio defenso fecit et a quibus placitum super\neandem bullam et litteram predictam machinacionem missam idem Regem placuit ad effectum et Regem consumpit\net Regem multipliciter de injuria colore et jure dignitatem Regis predicti exheredacionem manifestam et contra\npacem Regis et de jure non venit et de placito fuit unde Rex plura ad capere annis et de videlicet\nterras et per non est mutacionem et feoda Regis et de non plura ad capere annis videlicet et de\napud bullas et per de jure corpus anno eodem domino Rege et de in placitum per non videlicet"
+      resolution: "pass2 confirms final text; no edit"
+      resolved: true
+  hallucinationAudit:
+    totalWords: 168
+    wordsGroundedInGlyphs: 168
+    wordsFromExpansion: 168
+    expansionsWithVisibleMark: 168
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```

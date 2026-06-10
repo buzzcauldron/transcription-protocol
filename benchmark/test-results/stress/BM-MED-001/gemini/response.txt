@@ -1,0 +1,80 @@
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "Walters-W25-folio"
+    modelId: "claude-3-opus-20240229"
+    timestamp: "2024-07-30T12:00:00Z"
+    protocolVersion: "1.1.0"
+    targetLanguage: "lat-Latn"
+    languageSet: []
+    targetEra: "medieval"
+    eraRange: "1175-1225"
+    diplomaticProfile: "strict"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: false
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: { mixedLanguage: false, mixedEra: false }
+    scriptNotes: "Premonstratensian psalter; heavy abbreviation. EXPANSION mode: write out every abbreviation as its full Latin word; do NOT output combining macrons/tildes."
+    englishHandwritingModality: null
+    epistemicNotes: null
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "Gothic Textura"
+    scriptMatchesConfig: true
+    conditionNotes: null
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-20"
+      position: "body"
+      text: |
+        et peperit iniquitatem. Lacum
+        aperuit et effodit eum et incidit
+        in foueam quam fecit. Conuertetur
+        dolor eius in caput eius et in uerticem
+        ipsius iniquitas eius descendet. Confitebor
+        domino secundum iustitiam eius.
+        et psallam nomini domini altissimi.
+        Quoniam cuius cor et renes scrutantur
+        supra senes et inueniunt mundo
+        corde impolluta omni fraude.
+        Domine dominus noster quoniam psalmus octauus.
+        admirabile est nomen tuum
+        tuum in uniuersa terra Quoniam
+        eleuata est magnificentia tua super
+        per celos Ex ore infantibus et
+        lactentium perfecisti laudem propter
+        inimicos tuos ut destruas in
+        inimicum et ultorem Quoniam uidebo
+        celos tuos opera digitorum tuorum.
+        lunam et stellas quas tu fundasti.
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: null
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 1
+      pass1Reading: "et peperit iniquitatem. Lacum\naperuit et effodit eum et incidit\nin foueam quam fecit. Conuertetur\ndolor eius in caput eius et in uerticem\nipsius iniquitas eius descendet. Confitebor\ndomino secundum iustitiam eius.\net psallam nomini domini altissimi.\nQuoniam cuius cor et renes scrutantur\nsupra senes et inueniunt mundo\ncorde impolluta omni fraude.\nDomine dominus noster quoniam psalmus octauus.\nadmirabile est nomen tuum\ntuum in uniuersa terra Quoniam\neleuata est magnificentia tua super\nper celos Ex ore infantibus et\nlactentium perfecisti laudem propter\ninimicos tuos ut destruas in\ninimicum et ultorem Quoniam uidebo\ncelos tuos opera digitorum tuorum.\nlunam et stellas quas tu fundasti."
+      pass2Reading: "et peperit iniquitatem. Lacum\naperuit et effodit eum et incidit\nin foueam quam fecit. Conuertetur\ndolor eius in caput eius et in uerticem\nipsius iniquitas eius descendet. Confitebor\ndomino secundum iustitiam eius.\net psallam nomini domini altissimi.\nQuoniam cuius cor et renes scrutantur\nsupra senes et inueniunt mundo\ncorde impolluta omni fraude.\nDomine dominus noster quoniam psalmus octauus.\nadmirabile est nomen tuum\ntuum in uniuersa terra Quoniam\neleuata est magnificentia tua super\nper celos Ex ore infantibus et\nlactentium perfecisti laudem propter\ninimicos tuos ut destruas in\ninimicum et ultorem Quoniam uidebo\ncelos tuos opera digitorum tuorum.\nlunam et stellas quas tu fundasti."
+      resolution: "pass2 confirms final text; no edit"
+      resolved: true
+  hallucinationAudit:
+    totalWords: 118
+    wordsGroundedInGlyphs: 93
+    wordsFromExpansion: 25
+    expansionsWithVisibleMark: 25
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true

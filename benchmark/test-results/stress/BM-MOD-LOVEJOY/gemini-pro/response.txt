@@ -1,0 +1,119 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "LOC-mal-3010000"
+    modelId: "anthropic.claude-3-opus-20240229"
+    timestamp: "2024-05-09T16:15:01.234Z"
+    protocolVersion: "1.1.0"
+    targetLanguage: "eng-Latn"
+    languageSet: []
+    targetEra: "nineteenth_century"
+    eraRange: "1860-1865"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: { mixedLanguage: false, mixedEra: false }
+    scriptNotes: null
+    englishHandwritingModality: "copperplate"
+    epistemicNotes: null
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "19th-century American cursive (Copperplate)"
+    scriptMatchesConfig: true
+    conditionNotes: "The document is in good condition. A red circular 'Library of Congress' stamp partially covers the dateline, but the underlying text remains legible."
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-18"
+      position: "full_page"
+      text: |
+                                        Washington D.C.
+                                        February 2nd 1864
+        Friend Nicolay:
+            I understand the President
+        has removed the Post Master at Joliet,
+        Ill. Will you ask him if he can
+        consistently suspend the matter for a
+        few days till I can see him?
+            I hope to be on my pegs again
+        shortly.
+                                        Yours Truly
+                                        Owen Lovejoy
+                                        pr H.W.
+
+        Col. Nicolay
+        Executive Mansion
+        Washington D.C.,
+
+        30100
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 1
+      pass1Reading: |
+                                        Washington D.C.
+                                        February 2nd 1864
+        Friend Nicolay:
+            I understand the President
+        has removed the Post Master at Joliet,
+        Ill. Will you ask him if he can
+        consistently suspend the matter for a
+        few days till I can see him?
+            I hope to be on my pegs again
+        shortly.
+                                        Yours Truly
+                                        Owen Lovejoy
+                                        pr H.W.
+
+        Col. Nicolay
+        Executive Mansion
+        Washington D.C.,
+
+        30100
+      pass2Reading: |
+                                        Washington D.C.
+                                        February 2nd 1864
+        Friend Nicolay:
+            I understand the President
+        has removed the Post Master at Joliet,
+        Ill. Will you ask him if he can
+        consistently suspend the matter for a
+        few days till I can see him?
+            I hope to be on my pegs again
+        shortly.
+                                        Yours Truly
+                                        Owen Lovejoy
+                                        pr H.W.
+
+        Col. Nicolay
+        Executive Mansion
+        Washington D.C.,
+
+        30100
+      resolution: "pass2 confirms final text; no edit"
+      resolved: true
+  hallucinationAudit:
+    totalWords: 59
+    wordsGroundedInGlyphs: 59
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```

@@ -1,0 +1,97 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "LOC-mal-4095900"
+    modelId: "claude-3-opus-20240229"
+    timestamp: "2024-07-30T12:00:00Z" # Placeholder, will be replaced by actual timestamp
+    protocolVersion: "1.1.0"
+    targetLanguage: "eng-Latn"
+    languageSet: []
+    targetEra: "nineteenth_century"
+    eraRange: "1860-1865"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: { mixedLanguage: false, mixedEra: false }
+    scriptNotes: "1865 Interior Department letter forwarding Winnebago Indian deeds for Lincoln's approval; transcribe all visible text"
+    englishHandwritingModality: "copperplate"
+    epistemicNotes: null
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "copperplate"
+    scriptMatchesConfig: true
+    conditionNotes: null
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-20"
+      position: "body"
+      text: |
+        Department of the Interior,
+        Washington, Feby 27, 1865
+        In: G. Nicolay, Esq.
+        Dear Sir,
+        Herewith
+        please find two Indian,
+        Deeds, for the President's
+        approval -
+        The Secretary directs me
+        to inquire if the two deeds
+        sent up on the 17th ultimo
+        have been approved by the
+        President? If so, that they
+        be returned. They are deeds,
+        of Virginia Grignon, and
+        of Geo. Culver guardian for
+        minor heirs of Antoine Grignon;
+        Winnebago Indian -
+        Respectfully yours,
+        N. H. H. White.
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 2
+      pageNumber: 1
+      lineRange: "21-21"
+      position: "marginalia"
+      text: |
+        40959
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 1
+      pass1Reading: "Department of the Interior,\nWashington, Feby 27, 1865\nIn: G. Nicolay, Esq.\nDear Sir,\nHerewith\nplease find two Indian,\nDeeds, for the President's\napproval -\nThe Secretary directs me\nto inquire if the two deeds\nsent up on the 17th ultimo\nhave been approved by the\nPresident? If so, that they\nbe returned. They are deeds,\nof Virginia Grignon, and\nof Geo. Culver guardian for\nminor heirs of Antoine Grignon;\nWinnebago Indian -\nRespectfully yours,\nN. H. H. White."
+      pass2Reading: "Department of the Interior,\nWashington, Feby 27, 1865\nIn: G. Nicolay, Esq.\nDear Sir,\nHerewith\nplease find two Indian,\nDeeds, for the President's\napproval -\nThe Secretary directs me\nto inquire if the two deeds\nsent up on the 17th ultimo\nhave been approved by the\nPresident? If so, that they\nbe returned. They are deeds,\nof Virginia Grignon, and\nof Geo. Culver guardian for\nminor heirs of Antoine Grignon;\nWinnebago Indian -\nRespectfully yours,\nN. H. H. White."
+      resolution: "pass2 confirms final text; no edit"
+      resolved: true
+    - mismatchId: 2
+      segmentId: 2
+      pass1Reading: "40959"
+      pass2Reading: "40959"
+      resolution: "pass2 confirms final text; no edit"
+      resolved: true
+  hallucinationAudit:
+    totalWords: 80
+    wordsGroundedInGlyphs: 80
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```

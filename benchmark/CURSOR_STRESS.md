@@ -61,6 +61,18 @@ This reads every `response.txt` under `benchmark/test-results/stress/<case>/...`
 
 To use the **same manifest + prompt zones** with the **`claude`** terminal command (Claude Code), see [`CLAUDE_CLI.md`](CLAUDE_CLI.md).
 
+## Anti-cheating (required for blind runs)
+
+The harness is designed so models cannot score well by shortcutting:
+
+1. **No ground truth in the prompt** — use only `manifest.yaml` `prompt` fields and images. Never paste LOC crowd `.txt` transcripts, Basler/EMMO/PAGE-XML text, or prior `response.txt` files into the chat.
+2. **Additions are always fatal** — disposition fails on any substantive word not in GT, regardless of accuracy %.
+3. **`[illegible]` is not a free pass** — on `modern_*` cases, one damage token can absorb one GT word without an omission penalty; flooding (>15% wildcards) triggers `uncertainty_gaming` and fails. Use tokens only where glyphs are actually missing — not to skip readable text.
+4. **Expansion mode for expanded GT** — `BM-MED-001` and `BM-KB27` must emit `preserveOriginalAbbreviations: false`; diplomatic abbreviations against expanded GT are not scored (expansion firewall).
+5. **Schema gaming fails the row** — invented `segments[].position` values, empty `mismatchReport` with segments present, or self-certified `hallucinationAudit` without matching segment text still fail validation before GT is applied.
+
+Regression checks: `python3 -m unittest discover -s tests -p 'test_*.py'`
+
 ## Notes
 
 - Cursor model names and vision support depend on your plan; the methodology matches the automated harness: **same inputs + same gates**.

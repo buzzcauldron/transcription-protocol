@@ -1,45 +1,65 @@
 {
-  "generated": "2026-06-09T14:05:05Z",
+  "generated": "2026-06-10T14:28:33Z",
   "rows": [
     {
-      "case": "BM-001",
+      "case": "BM-MOD-LOVEJOY",
       "model": "gemini (gemini-2.5-flash)",
-      "schema_ok": true,
-      "addition_count": 85,
-      "omission_count": 65,
+      "schema_ok": false,
+      "addition_count": 2,
+      "omission_count": 14,
       "disposition": "FAIL",
       "score": 0.0,
-      "notes": "\u2014"
+      "notes": "segment 1 position invalid: got 'address', expected one of ('body', 'header', 'footer', 'margin_left', 'margin_right', 'margin_top', 'margin_bottom', 'interlinear', 'footnote', 'table_row', 'table_header')"
     },
     {
-      "case": "BM-001",
+      "case": "BM-MOD-LOVEJOY",
+      "model": "gemini-pro (gemini-2.5-pro)",
+      "schema_ok": false,
+      "addition_count": "\u2014",
+      "omission_count": "\u2014",
+      "disposition": "FAIL",
+      "score": "\u2014",
+      "notes": "YAML parse error: while parsing a block mapping\n  in \"<unicode string>\", line 38, column 7:\n        - segmentId: 1\n          ^\nexpected <block end>, but found '<block mapping start>'\n  in \"<unicode string>\", line 45, column 9:\n            Friend Nicolay:\n            ^"
+    },
+    {
+      "case": "BM-MOD-JOHNSON",
+      "model": "gemini (gemini-2.5-flash)",
+      "schema_ok": false,
+      "addition_count": 20,
+      "omission_count": 51,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "segment 1 position invalid: got 'marginalia', expected one of ('body', 'header', 'footer', 'margin_left', 'margin_right', 'margin_top', 'margin_bottom', 'interlinear', 'footnote', 'table_row', 'table_header')"
+    },
+    {
+      "case": "BM-MOD-JOHNSON",
       "model": "gemini-pro (gemini-2.5-pro)",
       "schema_ok": true,
-      "addition_count": 59,
-      "omission_count": 57,
+      "addition_count": 15,
+      "omission_count": 47,
       "disposition": "FAIL",
       "score": 0.0,
       "notes": "\u2014"
     },
     {
-      "case": "BM-001",
-      "model": "gemini-3.5-flash (gemini-3.5-flash)",
+      "case": "BM-MOD-DEED",
+      "model": "gemini (gemini-2.5-flash)",
       "schema_ok": false,
-      "addition_count": 19,
-      "omission_count": 32,
+      "addition_count": 7,
+      "omission_count": 4,
       "disposition": "FAIL",
       "score": 0.0,
-      "notes": "missing required field: protocolVersion; metadata.protocolVersion must be one of ['1.0.0', '1.1.0', 'v1.0', 'v1.1'], got None"
+      "notes": "segment 1 position invalid: got 'marginalia', expected one of ('body', 'header', 'footer', 'margin_left', 'margin_right', 'margin_top', 'margin_bottom', 'interlinear', 'footnote', 'table_row', 'table_header')"
     },
     {
-      "case": "BM-001",
-      "model": "gemini-flash-lite (gemini-2.5-flash-lite)",
+      "case": "BM-MOD-DEED",
+      "model": "gemini-pro (gemini-2.5-pro)",
       "schema_ok": false,
-      "addition_count": 46,
-      "omission_count": 303,
+      "addition_count": 4,
+      "omission_count": 1,
       "disposition": "FAIL",
-      "score": 0.0,
-      "notes": "missing required field: confidence; missing required field: uncertaintyTokenCount; segment 0 confidence invalid: got None, expected one of ('high', 'medium', 'low'); mismatchReport is required when segments is non-empty (protocol 1.1.0 \u00a75.2), unless pass2Summary is present with segmentsAltered: 0; hallucinationAudit is required (protocol \u00a77.4 item 5; hard fail if absent)"
+      "score": 0.05,
+      "notes": "segment 1 position invalid: got 'bottom_left_corner', expected one of ('body', 'header', 'footer', 'margin_left', 'margin_right', 'margin_top', 'margin_bottom', 'interlinear', 'footnote', 'table_row', 'table_header')"
     }
   ]
 }

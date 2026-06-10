@@ -1,0 +1,95 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "LOC-mal-3030000"
+    modelId: "gpt-4o"
+    timestamp: "2024-07-26T16:00:00.123Z"
+    protocolVersion: "1.1.0"
+    targetLanguage: "eng-Latn"
+    languageSet: []
+    targetEra: "nineteenth_century"
+    eraRange: "1860-1865"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: { mixedLanguage: false, mixedEra: false }
+    scriptNotes: "1864 Senate letter re presidential pardon; transcribe all visible body and endorsements on the page"
+    englishHandwritingModality: "copperplate"
+    epistemicNotes: null
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "English cursive"
+    scriptMatchesConfig: true
+    conditionNotes: "The document contains at least two different hands. The main body of the note is written in a highly stylized, rapid cursive, making many words difficult to decipher. Some letterforms are ambiguous or reduced to minimal strokes."
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-11"
+      position: "body"
+      text: |
+        Senate Chamber
+        8 Dec '64
+        My dear Sir,
+        As you do
+        forward to me the
+        papers by which I
+        am informed,
+        relative to the pardon
+        of J. S. [uncertain: Waring]
+        of N.Y? has this?
+        [illegible]
+      confidence: "low"
+      uncertaintyTokenCount: 2
+      notes: null
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 1
+      pass1Reading: |
+        Senate Chamber
+        8 Dec '64
+        My dear Sir,
+        As you do
+        forward to me the
+        papers by which I
+        am informed,
+        relative to the pardon
+        of J. S. [uncertain: Waring]
+        of N.Y? has this?
+        [illegible]
+      pass2Reading: |
+        Senate Chamber
+        8 Dec '64
+        My dear Sir,
+        As you do
+        forward to me the
+        papers by which I
+        am informed,
+        relative to the pardon
+        of J. S. [uncertain: Waring]
+        of N.Y? has this?
+        [illegible]
+      resolution: "Pass 2 confirms final text. Considered 'Ask you to' for line 4 but rejected based on clearer glyph evidence for 'As you do'."
+      resolved: true
+  hallucinationAudit:
+    totalWords: 33
+    wordsGroundedInGlyphs: 33
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```

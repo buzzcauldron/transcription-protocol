@@ -21,6 +21,7 @@ My respects to your sister.
 
 Your friend Lincoln"""
 
+# Expanded Vulgate reference (abbreviations resolved); scored expansion-to-expansion.
 MEDIEVAL_GT = (
     "et peperit iniquitatem. Lacum "
     "aperuit et effodit eum. et incidit "
@@ -43,6 +44,73 @@ MEDIEVAL_GT = (
     "caelos tuos opera digitorum tuorum. "
     "lunam et stellas quae tu fundasti."
 )
+
+# ── KB27.335 AALT 0235 (King's Bench plea roll, c.1340 legal anglicana) ──
+# Expanded PAGE XML (nw-page-editor): abbreviations resolved, scribal spellings preserved.
+# Firewalled: used only by the legal evaluator, never supplied to the model.
+KB27_GT = (
+    "Londinia Dominus Rex per Johannem de Lincoln qui sequitur pro eo optulit se quarto die versus Magistrum Robertum de Thresk "
+    "de placito quare cum de iure et sedem legem et consuetudinem regni Regis nunc Anglie omnia terras et tenementibus et redditus ac "
+    "advocationes ecclesticarum et aliorum beneficiorum ecclesiasticarum quoruscumque que de domino Rege tenentur in capite sine licencia "
+    "Regis alienata in manum Regis capi et penes Rege remanere debeant predictus Robertus ius corone et Regie "
+    "dignitatus Regis iniens enervare se in ecclesiam de Northflete vacantem et ad Regis donacionem spectantem ratione "
+    "alienacionis advocationis ecclesie illius que quidem advocato de domino Rege tenetur in capite sine licencia Regis "
+    "per Johannem Archiepiscopum Cantuarie facte et quam etiam advocationem ea de causa in manum suam capi fecit Rex "
+    "vi et armis est ingressus et sic in eadem ad huc se tenet et quam pluries bullas et brevas domino Regi "
+    "et regno Regis preiudicialies infra idem regnum detulit et in dies deferre fecit et diversos processus super "
+    "eiusdem bullis et lettris per callidas machinationes infra idem regnum prosequitur sum effectum in Regis contempto "
+    "et iacitiram multiplice ac iurium corone et Regie dignitatis Regis predictorum exheredationem manifestam et contra "
+    "pacem Regis Et ipse non venit et preceptum fuit vicecomiti sicut pluries quod caperet eum etc Et vicecomites "
+    "retornavit quod non est inventus etc ideo preceptum est vicecomiti sicut pluries quod capiat eum si inventus etc Et "
+    "salvo etc Ita quod habeant corporus eius coram domino Rege a die Pasche in xv dies ubicumque etc"
+)
+
+# ── Donne → Egerton (early modern secretary hand, 1602), Folger MS L.b.534, leaf 1 recto ──
+# Ground truth: EMMO diplomatic transcription (CC BY-SA 4.0), letter body only.
+# Firewalled: used only by the early-modern evaluator, never supplied to the model.
+# ── LOC By the People transcripts (firewalled; modern English, minimal damage) ──
+
+# mal.3010000 — Owen Lovejoy to John G. Nicolay, 2 Feb 1864 (Joliet postmaster)
+LOVEJOY_GT = (
+    "Washington D.C. February 2nd 1864 Friend Nicolay: I understand the President "
+    "has removed the Post Master at Joliet, Ill. Will you ask him if he can "
+    "consistently suspend the matter for a few days till I can see him? "
+    "I hope to be on my pegs again shortly. Yours Truly Owen Lovejoy pv H. C. V. "
+    "Col. Nicolay Executive Mansion Washington D.C. Hon. O. Lovejoy About Joliet "
+    "Post Office Feb 2 1864"
+)
+
+# mal.3030000 — Reverdy Johnson to Abraham Lincoln, 8 Feb 1864 (Waring pardon inquiry)
+JOHNSON_GT = (
+    "Senate Chamber 8 Feby '64 My dear Sir, Do me the favor to let me know by return "
+    "of the messenger whether the pardon of J S Waring of Md has issued? His members "
+    "of our Legislature who petition you on the subject, are very desirous of knowing. "
+    "Yrs trule repy Reverdy Johnson The President. Reverdy Johnson Washington Feb. 8, 1864 "
+    "Inquiries about the case of Waring"
+)
+
+# mal.4095900 — A. S. H. White to John G. Nicolay, 27 Feb 1865 (Indian deeds for approval)
+DEED_WHITE_GT = (
+    "Department of the Interior, Washington, Feby 27, 1865 Jno. G. Nicolay Esq Dear Sir, "
+    "Herewith please find two Indian Deeds for the President's approval. The Secretary "
+    "directs me to inquire if the two deeds sent up on the 17th ultimo have been "
+    "approved by the president? If so, that they be returned. They are deeds of "
+    "Virginia Grignon, and of Geo. Culver guardian for minor heirs of Antoine Grignon; "
+    "Winnebago Indians. Respectfully yours A. S. H. White"
+)
+
+DONNE_GT = (
+    "The honorable fauor that yr lp hath afforded me, in allowinge me the liberty of myne own Chamber, "
+    "hath giuen me leaue so much to respect and loue my self, that now I can desire to be well. And "
+    "therfore, for health, not pleasure, (of wch yr lps displeasure hath dulld in me all tast and ap=prehension) "
+    "I humbly beseeche yr lp, so much more to slacken my fetters, that as I ame by yr lps fa=uor, myne own "
+    "keeper, and Surety, so I may be myne owne phisician and Apothecary: wch yr lp shall worke, yf yow graunt me "
+    "Liberty to take the Ayre, about this Towne. The whole world ys a streight Imprisonmt to me, whilst I ame barrd "
+    "yr lps sight. But this fauor may lengthen and better my lyfe, wch I desire to prserve, onely in hope to "
+    "redeeme by my sorrowe, and desire to do yr lp Seruice, my Offence past. Allmighty godd well euer in yr ls "
+    "hart, and fill yt wth good desires, and graunt them. Yor lps poorest seruant I: Donne"
+)
+
 
 ABBREV_MAP = {
     "&": "et",

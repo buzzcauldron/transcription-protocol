@@ -1,0 +1,104 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "KB27-335-AALT-0235"
+    modelId: "google/gemini-1.5-pro-001"
+    timestamp: "2024-07-25T16:00:00.000Z"
+    protocolVersion: "1.1.0"
+    targetLanguage: "lat-Latn"
+    languageSet: []
+    targetEra: "medieval"
+    eraRange: "1330-1380"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: false
+      markExpansions: false
+      captureDeletionsAndInsertions: true
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: { mixedLanguage: false, mixedEra: false }
+    scriptNotes: null
+    englishHandwritingModality: null
+    epistemicNotes: null
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "Gothic anglicana cursiva"
+    scriptMatchesConfig: true
+    conditionNotes: "The manuscript is somewhat faded and blurry in places, but legible with the aid of cropped images."
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-14"
+      position: "body"
+      text: |
+        [marginalia: Londonia] Nunc Rex per Iohannem de Lincoln qui sequitur pro eo quam pro se ipso in aggravacionem Robertum de [crop]
+        de predicto auxilio domino Regi non legato et confiscato pretextu Regio nunc habet omnia terras et tenementa et redditus et possessiones et
+        advocaciones ecclesiarum et aliorum beneficiorum ecclesiasticorum quorumcumque que dictus dominus Rex concessit in Aprico vna licencia
+        Regia alienandi in manu Regis apud et partem Regis perpetuo remansuro Salvo tamen domino Regi et
+        dignitates Regis necnon amissionem de perpetuo ulterius et dicto Regio donacionem specialiter bona
+        alienando advocaciones ecclesie illius que quidem advocacio de domino Rege tenet in Aprico sine licencia Regis
+        Et Iohannem Rychepyn attornatum suum et quia eadem advocacionem ad se de iure in manu sua apud partem Regis
+        vult et sumit et magistratus ac necnon ordines ad huc ad tenet ac quam plures bullas et litteras domino Regi
+        et Regno Regis preiudiciales infra idem Regnum execucioni et missos defensores suos et A diuiso processus super
+        ipsum Guillelmum et Petrum et alios ad machinaciones infra idem Regnum perpetratas ad affectum in Regio compania
+        et iniuriam multipliciter de iniuria corone et Regie dignitati Regis predicti exheredacionem manifestam et contra
+        pacem Regis Et ipse non venit Et preceptum fuit vicecomiti quod caperet eum et cetera Et vicecomes
+        ideo non est inventus etcetera Ideo sicut prius et non omittat etcetera Et sicut prius preceptum est vicecomiti
+        apud Salopiam et per Iusticiarios corpus eius coram eodem domino Rege ad diem prefixum vbi non vbicumque et cetera
+      confidence: "medium"
+      uncertaintyTokenCount: 1
+      notes: "The hand is a heavily abbreviated legal cursive, requiring extensive expansion as per the protocol. Some phrasing, such as 'ad huc ad tenet' in line 8, is transcribed as written despite appearing unusual."
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 1
+      pass1Reading: |
+        [marginalia: Londonia] Nunc Rex per Iohannem de Lincoln qui sequitur pro eo quam pro se ipso in aggravacionem Robertum de [crop]
+        de predicto auxilio domino Regi non legato et confiscato pretextu Regio nunc habet omnia terras et tenementa et redditus et possessiones et
+        advocaciones ecclesiarum et aliorum beneficiorum ecclesiasticorum quorumcumque que dictus dominus Rex concessit in Aprico vna licencia
+        Regia alienandi in manu Regis apud et partem Regis perpetuo remansuro Salvo tamen domino Regi et
+        dignitates Regis necnon amissionem de perpetuo ulterius et dicto Regio donacionem specialiter bona
+        alienando advocaciones ecclesie illius que quidem advocacio de domino Rege tenet in Aprico sine licencia Regis
+        Et Iohannem Rychepyn attornatum suum et quia eadem advocacionem ad se de iure in manu sua apud partem Regis
+        vult et sumit et magistratus ac necnon ordines ad huc ad tenet ac quam plures bullas et litteras domino Regi
+        et Regno Regis preiudiciales infra idem Regnum execucioni et missos defensores suos et A diuiso processus super
+        ipsum Guillelmum et Petrum et alios ad machinaciones infra idem Regnum perpetratas ad affectum in Regio concompania
+        et iniuriam multipliciter de iniuria corone et Regie dignitati Regis predicti exheredacionem manifestam et contra
+        pacem Regis Et ipse non venit Et preceptum fuit vicecomiti quod caperet eum et cetera Et vicecomes
+        ideo non est inventus etcetera Ideo sicut prius et non omittat etcetera Et sicut prius preceptum est vicecomiti
+        apud Salopiam et per Iusticiarios corpus eius coram eodem domino Rege ad diem prefixum vbi non vbicumque et cetera
+      pass2Reading: |
+        [marginalia: Londonia] Nunc Rex per Iohannem de Lincoln qui sequitur pro eo quam pro se ipso in aggravacionem Robertum de [crop]
+        de predicto auxilio domino Regi non legato et confiscato pretextu Regio nunc habet omnia terras et tenementa et redditus et possessiones et
+        advocaciones ecclesiarum et aliorum beneficiorum ecclesiasticorum quorumcumque que dictus dominus Rex concessit in Aprico vna licencia
+        Regia alienandi in manu Regis apud et partem Regis perpetuo remansuro Salvo tamen domino Regi et
+        dignitates Regis necnon amissionem de perpetuo ulterius et dicto Regio donacionem specialiter bona
+        alienando advocaciones ecclesie illius que quidem advocacio de domino Rege tenet in Aprico sine licencia Regis
+        Et Iohannem Rychepyn attornatum suum et quia eadem advocacionem ad se de iure in manu sua apud partem Regis
+        vult et sumit et magistratus ac necnon ordines ad huc ad tenet ac quam plures bullas et litteras domino Regi
+        et Regno Regis preiudiciales infra idem Regnum execucioni et missos defensores suos et A diuiso processus super
+        ipsum Guillelmum et Petrum et alios ad machinaciones infra idem Regnum perpetratas ad affectum in Regio compania
+        et iniuriam multipliciter de iniuria corone et Regie dignitati Regis predicti exheredacionem manifestam et contra
+        pacem Regis Et ipse non venit Et preceptum fuit vicecomiti quod caperet eum et cetera Et vicecomes
+        ideo non est inventus etcetera Ideo sicut prius et non omittat etcetera Et sicut prius preceptum est vicecomiti
+        apud Salopiam et per Iusticiarios corpus eius coram eodem domino Rege ad diem prefixum vbi non vbicumque et cetera
+      resolution: "Pass 2 review of line 10 corrected 'concompania' to 'compania'. The initial 'c' appears to be a separate glyph, not part of a 'con-' prefix, and 'compania' is the more standard Latin form."
+      resolved: true
+  hallucinationAudit:
+    totalWords: 183
+    wordsGroundedInGlyphs: 105
+    wordsFromExpansion: 78
+    expansionsWithVisibleMark: 78
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```

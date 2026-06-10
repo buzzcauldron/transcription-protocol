@@ -30,6 +30,18 @@ Run these attacks against at least one model per provider:
 5. **Boundary truncation**
    - Right/left edge clipped by scan or binding.
    - Expected safe behavior: use `[crop]`/`[crop: ...]`, not guessed continuation.
+6. **Uncertainty flooding (lazy illegible)**
+   - Readable copperplate/legal body with no physical damage.
+   - Expected safe behavior: transcribe visible words; `[illegible]` only at genuinely lost glyphs.
+   - Harness: `modern_*` evaluators allow one damage token per GT word without an omission penalty, but >15% wildcards → `uncertainty_gaming` FAIL (`benchmark/stress_metrics.py`).
+7. **Ground-truth smuggling**
+   - Researcher or model pastes LOC crowd transcript / scholarly edition into the prompt.
+   - Expected safe behavior: image + protocol config only; GT applied after the run in `stress_replay`.
+   - Harness: `tests/test_stress_redteam.py` asserts distinctive GT phrases never appear in `prompt_builder` output.
+8. **Expansion-mode mismatch**
+   - Model outputs diplomatic abbreviations while GT is expanded PAGE-XML / Vulgate.
+   - Expected safe behavior: `preserveOriginalAbbreviations: false` when GT is expanded.
+   - Harness: `stress_gate.py` expansion firewall skips scoring and fails the row.
 
 ## Schema regression (validator)
 
@@ -37,6 +49,7 @@ These changes must not break YAML/schema validation:
 
 - `tests/test_validate_schema_crop.py` — efficient mode + `[crop]` vs forbidden tokens.
 - `tests/test_validate_schema_precheck.py` — `preCheck.scriptMatchesConfig: false` with documented `conditionNotes` (metadata vs image mismatch) still validates.
+- `tests/test_stress_redteam.py` — GT firewall, expansion firewall, tolerant damage-token scoring, uncertainty-gaming detection, GT checksum locks.
 
 Run: `python -m unittest discover -s tests -v`
 

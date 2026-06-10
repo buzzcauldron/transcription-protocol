@@ -5,8 +5,20 @@ from __future__ import annotations
 from typing import Any, Dict
 
 from .parse_transcript import get_transcription_root, parse_transcription_yaml
-from .stress_metrics import run_evaluator
+from .stress_metrics import EXPANDED_GT_EVALUATORS, run_evaluator
 from .validate_schema import validate_transcription_output
+
+
+def _preserve_original_abbreviations(root_out: dict) -> bool | None:
+    """Return metadata toggle value, or None if toggles are missing."""
+    meta = root_out.get("metadata") or {}
+    toggles = meta.get("diplomaticToggles")
+    if not isinstance(toggles, dict):
+        return None
+    val = toggles.get("preserveOriginalAbbreviations")
+    if val is None:
+        return None
+    return bool(val)
 
 
 def gates_from_raw(raw: str, evaluator: str) -> Dict[str, Any]:
@@ -55,20 +67,33 @@ def gates_from_raw(raw: str, evaluator: str) -> Dict[str, Any]:
     if schema_warnings:
         notes_parts.append("Warnings: " + "; ".join(schema_warnings))
 
+    expansion_blocked = False
+    if evaluator in EXPANDED_GT_EVALUATORS:
+        preserve_abbrevs = _preserve_original_abbreviations(root_out)
+        if preserve_abbrevs is True:
+            notes_parts.append(
+                "expansion firewall (protocol §2.4.1): diplomatic output "
+                "(preserveOriginalAbbreviations: true) cannot be scored against expanded GT"
+            )
+            expansion_blocked = True
+
     segs = root_out.get("segments") or []
     if not isinstance(segs, list):
         segs = []
-    metrics = run_evaluator(evaluator, segs)
-    if metrics.get("error"):
-        notes_parts.append(metrics["error"])
+    if expansion_blocked:
         disposition = "FAIL"
     else:
-        addition_count = metrics.get("addition_count", "")
-        omission_count = metrics.get("omission_count", "")
-        disposition = metrics.get("disposition", "")
-        score = metrics.get("score", "")
-        if not schema_ok:
+        metrics = run_evaluator(evaluator, segs)
+        if metrics.get("error"):
+            notes_parts.append(metrics["error"])
             disposition = "FAIL"
+        else:
+            addition_count = metrics.get("addition_count", "")
+            omission_count = metrics.get("omission_count", "")
+            disposition = metrics.get("disposition", "")
+            score = metrics.get("score", "")
+            if not schema_ok:
+                disposition = "FAIL"
 
     return {
         "schema_ok": schema_ok,

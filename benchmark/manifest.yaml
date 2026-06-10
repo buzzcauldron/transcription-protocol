@@ -37,13 +37,122 @@ cases:
       targetEra: "medieval"
       eraRange: "1175-1225"
       diplomaticProfile: "strict"
-      diplomaticToggles: "{}"
+      diplomaticToggles: "{\"preserveOriginalAbbreviations\": false, \"markExpansions\": false}"
       normalizationMode: "diplomatic"
       languageSet: "[]"
-      scriptNotesOptional: "Premonstratensian psalter; heavy abbreviation"
+      scriptNotesOptional: "Premonstratensian psalter; heavy abbreviation. EXPANSION mode: write out every abbreviation as its full Latin word; do NOT output combining macrons/tildes."
       sourcePageId: "Walters-W25-folio"
       protocolVersion: "1.1.0"
     evaluator: "medieval"
+    optional: true
+
+  BM-KB27:
+    description: "KB27.335 AALT 0235 — King's Bench plea roll (c.1340 legal anglicana)"
+    source_note: "AALT (aalt.law.uh.edu); image committed at benchmark/kb27-335-aalt-0235.png"
+    image_urls: []
+    image_paths:
+      - "benchmark/kb27-335-aalt-0235.png"
+    media_type: "image/png"
+    prompt:
+      targetLanguage: "lat-Latn"
+      targetEra: "medieval"
+      eraRange: "1330-1380"
+      diplomaticProfile: "layout_aware"
+      diplomaticToggles: "{\"preserveLineBreaks\": true, \"preserveOriginalAbbreviations\": false, \"markExpansions\": false, \"captureDeletionsAndInsertions\": true, \"captureUnclearGlyphShape\": true}"
+      normalizationMode: "diplomatic"
+      languageSet: "[]"
+      scriptNotesOptional: "14th-c. King's Bench plea roll, Gothic anglicana cursiva; heavy legal abbreviation. EXPANSION mode: write out every abbreviation as its full Latin word; do NOT output combining macrons/tildes. Read proper nouns and regnal years letter-by-letter; never guess to produce fluent Latin."
+      sourcePageId: "KB27-335-AALT-0235"
+      protocolVersion: "1.1.0"
+    evaluator: "legal"
+    optional: true
+
+  BM-EM-001:
+    description: "Donne to Egerton (1602) — Folger MS L.b.534 leaf 1 recto (secretary hand)"
+    source_note: "Folger Shakespeare Library MS L.b.534; image at benchmark/images/BM-EM-001/leaf1r.jpg; GT = EMMO diplomatic (CC BY-SA 4.0)"
+    image_urls: []
+    image_paths:
+      - "benchmark/images/BM-EM-001/leaf1r.jpg"
+    media_type: "image/jpeg"
+    prompt:
+      targetLanguage: "eng-Latn"
+      targetEra: "early_modern"
+      eraRange: "1600-1610"
+      diplomaticProfile: "layout_aware"
+      diplomaticToggles: "{}"
+      normalizationMode: "diplomatic"
+      languageSet: "[]"
+      scriptNotesOptional: "autograph letter, mixed secretary/italic hand; preserve original spelling and superscript abbreviations (yr lp, wch, wth, Sr) without expansion or modernization; letter body page only"
+      englishHandwritingModality: "secretary"
+      sourcePageId: "Folger-Lb534-leaf1r"
+      protocolVersion: "1.1.0"
+    evaluator: "earlymodern"
+    optional: true
+
+  BM-MOD-LOVEJOY:
+    description: "Owen Lovejoy to John G. Nicolay, 2 Feb 1864 (Joliet postmaster removal)"
+    source_note: "LOC mal.3010000; By the People transcript; IIIF image auto-downloaded"
+    image_urls:
+      - "https://tile.loc.gov/image-services/iiif/service:mss:mal:301:3010000:001/full/pct:50/0/default.jpg"
+    image_paths: []
+    media_type: "image/jpeg"
+    prompt:
+      targetLanguage: "eng-Latn"
+      targetEra: "nineteenth_century"
+      eraRange: "1860-1865"
+      diplomaticProfile: "layout_aware"
+      diplomaticToggles: "{}"
+      normalizationMode: "diplomatic"
+      languageSet: "[]"
+      scriptNotesOptional: "1864 congressional letter on executive appointment; transcribe all visible body and address text on the page"
+      englishHandwritingModality: "copperplate"
+      sourcePageId: "LOC-mal-3010000"
+      protocolVersion: "1.1.0"
+    evaluator: "modern_lovejoy"
+    optional: true
+
+  BM-MOD-JOHNSON:
+    description: "Reverdy Johnson to Abraham Lincoln, 8 Feb 1864 (Waring pardon inquiry)"
+    source_note: "LOC mal.3030000; By the People transcript; IIIF image auto-downloaded"
+    image_urls:
+      - "https://tile.loc.gov/image-services/iiif/service:mss:mal:303:3030000:001/full/pct:50/0/default.jpg"
+    image_paths: []
+    media_type: "image/jpeg"
+    prompt:
+      targetLanguage: "eng-Latn"
+      targetEra: "nineteenth_century"
+      eraRange: "1860-1865"
+      diplomaticProfile: "layout_aware"
+      diplomaticToggles: "{}"
+      normalizationMode: "diplomatic"
+      languageSet: "[]"
+      scriptNotesOptional: "1864 Senate letter re presidential pardon; transcribe all visible body and endorsements on the page"
+      englishHandwritingModality: "copperplate"
+      sourcePageId: "LOC-mal-3030000"
+      protocolVersion: "1.1.0"
+    evaluator: "modern_johnson"
+    optional: true
+
+  BM-MOD-DEED:
+    description: "A. S. H. White to John G. Nicolay, 27 Feb 1865 (Indian deeds for presidential approval)"
+    source_note: "LOC mal.4095900; By the People transcript; deed-adjacent executive correspondence"
+    image_urls:
+      - "https://tile.loc.gov/image-services/iiif/service:mss:mal:409:4095900:001/full/pct:50/0/default.jpg"
+    image_paths: []
+    media_type: "image/jpeg"
+    prompt:
+      targetLanguage: "eng-Latn"
+      targetEra: "nineteenth_century"
+      eraRange: "1860-1865"
+      diplomaticProfile: "layout_aware"
+      diplomaticToggles: "{}"
+      normalizationMode: "diplomatic"
+      languageSet: "[]"
+      scriptNotesOptional: "1865 Interior Department letter forwarding Winnebago Indian deeds for Lincoln's approval; transcribe all visible text"
+      englishHandwritingModality: "copperplate"
+      sourcePageId: "LOC-mal-4095900"
+      protocolVersion: "1.1.0"
+    evaluator: "modern_deed"
     optional: true
 
   BM-CROP:

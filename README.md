@@ -18,7 +18,8 @@ The protocol uses [Semantic Versioning](https://semver.org/). Notable refinement
 2. **`runMode`** (`standard` | `efficient`) — efficient single-pass mode for throughput, with guard rails that forbid standard-only tokens and incompatible profiles.
 3. **Conservative epistemic stance** — default skeptical confidence, honest mismatch reporting, optional `metadata.epistemicNotes` (protocol §1.1).
 4. **Crop tokens `[crop]` / `[crop: …]`** — text truncated by image edge, binding, or scan, distinct from `[gap]` and `[illegible]` (Phase 1, protocol §3).
-5. **Diplomatic vs expansion firewall** — `preserveOriginalAbbreviations` is a hard split; the evaluator refuses to score diplomatic output against expanded ground truth (avoids 20–40 pt CER inflation).
+5. **Diplomatic vs expansion firewall** — `preserveOriginalAbbreviations` is a hard split; the stress harness refuses to score diplomatic output against expanded ground truth (avoids 20–40 pt CER inflation).
+6. **Benchmark anti-cheating gates** — ground truth is firewalled (never in prompts); honest `[illegible]` / `[gap]` / `[damaged]` tokens do not count as omissions in `modern_*` evaluators, but wildcard flooding (>15% of GT words) fails as `uncertainty_gaming`; any substantive addition still hard-fails. Regression: [`tests/test_stress_redteam.py`](tests/test_stress_redteam.py).
 
 Full history: [`CHANGELOG.md`](CHANGELOG.md).
 
@@ -208,7 +209,9 @@ python -m benchmark.stress_run --dry-run
 python -m benchmark.stress_run --cases BM-001 --models anthropic openai
 ```
 
-Outputs land under [`benchmark/test-results/stress/`](benchmark/test-results/stress/) (`stress_report.md`, `stress_results.json`, and per-run raw responses). [`benchmark/manifest.yaml`](benchmark/manifest.yaml) lists cases and default models; optional cases (e.g. medieval with a local image) need `--include-optional` and files described in [`benchmark/images/README.md`](benchmark/images/README.md).
+Outputs land under [`benchmark/test-results/stress/`](benchmark/test-results/stress/) (`stress_report.md`, `stress_results.json`, and per-run raw responses). [`benchmark/manifest.yaml`](benchmark/manifest.yaml) lists cases and default models; optional cases (medieval psalter, KB27, modern LOC letters `BM-MOD-*`, etc.) need `--include-optional` — see [`benchmark/images/README.md`](benchmark/images/README.md).
+
+**Scoring integrity:** GT strings live only in [`benchmark/ground_truth.py`](benchmark/ground_truth.py) and are never assembled into [`prompt_builder.py`](benchmark/prompt_builder.py) output. Latin cases with expanded GT (`medieval`, `legal`) require expansion-mode YAML (`preserveOriginalAbbreviations: false`) or the harness skips word-diff scoring (protocol §2.4.1). Do not paste transcripts or crowd-sourced `.txt` files into the model prompt when running blind benchmarks.
 
 To **re-score saved** `response.txt` files (e.g. from Cursor or a previous API run) without calling providers:
 
