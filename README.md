@@ -25,23 +25,6 @@ Full history: [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Benchmark results
 
-Tested against real manuscripts with established scholarly transcriptions. **Every run below is blind** — the model transcribed from the image alone, with the ground truth used only for scoring afterward, never supplied as input (full per-run reports in [`benchmark/test-results/`](benchmark/test-results/)). All runs used a frontier model (Claude 4 Opus):
-
-| Document | Era / hand | Lang | Accuracy | Additions | Disposition |
-|---|---|---|---|---|---|
-| [Lincoln → Owens letter (1837)](benchmark/test-results/evaluation-report-001.md) | 19th c. | `eng-Latn` | 99.80% words (1 omission at fold crease) | **0** | CONDITIONAL_PASS |
-| [Walters W.25 Psalter (~1200)](benchmark/test-results/evaluation-report-002-medieval.md) | Medieval | `lat-Latn` | 100% words | **0** | PASS |
-| [Donne → Egerton letter (1602)](benchmark/test-results/evaluation-report-003-earlymodern.md) | Early modern secretary | `eng-Latn` | 100% words | **0** | PASS |
-| [KB27.335 plea roll (c. 1340–80)](benchmark/test-results/evaluation-report-005-kb27-blind.md) | Medieval legal anglicana | `lat-Latn` | 1.82% CER / 6.00% WER (15 substitutions) | **0** | **FAIL** |
-
-**Zero fabricated additions across all four cases** — the protocol's core guarantee held even where accuracy dropped. The two clean letters and the Psalter pass outright; the Lincoln letter's single omission sits on a fold crease and routes to human review.
-
-**The legal-hand result is the one to watch:** KB27.335 (Gothic anglicana plea roll) FAILs the 6% WER gate. All 15 errors are *substitutions*, not additions or omissions — the model silently normalized scribal Latin to classical forms (`ecclesticarum` → `ecclesiasticarum`, `lettris` → `litteris`). This **Latin normalization bias** is the dominant failure mode for medieval legal hands and drove the anti-normalization rules now in the protocol (§5.4) and the skill.
-
-> A second legal-hand run (CP40.355) scored 0% CER/WER but is **excluded from this table because it was not blind** — its ground-truth PAGE XML was read into context before transcription. Its report stays in [`benchmark/test-results/`](benchmark/test-results/evaluation-report-004-legalhand.md) with that caveat.
-
-### Stress harness — blind runs (2026-06-10)
-
 Latest blind runs via [`benchmark/stress_run.py`](benchmark/stress_run.py) (`temperature=0`, image + prompt only; GT firewalled). Latin cases use **expansion-to-expansion** scoring; `modern_*` cases use tolerant damage-token diff. **Every row fails disposition** because additions > 0 — accuracy is reported for calibration. Shell rows use `transcriber-shell` (Kraken HTR draft → Gemini 2.5 Pro correct-mode); the HTR model used is noted in parentheses.
 
 **Image-only (Gemini 2.5 Pro, no HTR):**
@@ -56,6 +39,7 @@ Latest blind runs via [`benchmark/stress_run.py`](benchmark/stress_run.py) (`tem
 | BM-MOD-JOHNSON | Reverdy Johnson → Lincoln (pardon, 1864) | 29.9% | 15 | 47 | ✓ |
 
 **Shell — best HTR model per case (Kraken + Gemini 2.5 Pro correct-mode):**
+https://github.com/buzzcauldron/transcription-shell 
 
 | Case | Document | HTR model | Accuracy | Add | Omit | Schema | vs image-only |
 |---|---|---|---:|---:|---:|:---:|---|
