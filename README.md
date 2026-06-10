@@ -27,7 +27,7 @@ Full history: [`CHANGELOG.md`](CHANGELOG.md).
 
 Latest blind runs via [`benchmark/stress_run.py`](benchmark/stress_run.py) (`temperature=0`, image + prompt only; GT firewalled). Latin cases use **expansion-to-expansion** scoring; `modern_*` cases use tolerant damage-token diff. **Every row fails disposition** because additions > 0 — accuracy is reported for calibration. Shell rows use `transcriber-shell` (Kraken HTR draft → Gemini 2.5 Pro correct-mode); the HTR model used is noted in parentheses.
 
-**Image-only (Gemini 2.5 Pro, no HTR):**
+**Image-only (Gemini 2.5 Pro):**
 
 | Case | Document | Accuracy | Add | Omit | Schema |
 |---|---|---:|---:|---:|:---:|
@@ -36,19 +36,6 @@ Latest blind runs via [`benchmark/stress_run.py`](benchmark/stress_run.py) (`tem
 | BM-KB27 | KB27.335 plea roll | 31.7% | 165 | 170 | ✓ |
 | BM-MOD-DEED | Interior Dept → Nicolay (Indian deeds, 1865) | 98.7% | 4 | 1 | ✗ *(position enum)* |
 | BM-MOD-LOVEJOY | Lovejoy → Nicolay (Joliet postmaster, 1864) | — | — | — | ✗ *(YAML parse fail)* |
-| BM-MOD-JOHNSON | Reverdy Johnson → Lincoln (pardon, 1864) | 29.9% | 15 | 47 | ✓ |
-
-**Shell — best HTR model per case (Kraken + Gemini 2.5 Pro correct-mode):**
-https://github.com/buzzcauldron/transcription-shell 
-
-| Case | Document | HTR model | Accuracy | Add | Omit | Schema | vs image-only |
-|---|---|---|---:|---:|---:|:---:|---|
-| BM-001 | Lincoln → Owens (1837) | r5 | 94.5% | 31 | 27 | ✗ *(position)* | −0.6pt |
-| BM-MED-001 | Walters W.25 psalter | r5 | **88.0%** | 14 | 12 | ✓ | **+2.0pt** |
-| BM-KB27 | KB27.335 plea roll | r2 | 26.9% | 158 | 182 | ✓ | −4.8pt |
-| BM-MOD-DEED | Interior Dept → Nicolay (1865) | computus | **97.4%** | 5 | 2 | ✓ | −1.3pt (fixes schema) |
-| BM-MOD-LOVEJOY | Lovejoy → Nicolay (1864) | computus | **82.4%** | 4 | 13 | ✓ | fixes YAML parse |
-| BM-MOD-JOHNSON | Reverdy Johnson → Lincoln (1864) | r5 | **31.3%** | 19 | 46 | ✓ | **+1.5pt** |
 
 **Additional image-only model variants (Gemini 2.5 Flash, Flash-Lite, 3.5 Flash):**
 
@@ -61,7 +48,17 @@ https://github.com/buzzcauldron/transcription-shell
 | BM-KB27 | `gemini-2.5-flash` | 21.3% | 184 | 196 | ✗ |
 | BM-MOD-DEED | `gemini-2.5-flash` | 94.9% | 7 | 4 | ✗ |
 | BM-MOD-LOVEJOY | `gemini-2.5-flash` | 81.1% | 2 | 14 | ✗ |
-| BM-MOD-JOHNSON | `gemini-2.5-flash` | 23.9% | 20 | 51 | ✗ |
+
+**Shell — best HTR model per case (Kraken + Gemini 2.5 Pro correct-mode):**
+https://github.com/buzzcauldron/transcription-shell 
+
+| Case | Document | HTR model | Accuracy | Add | Omit | Schema | vs image-only |
+|---|---|---|---:|---:|---:|:---:|---|
+| BM-001 | Lincoln → Owens (1837) | r5 | 94.5% | 31 | 27 | ✗ *(position)* | −0.6pt |
+| BM-MED-001 | Walters W.25 psalter | r5 | **88.0%** | 14 | 12 | ✓ | **+2.0pt** |
+| BM-KB27 | KB27.335 plea roll | r2 | 26.9% | 158 | 182 | ✓ | −4.8pt |
+| BM-MOD-DEED | Interior Dept → Nicolay (1865) | computus | **97.4%** | 5 | 2 | ✓ | −1.3pt (fixes schema) |
+| BM-MOD-LOVEJOY | Lovejoy → Nicolay (1864) | computus | **82.4%** | 4 | 13 | ✓ | fixes YAML parse |
 
 | Reference | Document | Model | Accuracy | Add | Disposition |
 |---|---|---|---:|---:|---|
