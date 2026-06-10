@@ -4,6 +4,27 @@
 
 All notable changes to the **Academic Handwriting Transcription Protocol** use [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`). The machine-readable `protocolVersion` field in transcripts uses the same scheme; legacy outputs may still use the `v1.x` prefix (see [transcription-output-schema-v1.1.0.md](transcription-output-schema-v1.1.0.md)).
 
+## [1.2.0] — 2026-06-10
+
+### Added
+
+- **Mistral / Pixtral provider** — `benchmark/stress_run.py` and prompt builder now support Mistral (Pixtral-12B-2409) as a transcription backend.
+- **Expansion-aware stress evaluators** — `benchmark/stress_run.py` scores Latin cases using expansion-to-expansion diff; modern English cases use tolerant damage-token diff (honest `[illegible]` is not counted as an omission; flooding still fails). New LOC cases: BM-MOD-DEED, BM-MOD-LOVEJOY, BM-MOD-JOHNSON.
+- **Anti-cheat gates** — stress harness refuses to score diplomatic output against expanded ground truth (raises error without `--force`).
+- **Shell benchmark results** — `benchmark/test-results/stress/` now includes `transcriber-shell` pipeline results (Kraken HTR draft + Gemini 2.5 Pro correct-mode) for all six blind cases alongside image-only baseline rows.
+- **Blind-only benchmark policy** — README documents that all benchmark entries in the main table are blind (GT not in context); non-blind runs (CP40.355) carry an explicit caveat.
+
+### Fixed
+
+- `benchmark/validate_schema.py`: `table_row` and `table_header` added to `VALID_POSITION` (were in the protocol spec but missing from the validator).
+- `benchmark/prompt_builder.py`: config toggle values now render their actual value in the output schema block instead of a placeholder.
+- Validation error messages for invalid `confidence` and `position` values now include the received value and the full accepted list.
+
+### Documentation
+
+- README restructured around `transcriber-shell` / Glyph Machina integration; stress harness table split into image-only, shell (best-per-case with Δ vs baseline), and model-variant sub-tables.
+- Diplomatic/expansion mode split and evaluation firewall documented with worked examples.
+
 ## [1.1.0] — 2026-03-26
 
 ### Normalization — document language only (2026-03-28)
