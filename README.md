@@ -40,19 +40,33 @@ Tested against real manuscripts with established scholarly transcriptions. **Eve
 
 > A second legal-hand run (CP40.355) scored 0% CER/WER but is **excluded from this table because it was not blind** — its ground-truth PAGE XML was read into context before transcription. Its report stays in [`benchmark/test-results/`](benchmark/test-results/evaluation-report-004-legalhand.md) with that caveat.
 
-### Compliance is model-dependent (cross-model blind check)
+### Stress harness — blind Gemini runs (2026-06-10)
 
-The frontier-model pass above is **not** automatic for cheaper/faster models. Re-running the blind harness on **BM-001 (Lincoln)** image-only across Gemini tiers — **none clears the gate**:
+The frontier-model pass above is **not** automatic for cheaper/faster models. Latest blind runs via [`benchmark/stress_run.py`](benchmark/stress_run.py) (`temperature=0`, image + prompt only; GT firewalled). Latin cases use **expansion-to-expansion** scoring; `modern_*` cases use tolerant damage-token diff (honest `[illegible]` does not count as an omission; flooding still fails). **Every row below fails disposition** because additions > 0 — accuracy is reported for calibration, not as a pass criterion.
 
-| Model | Schema valid | Disposition | Dominant failure mode |
-|---|---|---|---|
-| Claude 4 Opus *(reference)* | ✓ | CONDITIONAL_PASS | — |
-| `gemini-2.5-pro` | ✓ | **FAIL** | schema-valid, but heavy substitution / Latin normalization |
-| `gemini-2.5-flash` | ✓ | **FAIL** | garbles and duplicates words; archival markings dumped into body text |
-| `gemini-3.5-flash` | ✗ | **FAIL** | omits required `protocolVersion` |
-| `gemini-2.5-flash-lite` | ✗ | **FAIL** | omits `confidence` / `uncertaintyTokenCount` / `mismatchReport` / `hallucinationAudit` |
+| Case | Document | Model | Accuracy | Add | Omit | Schema |
+|---|---|---|---:|---:|---:|:---:|
+| BM-001 | Lincoln → Owens (1837) | `gemini-2.5-pro` | 95.1% | 31 | 24 | ✓ |
+| BM-001 | Lincoln → Owens (1837) | `gemini-2.5-flash` | 86.7% | 85 | 65 | ✓ |
+| BM-001 | Lincoln → Owens (1837) | `gemini-3.5-flash` | 93.5% | 19 | 32 | ✗ |
+| BM-001 | Lincoln → Owens (1837) | `gemini-2.5-flash-lite` | 38.2% | 46 | 303 | ✗ |
+| BM-MED-001 | Walters W.25 psalter | `gemini-2.5-pro` | 86.0% | 16 | 14 | ✓ |
+| BM-MED-001 | Walters W.25 psalter | `gemini-2.5-flash` | 75.0% | 28 | 25 | ✓ |
+| BM-KB27 | KB27.335 plea roll | `gemini-2.5-pro` | 31.7% | 165 | 170 | ✓ |
+| BM-KB27 | KB27.335 plea roll | `gemini-2.5-flash` | 21.3% | 184 | 196 | ✗ |
+| BM-MOD-DEED | Interior Dept → Nicolay (Indian deeds, 1865) | `gemini-2.5-pro` | **98.7%** | 4 | 1 | ✗ |
+| BM-MOD-DEED | Interior Dept → Nicolay (Indian deeds, 1865) | `gemini-2.5-flash` | 94.9% | 7 | 4 | ✗ |
+| BM-MOD-LOVEJOY | Lovejoy → Nicolay (Joliet postmaster, 1864) | `gemini-2.5-flash` | 81.1% | 2 | 14 | ✗ |
+| BM-MOD-LOVEJOY | Lovejoy → Nicolay (Joliet postmaster, 1864) | `gemini-2.5-pro` | — | — | — | ✗ *(YAML parse fail)* |
+| BM-MOD-JOHNSON | Reverdy Johnson → Lincoln (pardon, 1864) | `gemini-2.5-pro` | 29.9% | 15 | 47 | ✓ |
+| BM-MOD-JOHNSON | Reverdy Johnson → Lincoln (pardon, 1864) | `gemini-2.5-flash` | 23.9% | 20 | 51 | ✗ |
 
-Bigger/newer Gemini trades one failure for another (garbling → substitution → schema breakage); none meets the bar a frontier model does. The **disposition is stable (all FAIL)**, but the exact word-diff counts vary run-to-run — these are noisy single samples at default temperature, scored with the coarse stress-harness word-diff against the Basler body text (inflated by archival text and formatting; not directly comparable to the curated CER above). Raw responses and the latest matrix are under [`benchmark/test-results/stress/`](benchmark/test-results/stress/); reproduce via [Reproducing the benchmarks](#reproducing-the-benchmarks).
+| Reference | Document | Model | Accuracy | Add | Disposition |
+|---|---|---|---:|---:|---|
+| *(evaluation harness)* | Lincoln → Owens (1837) | Claude 4 Opus | 99.8% | **0** | CONDITIONAL_PASS |
+| *(evaluation harness)* | KB27.335 plea roll | Claude 4 Opus | 6.0% WER (15 subst.) | **0** | FAIL |
+
+**Takeaways:** Gemini Pro on clean 19th-c. correspondence (`BM-MOD-DEED`) reaches high word accuracy but still fails on a handful of additions and schema (`position` values like `marginalia` / `bottom_left_corner`). KB27 remains catastrophic for Gemini (substitution/hallucination of a different legal text, not the 6% WER substitution pattern Opus showed). Medieval psalter jumps to 75–86% under expansion-to-expansion scoring (vs ~43–49% before diplomatic-vs-expanded mismatch). Raw responses: [`benchmark/test-results/stress/`](benchmark/test-results/stress/); reproduce via [Reproducing the benchmarks](#reproducing-the-benchmarks).
 
 **External line tools:** If you use a line detector (e.g. [Glyph Machina](https://glyphmachina.com/)) only to suggest line boundaries before protocol transcription, see [`benchmark/EXTERNAL_LINE_TOOLS.md`](benchmark/EXTERNAL_LINE_TOOLS.md) for how that relates to `lineRange` and what not to treat as canonical text.
 
