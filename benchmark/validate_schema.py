@@ -27,22 +27,36 @@ WORD_PATTERN = re.compile(r"\S+")
 
 VALID_LANGUAGES_PREFIXES = (
     "eng-",
+    "enm-",   # Middle English
     "lat-",
     "fra-",
+    "frm-",   # Middle French
+    "fro-",   # Old French / Anglo-Norman
     "deu-",
+    "gmh-",   # Middle High German
+    "goh-",   # Old High German
     "spa-",
     "ita-",
     "por-",
     "nld-",
-    "ell-",
+    "ell-",   # Modern Greek
+    "grc-",   # Ancient Greek
     "ara-",
-    "ota-",
+    "ota-",   # Ottoman Turkish
     "heb-",
     "rus-",
     "zho-",
     "jpn-",
     "kor-",
     "san-",
+    "cat-",   # Catalan
+    "ces-",   # Czech
+    "pol-",   # Polish
+    "hun-",   # Hungarian
+    "swe-",   # Swedish
+    "dan-",   # Danish
+    "nor-",   # Norwegian
+    "mixed",
 )
 VALID_ERAS = (
     "medieval",
@@ -122,6 +136,19 @@ _POSITION_ALIASES: Dict[str, str] = {
     "address": "header", "heading": "header", "title": "header",
     "date_line": "header", "salutation": "body", "closing": "body",
     "valediction": "body", "signature": "body", "attestation": "footer",
+    # Newspaper / print document structure.
+    "headline": "header", "subheadline": "header", "sub_headline": "header",
+    "byline": "body", "by_line": "body", "dateline": "header",
+    "caption": "footnote", "photo_caption": "footnote", "image_caption": "footnote",
+    "pull_quote": "body", "pullquote": "body", "drop_cap": "body",
+    "column_header": "header", "section_header": "header",
+    "page_number": "footer", "page-number": "footer",
+    "folio": "footer", "running_head": "header", "running_header": "header",
+    "colophon": "footer", "masthead": "header", "kicker": "header", "deck": "header",
+    "subtitle": "header", "attribution": "body", "credit": "body", "source": "body",
+    "subheading": "header", "sub_heading": "header", "standfirst": "header",
+    "lede": "body", "lead": "body", "paragraph": "body", "article": "body",
+    "editorial": "body", "column": "body",
 }
 
 
@@ -132,7 +159,14 @@ def _canonicalize_position(val: Any) -> Any:
     s = val.strip().lower().replace("-", "_").replace(" ", "_")
     while "__" in s:
         s = s.replace("__", "_")
-    return _POSITION_ALIASES.get(s, s)
+    result = _POSITION_ALIASES.get(s, s)
+    if result in VALID_POSITION:
+        return result
+    # Try de-pluralised form (e.g. "bylines" → "byline").
+    if s.endswith("s"):
+        singular = s[:-1]
+        result = _POSITION_ALIASES.get(singular, singular)
+    return result
 
 UNCERTAINTY_FLOOD_THRESHOLD = 0.30
 MIN_CONDITION_NOTES_LEN = 20
