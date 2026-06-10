@@ -1,6 +1,226 @@
 {
-  "generated": "2026-06-10T14:28:33Z",
+  "generated": "2026-06-10T16:02:56Z",
   "rows": [
+    {
+      "case": "BM-001",
+      "model": "anthropic",
+      "schema_ok": false,
+      "addition_count": "\u2014",
+      "omission_count": "\u2014",
+      "disposition": "FAIL",
+      "score": "\u2014",
+      "notes": "ERROR: ANTHROPIC_API_KEY is not set"
+    },
+    {
+      "case": "BM-001",
+      "model": "claude-code (claude-code-cli)",
+      "schema_ok": false,
+      "addition_count": "\u2014",
+      "omission_count": "\u2014",
+      "disposition": "FAIL",
+      "score": "\u2014",
+      "notes": "ERROR: Not logged in \u2014 run `claude login` in your terminal, then re-run: cd /Users/halxiii/Projects/transcription-protocol && /Users/halxiii/.local/bin/claude -p --add-dir \"$(pwd)\" --append-system-prompt \"$(cat benchmark/test-results/claude-cli/BM-001/system.txt)\" \"$(cat benchmark/test-results/claude-cli/BM-001/user.txt)\" > benchmark/test-results/stress/BM-001/claude-code/response.txt"
+    },
+    {
+      "case": "BM-001",
+      "model": "gemini (gemini-2.5-flash)",
+      "schema_ok": true,
+      "addition_count": 85,
+      "omission_count": 65,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "\u2014"
+    },
+    {
+      "case": "BM-001",
+      "model": "gemini-3.5-flash (gemini-3.5-flash)",
+      "schema_ok": false,
+      "addition_count": 19,
+      "omission_count": 32,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "missing required field: protocolVersion; metadata.protocolVersion must be one of ['1.0.0', '1.1.0', 'v1.0', 'v1.1'], got None"
+    },
+    {
+      "case": "BM-001",
+      "model": "gemini-flash-lite (gemini-2.5-flash-lite)",
+      "schema_ok": false,
+      "addition_count": 46,
+      "omission_count": 303,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "missing required field: confidence; missing required field: uncertaintyTokenCount; segment 0 confidence invalid: got None, expected one of ('high', 'medium', 'low'); mismatchReport is required when segments is non-empty (protocol 1.1.0 \u00a75.2), unless pass2Summary is present with segmentsAltered: 0; hallucinationAudit is required (protocol \u00a77.4 item 5; hard fail if absent)"
+    },
+    {
+      "case": "BM-001",
+      "model": "gemini-pro (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 31,
+      "omission_count": 24,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "\u2014"
+    },
+    {
+      "case": "BM-001",
+      "model": "openai",
+      "schema_ok": false,
+      "addition_count": "\u2014",
+      "omission_count": "\u2014",
+      "disposition": "FAIL",
+      "score": "\u2014",
+      "notes": "ERROR: OPENAI_API_KEY is not set"
+    },
+    {
+      "case": "BM-001",
+      "model": "shell-computus-gemini (gemini-2.5-pro)",
+      "schema_ok": false,
+      "addition_count": "\u2014",
+      "omission_count": "\u2014",
+      "disposition": "FAIL",
+      "score": "\u2014",
+      "notes": "ERROR: while parsing a block mapping\n  in \"<unicode string>\", line 40, column 7:\n        - segmentId: 1\n          ^\nexpected <block end>, but found '<scalar>'\n  in \"<unicode string>\", line 46, column 9:\n            Springfield Aug. 18th 1837\n            ^"
+    },
+    {
+      "case": "BM-001",
+      "model": "shell-full-r5-gemini (gemini-2.5-pro)",
+      "schema_ok": false,
+      "addition_count": 29,
+      "omission_count": 29,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "segment 1 position invalid: got 'top', expected one of ('body', 'header', 'footer', 'margin_left', 'margin_right', 'margin_top', 'margin_bottom', 'interlinear', 'footnote', 'table_row', 'table_header') Warnings: suspected overconfidence (soft escalation \u00a77.3\u2013\u00a77.4): multiline body text, conditionNotes suggest damage/abbreviation/difficulty, but zero [uncertain] / [illegible] / [glyph-uncertain] tokens \u2014 flag for human review"
+    },
+    {
+      "case": "BM-001",
+      "model": "shell-r2-gemini (gemini-2.5-pro)",
+      "schema_ok": false,
+      "addition_count": "\u2014",
+      "omission_count": "\u2014",
+      "disposition": "FAIL",
+      "score": "\u2014",
+      "notes": "ERROR: while parsing a block mapping\n  in \"<unicode string>\", line 38, column 7:\n        - segmentId: 1\n          ^\nexpected <block end>, but found '<scalar>'\n  in \"<unicode string>\", line 44, column 9:\n            Springfield Aug. 18[superscript: ... \n            ^"
+    },
+    {
+      "case": "BM-001",
+      "model": "shell-r5-gemini (gemini-2.5-pro)",
+      "schema_ok": false,
+      "addition_count": 31,
+      "omission_count": 27,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "segment 1 position invalid: got 'top-center', expected one of ('body', 'header', 'footer', 'margin_left', 'margin_right', 'margin_top', 'margin_bottom', 'interlinear', 'footnote', 'table_row', 'table_header')"
+    },
+    {
+      "case": "BM-MED-001",
+      "model": "gemini (gemini-2.5-flash)",
+      "schema_ok": true,
+      "addition_count": 28,
+      "omission_count": 25,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "\u2014"
+    },
+    {
+      "case": "BM-MED-001",
+      "model": "gemini-pro (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 16,
+      "omission_count": 14,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "\u2014"
+    },
+    {
+      "case": "BM-MED-001",
+      "model": "shell-computus-gemini (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 31,
+      "omission_count": 28,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "\u2014"
+    },
+    {
+      "case": "BM-MED-001",
+      "model": "shell-r2-gemini (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 37,
+      "omission_count": 31,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "Warnings: suspected overconfidence (soft escalation \u00a77.3\u2013\u00a77.4): multiline body text, conditionNotes suggest damage/abbreviation/difficulty, but zero [uncertain] / [illegible] / [glyph-uncertain] tokens \u2014 flag for human review"
+    },
+    {
+      "case": "BM-MED-001",
+      "model": "shell-r5-gemini (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 14,
+      "omission_count": 12,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "\u2014"
+    },
+    {
+      "case": "BM-KB27",
+      "model": "gemini (gemini-2.5-flash)",
+      "schema_ok": false,
+      "addition_count": 184,
+      "omission_count": 196,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "missing required field: protocolVersion; metadata.protocolVersion must be one of ['1.0.0', '1.1.0', 'v1.0', 'v1.1'], got None Warnings: suspected overconfidence (soft escalation \u00a77.3\u2013\u00a77.4): multiline body text, conditionNotes suggest damage/abbreviation/difficulty, but zero [uncertain] / [illegible] / [glyph-uncertain] tokens \u2014 flag for human review"
+    },
+    {
+      "case": "BM-KB27",
+      "model": "gemini-pro (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 165,
+      "omission_count": 170,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "Warnings: suspected overconfidence (soft escalation \u00a77.3\u2013\u00a77.4): multiline body text, conditionNotes suggest damage/abbreviation/difficulty, but zero [uncertain] / [illegible] / [glyph-uncertain] tokens \u2014 flag for human review"
+    },
+    {
+      "case": "BM-KB27",
+      "model": "shell-computus-gemini (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 140,
+      "omission_count": 193,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "Warnings: suspected overconfidence (soft escalation \u00a77.3\u2013\u00a77.4): multiline body text, conditionNotes suggest damage/abbreviation/difficulty, but zero [uncertain] / [illegible] / [glyph-uncertain] tokens \u2014 flag for human review"
+    },
+    {
+      "case": "BM-KB27",
+      "model": "shell-full-r2-gemini (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 185,
+      "omission_count": 191,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "\u2014"
+    },
+    {
+      "case": "BM-KB27",
+      "model": "shell-r2-gemini (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 158,
+      "omission_count": 182,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "\u2014"
+    },
+    {
+      "case": "BM-KB27",
+      "model": "shell-r5-gemini (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 180,
+      "omission_count": 198,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "\u2014"
+    },
     {
       "case": "BM-MOD-LOVEJOY",
       "model": "gemini (gemini-2.5-flash)",
@@ -22,6 +242,36 @@
       "notes": "YAML parse error: while parsing a block mapping\n  in \"<unicode string>\", line 38, column 7:\n        - segmentId: 1\n          ^\nexpected <block end>, but found '<block mapping start>'\n  in \"<unicode string>\", line 45, column 9:\n            Friend Nicolay:\n            ^"
     },
     {
+      "case": "BM-MOD-LOVEJOY",
+      "model": "shell-computus-gemini (gemini-2.5-pro)",
+      "schema_ok": false,
+      "addition_count": 4,
+      "omission_count": 13,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "missing required field: confidence; missing required field: uncertaintyTokenCount; segment 0 confidence invalid: got None, expected one of ('high', 'medium', 'low') Warnings: suspected overconfidence (soft escalation \u00a77.3\u2013\u00a77.4): multiline body text, conditionNotes suggest damage/abbreviation/difficulty, but zero [uncertain] / [illegible] / [glyph-uncertain] tokens \u2014 flag for human review"
+    },
+    {
+      "case": "BM-MOD-LOVEJOY",
+      "model": "shell-r2-gemini (gemini-2.5-pro)",
+      "schema_ok": false,
+      "addition_count": "\u2014",
+      "omission_count": "\u2014",
+      "disposition": "FAIL",
+      "score": "\u2014",
+      "notes": "ERROR: while parsing a block mapping\n  in \"<unicode string>\", line 38, column 7:\n        - segmentId: 1\n          ^\nexpected <block end>, but found '<block mapping start>'\n  in \"<unicode string>\", line 46, column 9:\n            Friend Nicolay:\n            ^"
+    },
+    {
+      "case": "BM-MOD-LOVEJOY",
+      "model": "shell-r5-gemini (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 3,
+      "omission_count": 14,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "Warnings: suspected overconfidence (soft escalation \u00a77.3\u2013\u00a77.4): multiline body text, conditionNotes suggest damage/abbreviation/difficulty, but zero [uncertain] / [illegible] / [glyph-uncertain] tokens \u2014 flag for human review"
+    },
+    {
       "case": "BM-MOD-JOHNSON",
       "model": "gemini (gemini-2.5-flash)",
       "schema_ok": false,
@@ -37,6 +287,36 @@
       "schema_ok": true,
       "addition_count": 15,
       "omission_count": 47,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "\u2014"
+    },
+    {
+      "case": "BM-MOD-JOHNSON",
+      "model": "shell-computus-gemini (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 22,
+      "omission_count": 49,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "\u2014"
+    },
+    {
+      "case": "BM-MOD-JOHNSON",
+      "model": "shell-r2-gemini (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 21,
+      "omission_count": 49,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "\u2014"
+    },
+    {
+      "case": "BM-MOD-JOHNSON",
+      "model": "shell-r5-gemini (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 19,
+      "omission_count": 46,
       "disposition": "FAIL",
       "score": 0.0,
       "notes": "\u2014"
@@ -60,6 +340,46 @@
       "disposition": "FAIL",
       "score": 0.05,
       "notes": "segment 1 position invalid: got 'bottom_left_corner', expected one of ('body', 'header', 'footer', 'margin_left', 'margin_right', 'margin_top', 'margin_bottom', 'interlinear', 'footnote', 'table_row', 'table_header')"
+    },
+    {
+      "case": "BM-MOD-DEED",
+      "model": "shell-computus-gemini (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 5,
+      "omission_count": 2,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "Warnings: suspected overconfidence (soft escalation \u00a77.3\u2013\u00a77.4): multiline body text, conditionNotes suggest damage/abbreviation/difficulty, but zero [uncertain] / [illegible] / [glyph-uncertain] tokens \u2014 flag for human review"
+    },
+    {
+      "case": "BM-MOD-DEED",
+      "model": "shell-full-computus-gemini (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 5,
+      "omission_count": 3,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "Warnings: suspected overconfidence (soft escalation \u00a77.3\u2013\u00a77.4): multiline body text, conditionNotes suggest damage/abbreviation/difficulty, but zero [uncertain] / [illegible] / [glyph-uncertain] tokens \u2014 flag for human review"
+    },
+    {
+      "case": "BM-MOD-DEED",
+      "model": "shell-r2-gemini (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 8,
+      "omission_count": 5,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "Warnings: suspected overconfidence (soft escalation \u00a77.3\u2013\u00a77.4): multiline body text, conditionNotes suggest damage/abbreviation/difficulty, but zero [uncertain] / [illegible] / [glyph-uncertain] tokens \u2014 flag for human review"
+    },
+    {
+      "case": "BM-MOD-DEED",
+      "model": "shell-r5-gemini (gemini-2.5-pro)",
+      "schema_ok": true,
+      "addition_count": 7,
+      "omission_count": 6,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "\u2014"
     }
   ]
 }

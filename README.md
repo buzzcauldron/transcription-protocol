@@ -40,33 +40,51 @@ Tested against real manuscripts with established scholarly transcriptions. **Eve
 
 > A second legal-hand run (CP40.355) scored 0% CER/WER but is **excluded from this table because it was not blind** — its ground-truth PAGE XML was read into context before transcription. Its report stays in [`benchmark/test-results/`](benchmark/test-results/evaluation-report-004-legalhand.md) with that caveat.
 
-### Stress harness — blind Gemini runs (2026-06-10)
+### Stress harness — blind runs (2026-06-10)
 
-The frontier-model pass above is **not** automatic for cheaper/faster models. Latest blind runs via [`benchmark/stress_run.py`](benchmark/stress_run.py) (`temperature=0`, image + prompt only; GT firewalled). Latin cases use **expansion-to-expansion** scoring; `modern_*` cases use tolerant damage-token diff (honest `[illegible]` does not count as an omission; flooding still fails). **Every row below fails disposition** because additions > 0 — accuracy is reported for calibration, not as a pass criterion.
+Latest blind runs via [`benchmark/stress_run.py`](benchmark/stress_run.py) (`temperature=0`, image + prompt only; GT firewalled). Latin cases use **expansion-to-expansion** scoring; `modern_*` cases use tolerant damage-token diff. **Every row fails disposition** because additions > 0 — accuracy is reported for calibration. Shell rows use `transcriber-shell` (Kraken HTR draft → Gemini 2.5 Pro correct-mode); the HTR model used is noted in parentheses.
 
-| Case | Document | Model | Accuracy | Add | Omit | Schema |
-|---|---|---|---:|---:|---:|:---:|
-| BM-001 | Lincoln → Owens (1837) | `gemini-2.5-pro` | 95.1% | 31 | 24 | ✓ |
-| BM-001 | Lincoln → Owens (1837) | `gemini-2.5-flash` | 86.7% | 85 | 65 | ✓ |
-| BM-001 | Lincoln → Owens (1837) | `gemini-3.5-flash` | 93.5% | 19 | 32 | ✗ |
-| BM-001 | Lincoln → Owens (1837) | `gemini-2.5-flash-lite` | 38.2% | 46 | 303 | ✗ |
-| BM-MED-001 | Walters W.25 psalter | `gemini-2.5-pro` | 86.0% | 16 | 14 | ✓ |
-| BM-MED-001 | Walters W.25 psalter | `gemini-2.5-flash` | 75.0% | 28 | 25 | ✓ |
-| BM-KB27 | KB27.335 plea roll | `gemini-2.5-pro` | 31.7% | 165 | 170 | ✓ |
-| BM-KB27 | KB27.335 plea roll | `gemini-2.5-flash` | 21.3% | 184 | 196 | ✗ |
-| BM-MOD-DEED | Interior Dept → Nicolay (Indian deeds, 1865) | `gemini-2.5-pro` | **98.7%** | 4 | 1 | ✗ |
-| BM-MOD-DEED | Interior Dept → Nicolay (Indian deeds, 1865) | `gemini-2.5-flash` | 94.9% | 7 | 4 | ✗ |
-| BM-MOD-LOVEJOY | Lovejoy → Nicolay (Joliet postmaster, 1864) | `gemini-2.5-flash` | 81.1% | 2 | 14 | ✗ |
-| BM-MOD-LOVEJOY | Lovejoy → Nicolay (Joliet postmaster, 1864) | `gemini-2.5-pro` | — | — | — | ✗ *(YAML parse fail)* |
-| BM-MOD-JOHNSON | Reverdy Johnson → Lincoln (pardon, 1864) | `gemini-2.5-pro` | 29.9% | 15 | 47 | ✓ |
-| BM-MOD-JOHNSON | Reverdy Johnson → Lincoln (pardon, 1864) | `gemini-2.5-flash` | 23.9% | 20 | 51 | ✗ |
+**Image-only (Gemini 2.5 Pro, no HTR):**
+
+| Case | Document | Accuracy | Add | Omit | Schema |
+|---|---|---:|---:|---:|:---:|
+| BM-001 | Lincoln → Owens (1837) | 95.1% | 31 | 24 | ✓ |
+| BM-MED-001 | Walters W.25 psalter | 86.0% | 16 | 14 | ✓ |
+| BM-KB27 | KB27.335 plea roll | 31.7% | 165 | 170 | ✓ |
+| BM-MOD-DEED | Interior Dept → Nicolay (Indian deeds, 1865) | 98.7% | 4 | 1 | ✗ *(position enum)* |
+| BM-MOD-LOVEJOY | Lovejoy → Nicolay (Joliet postmaster, 1864) | — | — | — | ✗ *(YAML parse fail)* |
+| BM-MOD-JOHNSON | Reverdy Johnson → Lincoln (pardon, 1864) | 29.9% | 15 | 47 | ✓ |
+
+**Shell — best HTR model per case (Kraken + Gemini 2.5 Pro correct-mode):**
+
+| Case | Document | HTR model | Accuracy | Add | Omit | Schema | vs image-only |
+|---|---|---|---:|---:|---:|:---:|---|
+| BM-001 | Lincoln → Owens (1837) | r5 | 94.5% | 31 | 27 | ✗ *(position)* | −0.6pt |
+| BM-MED-001 | Walters W.25 psalter | r5 | **88.0%** | 14 | 12 | ✓ | **+2.0pt** |
+| BM-KB27 | KB27.335 plea roll | r2 | 26.9% | 158 | 182 | ✓ | −4.8pt |
+| BM-MOD-DEED | Interior Dept → Nicolay (1865) | computus | **97.4%** | 5 | 2 | ✓ | −1.3pt (fixes schema) |
+| BM-MOD-LOVEJOY | Lovejoy → Nicolay (1864) | computus | **82.4%** | 4 | 13 | ✓ | fixes YAML parse |
+| BM-MOD-JOHNSON | Reverdy Johnson → Lincoln (1864) | r5 | **31.3%** | 19 | 46 | ✓ | **+1.5pt** |
+
+**Additional image-only model variants (Gemini 2.5 Flash, Flash-Lite, 3.5 Flash):**
+
+| Case | Model | Accuracy | Add | Omit | Schema |
+|---|---|---:|---:|---:|:---:|
+| BM-001 | `gemini-2.5-flash` | 86.7% | 85 | 65 | ✓ |
+| BM-001 | `gemini-3.5-flash` | 93.5% | 19 | 32 | ✗ |
+| BM-001 | `gemini-2.5-flash-lite` | 38.2% | 46 | 303 | ✗ |
+| BM-MED-001 | `gemini-2.5-flash` | 75.0% | 28 | 25 | ✓ |
+| BM-KB27 | `gemini-2.5-flash` | 21.3% | 184 | 196 | ✗ |
+| BM-MOD-DEED | `gemini-2.5-flash` | 94.9% | 7 | 4 | ✗ |
+| BM-MOD-LOVEJOY | `gemini-2.5-flash` | 81.1% | 2 | 14 | ✗ |
+| BM-MOD-JOHNSON | `gemini-2.5-flash` | 23.9% | 20 | 51 | ✗ |
 
 | Reference | Document | Model | Accuracy | Add | Disposition |
 |---|---|---|---:|---:|---|
 | *(evaluation harness)* | Lincoln → Owens (1837) | Claude 4 Opus | 99.8% | **0** | CONDITIONAL_PASS |
 | *(evaluation harness)* | KB27.335 plea roll | Claude 4 Opus | 6.0% WER (15 subst.) | **0** | FAIL |
 
-**Takeaways:** Gemini Pro on clean 19th-c. correspondence (`BM-MOD-DEED`) reaches high word accuracy but still fails on a handful of additions and schema (`position` values like `marginalia` / `bottom_left_corner`). KB27 remains catastrophic for Gemini (substitution/hallucination of a different legal text, not the 6% WER substitution pattern Opus showed). Medieval psalter jumps to 75–86% under expansion-to-expansion scoring (vs ~43–49% before diplomatic-vs-expanded mismatch). Raw responses: [`benchmark/test-results/stress/`](benchmark/test-results/stress/); reproduce via [Reproducing the benchmarks](#reproducing-the-benchmarks).
+**Takeaways:** HTR drafts help on medieval Latin (BM-MED-001 +2pt, schema passes) and fix YAML parse failures on modern English (BM-MOD-LOVEJOY, BM-MOD-JOHNSON). They hurt on legal anglicana (BM-KB27 −4.8pt vs image-only) because current HTR models do not cover this script — an anglicana-specific fine-tune is in progress. Schema failures across the board are caused by `position` enum drift (`marginalia`, `top`, `address`) being output by the model — the shell normalizes these for Latin cases but not all English cases. KB27 is the dominant unsolved case. Raw responses: [`benchmark/test-results/stress/`](benchmark/test-results/stress/); reproduce via [Reproducing the benchmarks](#reproducing-the-benchmarks).
 
 **External line tools:** If you use a line detector (e.g. [Glyph Machina](https://glyphmachina.com/)) only to suggest line boundaries before protocol transcription, see [`benchmark/EXTERNAL_LINE_TOOLS.md`](benchmark/EXTERNAL_LINE_TOOLS.md) for how that relates to `lineRange` and what not to treat as canonical text.
 
