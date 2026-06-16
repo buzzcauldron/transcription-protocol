@@ -1,25 +1,19 @@
 # Academic Handwriting Transcription Protocol
 
-> **Repository protocol version:** **1.1.0** (see [`VERSION`](VERSION); canonical spec files use descriptive `*-v1.1.0.md` names at repo root).
+A strict no-addition transcription system for LLM-assisted manuscript work, built for academic researchers who need faithful transcriptions of handwritten documents. This protocol is most effective for 18th century and more modern handwriting, but it can prove an effective stop-gap for researchers without access to specifically trained ML models or without requesite coding resources to build one. 
 
-A strict no-addition transcription system for LLM-assisted manuscript work, built for academic researchers who need extreme fidelity to handwritten source material.
+It provides texts 60-98% correct in order to aid computational analysis or improve access to texts with difficult handwriting. Machine-readable `transcriptionOutput` (metadata, segments, uncertainty tokens, verification and audit blocks) keeps runs **reproducible** and **tool-friendly**; this protocol does not prescribe any particular stack.
 
-The **design intent** is **evidence-grade text** researchers can reuse in **later computational work** — corpus linguistics, quantitative text analysis, digital editions, linked open data, machine-learning features, or custom pipelines — without re-transcribing from images. Machine-readable `transcriptionOutput` (metadata, segments, uncertainty tokens, verification and audit blocks) keeps runs **reproducible** and **tool-friendly**; this protocol does not prescribe any particular stack.
+The model will never add, infer, complete, or modernize text. Every ambiguity is explicitly marked. Every output is auditable.
 
-**Core guarantee**: the model will never add, infer, complete, or modernize text. Every ambiguity is explicitly marked. Every output is auditable.
+This repository contains prompts, rubric, and evaluation criteria needed.
 
-This repository contains the **specification, prompts, schema, rubric, and evaluation harness** needed to run and reproduce the protocol. As with any living standard, the hosted Cursor skill and the latest tagged version incorporate refinements made after earlier releases — see [What's in 1.1.0](#whats-in-110) and [`CHANGELOG.md`](CHANGELOG.md).
 
-## What's in 1.1.0
-
-The protocol uses [Semantic Versioning](https://semver.org/). Notable refinements in the current `1.1.0` line over the initial release:
-
-1. **Formal semver for `protocolVersion`** — canonical `1.0.0` / `1.1.0`; legacy `v1.0` / `v1.1` accepted as aliases (the validator maps them).
-2. **`runMode`** (`standard` | `efficient`) — efficient single-pass mode for throughput, with guard rails that forbid standard-only tokens and incompatible profiles.
-3. **Conservative epistemic stance** — default skeptical confidence, honest mismatch reporting, optional `metadata.epistemicNotes` (protocol §1.1).
-4. **Crop tokens `[crop]` / `[crop: …]`** — text truncated by image edge, binding, or scan, distinct from `[gap]` and `[illegible]` (Phase 1, protocol §3).
-5. **Diplomatic vs expansion firewall** — `preserveOriginalAbbreviations` is a hard split; the stress harness refuses to score diplomatic output against expanded ground truth (avoids 20–40 pt CER inflation).
-6. **Benchmark anti-cheating gates** — ground truth is firewalled (never in prompts); honest `[illegible]` / `[gap]` / `[damaged]` tokens do not count as omissions in `modern_*` evaluators, but wildcard flooding (>15% of GT words) fails as `uncertainty_gaming`; any substantive addition still hard-fails. Regression: [`tests/test_stress_redteam.py`](tests/test_stress_redteam.py).
+1. **`runMode`** (`standard` | `efficient`) — efficient single-pass mode for throughput, with guard rails that forbid standard-only tokens and incompatible profiles.
+2. **Conservative epistemic stance** — default skeptical confidence, honest mismatch reporting, optional `metadata.epistemicNotes` (protocol §1.1).
+3. **Crop tokens `[crop]` / `[crop: …]`** — text truncated by image edge, binding, or scan, distinct from `[gap]` and `[illegible]` (Phase 1, protocol §3).
+4. **Diplomatic vs expansion firewall** — `preserveOriginalAbbreviations` is a hard split; the stress harness refuses to score diplomatic output against expanded ground truth (avoids 20–40 pt CER inflation).
+4. **Benchmark anti-cheating gates** — ground truth is firewalled (never in prompts); honest `[illegible]` / `[gap]` / `[damaged]` tokens do not count as omissions in `modern_*` evaluators, but wildcard flooding (>15% of GT words) fails as `uncertainty_gaming`; any substantive addition still hard-fails. Regression: [`tests/test_stress_redteam.py`](tests/test_stress_redteam.py).
 
 Full history: [`CHANGELOG.md`](CHANGELOG.md).
 
