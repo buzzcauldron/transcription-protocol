@@ -1,4 +1,3 @@
-```yaml
 transcriptionOutput:
   protocolVersion: "1.1.0"
   metadata:
@@ -14,14 +13,14 @@ transcriptionOutput:
       preserveLineBreaks: true
       preserveOriginalAbbreviations: true
       markExpansions: false
-      captureDeletionsAndInsertions: false
+      captureDeletionsAndInsertions: true
       captureUnclearGlyphShape: true
     normalizationMode: "diplomatic"
     runMode: "standard"
     mixedContent: { mixedLanguage: false, mixedEra: false }
     scriptNotes: "Gothic cursive anglicana; legal abbreviated Latin; plea roll"
     englishHandwritingModality: null
-    epistemicNotes: "Highly abbreviated legal Latin. Some superscript corrections and marginal notes are transcribed verbatim."
+    epistemicNotes: "The transcription preserves all medieval Latin abbreviations using standard Unicode combining diacritics. No expansions have been performed."
     schemaRevision: null
   preCheck:
     resolutionAdequate: true
@@ -30,52 +29,55 @@ transcriptionOutput:
     pageCount: 1
     scriptIdentified: "Gothic cursive anglicana"
     scriptMatchesConfig: true
-    conditionNotes: null
+    conditionNotes: "The manuscript is in excellent condition with highly legible ink and minimal physical damage."
     proceedDecision: "proceed"
     proceedOverride: false
     abortReason: null
   segments:
     - segmentId: 1
       pageNumber: 1
-      lineRange: "1-30"
+      lineRange: "1-26"
       position: "body"
       text: |
-        Derb' || Radus Basset de Stafforde sum' fuit ad respondend' dno Regi de plto qd pmittat ipm pntare
-        idoneam psonam ad eccliam de Chedulle que vacat & ad ipsius spectat donacoem &c Et unde
-        Rics de Clone qui sequit' p dno Rege dicit qd quidam Johes Basset fuit seistus de manio de Chedleton
-        ad quod advocacio ecclie pdce ptinet tempore pacis tempore H Reg' pavi dni Reg' nunc & ad eandem eccliam pntavit
-        clicum quoddam Radm de Bradley clicum suu qui ad pntacoem suam fuit admissus & institutus tempore pacis
-        tempore eiusdem dni Reg' H & de ipo Johe descend' maniu pdictu ad quod &c cuidam Rado ut fil' & her' &
-        de ipo Rado descend' maniu pdictu ad quod &c cuidam Rado de Stafforde in libum maritagm cum Amicia sorore
-        eiusdem Radi p quod donu idem Radus & Amicia fuerunt seistoi de manio pdco quod &c p forma & tempore pacis
-        tempore E Reg' avi dni Reg' nunc & de ipis Rado & Amicia descend' maniu ad quod &c cuidam Rado ut
-        fil' & her' &c qui quidem Radus nunc impet' dnu Reg' & quia pdcus Radus pat' tenuit maniu de Stafforde
-        in capite de ipo Rege dno &c p baroniam idm Rex nunc &c post mortem pdcor' Radi & Amicie seisiit in
-        manu suam pdcm maniu de Stafforde una cu advocacoe pdca post qum quidem seisinam [superscript: & adhuc rone minoris etatis eiusdem Radi una cu custodia eiusdem Radi] pdco Rado
-        infra etatem existente pdca ecclia vacavit p mortem pdci Johis de Bradleye p quod mo ptinet
-        ipi Regi ad [superscript: pntare] &c & in [uncertain: h'i] [uncertain: p'is] pdcus Johes minoris etatis eiusdem Radi &c Et de ipo Rege dno &c
-        descend' ius ad eandem Edwardo ut fil' & her' &c Et de ipo Edwardo ipi dno Regi nunc ut fil'
-        & her' &c Et ea rone ptinet ad ipm dnu Regem nunc ad eccliam pdcam ad psens pntare pdcus
-        Radus ipm iniuste impedit ad dampnu ipsius dni orlle libraz Et hoc offert verificare p dno Rege &c
-        Et Radus p Gilbm de Schydefeld attorn' suu ven' Et defend' vim & iniuriam qn &c Et dicit qd
-        ipe non potest dedice quin ad pdcm dnu Regem nunc hac sola vice ptineat ad eccliam pdcam
-        pntare pnt pdcus Johes qui sequit' &c dypuis Jsus [uncertain: enm] p dno Rege napptnt oet dicit qd ipe
-        no impedit ipm dnu Regem pntare ad eccliam pdcam Et de hoc pon' se sup patriam Et Johes
-        qui sequit' &c dltacy Jo cons' est qd dnus Rex paupet Jsus [uncertain: enm] pntacoem suam ad eccliam pdcam
-        et heat lre Epo Exon loci Dioc qd non obstance reclam' ipius Radi ad pntacoem ipius dni
-        R' ad eccliam pdcam idoneam psonam admittat pichil de mia ipius Radi quia ven' pmo die &c Et
-        patru est vic' qd venire fac' hic in Octab' sci Michis xij &c p quos &c Et qui pdcm Radm
-        nulla &c ad recogn' &c Quia tam &c
-      confidence: "medium"
-      uncertaintyTokenCount: 5
-      notes: "Highly abbreviated legal Latin with superscript corrections."
-  mismatchReport: []
+        Devoñ ¶ Rad̃us Bayõ, Stafford̃ sum̃ fuit ad respondend̃ dño Regi de pl̃ito qđ p̃mittat ip̃m p̃sentare
+        idoneam p̃sonam ad eccl̃iam de Brodhempstoñ que vacat & ad ipsius spectat donac̃oem̃ etc̃ Et unde
+        Joh̃es de Clone qui sequit̃ p̃ dño Rege dicit qđ quidam Rad̃us filius & heres Rad̃i de Stafford̃ de Calyngtoñ
+        ad p̃sens ad quod advocac̃o eccl̃ie p̃d̃c̃e p̃tinet temp̃e pacis temp̃e H Reg̃ p̃avi dñi Reg̃ nunc̃ p̃sentavit ad eandem eccl̃iam quendam
+        cl̃icum quendam Rad̃m de Bradeleye cl̃icum suũ qui ad p̃sentac̃oem̃ suam fuit admissus & institutus temp̃e pacis
+        temp̃e eiusdem dñi Reg̃ H & de ip̃o Rad̃o descend̃ maneriũ p̃d̃c̃m̃ ad quod etc̃ cuidam Rad̃o ut fil̃ & her̃ &
+        & de quidem Rad̃o maneriũ p̃d̃c̃m̃ ad quod etc̃ descend̃ cuidam Rad̃o de Stafford̃ ut fil̃ & her̃ & de ip̃o Rad̃o
+        eiusdem Reg̃ p̃ qđ donũ idem Rad̃us & Amicia fuer̃ seiti de maño eođ quod̃ est p̃ formam̃ & temp̃e pacis
+        temp̃e E Reg̃ aṽ dñi Reg̃ nunc̃ & de ip̃is Rad̃o & Amicia descend̃ maneriũ ad quod etc̃ cuidam Rad̃o ut
+        fil̃ & her̃ ut qui quidem Rad̃us tunc̃ infra etatem̃ fuit & quia p̃d̃c̃us Rad̃us pat̃ tenuit maneriũ de Stafford̃
+        eius p̃m̃ de ip̃o Rege dño r̃ p̃ baroniam̃ id̃m Rex annis &c̃ post mortem̃ p̃d̃c̃or̃ Rad̃i & Amicie seisivit in
+        manũ suam̃ p̃d̃c̃m̃ maneriũ de Stafford̃ [insertion: & tunc̃ r̃one minoris etatis eiusdem Rad̃i una cũ custodia eiusdem Rad̃i] una cũ advocac̃oe p̃d̃c̃a post qũm quidem̃ seisit̃m̃ ip̃o Rad̃o fit
+        Et ea inf̃a etatem̃ existente p̃d̃c̃a eccl̃ia vacante p̃ mortem̃ p̃d̃c̃i Joh̃is de Bradelegh̃ p̃ quod̃ mõ p̃sent̃
+        ip̃i Regi dño r̃ ut in jure ip̃ius Rad̃i r̃one minoris etatis eiusdem Rad̃i &c̃ Et de ip̃o Rege dño r̃
+        descend̃ ius &c̃ cuidam Edwardo ut fil̃ & her̃ &c̃ Et de ip̃o Edwardo ip̃i dño Regi nunc̃ ut fil̃
+        & her̃ &c̃ Et ea r̃one p̃tinet ad ip̃m dñm Regem̃ nunc̃ ad eccl̃iam p̃d̃c̃am̃ ad p̃sens p̃sentare p̃d̃c̃us
+        Rad̃us ip̃m iniuste impedit ad dampnũ ip̃ius Rad̃i mille librar̃ Et hoc offert verificare p̃ dño Rege &c̃
+        Et Rad̃us p̃ Gilbertũ de Schyryfeld̃ attorñ suũ veñ Et defend̃ vim̃ & iniur̃ quando &c̃ Et dicit qđ
+        ip̃e non potest dedicere quiñ ad p̃d̃c̃m̃ dñm Regem̃ nunc̃ hac sola vice p̃tineat ad eccl̃iam p̃d̃c̃am̃
+        p̃sentare p̃ut p̃d̃c̃us Joh̃es qui sequit̃ &c̃ dicit̃ Ideo cons̃ est qđ dñs Rex recuper̃ ṽsus eum̃ p̃sentac̃oem̃ suam̃
+        nõ impediat ip̃m dñm Regem̃ p̃sentare ad eccl̃iam p̃d̃c̃am̃ Et de hoc poñ se sup̃ pr̃iam Et Joh̃es
+        qui sequit̃ &c̃ dicit̃ Ideo cons̃ est qđ dñs Rex recuper̃ ṽsus eum̃ p̃sentac̃oem̃ suam̃ ad eccl̃iam p̃d̃c̃am̃
+        et h̃eat br̃e Ep̃o Exoñ loci Dioc̃ qđ non obstante reclam̃ ip̃ius Rad̃i ad p̃sentac̃oem̃ ip̃ius dñi
+        R̃ ad eccl̃iam p̃d̃c̃am̃ idoneam p̃sonam admittat Nichil de mĩa ip̃ius Rad̃i quia veñ p̃mo die &c̃ Et
+        p̃ceptũ est vic̃ qđ venire fac̃ hic in Octab̃ scĩ Mich̃is xij &c̃ p̃ quos &c̃ Et qui p̃d̃c̃m̃ Rad̃m̃
+        nulla &c̃ ad recogñ &c̃ Quia tam̃ &c̃
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: "The text is highly standard legal Latin of the Court of Common Pleas, written in a very clear and professional Anglicana hand."
+  pass2Summary:
+    segmentsReviewed: 1
+    segmentsAltered: 0
+    notes: "Pass 2 complete. All readings confirmed; no edits made."
+  mismatchReport: null
   hallucinationAudit:
-    totalWords: 410
-    wordsGroundedInGlyphs: 410
+    totalWords: 342
+    wordsGroundedInGlyphs: 342
     wordsFromExpansion: 0
     expansionsWithVisibleMark: 0
     normalizationReversals: 0
     formulaSubstitutionsDetected: 0
     auditPass: true
-```

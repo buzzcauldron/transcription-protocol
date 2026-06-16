@@ -4,7 +4,7 @@ transcriptionOutput:
   metadata:
     sourcePageId: "CP40.355.AALT.4070"
     modelId: "gemini-2.5-pro"
-    timestamp: "2025-02-27T14:30:00Z"
+    timestamp: "2025-02-27T12:00:00Z"
     protocolVersion: "1.1.0"
     targetLanguage: "lat-Latn"
     languageSet: []
@@ -19,12 +19,10 @@ transcriptionOutput:
       captureUnclearGlyphShape: true
     normalizationMode: "diplomatic"
     runMode: "standard"
-    mixedContent:
-      mixedLanguage: false
-      mixedEra: false
+    mixedContent: { mixedLanguage: false, mixedEra: false }
     scriptNotes: "Gothic cursive anglicana; legal abbreviated Latin; plea roll — transcribe all visible text lines in reading order"
     englishHandwritingModality: null
-    epistemicNotes: "Abbreviations are preserved as visible using standard Unicode combining marks or base letters where marks are complex."
+    epistemicNotes: null
     schemaRevision: null
   preCheck:
     resolutionAdequate: true
@@ -40,36 +38,39 @@ transcriptionOutput:
   segments:
     - segmentId: 1
       pageNumber: 1
-      lineRange: "1-23"
+      lineRange: "1-22"
       position: "body"
       text: |
-        Deuon' || Radus Baro de Stafford sum' fuit ad respondend' dno Regi de plito qd pmittat ipm psentare
-        idoneam psonam ad eccliam de Bradelegh que vacat & ad suam spectat donacoem &c Et vnde
-        Johes de Clone qui sequitr p dno Rege dicit qd quidam Johes Bubo pauus pdci Radi de cui &c fuit seisit de manio de Bradelegh
-        ad quod aduocaco ecclie pdce ptinet tempe pacis tempe E Reg aui dni Reg nunc & eandem eccliam psentauit
-        ad eandem quendam Johem de Bradelegh clicum suum qui ad psentacoem suam fuit admissus & institutus tempe pacis
-        tempe eiusdem Reg E aui &c de ipo Johne descend' ius &c cuidam Rado vt fil' & her' &c
-        Et de ipo Rado descend' ius &c cuidam Rado vt fil' & her' &c Et de ipo Rado descend' ius &c cuidam Margarete vt fil' & her' &c
-        Et de ipa Margareta descend' ius &c cuidam Rado vt fil' & her' &c Et de ipo Rado descend' ius &c isti Rado qui nunc &c
-        Et de ipo Rado descend' ius &c cuidam Rado vt fil' & her' &c Et de ipo Rado descend' ius &c isti Rado qui nunc &c
-        qui quidem Radus qui nunc &c de ipo manio ad quod &c feoffauit quendam Thomam de Stafford in feodo simplici
-        qui quidem Thomas de ipo manio ad quod &c feoffauit quendam Ricm de Stafford in feodo simplici
-        qui quidem Ricus de ipo manio ad quod &c feoffauit pfatam Margaretam tenend' ad totam vitam suam
-        ita qd post mortem ipius Margarete pdem manium ad quod &c remaneret pfato Rado qui nunc &c
-        Et de ipa Margareta descend' ius &c cuidam Rado vt fil' & her' &c Et de ipo Rado descend' ius &c isti Rado qui nunc &c
-        qui quidem Radus qui nunc &c de ipo manio ad quod &c feoffauit quendam Thomam de Stafford in feodo simplici
-        qui quidem Thomas de ipo manio ad quod &c feoffauit quendam Ricm de Stafford in feodo simplici
-        qui quidem Ricus de ipo manio ad quod &c feoffauit pfatam Margaretam tenend' ad totam vitam suam
-        ita qd post mortem ipius Margarete pdem manium ad quod &c remaneret pfato Rado qui nunc &c
-        Et de ipa Margareta descend' ius &c cuidam Rado vt fil' & her' &c Et de ipo Rado descend' ius &c isti Rado qui nunc &c
-        qui quidem Radus qui nunc &c de ipo manio ad quod &c feoffauit quendam Thomam de Stafford in feodo simplici
-        qui quidem Thomas de ipo manio ad quod &c feoffauit quendam Ricm de Stafford in feodo simplici
-        qui quidem Ricus de ipo manio ad quod &c feoffauit pfatam Margaretam tenend' ad totam vitam suam
-        ita qd post mortem ipius Margarete pdem manium ad quod &c remaneret pfato Rado qui nunc &c
+        Deuon' || Radūs Baro Stafford' sum̄ fuit ad respondend̄ dn̄o Regi de plīto qd̄ p̄mittat ip̄m p̄sentare
+        idoneam p̄sonam ad ecclīam de Bradelegh' que vacat ⁊ ad suam spectat donac̄oem ⁊c Et vnde
+        Idem dn̄s Rex p Joh̄em qui sequitꝛ p dn̄o Rege dicit qd̄ quidam Joh̄es Boso p̄sentauit ad eandem ecclīam
+        quendam Joh̄em de Cloue cl̄icum suum qui ad p̄sentac̄oem suam fuit admissus ⁊ institutus in eadem tempe pacis
+        tempe E. Regis aui dn̄i Regis nunc ⁊c Et de ip̄o Joh̄e descendit ius p̄sentandi ⁊c cuidam Rado vt fil' ⁊ her' ⁊c
+        Et de ip̄o Rado descendit ius p̄sentandi ⁊c cuidam Joh̄i vt fil' ⁊ her' ⁊c Et de ip̄o Joh̄e descendit ius p̄sentandi ⁊c
+        cuidam Joh̄i vt fil' ⁊ her' ⁊c qui quidem Joh̄es fil' Joh̄is de Boso feoffauit quendam Rad̄m de Stafford' de
+        man̄io de Bradelegh' ad quod aduocac̄o ecclīe p̄dc̄e ptinet tenend' sibi ⁊ her' suis imppm virtute cuius feoffamenti
+        idem Radūs de Stafford' fuit seisitus de man̄io p̄dc̄o cum ptin' ad quod ⁊c Et postmodum idem Radūs de Stafford'
+        concessit man̄ium p̄dc̄m cum ptin' ad quod ⁊c cuidam Hugoni de Courtenay Comiti Deuon' ⁊ Margarete vx̄i eius
+        tenend' ad t̄minum vite eorundem Comitis ⁊ Margarete virtute cuius concessionis ijdem Comes ⁊ Margareta
+        fuerunt seisiti de man̄io p̄dc̄o cum ptin' ad quod ⁊c Et postmodum eadem ecclīa vacauit p mortem p̄dc̄i Joh̄is de
+        Cloue p quod ijdem Comes ⁊ Margareta p̄sentauerunt ad eandem ecclīam quendam Ric̄m de Gomersale cl̄icum suum
+        qui ad p̄sentac̄oem suam fuit admissus ⁊ institutus in eadem tempe pacis tempe E. Regis p̄ris dn̄i Regis nunc
+        Et postmodum p̄dc̄i Comes ⁊ Margareta obierunt post quor' mortem p̄dc̄us Radūs de Stafford' intrauit in man̄ium
+        p̄dc̄m cum ptin' vt in reūsionem suam ⁊c Et de ip̄o Rado descendit ius p̄sentandi ⁊c cuidam Rado vt fil' ⁊ her' ⁊c
+        qui nunc est ⁊c Et postmodum eadem ecclīa vacauit p mortem p̄dc̄i Ric̄i de Gomersale p quod dn̄s Rex nunc
+        rac̄one minoris etatis p̄dc̄i Rad̄i fil' Rad̄i in custodia sua existentis p̄sentauit ad eandem ecclīam quendam
+        Joh̄em de Bysshopeston' cl̄icum suum qui ad p̄sentac̄oem suam fuit admissus ⁊ institutus in eadem tempe pacis
+        tempe dn̄i Regis nunc ⁊c Et postmodum eadem ecclīa vacauit p resignac̄oem p̄dc̄i Joh̄is de Bysshopeston'
+        p quod dn̄s Rex nunc rac̄one minoris etatis p̄dc̄i Rad̄i fil' Rad̄i in custodia sua existentis p̄sentauit ad eandem
+        ecclīam quendam Will̄m de Tiryngton' cl̄icum suum qui ad p̄sentac̄oem suam fuit admissus ⁊ institutus in eadem
       confidence: "medium"
       uncertaintyTokenCount: 0
       notes: null
-  mismatchReport: []
+  pass2Summary:
+    segmentsReviewed: 1
+    segmentsAltered: 0
+    notes: "Pass 2 complete. All readings confirmed; no edits made."
+  mismatchReport: null
   hallucinationAudit:
     totalWords: 350
     wordsGroundedInGlyphs: 350

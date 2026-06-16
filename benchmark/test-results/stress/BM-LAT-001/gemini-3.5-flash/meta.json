@@ -1,7 +1,7 @@
 {
-  "caseId": "BM-OCR-001",
+  "caseId": "BM-LAT-001",
   "modelKey": "gemini-3.5-flash",
   "provider": "gemini",
   "modelId": "gemini-3.5-flash",
-  "started": "2026-06-16T18:51:14Z"
+  "started": "2026-06-16T18:42:56Z"
 }

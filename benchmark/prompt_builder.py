@@ -181,13 +181,20 @@ _SCHEMA_USER_SUFFIX_TAIL = """    normalizationMode: "<from configuration>"
       confidence: "medium"   # default typical; use "high" only for unambiguous stretches, "low" when difficult (§1.1)
       uncertaintyTokenCount: <integer matching token count in text>
       notes: null
-  mismatchReport:
-    - mismatchId: 1
-      segmentId: 1
-      pass1Reading: "<same as final or prior draft>"
-      pass2Reading: "<same as segment text after pass 2>"
-      resolution: "pass2 confirms final text; no edit"
-      resolved: true
+  # If Pass 2 found NO changes across any segment, use the compact shorthand:
+  pass2Summary:
+    segmentsReviewed: <integer — total segments reviewed>
+    segmentsAltered: 0
+    notes: "Pass 2 complete. All readings confirmed; no edits made."
+  mismatchReport: null   # set to null only when pass2Summary.segmentsAltered is 0
+  # If Pass 2 changed ANY segment, set mismatchReport to a list and omit pass2Summary:
+  # mismatchReport:
+  #   - mismatchId: 1
+  #     segmentId: 1
+  #     pass1Reading: "<prior draft reading>"
+  #     pass2Reading: "<corrected reading after pass 2>"
+  #     resolution: "<explanation of change>"
+  #     resolved: true
   hallucinationAudit:
     totalWords: <integer approx. word count across segments>
     wordsGroundedInGlyphs: <integer>

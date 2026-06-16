@@ -1,0 +1,198 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "CLM13027-38r"
+    modelId: "claude-3-5-sonnet-20241022"
+    timestamp: "2025-02-27T12:00:00Z"
+    protocolVersion: "1.1.0"
+    targetLanguage: "lat-Latn"
+    languageSet: []
+    targetEra: "medieval"
+    eraRange: "1150-1250"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent:
+      mixedLanguage: false
+      mixedEra: false
+    scriptNotes: "Caroline minuscule with heavy medical abbreviation; double-column layout; Articella / Isagoge commentary — transcribe all visible text in reading order column by column. POSITION: use 'body' for all segments (not 'left-column' or 'right-column'); indicate which column in segment notes."
+    englishHandwritingModality: null
+    epistemicNotes: null
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "Caroline minuscule"
+    scriptMatchesConfig: true
+    conditionNotes: null
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-60"
+      position: "body"
+      text: |
+        gẽminos canales ꝑge aꝑtiatos oꝑleto coĩ oꝑe ſecũ ſoãs
+        educat. Nam ſignantibꝫ ſuggentibꝫ ꝑ collũ matcis ſb
+        iſtius ꝑ ſic ad inſiores cellas eibẽ deſtinať. Sapor cõio
+        niſ uiri ⁊ intota liga. ſi maſ inꝑmixto uenit. Muliebꝫ
+        quidẽ ſca pectine inſimo uulue. Muliebꝫ teſticulis
+        duo ſ qꝫ unus ſub dextro reue alť ſub ſiniſtro tene
+        tur. Qui ſundo matcis cõiũcti ꝑſingulos exſe ꝑcedẽtes
+        rẽnita uenẽ adcellas eidem ſꝑma miniſtrať. Qd ſi ſi
+        mul cõmixtũ ouenit. ſcũ modico aũ. uel poſt. ꝑq̃m ꝑla
+        tum frigelcat uiuť. Siũ inſiniſt cella matcis ſꝑmata
+        oueniunt femineũ ẽ embriũ. Si aũt indext maſculi
+        nũ pcedit. Si i media q̃ ſcđm ſcĩm ⁊ cõſim ẽ. cõſiꝫ ſimꝑl
+        ꝑmixtũ ouenit ſꝑmatꝫ aut femininũ aut maſculinũ
+        pcreatur. Oꝑtet aũt membrorꝫ ꝑuentioẽ paulatip
+        incedẽ ⁊ deꝫ ⁊ inſuaꝑ mſe. ſꝑma itaqꝫ adueniũ ſi geitiũ
+        ſuit ꝑueniẽ ⁊ inꝑꝑ cõmixtũ ſuit. ẽ edictũ ſuit ſalubre
+        pducit. Cum iũ uiriſqꝫ ſꝑma uiri ſ ⁊ mulieſqꝫ inmatce
+        ouenit ſi ſcĩm ꝑꝑluidum ſuit diſſoluiť. Siũ cõſm ex
+        ſicciũ oſumpcõem inẽnit. ſi aũt eq̃uitate ꝑſeruať nulla
+        inpediente ocipit cõceꝑte. Spmate iũ uiriſqꝫ oũleto i
+        ſpẽ cruſtule ſpandiť. ⁊ egredieẽ pducit q̃ ſupficieten
+        illigať. ex cui caloẽ ꝑſim ſꝑmatis ſumitatibꝫ dẽcetꝫ ab
+        ipo diuidiť. ⁊ iola radice ꝑq̃m nutĩntũ accipit cũ ipa te
+        neť. Mediũ aũt q inſei deorſuſ ſumitateꝫ i modũ nuẽ
+        eminet ⁊ inſin eidẽ ſꝑma ſanguineã glebulam q̃dam f
+        giditate oſtẽtam ꝑmo inſe obſuat. nulla alic ſilitudiẽ
+        ymaginatioẽ mea inꝑſſa. Scđo iũmieli longi. ſ. ⁊ rotũdi
+        pducit ſpẽm. Tertio diuidiť ineo crura a latibꝫ ⁊ brachi
+        ⁊ collum caputqꝫ pſiciť. Quarto fõmať. cor. epar. ⁊ aĩa q̃
+        aggrediť ⁊ uiuificat. natali. moueť. Qũto omibꝫ iſtoꝫ
+        oꝑleť oꝑoĩtio. ſ. inteſtina ipi diſpoſitione formant. di
+        giti manuũ ⁊ pedũ ſcindunť. aures. nares. oſ. uenť. ⁊
+        ipẽ pudie formať oculus. Sexto ⁊ oceli ſcindũť ⁊ ſup
+        cilia formant. palpebre cẽtũt. capilli. ungule pducũť
+        Septimo ſuit arungie. caro. nerui. pſiciť. ⁊ omibꝫ hiis ac
+        pdiuſis muſculoꝫ oꝑoĩtioibꝫ oſtituunť. ⁊ oꝑletis ꝑ nata
+        lem diſpoſitoẽm omibꝫ. labaũ ut egeat matꝫ ut obene
+        at ⁊ inſuo caloẽ q̃ oꝑleta ſũt oſtinat ⁊ muniat. Siũ de
+        bil ẽ matꝫ cũ cõcede ut egeat. ⁊ manet eo q natali cõ
+        pletũ ẽ. Si aũt matꝫ nata fortioꝫ ẽ ut i obtineat. In
+        octauo embõn expugna. nã exir nõ ẽ ocelliť. fatigatũ
+        quieſcit. In nono matno calore iam firmati ⁊ cẽſſitudiẽ
+        oſectũ naſci gaudente ꝑꝫ adituꝫ reciue pmittiť. Ha
+        bent ⁊ ſeptẽ aliquid ⁊ ⁊. vii. planete i oꝑoĩtioẽ embĩũ
+        Satnus quid fẽt ⁊ ſicc. ſua fẽitate ꝑmo mſe ſꝑm g
+        uitate ⁊ ſua ſiccitate o paginatioẽm pſtat. ⁊ iob nõ ado
+        leſcit. ſꝫ alio caloẽ inſanguineũ inſmutatũ ſiue aug
+        mẽtando pmanet. Scđo iupipiť calid ⁊ huĩd caleſaci
+        endo oſortat. huẽctido replens in lõgi ⁊ rotũdi ũmieli
+        ſpẽm ſꝑma pducit. Tertiõ mars calid ⁊ ſicc. caloẽ coro
+        borans ⁊ ſiccitate ineiſdẽ diuidit crurã a latibꝫ. brachi
+        ſeput collum capqꝫ inſormat. Quarto ſol min amãte
+        calid ⁊ ſicc aĩam uiuificans. cor. epar. ⁊ cẽbrũ. oẽat
+        ⁊ eatiꝫ aĩam ingens iſtiu embõni motũ pſtat. Quin
+        ta uenus. fẽia ẽ ⁊ huĩda. omĩa inſua inſõmat. aures.
+        narẽ. oſ. iigam. pudicũ oculũ format. manuũ pedũqꝫ
+        digitos diuidit. Sexto mcuri ẽ calid ⁊ ſicc. fẽidũ
+        ⁊ huĩdũ equal inquo manuꝫ hẽt ſcientia. oportet
+        ſupcilia. oculos ſcindit. pupillas creſcẽ ⁊ capillos ⁊
+        ungulas pducit. Septimo. luna. fẽia ⁊ huĩda. replẽs
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: "Column 1"
+    - segmentId: 2
+      pageNumber: 1
+      lineRange: "1-59"
+      position: "body"
+      text: |
+        ⁊ euinglaſ. carnem ⁊ ſupficiem oplet. uenis ⁊ artiꝫ huĩta
+        tem atibuens. toti cor nutĩntũ pſtat. ⁊ ql omĩa pſic iĩ p
+        gnant ptuĩat ſalubre pducit. Si qꝫ adhuc nõ ẽ inbri
+        bũ pſci nõ bũ firmata ſunt. ſꝫ indigent alio tꝑe ad id
+        opꝫ explendũ. In octauo ſatnus reddit errata uice
+        ſim inſringendo embõ. ⁊ mať gũitatꝫ aſſert. ſuaqꝫ
+        ſiccitate humoꝫ extenuans. embõn nutĩntũ partuiꝫ
+        atibuit. ⁑ꝑea exꝑa egra pducit uiſi tꝑe. Nono iupi
+        ter aũt caleſatiendo inſrigidatꝫ ⁊ replendo tenua em
+        bõn cõroborat. ⁊ matnos apeiť aditũ. ⁊ omibꝫ pſciꝫ e
+        xir cõcediť. aꝑmo inſe uſqꝫ ad ſeptimũ. ſi genitũ ſuit
+        uõ pducit. eo q natali tate inꝑſcĩn hẽt. A vii. uſqꝫ ad
+        pſcĩn. viiii. q̃uis iĩ pſcĩn ſit. iõ ſi gñeť nõ ſubſiſtit. q
+        ſatni inſrigidatioẽ ſtupidũ ⁊ ei ſiccitate memaĩtio
+        nutĩnto aſſuetũ corrupta matꝫ ntalitate caloẽ mat
+        no exutũ ſi extenſus ſuit diſſoluiť. Solꝫ aũt nã omibꝫ
+        mbẽ pſcĩn ut inꝑlibꝫ apparet embõn gnãri. pleyqꝫ
+        ſi croſſo capite. ⁊ tenui collo. ⁊ magnus pedibꝫ ⁊ ſubti
+        libꝫ cruribꝫ. pedibꝫ. genibꝫ. aꝑlatiꝫ. aut manũ ſiue pe
+        dũ. ſingulis uel duobꝫ digitis pducit. iue luce pſtim.
+        Sꝫ hoc dualit inembõn oꝑoĩtione otingit. Nata ẽ
+        aut eq̃uã bĩ. huĩdã maſiã aut ⁊ redarguetẽ ſp̃m ⁊ ſ
+        boꝫ duoꝫ eq̃uitatẽ modice ⁊ pſectẽ format aut habũ
+        tata maſia ⁊ ſp̃u innotato. eidẽ maſiei habũdantia
+        alicui addit inbro exquo ualũ efficiť cetis. Vl amplia
+        to ſp̃u ⁊ minorata maſia aut ex parte inbra extenu
+        at. aut ex toto dimittit pẽare. ⁊ h omĩa aut eq̃tate
+        uiriſqꝫ maſiei. ſ. ⁊ ſpẽ natã pſtat. aut augmto i mino
+        ratioẽ hoꝫ uiũ. Solꝫ ⁊ indignatioẽ quibꝫdam uiris
+        ⁊ i muliebre mbꝫ. ⁊ quibꝫdam feminis i uirile q̃ i uiu
+        rianẽ adici. Sꝫ h impedita uel oblica nũ pſiciť. Nam
+        cum aliquo euentu nã impediť i obliuiſciť. illũ ma
+        teriei huĩde ſupfluiũ. qui ad uaſitatẽ. l ad nũm alie
+        mbꝫ ſolꝫ diſpoſitione ad altius ũ mbzũ ſiue iõne in
+        mutat;
+        De mala uenereos ſubſequiť uſus. q aꝫs in
+        imodans uenis uſibꝫ nataliꝫ caloẽ extiguiť
+        ⁊ extĩctũ augmto plimo exitať. Idoqꝫ oĩs
+        naťe inuiſibiles oꝑatioẽs inſimať. Sicut
+        ⁊ nataliꝫ mbꝫ huĩtať. Ptiũs in naſciť. reatũ cũ ſan
+        guine minuiť. viſuſqꝫ obtundiť. Capill ſubtiliať.
+        Caluitiũ innaſciť. Pect ⁊ pulmo egritudine afficiunť.
+        Liboꝫ fit diminutiõ. totiꝫ oꝑõniꝫ ſubſequiť deſectio
+        Cibꝫ inſtolitať ẽ ypodõꝫ ad nutĩto rugitũs. vctoſi
+        tatis fit mltiplicatio. Sciatica ⁊ artetica. gũi puiuẽ
+        Tenuibꝫ ⁊ ſiccis peſſima actio. Quibꝫ ⁊ uene gẽiles ⁊
+        ſangnis ẽ paupiꝫ. Tales uſus nõ dubitaũ iunles et
+        hoſtiles. Qꝫ cũ aĩne ẽ modica ⁊ uenaꝫ eſtĩtudine ⁊
+        ſangnis habundãtia. nõ cũ leſio fit maxĩa. Iũ aũt
+        qui oſtendunť pinguedine. ⁊ Albo huĩdoꝫ ẽ corpore
+        uenis anguſtis ⁊ modico ſangne ut fẽatia. ⁊ q̃dã fe
+        mine longe ẽ aꝑtiũ. pẽiui ũ adꝑicula ruoꝫ. Corꝑa
+        quidẽ cnoſa. rubicũda. calida. cum uenaꝫ eſtĩtudie
+        ⁊ ſangnis habundãtia. huic oꝑi nõ em ẽ ſuſtinen
+        tia. ſꝫ gũit ledunť n ſiit oꝑintia. ⁊ ẽ ſi oĩno ceſſaue
+        rit ne apoplexia aut ſtomatici fiant. ⁊ a gũedo
+        capitis aut faſtidia aut matce aꝑita. inẽa puden
+        da uulnã ſꝫ inguinibꝫ pameſa metuenť fieri. Cor
+        poꝫ quidẽ maſꝫ mltiplex ẽ qualitas. qꝫ q̃dã ẽ ſub al
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: "Column 2"
+    - segmentId: 3
+      pageNumber: 1
+      lineRange: "1-1"
+      position: "body"
+      text: |
+        Ifrigidando
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: "Marginalia"
+  pass2Summary:
+    segmentsReviewed: 3
+    segmentsAltered: 0
+    notes: "Pass 2 complete. All readings confirmed; no edits made."
+  mismatchReport: null
+  hallucinationAudit:
+    totalWords: 950
+    wordsGroundedInGlyphs: 950
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```

@@ -1,0 +1,72 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "BGO-511-025r"
+    modelId: "gemini-2.5-pro"
+    timestamp: "2025-02-27T14:35:00Z"
+    protocolVersion: "1.1.0"
+    targetLanguage: "lat-Latn"
+    languageSet: []
+    targetEra: "medieval"
+    eraRange: "1150-1250"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent:
+      mixedLanguage: false
+      mixedEra: false
+    scriptNotes: "Caroline/proto-Gothic minuscule; decorated opening leaf of the Penitential Psalms; large decorative initial 'D'; transcribe all visible text lines including rubrics"
+    englishHandwritingModality: null
+    epistemicNotes: "Transcription of a highly legible Textualis script. Decorative line fillers have been omitted as they carry no textual value."
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "Textualis / Gothic minuscule"
+    scriptMatchesConfig: true
+    conditionNotes: null
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-10"
+      position: "body"
+      text: |
+        25
+        Incipiunt ſeptem
+        pſalmi penitentiales
+        D omine
+        ne in
+        furore
+        tuo ar
+        guas me neq̄ in ira
+        tua corripias me ·
+        Miſerere mei domi
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: "The large illuminated 'D' spans lines 3-6 visually but is transcribed at the start of line 3 to preserve reading order without reordering text."
+  pass2Summary:
+    segmentsReviewed: 1
+    segmentsAltered: 0
+    notes: "Pass 2 complete. All readings confirmed; no edits made."
+  mismatchReport: null
+  hallucinationAudit:
+    totalWords: 23
+    wordsGroundedInGlyphs: 23
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```

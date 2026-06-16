@@ -1,0 +1,193 @@
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "CLM13027-38r"
+    modelId: "gpt-4o"
+    timestamp: "2025-03-02T12:00:00Z"
+    targetLanguage: "lat-Latn"
+    languageSet: []
+    targetEra: "medieval"
+    eraRange: "1150-1250"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: { mixedLanguage: false, mixedEra: false }
+    scriptNotes: "Caroline minuscule with heavy medical abbreviation; double-column layout; Articella / Isagoge commentary."
+    englishHandwritingModality: null
+    epistemicNotes: "The transcription preserves medieval Latin abbreviations and scribal letterforms verbatim."
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "Caroline minuscule"
+    scriptMatchesConfig: true
+    conditionNotes: null
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-60"
+      position: "body"
+      text: |
+        gẽmĩnos canales ubiꝙ apliatos ⁊ opãto coĩ ope fecũdõis
+        educat. Nam ſignantibꝫ. ſuggentibꝫ ꝙ collũ matẽſ b̃
+        h̃iꝭ. ⁊ ſic adĩfiores cellas cibũ dĩſtĩat. Sapor uoĩo
+        mĩ urĩs ĩtora lĩga. tĩ maxĩ ĩĩpĩuĩo uet̃. Mulĩeĩbꝫ
+        quĩdẽ dẽa pectĩnẽ ĩntĩmo uulue. Qũ mulĩeſ reſpĩculũ
+        duoſ q̃ꝝ unuſ ſub dext̃o tene alĩꝭ ſub ſĩnĩſt̃o tene
+        tur. Quĩ ſundo matrĩs quĩetĩ p̃lĩnguloſ exĩte p̃cedẽtĩs
+        urĩnatĩ uenẽ addecĩlaſ eãdem ſp̃ma mĩnĩſt̃at. Qđ fĩlĩ
+        mulĩeĩulũ ouenĩt. P̃cuĩ modĩco añ. uĩ poſt̃. p̃q̃m p̃la
+        tum ſĩngelcat uuĩ. Sĩũ ĩnſĩmĩſt̃ cella matrĩs ſp̃mata
+        quemur̃ ſemĩneũẽẽ embũĩ. Sĩ aut̃ mĩdeet̃ maſculũ
+        nũp̃cãd. Sĩ ĩ medĩu qđ ſcdm ſĩm r̃colĩm ẽ. c̃q̃lĩs ſp̃m̃at̃
+        Pĩnnĩculũꝭ ⁊ ſp̃mat̃. aut̃ ſemĩnĩuũ aut̃ maſculĩnũ
+        pẽat̃ur. [decorated: C] Opter aut̃ memb̃oꝝ ꝓcreatĩonẽ paulãp̃
+        ĩncĩp̃ ⁊ d̃ꝭ ꝙ ĩncĩp̃ mĩe ẽp̃ĩs ꝙꝭꝙ aduonĩĩ ſp̃ gẽĩtĩĩ
+        fũĩꝭ ꝓmẽt̃. ⁊ ĩnꝓ dĩuĩſĩone ſubtĩlĩ ẽdĩcĩ ſĩuẽ ſalubrẽ
+        ꝓducar. Cum ĩĩ uĩuĩſp̃ma utrĩꝭꝙ mulĩeĩſ ĩnmat̃e
+        ouenĩt. ſĩ fĩtĩ t̃p̃ hũĩdum fũĩt dĩſſoluĩt̃. Sĩũ cãlĩd̃ er̃
+        lĩcũũ oſump̃t̃m uarĩt̃. Sĩ aut̃ eq̃lĩtate p̃fĩuĩt nulla
+        unpedĩente ocĩpĩt̃ clĩat̃. Sp̃mat̃e uĩ utulĩꝙ oũcĩto ĩ
+        ſp̃e cruſtule ſpandĩt̃. ꝝegradĩce ꝓducĩt̃ ⁊ ſup̃ſĩtet̃er̃
+        ĩllĩgat̃. exẽuĩ caloẽ p̃ſtãtĩ ſumant̃ ſumant̃ꝫ dcoctĩg̃ab̃
+        ĩp̃ĩ dĩuĩdĩt̃. ⁊ ſola r̃adĩce p̃q̃m nuſt̃ĩmũ accĩpĩt̃ eĩ uĩat̃e
+        neẽ. Medĩũ aut̃ qđ ĩnſt̃ĩ dcoct̃ĩſ ſumant̃ꝫ ĩmodũ nũẽ
+        emĩnet̃ ⁊ ĩnfĩn eĩdẽ ſp̃m̃at̃ ĩnguĩneã glebĩlam qđam ſ̃
+        gĩdĩtate oſt̃ctam p̃mo mĩe obſuat. nulla alĩe ſĩlĩtudĩs
+        ymagĩnatĩoẽ mea uĩſĩlla. Scd̃o t̃ũmũelĩ longĩ. ſ. 7 rotũdĩ
+        ꝓducĩt̃ ſp̃m̃. T̃ertĩo dĩuĩdĩt̃ meo er̃uĩat̃ Alĩtĩbꝫ 7 b̃meſt̃ꝭ
+        7 collum caput̃ꝙ p̃fĩcĩt̃. Quãto fõmãt̃. coꝝ. ep̃u. z r̃eĩ. 7
+        aggredĩt̃ ⁊ uĩuĩfĩcat̃. naĩalĩꝭ mouet̃. Qũto omĩe ĩſt̃oꝝ
+        op̃leõ oꝓoſĩt̃o. ſ. ĩmcrĩtĩna ĩſp̃ dĩſpoſĩtĩone foꝝmãt̃. dĩ
+        gĩtĩ manuũ 7 pedũ ſandunt̃. aureſ. nareſ. oſ. uent̃. 7
+        ũp̃e pudĩe foꝝmãt̃ c̃culuſ. Sext̃o rocclĩ ſcĩndũt̃ 7 ſup̃
+        cĩlĩã foꝝmãt̃. palpebre c̃leũt̃. capĩllĩ. ungule. ꝓducũt̃
+        Septĩmo fuĩt aer̃ungĩe. caꝝ. r̃eutĩe. p̃fĩcĩt̃. 7 omĩs hũĩeꝝ
+        ꝓdĩcĩlĩs muſculoꝝ oꝓoſĩt̃õs oſt̃ĩtuunt̃. 7 op̃leõꝭ f̃ naĩal̃
+        lem dĩſpoſĩt̃õẽm omĩbꝫ. labaĩt̃ ut exeat̃ matr̃ uĩ obuenĩ
+        ae 7 ĩnſt̃io caloẽ ꝙ op̃leta fũĩt oſt̃ĩnat̃ 7 munĩat̃. Sĩũ de
+        bĩl̃ ẽ matr̃ eĩ cõcedẽ ut exeat̃. 7 manet̃ eo ꝙ naĩalĩꝭ cõ
+        plet̃ĩ ẽ. Sĩ aut̃ matr̃ naĩal̃ foꝝmãt̃ ẽ ur̃ ĩ obuenĩt. In
+        octauo embõn expugnã. nã eũẽ nõ ſp̃ oecclĩt. fatĩgarũ
+        queſcĩt. In nono maĩõĩ caloẽ uĩm fĩmarĩ. 7 c̃llĩtudĩẽ
+        oſt̃ectĩ naĩĩ gaudent̃ ꝓ adĩtuꝭ r̃ecĩp̃e ꝓmĩttĩt̃. [decorated: I] Ha
+        bent̃ 7 ſep̃t̃ẽ alĩquĩd 7. 7. uĩ. planete r̃oꝓoſĩt̃õẽ embũĩ
+        Sat̃nuſ quĩ ſp̃e 7 lĩceꝭ. ſua fr̃ĩtate p̃mo mĩe ſp̃m̃ g̃
+        uĩtate 7 ſua ſĩccĩtate o pagĩnat̃õẽm p̃ſt̃at̃. ĩđb̃ nõ ado
+        leſcĩt. ſ̃z alĩo caloẽ ĩnſanguĩneũĩ ĩnĩmĩtat̃ĩ ſĩue aug
+        m̃tando p̃manet̃. Scd̃o ĩncĩpĩt̃ calĩd̃ 7 hũĩd̃. callefat̃ĩ
+        endo 9foꝝtat̃. hũĩctĩdo replẽt̃ ĩnlõgĩ r̃ĩot̃ũdĩ ũmĩelĩ
+        ſp̃m̃ ſp̃m̃a ꝓducĩt̃. T̃ertĩo marſ calĩd̃ 7 ſĩcc̃. caloẽ coꝝ
+        boꝝanſ 7 ſĩccĩtate meĩdẽſ dĩuĩdĩt̃ eũũ Alĩtĩbꝫ. b̃meſt̃ꝭ
+        ſep̃at̃ collum capĩꝙĩ ĩnfoꝝmar̃. Quãto ſol mĩñ amãte
+        calĩd̃ 7 lĩceꝭ alĩuĩſ uĩuĩfĩcanẽ. coꝝ. ep̃ar̃. 7 c̃b̃rũ. oẽat̃
+        7 eaꝝg̃ aĩam ĩnger̃g̃e naĩal̃ embõnĩ ꝓmot̃ĩ p̃ſt̃at̃. Quĩ
+        ta uenuſ. fr̃ĩã 7 hũĩda. omĩã uĩſc̃al̃ ĩnfoꝝmar̃. aureſ.
+        nar̃eſ. oſ. uĩgam. pudĩcũ c̃culũ foꝝmar̃. manuũꝭ pedũꝙĩ
+        dĩgĩt̃oſ dĩuĩdĩt̃. Sext̃o m̃curĩꝭ. calĩd̃ 7 ſĩcc̃. 7 ſcd̃m ſĩcũ. fr̃ĩdũ
+        7 hũĩdũ equal̃ ĩnquĩs manuũꝭ h̃ẽt̃ ſcĩentĩã. oꝓoꝝt̃ĩ
+        ſup̃cĩlĩã. oculeſ ſcĩndĩt̃. pupĩllaſ cr̃eãt̃ 7 capĩlloſ 7
+        ungulaſ ꝓducĩt̃. Septĩmo. luna. fr̃ĩã 7 hũĩda. replẽſ
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: "Column 1 transcription."
+    - segmentId: 2
+      pageNumber: 1
+      lineRange: "1-59"
+      position: "body"
+      text: |
+        ayungat. cãnem 7 ſup̃fĩcĩem op̃ler̃. uent̃ꝭar̃ĩuẽ bĩuĩt̃a
+        tem at̃t̃ĩbuent̃. rot̃ĩ coũ nuſt̃ĩrĩĩ p̃ĩat̃. ꝝq̃lõmĩã p̃fĩcĩ ĩ p̃
+        gnant̃ ꝓuĩar̃ c̃lĩb̃re ꝓducat̃. ſ̃z q̃ĩ adhuc nõẽ ĩnb̃rĩ
+        h̃ñ p̃f̃eĩ nõ bĩ fĩmat̃ĩ ſunt̃. ſ̃z ĩndĩgent̃ alĩo t̃p̃ ad ĩđ
+        op̃ĩs ex̃plendũ. Inoctauo ſat̃nuſ reddĩt̃ errat̃a uĩce
+        ſĩm̃ lĩnfrĩngendo embõ. r̃maẽ g̃uĩtat̃ẽ aſſert̃. ſuaq̃ĩ
+        ſĩccĩtate humoꝝſ ex̃tenuãg̃. embõn nuſt̃ĩmĩĩ part̃uĩſ
+        art̃ĩbuĩt̃. ꝝꝓea ex̃g̃a eg̃a ꝓducat̃ uĩſĩ t̃p̃z. Alõno ĩupĩ
+        t̃ez aur̃ cãlefat̃endo ĩnfrĩgĩdat̃ã 7 replendo tenua em
+        bõn c̃õfoꝝuout̃. 7 mat̃ĩoſ apeĩt̃ addĩt̃. 7 oñĩbꝫꝭ p̃fĩcĩe
+        xĩĩ oecdĩt̃. d̃p̃mo mĩe uſq̃ꝭ ad ſept̃ĩmũ. ſĩ gener̃ũ fũĩt̃
+        uõ ꝓdũunt̃. eo ꝙ naĩalĩtate ĩmp̃f̃eĩ h̃ẽf̃. A uĩĩ. uſq̃ꝭ ad
+        p̃feĩn. uuuĩ. q̃uſ ĩĩ p̃feĩn lĩt̃. ĩõ ſĩ g̃ñet̃ nõ ſubſĩſt̃ĩt̃. q̃ĩ
+        faĩĩna ĩnfrĩgĩdat̃õẽ ſt̃upĩdũ r̃eĩ ſĩccĩtute memãĩĩo
+        nuſt̃ĩuõ aſſluctĩ cozrupt̃a mat̃y nãalĩtate caloẽ mat̃
+        no er̃uĩĩ ſĩ ex̃ceſſuſ fuĩt̃ dĩſſoluĩt̃. S̃ok̃ aut̃ nã omĩbꝫ
+        m̃b̃ĩ p̃f̃em ur̃ ĩp̃lĩb̃: appar̃et̃ embõn gnãrĩ. pler̃uꝙĩ
+        h̃ croſſo capĩte. 7 tenuĩ collo. l̃magnuſ pedĩbꝫ 7 ſubt̃ĩ
+        lĩbꝫ crurĩbꝫ. pedĩbꝫ. genĩbꝫ. aplĩatĩſ. aur̃ manuĩlez pe
+        dĩũ. ſĩngulĩſ uĩ duo b̃ꝫ dĩgĩt̃ĩs ꝓdĩt̃ĩſ. b̃e luco p̃ſt̃ĩm̃.
+        S̃z hoc dualĩb̃ ĩnembr̃ĩ oꝓoſĩt̃õne onungĩt̃. Naĩã ẽ
+        aur̃ eq̃lĩ b̃ĩ b̃ũũdĩ mat̃ĩã aut̃ ꝝedĩguer̃ẽ ſp̃m̃ 7 ſ̃
+        boꝝ duoꝝ eq̃lĩtat̃ẽ modĩce 7 p̃fecer̃e foꝝmar̃ quĩ habĩĩ
+        tat̃a mat̃ĩã ꝝ ſp̃uĩ mĩnolato. eĩdẽ mat̃ĩeĩ habĩdant̃ĩã
+        alĩeĩĩ addĩr̃ exꝙo naĩĩꝭ effĩcĩt̃ cer̃ĩſ. Vĩ am̃plĩã
+        r̃o ſp̃uĩ 7 mĩnomĩt̃ĩ mat̃ĩã aut̃ ex̃ part̃e ĩndĩã ex̃tenu
+        ar̃. aur̃ ex̃ t̃ot̃o dĩmĩnũĩ. p̃ẽar̃. 7 b̃ omĩã aur̃ eq̃lĩt̃e
+        uẽuĩſꝙĩ mat̃ĩeĩ. 7 ꝝ ſp̃e naĩã p̃ſt̃at̃. aur̃ augm̃to l̃mĩno
+        rat̃ĩõẽ hoꝝ unĩ. Solz 7 ĩndĩgnat̃õẽ quĩbũdam uĩrĩſ
+        7 l̃mũglĩeb̃re m̃b̃ꝭ. ꝝ quĩbũdam femĩnĩe ĩ uĩrĩſ ꝙĩ ũr̃u
+        rĩanĩ adĩcĩ. S̃z h̃ ĩmpedĩt̃ uĩ obuĩeĩ nĩ p̃fĩcĩt̃. Nam
+        cum alĩquo euent̃u nã ĩmpedĩt̃ l̃ obluĩat̃er̃. ĩllũ ma
+        teĩeĩ uĩĩĩde. ſup̃flũĩĩ. qđ ad uaſt̃ĩtat̃ẽ. l̃ ad nũm alĩeĩ
+        m̃b̃ĩ ſõl̃ dĩſpoſĩt̃õne adalt̃ĩuẽ ũmb̃zĩ ſĩne r̃õne ĩn
+        mut̃ar̃ ;
+        [decorated: S] ue malã uenẽreꝭ ſubſequĩt̃ uſĩſ. ꝝ q̃aſ ĩn
+        ĩmodãg̃ uenĩe uſĩbꝫ naĩĩl̃ꝭ caloẽ ex̃tĩguĩt̃
+        7 ex̃tĩneĩ augm̃to p̃lĩmo ex̃at̃at̃. Iđoq̃ĩ oĩſ
+        nar̃e ĩnũĩſĩbĩleſ opat̃ĩõẽſ ĩnfĩmãĩ. Sĩc̃ut̃
+        7 naĩal̃ĩs m̃b̃ꝭ hũĩtat̃. P̃r̃ĩĩſ un naſat̃. r̃eato c̃ũ ſan
+        guĩne mĩnuĩt̃. uĩllĩꝭꝙĩ obſt̃undĩt̃. Capĩll̃ ſubt̃ĩlĩat̃.
+        Caluĩt̃ĩĩ unnaſat̃. Pect̃ 7 pulmo eg̃t̃udĩne affĩcĩunt̃.
+        Lũboꝝ f̃ĩr̃ dĩmĩnut̃ĩõ. ꝝcoꝝ oꝓõnẽ ſubſequĩt̃ deſect̃ĩo
+        C̃b̃ĩ. ĩnt̃olĩt̃at̃ ẽ yꝓodoꝝ ad mĩxt̃ĩo ruguĩuẽ. Ṽẽroſĩ
+        t̃ĩnĩſ f̃ĩr̃ ml̃t̃ĩplĩcat̃ĩõ. S̃q̃at̃uꝝ 7 art̃eĩã. q̃ĩũ par̃ĩuẽ
+        T̃enuĩbꝫ r̃ĩſĩege peſſĩma aer̃ĩo. Quĩbꝫ 7 uene g̃r̃ĩleſ 7
+        l̃ãnguĩſ ẽ pauꝓeſ. T̃aleſ uſĩuſ nõ dubĩt̃ab̃ ĩunĩleg̃ et̃
+        hoſt̃ĩleg̃. Q̃ĩ c̃ũ aĩme ſ̃ modĩca 7 uenãꝝ eſſt̃udĩne 7
+        l̃ãnguĩſ h̃ab̃ undĩna. nõ eĩ leſĩo fĩt̃ mag̃ĩã. Ilĩĩ aut̃
+        quĩ oſt̃endunt̃ pĩnguedĩne. 7 Albo hũĩdoꝝ. ẽ coꝝꝓor̃e
+        uenĩſ anguſt̃ĩſ 7 modĩco ſangĩne ur̃ fl̃at̃ĩã. ꝝ qđã fe
+        mĩne longe ẽ apet̃ĩ. p̃r̃ĩmũ ũ adpĩcula r̃uõꝝ. Coꝝꝓĩ
+        quĩdeĩnoſa. rubĩcũdĩ. calĩdĩ. cum uenãꝝ eſt̃ĩudĩe
+        7 ſangĩuĩs habũndant̃ĩã. huĩc op̃ĩ nõ eĩ ſĩ ſuſſĩcĩen
+        t̃ĩã. ſ̃z g̃uĩt̃ ledunt̃ ĩn ſũe opĩnĩat̃. 7 eĩ lĩ oĩno ceſſaue
+        r̃ĩt̃ ne apoplet̃ĩã aut̃ ſp̃omat̃ĩcĩ fĩg̃ur̃. 7 ã g̃ũedo
+        capĩt̃ĩſ aut̃ faſt̃ĩdĩu aur̃ maute aĩuĩt̃a. ĩnc̃ĩã puden
+        da uulnã ſ̃z ĩnguĩnĩbꝫ panucl̃ã met̃uent̃ fũt̃ĩ. Coꝝ
+        ꝓoꝝ quĩd̃ maĩzĩ ml̃t̃ĩplex ẽ qualĩt̃aſ. q̃ꝝ qđã ſ̃ ſub al̃
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: "Column 2 transcription."
+    - segmentId: 3
+      pageNumber: 1
+      lineRange: "9-9"
+      position: "body"
+      text: |
+        [marginalia: Ifrigidando]
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: "Marginal note on the right margin."
+  pass2Summary:
+    segmentsReviewed: 3
+    segmentsAltered: 0
+    notes: "Pass 2 complete. All readings confirmed; no edits made."
+  mismatchReport: null
+  hallucinationAudit:
+    totalWords: 1050
+    wordsGroundedInGlyphs: 1050
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true

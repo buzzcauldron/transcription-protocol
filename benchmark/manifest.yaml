@@ -197,6 +197,48 @@ cases:
       protocolVersion: "1.1.0"
     evaluator: "medieval"
 
+  BM-LAT-001:
+    description: "BGO-511 (SBB-PK Ms.germ.oct.511 25r) — penitential psalms opening, decorated initial (12th–13th c.)"
+    source_note: "CREMMA Medieval Latin corpus (CC BY 4.0), SBB-PK Berlin; GT: CREMMA diplomatic, preserved in benchmark/images/BM-LAT-001/"
+    image_urls: []
+    image_paths:
+      - "benchmark/images/BM-LAT-001/SBB_PK_Mgo511_025r.png"
+    media_type: "image/png"
+    prompt:
+      targetLanguage: "lat-Latn"
+      targetEra: "medieval"
+      eraRange: "1150-1250"
+      diplomaticProfile: "layout_aware"
+      diplomaticToggles: "{}"
+      normalizationMode: "diplomatic"
+      languageSet: "[]"
+      scriptNotesOptional: "Caroline/proto-Gothic minuscule; decorated opening leaf of the Penitential Psalms; large decorative initial 'D'; transcribe all visible text lines including rubrics"
+      sourcePageId: "BGO-511-025r"
+      protocolVersion: "1.1.0"
+    evaluator: "medieval"
+    optional: true
+
+  BM-LAT-002:
+    description: "CLM 13027 fol.38r — Articella / Isagoge commentary (12th–13th c. Bavarian medical ms)"
+    source_note: "CREMMA Medieval Latin corpus (CC BY 4.0), BSB Munich; GT: CREMMA diplomatic, preserved in benchmark/images/BM-LAT-002/"
+    image_urls: []
+    image_paths:
+      - "benchmark/images/BM-LAT-002/CLM13027_38r.png"
+    media_type: "image/png"
+    prompt:
+      targetLanguage: "lat-Latn"
+      targetEra: "medieval"
+      eraRange: "1150-1250"
+      diplomaticProfile: "layout_aware"
+      diplomaticToggles: "{}"
+      normalizationMode: "diplomatic"
+      languageSet: "[]"
+      scriptNotesOptional: "Caroline minuscule with heavy medical abbreviation; double-column layout; Articella / Isagoge commentary — transcribe all visible text in reading order column by column. POSITION: use 'body' for all segments (not 'left-column' or 'right-column'); indicate which column in segment notes."
+      sourcePageId: "CLM13027-38r"
+      protocolVersion: "1.1.0"
+    evaluator: "medieval"
+    optional: true
+
 # Default models (override via CLI --models)
 models:
   anthropic:

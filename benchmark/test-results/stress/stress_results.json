@@ -1,17 +1,6 @@
 {
-  "generated": "2026-06-16T17:21:47Z",
+  "generated": "2026-06-16T18:59:04Z",
   "rows": [
-    {
-      "case": "BM-OCR-001",
-      "model": "gemini-3.5-flash (gemini-3.5-flash)",
-      "schema_ok": false,
-      "accuracy_percent": "",
-      "addition_count": "",
-      "omission_count": "",
-      "disposition": "FAIL",
-      "score": "",
-      "notes": "missing required field: protocolVersion; metadata.protocolVersion must be one of ['1.0.0', '1.1.0', 'v1.0', 'v1.1'], got None; mismatchReport must not be empty when segments is non-empty (protocol 1.1.0 \u00a75.2) unless pass2Summary is present with segmentsAltered: 0 expansion firewall (protocol \u00a72.4.1): diplomatic output (preserveOriginalAbbreviations: true) cannot be scored against expanded GT"
-    },
     {
       "case": "BM-OCR-001",
       "model": "gemini-3-pro (gemini-3.1-pro-preview)",
@@ -24,26 +13,59 @@
       "notes": "expansion firewall (protocol \u00a72.4.1): diplomatic output (preserveOriginalAbbreviations: true) cannot be scored against expanded GT"
     },
     {
-      "case": "BM-KB27",
+      "case": "BM-OCR-001",
       "model": "gemini-3.5-flash (gemini-3.5-flash)",
       "schema_ok": false,
-      "accuracy_percent": 56.22,
-      "addition_count": 111,
-      "omission_count": 109,
+      "accuracy_percent": "",
+      "addition_count": "",
+      "omission_count": "",
       "disposition": "FAIL",
-      "score": 0.0,
-      "notes": "missing required field: protocolVersion; metadata.protocolVersion must be one of ['1.0.0', '1.1.0', 'v1.0', 'v1.1'], got None"
+      "score": "",
+      "notes": "missing required field: protocolVersion; metadata.protocolVersion must be one of ['1.0.0', '1.1.0', 'v1.0', 'v1.1'], got None Warnings: suspected overconfidence (soft escalation \u00a77.3\u2013\u00a77.4): multiline body text, conditionNotes suggest damage/abbreviation/difficulty, but zero [uncertain] / [illegible] / [glyph-uncertain] tokens \u2014 flag for human review expansion firewall (protocol \u00a72.4.1): diplomatic output (preserveOriginalAbbreviations: true) cannot be scored against expanded GT"
     },
     {
-      "case": "BM-KB27",
+      "case": "BM-LAT-001",
       "model": "gemini-3-pro (gemini-3.1-pro-preview)",
       "schema_ok": true,
-      "accuracy_percent": 53.82,
-      "addition_count": 110,
-      "omission_count": 115,
+      "accuracy_percent": "",
+      "addition_count": "",
+      "omission_count": "",
       "disposition": "FAIL",
-      "score": 0.0,
-      "notes": "\u2014"
+      "score": "",
+      "notes": "expansion firewall (protocol \u00a72.4.1): diplomatic output (preserveOriginalAbbreviations: true) cannot be scored against expanded GT"
+    },
+    {
+      "case": "BM-LAT-001",
+      "model": "gemini-3.5-flash (gemini-3.5-flash)",
+      "schema_ok": false,
+      "accuracy_percent": "",
+      "addition_count": "",
+      "omission_count": "",
+      "disposition": "FAIL",
+      "score": "",
+      "notes": "missing required field: protocolVersion; metadata.protocolVersion must be one of ['1.0.0', '1.1.0', 'v1.0', 'v1.1'], got None expansion firewall (protocol \u00a72.4.1): diplomatic output (preserveOriginalAbbreviations: true) cannot be scored against expanded GT"
+    },
+    {
+      "case": "BM-LAT-002",
+      "model": "gemini-3-pro (gemini-3.1-pro-preview)",
+      "schema_ok": true,
+      "accuracy_percent": "",
+      "addition_count": "",
+      "omission_count": "",
+      "disposition": "FAIL",
+      "score": "",
+      "notes": "expansion firewall (protocol \u00a72.4.1): diplomatic output (preserveOriginalAbbreviations: true) cannot be scored against expanded GT"
+    },
+    {
+      "case": "BM-LAT-002",
+      "model": "gemini-3.5-flash (gemini-3.5-flash)",
+      "schema_ok": false,
+      "accuracy_percent": "",
+      "addition_count": "",
+      "omission_count": "",
+      "disposition": "FAIL",
+      "score": "",
+      "notes": "missing required field: protocolVersion; metadata.protocolVersion must be one of ['1.0.0', '1.1.0', 'v1.0', 'v1.1'], got None expansion firewall (protocol \u00a72.4.1): diplomatic output (preserveOriginalAbbreviations: true) cannot be scored against expanded GT"
     }
   ]
 }

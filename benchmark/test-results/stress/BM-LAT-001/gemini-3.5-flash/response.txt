@@ -1,0 +1,70 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "BGO-511-025r"
+    modelId: "gpt-4o"
+    timestamp: "2025-03-02T12:00:00Z"
+    targetLanguage: "lat-Latn"
+    languageSet: []
+    targetEra: "medieval"
+    eraRange: "1150-1250"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent:
+      mixedLanguage: false
+      mixedEra: false
+    scriptNotes: "Caroline/proto-Gothic minuscule; decorated opening leaf of the Penitential Psalms; large decorative initial 'D'; transcribe all visible text lines including rubrics"
+    englishHandwritingModality: null
+    epistemicNotes: null
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "Gothic textualis"
+    scriptMatchesConfig: true
+    conditionNotes: null
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-10"
+      position: "body"
+      text: |
+        Incipiunt ſeptem
+        pſalmi penitentiales
+        [marginalia:D]omıne
+        ne ın
+        furore
+        tuo ar
+        guas me neq; ın ıra
+        tua corrıpıas me ·
+        [marginalia:M]ıſerere meı domı
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: "The large initial D is decorated and contains the letter D. The next line starts with a decorated initial M for Miserere."
+  pass2Summary:
+    segmentsReviewed: 1
+    segmentsAltered: 0
+    notes: "Pass 2 complete. All readings confirmed; no edits made."
+  mismatchReport: null
+  hallucinationAudit:
+    totalWords: 20
+    wordsGroundedInGlyphs: 20
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```
