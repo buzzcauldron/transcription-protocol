@@ -95,27 +95,34 @@ def transcribe_gemini(
 ) -> str:
     import mimetypes
 
-    import google.generativeai as genai
+    import google.genai as genai
+    from google.genai import types as genai_types
 
     api_key = os.environ.get("GOOGLE_API_KEY")
     if not api_key:
         raise RuntimeError("GOOGLE_API_KEY is not set")
-    genai.configure(api_key=api_key)
-    # Combined instruction + user block for broad SDK compatibility
-    combined = f"{system}\n\n{user_text}"
-    model_obj = genai.GenerativeModel(model_name=model)
-    parts: list = [combined]
+    client = genai.Client(api_key=api_key)
+
+    contents: list = []
     for img in image_paths:
         mime, _ = mimetypes.guess_type(img)
         mime = mime or "image/jpeg"
-        parts.append({"mime_type": mime, "data": Path(img).read_bytes()})
-    resp = model_obj.generate_content(
-        parts,
-        generation_config=genai.types.GenerationConfig(temperature=0),
+        contents.append(
+            genai_types.Part.from_bytes(data=Path(img).read_bytes(), mime_type=mime)
+        )
+    contents.append(f"{user_text}")
+
+    resp = client.models.generate_content(
+        model=model,
+        contents=contents,
+        config=genai_types.GenerateContentConfig(
+            system_instruction=system,
+            temperature=0,
+        ),
     )
     try:
         text = resp.text
-    except ValueError as e:
+    except (ValueError, AttributeError) as e:
         raise RuntimeError("Gemini returned no text (blocked or empty response)") from e
     return text or ""
 

@@ -177,6 +177,26 @@ cases:
     evaluator: "lincoln"
     optional: true
 
+  BM-OCR-001:
+    description: "CP40.355 AALT 4070 — 14th-century King's Bench plea roll (blind OCR)"
+    source_note: "AALT Open Access — public domain; image committed at benchmark/cp40-355-aalt-4070.png"
+    image_urls: []
+    image_paths:
+      - "benchmark/cp40-355-aalt-4070.png"
+    media_type: "image/png"
+    prompt:
+      targetLanguage: "lat-Latn"
+      targetEra: "medieval"
+      eraRange: "1340-1380"
+      diplomaticProfile: "strict"
+      diplomaticToggles: "{}"
+      normalizationMode: "diplomatic"
+      languageSet: "[]"
+      scriptNotesOptional: "Gothic cursive anglicana; legal abbreviated Latin; plea roll — transcribe all visible text lines in reading order"
+      sourcePageId: "CP40.355.AALT.4070"
+      protocolVersion: "1.1.0"
+    evaluator: "medieval"
+
 # Default models (override via CLI --models)
 models:
   anthropic:
@@ -194,6 +214,9 @@ models:
   gemini-3.5-flash:
     provider: "gemini"
     model: "gemini-3.5-flash"
+  gemini-3.5-pro:
+    provider: "gemini"
+    model: "gemini-3.5-pro"
   gemini-flash-lite:
     provider: "gemini"
     model: "gemini-2.5-flash-lite"
