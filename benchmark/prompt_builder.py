@@ -125,11 +125,18 @@ OUTPUT FORMAT (required — follow exactly; all fields mandatory unless noted):
 
 BINDING RULE — diplomaticToggles: The toggle values shown below come directly
 from your CONFIGURATION block above.  You MUST echo them back exactly as shown;
-do NOT substitute protocol defaults.  In particular, if
-preserveOriginalAbbreviations is false, your output metadata MUST say false AND
-your transcription text MUST contain only fully expanded words — no Unicode
-combining diacritics (U+0305 macron, U+0303 tilde, etc.), no superscript
-abbreviation letters.
+do NOT substitute protocol defaults.
+
+If preserveOriginalAbbreviations is TRUE (diplomatic mode): your transcription
+MUST preserve every abbreviation mark exactly as it appears in the manuscript.
+Unicode combining diacritics (U+0305 macron, U+0303 tilde, superscript letters,
+suspension strokes, etc.) MUST be retained verbatim.  Do NOT expand any
+abbreviation — not even common ones like ẽt → et, p̃ → per, q̃d → quod.
+Expansion is a HARD PROTOCOL VIOLATION when preserveOriginalAbbreviations is true.
+
+If preserveOriginalAbbreviations is FALSE (normalized mode): your transcription
+MUST contain only fully expanded words — no Unicode combining diacritics
+(U+0305 macron, U+0303 tilde, etc.), no superscript abbreviation letters.
 
 transcriptionOutput:
   protocolVersion: "1.1.0"
@@ -196,6 +203,9 @@ OUTPUT FORMAT (required — follow exactly; all fields mandatory unless noted):
 
 BINDING RULE — diplomaticToggles: Echo your CONFIGURATION toggle values exactly
 into your output metadata.  Do NOT substitute defaults.
+If preserveOriginalAbbreviations is TRUE: retain all abbreviation marks verbatim
+(macrons, tildes, superscripts) — do NOT expand any abbreviation.
+If preserveOriginalAbbreviations is FALSE: expand all abbreviations fully.
 
 transcriptionOutput:
   protocolVersion: "1.1.0"

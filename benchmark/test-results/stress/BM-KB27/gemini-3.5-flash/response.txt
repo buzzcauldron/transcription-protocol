@@ -1,0 +1,75 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "KB27-335-AALT-0235"
+    modelId: "gpt-4o"
+    timestamp: "2025-03-02T12:00:00Z"
+    targetLanguage: "lat-Latn"
+    languageSet: []
+    targetEra: "medieval"
+    eraRange: "1330-1380"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: false
+      markExpansions: false
+      captureDeletionsAndInsertions: true
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: { mixedLanguage: false, mixedEra: false }
+    scriptNotes: "14th-c. King's Bench plea roll, Gothic anglicana cursiva; heavy legal abbreviation."
+    englishHandwritingModality: null
+    epistemicNotes: "Residual doubt remains on some highly abbreviated legal terms and proper names."
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "Gothic anglicana cursiva"
+    scriptMatchesConfig: true
+    conditionNotes: null
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-14"
+      position: "body"
+      text: |
+        Londonia || Dominus Rex per Johannem de Lincoln' qui sequitur pro eo optulit se quarto die versus Robertum de Wyghth'
+        de placito quare cum dominus Rex nuper in Cancellaria sua per inquisitionem fieri fecerit fuisset compertum quod omnia terre et tenementa redditus et
+        advocationes ecclesiarum et aliorum beneficiorum ecclesiasticorum quorumcumque que de domino Rege tenentur in capite sine licentia
+        Regia alienata in manum Regiam capi et poni Regio dominico debeant. predictus Robertus nichilominus cercioratus et Regia
+        dignitate Regioque mandato contemptis et in enervationem de jure scripto victus et de Regio dominico querelans se fore
+        alienatum advocationem ecclesie illius que quidem advocatio de domino Rege tenetur in capite sine licentia Regia
+        et solum Regium contingit se et quasi certam advocationem et de causa in manu sua capi fecit Rex.
+        nisi exinde esset ingressus et sic in eisdem adhuc se tenet ac quam plures bullas et lites domino Regi
+        et regno Regio prejudiciales infra idem regnum sancte et indies deferre facit et eisdem passim super
+        ipsam bullis et litibus per callidas machinationes infra idem regnum prosequitur cum effectu in Regie contemptum
+        et corone sue multiplicem de ipsius corone et regie dignitatis Regio prejudicium et exheredationem manifestam et contra
+        pacem Regiam etc. Et ipse non venit. Et preceptum fuit vicecomiti quod caperet eum si etc. Et vicecomes
+        retornavit quod non est inventus etc. Ideo preceptum est vicecomiti sicut pluries quod caperet eum si inventus etc. Et
+        salvo etc. Ita quod habeat corpus ejus coram domino Rege a die Pasche in quindecim dies ubicumque etc.
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: "Expanded standard legal formulas according to the protocol."
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 1
+      pass1Reading: "Londonia || Dominus Rex per Johannem de Lincoln' qui sequitur pro eo optulit se quarto die versus Robertum de Wyghth'"
+      pass2Reading: "Londonia || Dominus Rex per Johannem de Lincoln' qui sequitur pro eo optulit se quarto die versus Robertum de Wyghth'"
+      resolution: "pass2 confirms final text; no edit"
+      resolved: true
+  hallucinationAudit:
+    totalWords: 245
+    wordsGroundedInGlyphs: 245
+    wordsFromExpansion: 110
+    expansionsWithVisibleMark: 110
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```

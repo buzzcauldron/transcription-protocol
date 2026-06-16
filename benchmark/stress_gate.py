@@ -80,6 +80,10 @@ def gates_from_raw(raw: str, evaluator: str) -> Dict[str, Any]:
     segs = root_out.get("segments") or []
     if not isinstance(segs, list):
         segs = []
+    accuracy_percent = ""
+    addition_count = ""
+    omission_count = ""
+    score = ""
     if expansion_blocked:
         disposition = "FAIL"
     else:

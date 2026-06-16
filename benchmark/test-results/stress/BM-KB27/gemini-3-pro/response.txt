@@ -1,0 +1,77 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "KB27-335-AALT-0235"
+    modelId: "gemini-2.5-pro"
+    timestamp: "2025-02-27T14:30:00Z"
+    protocolVersion: "1.1.0"
+    targetLanguage: "lat-Latn"
+    languageSet: []
+    targetEra: "medieval"
+    eraRange: "1330-1380"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: false
+      markExpansions: false
+      captureDeletionsAndInsertions: true
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent:
+      mixedLanguage: false
+      mixedEra: false
+    scriptNotes: "14th-c. King's Bench plea roll, Gothic anglicana cursiva; heavy legal abbreviation. EXPANSION mode: write out every abbreviation as its full Latin word; do NOT output combining macrons/tildes. Read proper nouns and regnal years letter-by-letter; never guess to produce fluent Latin."
+    englishHandwritingModality: null
+    epistemicNotes: null
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: false
+    pageCount: 1
+    scriptIdentified: "Gothic anglicana cursiva"
+    scriptMatchesConfig: true
+    conditionNotes: null
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-10"
+      position: "body"
+      text: |
+        Lond || Dominus Rex per Iohannem de Lincoln qui sequitur pro eo apponit se in iuratam in assisam Noue disseisine
+        a prefato Iohanne de Boys et aliis legatis et consuetudinibus regni Regis nunc Anglie omnia feoda et aduocaciones
+        aduocaciones ecclesiarum et aliorum beneficiorum ecclesiasticorum quorumcumque que de domino Rege tenentur in capite sine licencia
+        Regis alienata in manum Regis capi et penes Regem remanere debent. prefatus Iohannes de Boys et alii
+        dignitatem Regis in contemptum domini Regis et in exheredacionem corone et dignitatis Regis aduocacionem predictam sine
+        licencia Regis alienauerunt aduocacionem ecclesie illius que quidem aduocacio de domino Rege tenetur in capite sine licencia Regis
+        et Iohannem Rychardyn clericum suum ad eam presentauerunt aduocacionem illam de ecclesia in manum suam capi fecerunt Rex
+        inde ignarus est in possessione et eam in eodem adhuc detinet et quam plures bullas et literas domino Regi
+        et regno Regis preiudiciales infra idem regnum detulit et indies deferre facit et diuersos processus super
+        eisdem bullis et literis per callidas machinaciones infra idem regnum prosequitur ad effectum in Regis contemptum
+        et dampnum multipliciter ac in ipsius corone et regie dignitatis Regis preiudicium manifestum et contra
+        pacem Regis. Et ipse non uenit. Et preceptum fuit uicecomiti sicut pluries quod caperet eum si etc. Et uicecomes
+        retornauit quod non est inuentus etc. Ideo preceptum est uicecomiti sicut pluries quod capiat eum si etc. Et saluo etc. Ita quod habeat corpus eius coram domino Rege a die Pasche in xv dies ubicumque etc.
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: null
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 1
+      pass1Reading: "Lond || Dominus Rex per Iohannem de Lincoln qui sequitur pro eo apponit se in iuratam in assisam Noue disseisine\na prefato Iohanne de Boys et aliis legatis et consuetudinibus regni Regis nunc Anglie omnia feoda et aduocaciones\naduocaciones ecclesiarum et aliorum beneficiorum ecclesiasticorum quorumcumque que de domino Rege tenentur in capite sine licencia\nRegis alienata in manum Regis capi et penes Regem remanere debent. prefatus Iohannes de Boys et alii\ndignitatem Regis in contemptum domini Regis et in exheredacionem corone et dignitatis Regis aduocacionem predictam sine\nlicencia Regis alienauerunt aduocacionem ecclesie illius que quidem aduocacio de domino Rege tenetur in capite sine licencia Regis\net Iohannem Rychardyn clericum suum ad eam presentauerunt aduocacionem illam de ecclesia in manum suam capi fecerunt Rex\ninde ignarus est in possessione et eam in eodem adhuc detinet et quam plures bullas et literas domino Regi\net regno Regis preiudiciales infra idem regnum detulit et indies deferre facit et diuersos processus super\neisdem bullis et literis per callidas machinaciones infra idem regnum prosequitur ad effectum in Regis contemptum\net dampnum multipliciter ac in ipsius corone et regie dignitatis Regis preiudicium manifestum et contra\npacem Regis. Et ipse non uenit. Et preceptum fuit uicecomiti sicut pluries quod caperet eum si etc. Et uicecomes\nretornauit quod non est inuentus etc. Ideo preceptum est uicecomiti sicut pluries quod capiat eum si etc. Et saluo etc. Ita quod habeat corpus eius coram domino Rege a die Pasche in xv dies ubicumque etc."
+      pass2Reading: "Lond || Dominus Rex per Iohannem de Lincoln qui sequitur pro eo apponit se in iuratam in assisam Noue disseisine\na prefato Iohanne de Boys et aliis legatis et consuetudinibus regni Regis nunc Anglie omnia feoda et aduocaciones\naduocaciones ecclesiarum et aliorum beneficiorum ecclesiasticorum quorumcumque que de domino Rege tenentur in capite sine licencia\nRegis alienata in manum Regis capi et penes Regem remanere debent. prefatus Iohannes de Boys et alii\ndignitatem Regis in contemptum domini Regis et in exheredacionem corone et dignitatis Regis aduocacionem predictam sine\nlicencia Regis alienauerunt aduocacionem ecclesie illius que quidem aduocacio de domino Rege tenetur in capite sine licencia Regis\net Iohannem Rychardyn clericum suum ad eam presentauerunt aduocacionem illam de ecclesia in manum suam capi fecerunt Rex\ninde ignarus est in possessione et eam in eodem adhuc detinet et quam plures bullas et literas domino Regi\net regno Regis preiudiciales infra idem regnum detulit et indies deferre facit et diuersos processus super\neisdem bullis et literis per callidas machinaciones infra idem regnum prosequitur ad effectum in Regis contemptum\net dampnum multipliciter ac in ipsius corone et regie dignitatis Regis preiudicium manifestum et contra\npacem Regis. Et ipse non uenit. Et preceptum fuit uicecomiti sicut pluries quod caperet eum si etc. Et uicecomes\nretornauit quod non est inuentus etc. Ideo preceptum est uicecomiti sicut pluries quod capiat eum si etc. Et saluo etc. Ita quod habeat corpus eius coram domino Rege a die Pasche in xv dies ubicumque etc."
+      resolution: "pass2 confirms final text; no edit"
+      resolved: true
+  hallucinationAudit:
+    totalWords: 180
+    wordsGroundedInGlyphs: 180
+    wordsFromExpansion: 60
+    expansionsWithVisibleMark: 60
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```

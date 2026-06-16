@@ -1,0 +1,81 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "CP40.355.AALT.4070"
+    modelId: "gpt-4o"
+    timestamp: "2025-03-02T12:00:00Z"
+    targetLanguage: "lat-Latn"
+    languageSet: []
+    targetEra: "medieval"
+    eraRange: "1340-1380"
+    diplomaticProfile: "strict"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: { mixedLanguage: false, mixedEra: false }
+    scriptNotes: "Gothic cursive anglicana; legal abbreviated Latin; plea roll"
+    englishHandwritingModality: null
+    epistemicNotes: "Highly abbreviated legal Latin. Some superscript corrections and marginal notes are transcribed verbatim."
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "Gothic cursive anglicana"
+    scriptMatchesConfig: true
+    conditionNotes: null
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-30"
+      position: "body"
+      text: |
+        Derb' || Radus Basset de Stafforde sum' fuit ad respondend' dno Regi de plto qd pmittat ipm pntare
+        idoneam psonam ad eccliam de Chedulle que vacat & ad ipsius spectat donacoem &c Et unde
+        Rics de Clone qui sequit' p dno Rege dicit qd quidam Johes Basset fuit seistus de manio de Chedleton
+        ad quod advocacio ecclie pdce ptinet tempore pacis tempore H Reg' pavi dni Reg' nunc & ad eandem eccliam pntavit
+        clicum quoddam Radm de Bradley clicum suu qui ad pntacoem suam fuit admissus & institutus tempore pacis
+        tempore eiusdem dni Reg' H & de ipo Johe descend' maniu pdictu ad quod &c cuidam Rado ut fil' & her' &
+        de ipo Rado descend' maniu pdictu ad quod &c cuidam Rado de Stafforde in libum maritagm cum Amicia sorore
+        eiusdem Radi p quod donu idem Radus & Amicia fuerunt seistoi de manio pdco quod &c p forma & tempore pacis
+        tempore E Reg' avi dni Reg' nunc & de ipis Rado & Amicia descend' maniu ad quod &c cuidam Rado ut
+        fil' & her' &c qui quidem Radus nunc impet' dnu Reg' & quia pdcus Radus pat' tenuit maniu de Stafforde
+        in capite de ipo Rege dno &c p baroniam idm Rex nunc &c post mortem pdcor' Radi & Amicie seisiit in
+        manu suam pdcm maniu de Stafforde una cu advocacoe pdca post qum quidem seisinam [superscript: & adhuc rone minoris etatis eiusdem Radi una cu custodia eiusdem Radi] pdco Rado
+        infra etatem existente pdca ecclia vacavit p mortem pdci Johis de Bradleye p quod mo ptinet
+        ipi Regi ad [superscript: pntare] &c & in [uncertain: h'i] [uncertain: p'is] pdcus Johes minoris etatis eiusdem Radi &c Et de ipo Rege dno &c
+        descend' ius ad eandem Edwardo ut fil' & her' &c Et de ipo Edwardo ipi dno Regi nunc ut fil'
+        & her' &c Et ea rone ptinet ad ipm dnu Regem nunc ad eccliam pdcam ad psens pntare pdcus
+        Radus ipm iniuste impedit ad dampnu ipsius dni orlle libraz Et hoc offert verificare p dno Rege &c
+        Et Radus p Gilbm de Schydefeld attorn' suu ven' Et defend' vim & iniuriam qn &c Et dicit qd
+        ipe non potest dedice quin ad pdcm dnu Regem nunc hac sola vice ptineat ad eccliam pdcam
+        pntare pnt pdcus Johes qui sequit' &c dypuis Jsus [uncertain: enm] p dno Rege napptnt oet dicit qd ipe
+        no impedit ipm dnu Regem pntare ad eccliam pdcam Et de hoc pon' se sup patriam Et Johes
+        qui sequit' &c dltacy Jo cons' est qd dnus Rex paupet Jsus [uncertain: enm] pntacoem suam ad eccliam pdcam
+        et heat lre Epo Exon loci Dioc qd non obstance reclam' ipius Radi ad pntacoem ipius dni
+        R' ad eccliam pdcam idoneam psonam admittat pichil de mia ipius Radi quia ven' pmo die &c Et
+        patru est vic' qd venire fac' hic in Octab' sci Michis xij &c p quos &c Et qui pdcm Radm
+        nulla &c ad recogn' &c Quia tam &c
+      confidence: "medium"
+      uncertaintyTokenCount: 5
+      notes: "Highly abbreviated legal Latin with superscript corrections."
+  mismatchReport: []
+  hallucinationAudit:
+    totalWords: 410
+    wordsGroundedInGlyphs: 410
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```
