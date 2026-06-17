@@ -1,0 +1,71 @@
+
+- Let's look at line 20: `to do well & is considered a good specimen of Fenton Barns`
+    *   Wait, let's look at the word before "is considered": `to do well & is considered` - yes, it is `& is considered`.
+    *   Let's look at line 21: `raising. One of the girls Helen has been engaged by my wife`
+    *   Line 22: `for the kitchen and the other is with Jane. They appear`
+    *   Line 23: `to be good active girls and if please well. The old` (Wait, "and if please well" or "and I please well" or "and if they please well"? It says "and if please well." Let's look closely: "and if please well." - yes, "and if please well.")
+    *   Line 24: `man is working "orry" in this Town. The old woman` (Wait, "orry" or "day"? "day" or "dry"? Let's look: "man is working "day" in this Town." - wait, "day" or "dry" or "orry"? Let's look at the letters: "o-r-r-y" or "d-a-y"? It looks like `"day"` or `"dry"`. Let's look at the first letter: it has a loop at the top, like 'd' or 'o'. Let's compare with 'o' in 'of' or 'd' in 'day'. Wait, "working "day" in this Town" or "working "dry" in this Town"? Or "working "orry" in this Town"? Wait, "orry" is a Scottish word? "orra" (orra-man, orry)? Yes! "orra" means odd, miscellaneous, or casual (as in "orra man" - a farm hand who does odd jobs). "working "orry" in this Town" - yes, "orry" or "orra"! Let's look at the spelling: "o-r-r-y" or "o-r-r-a". It looks like `"orry"` or `"orra"`. Let's look at the last letter: it has a descender? No, it goes up or down? It looks like `"orry"` or `"orra"`. Let's look at the quotes: `"orry"` or `"orra"`. Let's transcribe `"orry"` or `"orra"`. It looks like `"orry"` or `"orra"`. Let's look at the 'y' in 'by' or 'apology'. Yes, it has a loop below the line. The word is `"orry"` or `"orra"`. Let's look at the last letter: it has a loop below the line? No, it looks like `"orry"` with a tail, or `"day"`. Wait, let's look at "day" in "today" (line 6). The 'd' in 'today' has a loop at the top. The 'y' has a loop below. In `"orry"`, the first letter is 'o', then 'r', 'r', 'y'. Yes, `"orry"` or `"orra"`. Let's look at the quotes: `"orry"`.
+    *   Line 25: `regrets that she ever left Fenton Barns, but will get`
+    *   Line 26: `over it. of course the young people have a far better`
+    *   Line 27: `chance to improve their circumstances in Canada than`
+    *   Line 28: `in Scotland. Mr. Faulkner was here. He stayed over` (Wait, "stayed" or "staid"? It looks like "staid" or "stayed". Let's look: "s-t-a-i-d" or "s-t-a-y-e-d". It looks like "staid" with a dot over the 'i' and a cross on the 'd'? No, "staid" or "stayed". Let's look: "s-t-a-i-d" or "s-t-a-y-e-d". It looks like "staid" or "stayed". Let's look at the letters: "s-t-a-i-d" - wait, there is a dot over the 'i' and then 'd'. Yes, "staid".)
+    *   Line 29: `Saturday and Sunday and he spent the Sunday evening at`
+    *   Line 30: `our house. I would take him to be, as you remark,`
+    *   Line 31: `changeable. He had made up his mind to settle at`
+    *   Line 32: `Detroit amongst the Yankees, altho' I told him I thought`
+    *   Line 33: `he would be more comfortable amongst his own people`
+    *   Line 34: `in Canada. He was well fortified with all sorts of`
+    *   Line 35: `introductory letters, amongst others, one from Sir Geo. Grey to`
+
+4.  **Double-check details**:
+    *   Line 1: `London C.W: 3d September 1854.`
+        *   Wait, is it "C.W." or "A.W."? "London C.W." (Canada West). Let's look at the letter: "C" has a loop at the top, "W" has a loop. Yes, "C.W."
+        *   Wait, is it "3d" or "3rd"? It looks like "3d" with a superscript 'd'. Let's write `3d` or `3d` with superscript if possible, but protocol says: "superscript letters ... MUST be retained verbatim" or we can use `[superscript: d]` or just `3d` or `3^d`. Let's use `3d` or `3[superscript: d]`. Wait, the protocol says: "Profile-specific (only if applicable): [exp:], [wrap-join], [deletion:], [insertion:], [marginalia:], [superscript:]". Let's use `3[superscript: d]`.
+        *   Wait, let's look at "14th" in line 7: `14th` or `14[superscript: th]`. Let's look: `14th` with 'th' superscripted. Let's use `14[superscript: th]`.
+        *   "1st" in line 5: `1st` or `1[superscript: st]`. Let's use `1[superscript: st]`.
+        *   "Jessie's" in line 10: `Jessie's` or `Jessie's`? Let's look: "Jessie's" or "Jessie's". It looks like "Jessie's".
+        *   "viz" in line 13: `viz` or `viz.`? It looks like `viz` without a dot, or maybe with a small dot. Let's write `viz`.
+        *   "Pack" in line 15: `"Pack"` or `"Park"`? Let's look: "P-a-c-k" or "P-a-r-k"? It looks like `"Pack"`.
+        *   "outland-ish" in lines 15-16: `outland` at end of line 15, `-ish` at start of line 16. Let's write exactly:
+            Line 15: `his Father and mother & sisters along with "Pack" at some outland`
+            Line 16: `-ish French settlement in Lower Canada. We told him he had`
+        *   "reach'd" in line 18: `reach'd`
+        *   "altho'" in line 32: `altho'`
+        *   "Sir Geo. Grey" in line 35: `Sir Geo. Grey`
+
+5.  **Refining the transcription line-by-line**:
+    *   Line 1: `London C.W: 3[superscript: d] September 1854.`
+    *   Line 2: `My Dear George`
+    *   Line 3: `I suppose I should begin this letter in`
+    *   Line 4: `the usual way by making an apology for delaying so`
+    *   Line 5: `long in writing you. Your letter 1[superscript: st] June was duly received`
+    *   Line 6: `and today we had the pleasure of receiving your letter of`
+    *   Line 7: `the 14[superscript: th] ult. by which we are glad to see that Isabella the`
+    *   Line 8: `children and yourself are in the enjoyment of good health`
+    *   Line 9: `and that things are all prospering at Fenton Barns. We`
+    *   Line 10: `were glad to receive Jessie's letter for Jane and I am`
+    *   Line 11: `happy to hear that my Dear Sister continues well and`
+    *   Line 12: `seems to enjoy herself. We have had a great time here`
+    *   Line 13: `with the arrival of the immigrants from Fenton Barns, viz`
+    *   Line 14: `the Whiteheads. Andrew made his appearance first, having left`
+    *   Line 15: `his Father and mother & sisters along with "Pack" at some outland`
+    *   Line 16: `-ish French settlement in Lower Canada. We told him he had`
+    *   Line 17: `"better get his folks out of that", but before Andrew's letter`
+    *   Line 18: `reach'd Lower Canada the family had left for Upper Canada`
+    *   Line 19: `Andrew is engaged as a Porter in our Hardware Store and seems`
+    *   Line 20: `to do well & is considered a good specimen of Fenton Barns`
+    *   Line 21: `raising. One of the girls Helen has been engaged by my wife`
+    *   Line 22: `for the kitchen and the other is with Jane. They appear`
+    *   Line 23: `to be good active girls and if please well. The old`
+    *   Line 24: `man is working "orry" in this Town. The old woman`
+    *   Line 25: `regrets that she ever left Fenton Barns, but will get`
+    *   Line 26: `over it. of course the young people have a far better`
+    *   Line 27: `chance to improve their circumstances in Canada than`
+    *   Line 28: `in Scotland. Mr. Faulkner was here. He staid over`
+    *   Line 29: `Saturday and Sunday and, he spent the Sunday evening at`
+    *   Line 30: `our house. I would take him to be, as you remark,`
+    *   Line 31: `changeable. He had made up his mind to settle at`
+    *   Line 32: `Detroit amongst the Yankees, altho' I told him I thought`
+    *   Line 33: `he would be more comfortable amongst his own people`
+    *   Line 34: `in Canada. He was well fortified with all sorts of`
+    *   Line 35: `introductory letters, amongst others, one from Sir Geo.

@@ -1,4 +1,26 @@
 {
-  "generated": "2026-06-17T12:34:22Z",
-  "rows": []
+  "generated": "2026-06-17T12:34:40Z",
+  "rows": [
+    {
+      "case": "BM-MOD-1854",
+      "model": "gemini-3-pro (gemini-3.1-pro-preview)",
+      "schema_ok": true,
+      "accuracy_percent": 3.47,
+      "addition_count": 335,
+      "omission_count": 473,
+      "disposition": "FAIL",
+      "score": 0.0,
+      "notes": "\u2014"
+    },
+    {
+      "case": "BM-MOD-1854",
+      "model": "gemini-3.5-flash (gemini-3.5-flash)",
+      "schema_ok": false,
+      "addition_count": "\u2014",
+      "omission_count": "\u2014",
+      "disposition": "FAIL",
+      "score": "\u2014",
+      "notes": "YAML parse error: while scanning for the next token\nfound character '`' that cannot start any token\n  in \"<unicode string>\", line 1, column 26:\n    - Let's look at line 20: `to do well & is considered a go ... \n                             ^"
+    }
+  ]
 }
