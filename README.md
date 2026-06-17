@@ -12,7 +12,7 @@ This repository contains prompts, rubric, and evaluation criteria needed.
 1. **`runMode`** (`standard` | `efficient`) — efficient single-pass mode for throughput, with guard rails that forbid standard-only tokens and incompatible profiles.
 2. **Conservative epistemic stance** — default skeptical confidence, honest mismatch reporting, optional `metadata.epistemicNotes` (protocol §1.1).
 3. **Crop tokens `[crop]` / `[crop: …]`** — text truncated by image edge, binding, or scan, distinct from `[gap]` and `[illegible]` (Phase 1, protocol §3).
-4. **Diplomatic vs expansion firewall** — `preserveOriginalAbbreviations` is a hard split; the stress harness refuses to score diplomatic output against expanded ground truth (avoids 20–40 pt CER inflation).
+4. **Diplomatic vs expansion firewall** — `preserveOriginalAbbreviations` is a hard split.
 4. **Benchmark anti-cheating gates** — ground truth is firewalled (never in prompts); honest `[illegible]` / `[gap]` / `[damaged]` tokens do not count as omissions in `modern_*` evaluators, but wildcard flooding (>15% of GT words) fails as `uncertainty_gaming`; any substantive addition still hard-fails. Regression: [`tests/test_stress_redteam.py`](tests/test_stress_redteam.py).
 
 Full history: [`CHANGELOG.md`](CHANGELOG.md).
