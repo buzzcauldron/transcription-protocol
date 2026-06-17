@@ -197,6 +197,50 @@ cases:
       protocolVersion: "1.1.0"
     evaluator: "medieval"
 
+  BM-MOD-1800:
+    description: "London, 23 Oct 1800 — letter on food scarcity and social unrest (copperplate)"
+    source_note: "Researcher's photograph; folio 189 of an unidentified letter book"
+    image_urls: []
+    image_paths:
+      - "benchmark/images/BM-MOD-1800/letter_1800.png"
+    media_type: "image/png"
+    prompt:
+      targetLanguage: "eng-Latn"
+      targetEra: "nineteenth_century"
+      eraRange: "1795-1810"
+      diplomaticProfile: "layout_aware"
+      diplomaticToggles: "{}"
+      normalizationMode: "diplomatic"
+      languageSet: "[]"
+      scriptNotesOptional: "formal copperplate cursive letter, c.1800; folio 189 of a letter book; salutation 'My Lord', dateline 'Lond: 23 Oct: 1800'; subject is food scarcity and social unrest; transcribe all visible text including partial top line"
+      englishHandwritingModality: "copperplate"
+      sourcePageId: "letter-1800-f189"
+      protocolVersion: "1.1.0"
+    evaluator: "lincoln"
+    optional: true
+
+  BM-MOD-1854:
+    description: "London, Canada West, 3 Sep 1854 — letter on Scottish emigrant community (copperplate)"
+    source_note: "Researcher's photograph; letter from London C.W. (Ontario) to 'My Dear George' about Fenton Barns emigrants"
+    image_urls: []
+    image_paths:
+      - "benchmark/images/BM-MOD-1854/london_cw_1854.png"
+    media_type: "image/png"
+    prompt:
+      targetLanguage: "eng-Latn"
+      targetEra: "nineteenth_century"
+      eraRange: "1850-1860"
+      diplomaticProfile: "layout_aware"
+      diplomaticToggles: "{}"
+      normalizationMode: "diplomatic"
+      languageSet: "[]"
+      scriptNotesOptional: "formal copperplate cursive; London, Canada West, 3 September 1854; salutation 'My Dear George'; subject is Scottish emigrant family (the Whiteheads) from Fenton Barns; transcribe all visible text"
+      englishHandwritingModality: "copperplate"
+      sourcePageId: "london-cw-1854"
+      protocolVersion: "1.1.0"
+    evaluator: "lincoln"
+    optional: true
+
   BM-LAT-001:
     description: "BGO-511 (SBB-PK Ms.germ.oct.511 25r) — penitential psalms opening, decorated initial (12th–13th c.)"
     source_note: "CREMMA Medieval Latin corpus (CC BY 4.0), SBB-PK Berlin; GT: CREMMA diplomatic, preserved in benchmark/images/BM-LAT-001/"

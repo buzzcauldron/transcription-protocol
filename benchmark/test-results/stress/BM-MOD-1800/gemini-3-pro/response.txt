@@ -1,0 +1,92 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "letter-1800-f189"
+    modelId: "claude-3-5-sonnet-20241022"
+    timestamp: "2024-10-24T10:00:00Z"
+    protocolVersion: "1.1.0"
+    targetLanguage: "eng-Latn"
+    languageSet: []
+    targetEra: "nineteenth_century"
+    eraRange: "1795-1810"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent:
+      mixedLanguage: false
+      mixedEra: false
+    scriptNotes: "formal copperplate cursive letter, c.1800; folio 189 of a letter book; salutation 'My Lord', dateline 'Lond: 23 Oct: 1800'; subject is food scarcity and social unrest; transcribe all visible text including partial top line"
+    englishHandwritingModality: "copperplate"
+    epistemicNotes: "Left margin is slightly cropped at the bottom, resulting in partial loss of the first words on the last three lines."
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: false
+    pageCount: 1
+    scriptIdentified: "English copperplate cursive"
+    scriptMatchesConfig: true
+    conditionNotes: "Good contrast; slight cropping on the bottom left margin."
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-22"
+      position: "body"
+      text: |
+        permit me to obey the Summons
+        My Lord                               Lond: 23 Oct: 1800     189
+        The present Dreadfull Alarm spread with the utmost
+        industry, particularly, by Corn Dealers Flour Dealers Butchers and such like, may
+        in
+        some Respects have a good Effect, but in other Respects has a Dangerous Tendancy,
+        as it spreads a Spirit of Discontent, and inspires among the lower Orders a
+        shocking Desire to Mobing, Murder and Plunder, which at same time, while in
+        such a State of Scarcity, Corn Dealers, Butchers and such like are at all Times
+        found, whether Real or not, to cause an increased appearance of Scarcity, and at
+        same Time to continue Raising the Prices of the Necessarys of life - if Practicable then
+        my Lord, should not some check be given to these Reports of Scarcity to so
+        great an Extent; as a Measure likely to bring down Prices, and at same Time to
+        hold out some Rays of Consolation, to a Desponding Multitude. Your
+        Lordships Wisdom is fully able, to embrace the Idea I point at, the total
+        Exclusion from Hope, causes in the Public mind, a Dreadfull State of Despair
+        which may end in some shocking Catastrifey, or terrible Mischief -
+        on the other Hand if the Scarcity is so great as Represented, which I hope is
+        not the Case, indeed can't be as yet, the Crop being scarce Broken upon - Than
+        [crop] should by authority of the Magistrates be warned, or gaarded against
+        [crop] of Wheat Bread, indeed I believe
+        [crop] Marketed, or
+      confidence: "medium"
+      uncertaintyTokenCount: 3
+      notes: "Archaic and idiosyncratic spellings (e.g., 'Dreadfull', 'Tendancy', 'Mobing', 'Necessarys', 'Catastrifey', 'gaarded') have been preserved verbatim per protocol."
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 1
+      pass1Reading: "autmost"
+      pass2Reading: "utmost"
+      resolution: "The initial stroke of the 'u' resembles an 'a', but paleographic context and comparison with other open 'u' forms in the hand confirm it is 'utmost'."
+      resolved: true
+    - mismatchId: 2
+      segmentId: 1
+      pass1Reading: "while at same time"
+      pass2Reading: "which at same time"
+      resolution: "Closer inspection of the letterforms confirms 'which' (distinct 'c' and 'h') rather than 'while', contrasting with the actual 'while' that appears later in the same line."
+      resolved: true
+  hallucinationAudit:
+    totalWords: 208
+    wordsGroundedInGlyphs: 208
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```

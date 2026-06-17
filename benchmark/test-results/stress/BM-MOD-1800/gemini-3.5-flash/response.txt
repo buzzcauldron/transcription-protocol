@@ -1,0 +1,78 @@
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "letter-1800-f189"
+    modelId: "gpt-4o"
+    timestamp: "2025-03-02T12:00:00Z"
+    targetLanguage: "eng-Latn"
+    languageSet: []
+    targetEra: "nineteenth_century"
+    eraRange: "1795-1810"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: { mixedLanguage: false, mixedEra: false }
+    scriptNotes: "Formal copperplate cursive letter, c.1800; folio 189 of a letter book."
+    englishHandwritingModality: "copperplate"
+    epistemicNotes: "The top line is written in a lighter, different hand and is partially cropped. The bottom lines are heavily cropped at the lower edge of the folio."
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "copperplate"
+    scriptMatchesConfig: true
+    conditionNotes: "Slight ink smudging on line 17; cropping at the top and bottom edges."
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-21"
+      position: "body"
+      text: |
+        permit me to obey the Summons.
+        My Lord                                      Lond: 23 Oct: 1800 — 189
+                    The present Dreadfull Alarm spread with the outmost
+        industry, particularly, by Corn Dealers Flour Dealers Butchers and such like, may
+        in some Respects have a good Effect, but in other Respects has a Dangerous Tendancy,
+        as it spreads a Spirit of Discontent, and inspires among the lower Orders a
+        Shocking Desire to Mobing, Murder and Plunder, while at same time, while in
+        such a State of Scarcity, Corn Dealers, Butchers and such like are at all Times
+        found, whether Real or not, to cause an increased appearance of Scarcity, and at
+        same Time to continue Raising the Prices of the Necessarys of life - if Practicable then
+        my Lord, should not some check be given to these Reports of Scarcity to so
+        great an Extent; as a Measure likely to bring down Prices, and at same Time to
+        hold out some Rays of Consolation, to a Desponding Multitude. Your
+        Lordships Wisdom is fully able, to embrace the Idea I point at, the total
+        Exclusion from Hope, causes in the Public mind, a Dreadfull State of Despair
+        which may end in some Shocking Catastrofey, or terrible Mischief —
+        on the other Hand if the Scarcity is so great as Represented, which I Hope is
+        not the Case, indeed can't be as yet, the Crop being scarce Broken upon — Shan't
+        it [uncertain: then] by authority of the Magistrates be warned, or guarded agai[crop]
+        [gap: cropped] of Wheat Bread, indeed I believe
+        [gap: cropped] Market, or
+      confidence: "medium"
+      uncertaintyTokenCount: 4
+      notes: "The bottom two lines are severely cropped, leaving only the right-hand portion of the text visible."
+  pass2Summary:
+    segmentsReviewed: 1
+    segmentsAltered: 0
+    notes: "Pass 2 complete. All readings confirmed; no edits made."
+  mismatchReport: null
+  hallucinationAudit:
+    totalWords: 265
+    wordsGroundedInGlyphs: 265
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
