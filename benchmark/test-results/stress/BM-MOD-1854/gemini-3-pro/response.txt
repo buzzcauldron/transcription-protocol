@@ -4,7 +4,7 @@ transcriptionOutput:
   metadata:
     sourcePageId: "london-cw-1854"
     modelId: "claude-3-5-sonnet-20241022"
-    timestamp: "2025-02-27T18:15:00Z"
+    timestamp: "2025-02-27T18:05:00Z"
     protocolVersion: "1.1.0"
     targetLanguage: "eng-Latn"
     languageSet: []
@@ -24,7 +24,7 @@ transcriptionOutput:
       mixedEra: false
     scriptNotes: "formal copperplate cursive; London, Canada West, 3 September 1854; salutation 'My Dear George'; subject is Scottish emigrant family (the Whiteheads) from Fenton Barns; transcribe all visible text"
     englishHandwritingModality: "copperplate"
-    epistemicNotes: "The word 'orry' in line 23 is a Scottish dialect variant of 'orra' (meaning odd jobs), which fits both the visual evidence and the context of the Scottish emigrants."
+    epistemicNotes: null
     schemaRevision: null
   preCheck:
     resolutionAdequate: true
@@ -40,15 +40,16 @@ transcriptionOutput:
   segments:
     - segmentId: 1
       pageNumber: 1
-      lineRange: "1-34"
+      lineRange: "1-35"
       position: "body"
       text: |
-        London C.W. 3ᵈ September 1854.
-        My Dear George   I suppose I should begin this letter in
+        London C.W. 3d September 1854.
+        My Dear George
+        I suppose I should begin this letter in
         the usual way by making an apology for delaying so
-        long in writing you. Your letter 1ˢᵗ June was duly received
+        long in writing you. Your letter 1 of June was duly received
         and to day we had the pleasure of receiving your letter of
-        the 14ᵗʰ ult by which we are glad to see that Isabella the
+        the 14th ult by which we are glad to see that Isabella the
         children and yourself are in the enjoyment of good health
         and that things are all prospering at Fenton Barns. We
         were glad to receive Jessie's letter for Jane and I am
@@ -56,16 +57,16 @@ transcriptionOutput:
         seems to enjoy herself. We have had a great time here
         with the arrival of the immigrants from Fenton Barns, viz
         the Whiteheads. Andrew made his appearance first, having left
-        his Father and Mother & Sisters along with "Jack" at some outland
+        his Father and mother & sisters along with "Jack" at some outland
         ish French settlement in Lower Canada. We told him he had
         "better get his folks out of that", but before Andrew's letter
         reach'd Lower Canada the family had left for Upper Canada
         Andrew is engaged as a Porter in our Hardware Store and seems
         to do well and is considered a good specimen of Fenton Barns
         raising. One of the girls Helen has been engaged by my wife
-        for the Kitchen and the other is with Jane. They appear
+        for the kitchen and the other is with Jane. They appear
         to be good active girls and please well. The old
-        man is working "orry" in this Town. The old woman
+        man is working "away" in this Town. The old woman
         regrets that she ever left Fenton Barns, but will get
         over it. of course the young people have a far better
         chance to improve their circumstances in Canada than
@@ -86,8 +87,8 @@ transcriptionOutput:
     notes: "Pass 2 complete. All readings confirmed; no edits made."
   mismatchReport: null
   hallucinationAudit:
-    totalWords: 310
-    wordsGroundedInGlyphs: 310
+    totalWords: 315
+    wordsGroundedInGlyphs: 315
     wordsFromExpansion: 0
     expansionsWithVisibleMark: 0
     normalizationReversals: 0

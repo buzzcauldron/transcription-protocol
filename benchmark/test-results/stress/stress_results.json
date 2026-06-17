@@ -1,13 +1,13 @@
 {
-  "generated": "2026-06-17T12:57:34Z",
+  "generated": "2026-06-17T13:09:15Z",
   "rows": [
     {
       "case": "BM-MOD-1854",
       "model": "gemini-3-pro (gemini-3.1-pro-preview)",
       "schema_ok": true,
-      "accuracy_percent": 96.33,
-      "addition_count": 15,
-      "omission_count": 13,
+      "accuracy_percent": 97.74,
+      "addition_count": 11,
+      "omission_count": 8,
       "disposition": "FAIL",
       "score": 0.0,
       "notes": "\u2014"
