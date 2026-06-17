@@ -101,9 +101,8 @@ DEED_WHITE_GT = (
 
 # ── London, Canada West, 3 Sep 1854 (Scottish emigrant letter) ──────────────
 # Human GT (researcher's transcription, page 1 only).
-# Uncertain readings: "Bessie's" or "Jessie's" (name); quoted dialect word
-# before "in this Town" (model reads "orry"/"orra", user marked [?] — OMITTED
-# from GT so no penalty for either reading); "Grey" at end (user marked [Grey?]).
+# Uncertain readings: "Bessie's" or "Jessie's" (name); "Grey" at end (user marked [Grey?]).
+# Confirmed: "orry" (Scottish dialect, quoted in letter).
 # Confirmed: "Fenton Barns, viz the Whiteheads" (plural); "settle at Detroit";
 # "introductory letters" (model reading accepted; image too low-res to adjudicate
 # vs "introductions, letters").
@@ -121,7 +120,7 @@ LONDON_CW_1854_GT = (
     "reach'd Lower Canada the family had left for Upper Canada. Andrew is engaged as a Porter in our "
     "Hardware Store and seems to do well and is considered a good specimen of Fenton Barn raising. "
     "One of the girls Helen has been engaged by my wife for the kitchen and the other is with Jane. "
-    "They appear to be good active girls and please well. The old man is working in this Town. "
+    "They appear to be good active girls and please well. The old man is working \"orry\" in this Town. "
     "The old woman regrets that she ever left Fenton Barns, but will get over it. Of course the young "
     "people have a far better chance to improve their circumstances in Canada than in Scotland. "
     "Mr. Falkner was here. He stayed over Saturday and Sunday and he spent the Sunday evening at our "
