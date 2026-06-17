@@ -1,0 +1,81 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "LOC-mal-4095900"
+    modelId: "o1-preview"
+    timestamp: "2024-10-24T12:00:00Z"
+    targetLanguage: "eng-Latn"
+    languageSet: []
+    targetEra: "nineteenth_century"
+    eraRange: "1860-1865"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: { mixedLanguage: false, mixedEra: false }
+    scriptNotes: "1865 Interior Department letter forwarding Winnebago Indian deeds for Lincoln's approval; transcribe all visible text"
+    englishHandwritingModality: "copperplate"
+    epistemicNotes: "The transcription is diplomatic and preserves original lineation, spelling, and punctuation. Superscripts and abbreviations are transcribed as written."
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "cursive"
+    scriptMatchesConfig: true
+    conditionNotes: "The manuscript is in good condition with clear ink, though some letters are written in a rapid cursive hand."
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-23"
+      position: "body"
+      text: |
+        Department of the Interior,
+        Washington, Feby 27, 1865
+        Jn: G. Nicolay Esqr
+        Dear Sir,
+        Herewith
+        please find two, Indian,
+        Deeds, for the President's
+        approval.
+        The Secretary directs me
+        to inquire if the two deeds
+        sent up on the 17th ultmo
+        have been approved by the
+        President? If so, that they
+        be returned. They are deeds
+        of Virginia Grignon, and
+        of Geo. Culver guardian for
+        minor heirs of Antoine Grignon,
+        Winnebago Indians -
+        Respectfully yours
+        W. T. Otto.
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: "The signature 'W. T. Otto' is written in a stylized hand. 'ultmo' is a standard abbreviation for 'ultimo'."
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 1
+      pass1Reading: "W. T. Otto."
+      pass2Reading: "W. T. Otto."
+      resolution: "pass2 confirms final text; no edit"
+      resolved: true
+  hallucinationAudit:
+    totalWords: 85
+    wordsGroundedInGlyphs: 85
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```

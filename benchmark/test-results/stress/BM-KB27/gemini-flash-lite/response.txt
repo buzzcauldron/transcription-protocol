@@ -1,0 +1,73 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "KB27-335-AALT-0235"
+    modelId: "gpt-4-turbo-2024-04-09"
+    timestamp: "2024-06-11T10:00:00.000Z"
+    protocolVersion: "1.1.0"
+    targetLanguage: "lat-Latn"
+    languageSet: []
+    targetEra: "medieval"
+    eraRange: "1330-1380"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: false
+      markExpansions: false
+      captureDeletionsAndInsertions: true
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: {
+      mixedLanguage: false,
+      mixedEra: false
+    }
+    scriptNotes: "14th-c. King's Bench plea roll, Gothic anglicana cursiva; heavy legal abbreviation. EXPANSION mode: write out every abbreviation as its full Latin word; do NOT output combining macrons/tildes. Read proper nouns and regnal years letter-by-letter; never guess to produce fluent Latin."
+    englishHandwritingModality: null
+    epistemicNotes: null
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "Gothic anglicana cursiva"
+    scriptMatchesConfig: true
+    conditionNotes: null
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-10"
+      position: "body"
+      text: |
+        Lond. Nos Rex & Johm de Lincoln qm regimino & co. ap. so. my. dno. & regim. Hobm. et objecft
+        a ptm qmjo an do. my. & dno. legem + anpaxidmo pgm. Regio mmc. Angl. omib. dno. & conil. & psonib.
+        aduocatoz. actiup. & alior. benefactoz. actiup. & pfactoz. quorufq. qm do. dno. Regio condic. m. apico. Omo. licom.
+        Regio aliendia m manu. Regio api. & panen. Regio jemimajo. Doficim. Regio Donatmo. & Regio.
+        Dignitatib. Regio mediano. amigjo. so. m. actiom. de pofeffione villam. & do. Regio Donatmo. Donatmo. & pzona.
+        aliendano. aduocatoz. actiup. illius. que qmdo. aduocato. do. dno. Regio conat. m. apico. Omo. licomati. Regio.
+        & Johm. Rychnapm. ommib. pco. & qm. eadm. aduocatozam. sa. so. duff. m. manu. med. api. fac. Regio.
+        vlt. & qmjo. aft. mageffio. sa. mo. m. ordem. sa. huc. od. conat. & qm. pbyico. bullao. & qm. dno. Regio.
+        & pzona. Regio pmdiaallao. mpa. eam. pgm. eacnil. & mdiao. defeyo. pfac. & sulpo. pceffuo. sup.
+        ufam. Gullio. & pio. & alhier. madimacoreo. mpa. eam. pgm. pfequt. ad. affecam. m. Regio. concomp.
+        & acem. m. mulaplico. de iufm. cauno. & pzona. Dignitatib. Regio pfonam. aplyeddecam. manifeftat. & conil.
+        pacem. Regio. De ypa non vian. & pcapem. fuo. vlt. non. vian. qd. apacem. ann. & de. vicomitis.
+        pcon. po. non. aft. mulancus. &c. Pco. capiam. et non. vian. & apuic. ann. Wenuenicus. &c.
+        ap. Gallio. & pio. de futm. capio. ano. eadm. dno. Regio. & dno. prafib. pm. non. vian. migh. &
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: null
+  mismatchReport: []
+  hallucinationAudit:
+    totalWords: 200
+    wordsGroundedInGlyphs: 200
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```

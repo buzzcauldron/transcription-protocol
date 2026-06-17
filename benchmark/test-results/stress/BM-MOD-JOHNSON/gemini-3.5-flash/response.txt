@@ -1,0 +1,74 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "LOC-mal-3030000"
+    modelId: "gpt-4o"
+    timestamp: "2025-03-02T12:00:00Z"
+    targetLanguage: "eng-Latn"
+    languageSet: []
+    targetEra: "nineteenth_century"
+    eraRange: "1860-1865"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: { mixedLanguage: false, mixedEra: false }
+    scriptNotes: "1864 Senate letter re presidential pardon; transcribe all visible body and endorsements on the page"
+    englishHandwritingModality: "copperplate"
+    epistemicNotes: "The handwriting is extremely loose and hasty, with many words reduced to minimal skeletal strokes. Readings of several words are highly uncertain and rely on paleographical reconstruction of the writer's idiosyncratic cursive ductus."
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "19th-century hasty cursive"
+    scriptMatchesConfig: true
+    conditionNotes: "Ink is dark but the hand is extremely cursive, loose, and abbreviated, bordering on shorthand in some words."
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-15"
+      position: "body"
+      text: |
+        Senate Chamber
+        8 [uncertain: Dec / Feby] 64
+
+        My dear Sir,
+
+        Do me the
+        favor to let me
+        know by return of
+        the messenger,
+        whether the pardon
+        of J. S. [uncertain: Waring]
+        of N. C. has [uncertain: issued?]
+        [uncertain: Wiley]
+      confidence: "medium"
+      uncertaintyTokenCount: 4
+      notes: "The signature at the bottom is extremely abbreviated and difficult to read, possibly 'Wiley' or 'H. Wiley' or similar. The name 'J. S. Waring' is written in a very loose hand."
+  mismatchReport:
+    - mismatchId: 1
+      segmentId: 1
+      pass1Reading: "8 Dec 64"
+      pass2Reading: "8 [uncertain: Dec / Feby] 64"
+      resolution: "Refined to reflect the ambiguity between Dec and Feby in the hasty script."
+      resolved: true
+  hallucinationAudit:
+    totalWords: 32
+    wordsGroundedInGlyphs: 28
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```
