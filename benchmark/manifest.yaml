@@ -221,7 +221,7 @@ cases:
 
   BM-MOD-1854:
     description: "London, Canada West, 3 Sep 1854 — letter on Scottish emigrant community (copperplate)"
-    source_note: "Researcher's photograph; letter from London C.W. (Ontario) to 'My Dear George' about Fenton Barns emigrants"
+    source_note: "Researcher's photograph; letter from London C.W. (Ontario) to 'My Dear George' about Fenton Barns emigrants; GT: researcher's partial transcription (page 1 only)"
     image_urls: []
     image_paths:
       - "benchmark/images/BM-MOD-1854/london_cw_1854.png"
@@ -238,7 +238,7 @@ cases:
       englishHandwritingModality: "copperplate"
       sourcePageId: "london-cw-1854"
       protocolVersion: "1.1.0"
-    evaluator: "lincoln"
+    evaluator: "london_cw_1854"
     optional: true
 
   BM-LAT-001:

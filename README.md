@@ -19,7 +19,7 @@ Full history: [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Benchmark results
 
-Latest blind runs via [`benchmark/stress_run.py`](benchmark/stress_run.py) (`temperature=0`, image + prompt only; GT firewalled). Latin cases use **expansion-to-expansion** scoring; `modern_*` cases use tolerant damage-token diff. **Every row fails disposition** because additions > 0 — accuracy is reported for calibration. Shell rows use `transcriber-shell` (Kraken HTR draft → Gemini 2.5 Pro correct-mode); the HTR model used is noted in parentheses.
+Latest blind runs via [`benchmark/stress_run.py`](benchmark/stress_run.py) (`temperature=0`, image + prompt only; GT firewalled). Latin cases use **expansion-to-expansion** scoring; `modern_*` cases use tolerant damage-token diff. **Every row fails disposition** because additions > 0 — accuracy is reported for calibration. Shell pipeline (Kraken HTR + LLM correct-mode) results are in [`transcriber-shell`](https://github.com/buzzcauldron/transcription-shell).
 
 **Image-only (Gemini 2.5 Pro):**
 
@@ -33,17 +33,6 @@ Latest blind runs via [`benchmark/stress_run.py`](benchmark/stress_run.py) (`tem
 | BM-MOD-JOHNSON | Reverdy Johnson → Lincoln (pardon, 1864) | 29.9% | 15 | 47 | ✓ |
 
 † Flash baseline (2.5 Pro had YAML parse error on this case).
-
-**Shell — best HTR model per case (Kraken + Gemini 2.5 Pro correct-mode):**
-
-| Case | Document | HTR model | Accuracy | Add | Omit | Schema | vs image-only |
-|---|---|---|---:|---:|---:|:---:|---|
-| BM-001 | Lincoln → Owens (1837) | r5 | 94.5% | 31 | 27 | ✓ | −0.6pt |
-| BM-MED-001 | Walters W.25 psalter | r5 | **88.0%** | 14 | 12 | ✓ | **+2.0pt** |
-| BM-KB27 | KB27.335 plea roll | r2 | 26.9% | 158 | 182 | ✓ | −4.8pt |
-| BM-MOD-DEED | Interior Dept → Nicolay (1865) | computus | 97.4% | 5 | 2 | ✓ | −1.3pt |
-| BM-MOD-LOVEJOY | Lovejoy → Nicolay (1864) | r5 | 81.1% | 3 | 14 | ✓ | ±0 |
-| BM-MOD-JOHNSON | Reverdy Johnson → Lincoln (1864) | r5 | **31.3%** | 19 | 46 | ✓ | **+1.4pt** |
 
 **Additional image-only model variants (Gemini 2.5 Flash, Flash-Lite, 3.5 Flash):**
 
@@ -63,14 +52,7 @@ Latest blind runs via [`benchmark/stress_run.py`](benchmark/stress_run.py) (`tem
 | *(evaluation harness)* | Lincoln → Owens (1837) | Claude 4 Opus | 99.8% | **0** | CONDITIONAL_PASS |
 | *(evaluation harness)* | KB27.335 plea roll | Claude 4 Opus | 6.0% WER (15 subst.) | **0** | FAIL |
 
-**Additional shell variants (Glyph Machina local HTR, MPS, 2026-06-10):**
-
-| Case | HTR | Accuracy | Add | Omit | Notes |
-|---|---|---:|---:|---:|---|
-| BM-KB27 | gm | 9.2% | 194 | 226 | LLM discarded 23-line hint (image: 12 lines visible); line count mismatch |
-| BM-MED-001 | gm | 85.0% | 18 | 15 | Below r5 (88%); GM is general, r5 is fine-tuned for medieval Latin |
-
-**Takeaways:** Kraken fine-tuned models (r5, computus) outperform the parent GM model on their target scripts because specialization beats generalization. GM's `best_HTR.net` is the right training DATA source; our downstream models are the inference-time recommendation. KB27 is the dominant unsolved case — a Kraken anglicana fine-tune trained on legal Anglicana corpora (Bridges-2 r6/anglicana run) is in progress; KB27 with `shell-anglicana` is expected to substantially outperform the current 26.9% baseline. Position enum normalization was applied in this rescore pass — schema pass rates improved. Raw responses: [`benchmark/test-results/stress/`](benchmark/test-results/stress/); reproduce via [Reproducing the benchmarks](#reproducing-the-benchmarks).
+**Takeaways:** KB27 (King's Bench plea roll) is the dominant unsolved case at 31.7% image-only; a Kraken anglicana fine-tune is in progress in `transcriber-shell`. Raw responses: [`benchmark/test-results/stress/`](benchmark/test-results/stress/); reproduce via [Reproducing the benchmarks](#reproducing-the-benchmarks).
 
 **External line tools:** If you use a line detector (e.g. [Glyph Machina](https://glyphmachina.com/)) only to suggest line boundaries before protocol transcription, see [`benchmark/EXTERNAL_LINE_TOOLS.md`](benchmark/EXTERNAL_LINE_TOOLS.md) for how that relates to `lineRange` and what not to treat as canonical text.
 

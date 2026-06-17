@@ -99,6 +99,37 @@ DEED_WHITE_GT = (
     "Winnebago Indians. Respectfully yours A. S. H. White"
 )
 
+# ── London, Canada West, 3 Sep 1854 (Scottish emigrant letter) ──────────────
+# Human GT (researcher's transcription, page 1 only).
+# Uncertain readings: "Bessie's" or "Jessie's" (name); "viz" before "the Whitehead"
+# (model reads this, user marked [?]); quoted dialect word before "in this Town"
+# (model reads "orry"/"orra", user marked [?] — OMITTED from GT so no penalty
+# for either reading); "Grey" at end (user marked [Grey?]).
+# "introductions, letters" is the GT reading (model may read "introductory letters").
+LONDON_CW_1854_GT = (
+    "London C.W. 3 September 1854 "
+    "My Dear George, I suppose I should begin this letter in the usual way by making an apology "
+    "for delaying so long in writing you. Your letter of 19 June was duly received and today we had "
+    "the pleasure of receiving your letter of the 14th ult by which we are glad to see that Isabella "
+    "the children and yourself are in the enjoyment of good health and that things are all prospering "
+    "at Fenton Barns. We were glad to receive Bessie's letter for Jane and I am happy to hear that "
+    "my Dear Sister continues well and seems to enjoy herself. We have had a great time here with the "
+    "arrival of the immigrants, from Fenton Barns, viz the Whitehead. Andrew made his appearance first, "
+    "having left his Father and Mother & sister along with Jack at some outlandish French settlement in "
+    "Lower Canada. We told him he had better get his folks out of there; but before Andrew's letter "
+    "reach'd Lower Canada the family had left for Upper Canada. Andrew is engaged as a Porter in our "
+    "Hardware Store and seems to do well and is considered a good specimen of Fenton Barn raising. "
+    "One of the girls Helen has been engaged by my wife for the kitchen and the other is with Jane. "
+    "They appear to be good active girls and please well. The old man is working in this Town. "
+    "The old woman regrets that she ever left Fenton Barns, but will get over it. Of course the young "
+    "people have a far better chance to improve their circumstances in Canada than in Scotland. "
+    "Mr. Falkner was here. He stayed over Saturday and Sunday and he spent the Sunday evening at our "
+    "house. I would take him to be, as you remark, changeable. He had made up his mind to settle in "
+    "Detroit amongst the Yankees, altho' I told him I thought he would be more comfortable amongst his "
+    "own people in Canada. He was well fortified with all sorts of introductions, letters, amongst "
+    "others, one from Sir Geo. Grey to"
+)
+
 DONNE_GT = (
     "The honorable fauor that yr lp hath afforded me, in allowinge me the liberty of myne own Chamber, "
     "hath giuen me leaue so much to respect and loue my self, that now I can desire to be well. And "

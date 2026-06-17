@@ -23,6 +23,7 @@ from .ground_truth import (
     KB27_GT,
     LINCOLN_GT_P1,
     LINCOLN_GT_P2,
+    LONDON_CW_1854_GT,
     LOVEJOY_GT,
     MEDIEVAL_GT,
     expand_medieval,
@@ -235,6 +236,11 @@ def evaluate_modern_deed(segments: List[Dict[str, Any]]) -> Dict[str, Any]:
     return _evaluate_modern(segments, DEED_WHITE_GT, "modern_deed")
 
 
+def evaluate_london_cw_1854(segments: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """London, Canada West, 3 Sep 1854 Scottish emigrant letter — researcher's partial GT."""
+    return _evaluate_modern(segments, LONDON_CW_1854_GT, "london_cw_1854")
+
+
 def evaluate_earlymodern(segments: List[Dict[str, Any]]) -> Dict[str, Any]:
     """Donne -> Egerton letter (1602 secretary hand), EMMO diplomatic, body only."""
     tr = _normalize_loose(_text_from_segments(segments))
@@ -268,6 +274,7 @@ EVALUATORS = {
     "modern_lovejoy": evaluate_modern_lovejoy,
     "modern_johnson": evaluate_modern_johnson,
     "modern_deed": evaluate_modern_deed,
+    "london_cw_1854": evaluate_london_cw_1854,
 }
 
 
