@@ -1,11 +1,11 @@
 # Normalization Output Schema
 
-> **Document file:** `normalization-output-schema-norm-1.1.0.md` · Standalone artifact for [normalization-addon-protocol-norm-1.1.0.md](normalization-addon-protocol-norm-1.1.0.md) (`norm-1.1.0`).  
+> **Document file:** `normalization-output-schema.md` · Standalone artifact for [normalization-addon-protocol.md](normalization-addon-protocol.md) (`norm-1.1.0`).  
 > **Not** part of `transcriptionOutput` — validated by [`benchmark/validate_normalization.py`](../benchmark/validate_normalization.py), not `validate_schema.py`.
 
 ## Relationship to diplomatic output
 
-`normalizationOutput` is **derivative only**. The `source` fields record provenance **from** this file **to** the diplomatic `transcriptionOutput` that was edited—not the other way around. The schema encodes **forward** lineage (diplomatic → normalized) only. This add-on defines **no** valid pipeline from `normalizedText` back to diplomatic segment text. See [normalization-addon-protocol-norm-1.1.0.md §1.1](normalization-addon-protocol-norm-1.1.0.md).
+`normalizationOutput` is **derivative only**. The `source` fields record provenance **from** this file **to** the diplomatic `transcriptionOutput` that was edited—not the other way around. The schema encodes **forward** lineage (diplomatic → normalized) only. This add-on defines **no** valid pipeline from `normalizedText` back to diplomatic segment text. See [normalization-addon-protocol.md §1.1](normalization-addon-protocol.md).
 
 ---
 
@@ -42,12 +42,12 @@ normalizationOutput:
 
 | Field | Rule |
 |-------|------|
-| `normalizationProtocolVersion` | Must match a version defined in [normalization-addon-protocol-norm-1.1.0.md](normalization-addon-protocol-norm-1.1.0.md). Current: `norm-1.1.0`. Legacy `norm-1.0.0` may still appear in older files. |
+| `normalizationProtocolVersion` | Must match a version defined in [normalization-addon-protocol.md](normalization-addon-protocol.md). Current: `norm-1.1.0`. Legacy `norm-1.0.0` may still appear in older files. |
 | `source.sourcePageId` | Must match the diplomatic transcript’s `metadata.sourcePageId`. |
 | `source.sourceProtocolVersion` | Diplomatic `protocolVersion` (semver or legacy alias) of the source transcript. |
 | `normalizationPolicy` | Required object; all keys above must be present (`null` allowed only where noted). |
-| `normalizationPolicy.orthographyTarget` | Describes target spelling or script norms **within the document language(s)** only; must not encode translation into another language ([normalization-addon-protocol-norm-1.1.0.md §1.2](normalization-addon-protocol-norm-1.1.0.md)). |
-| `normalizationPolicy.editorialLevel` | **Required** when `normalizationProtocolVersion` is `norm-1.1.0`. Omit on legacy `norm-1.0.0`. When present: one of `mechanical`, `conservative_editorial`, `scholarly_editorial` — see [normalization-addon-protocol-norm-1.1.0.md §2](normalization-addon-protocol-norm-1.1.0.md). |
+| `normalizationPolicy.orthographyTarget` | Describes target spelling or script norms **within the document language(s)** only; must not encode translation into another language ([normalization-addon-protocol.md §1.2](normalization-addon-protocol.md)). |
+| `normalizationPolicy.editorialLevel` | **Required** when `normalizationProtocolVersion` is `norm-1.1.0`. Omit on legacy `norm-1.0.0`. When present: one of `mechanical`, `conservative_editorial`, `scholarly_editorial` — see [normalization-addon-protocol.md §2](normalization-addon-protocol.md). |
 | `normalizedSegments` | Ordered list; each item must include `segmentId`, `diplomaticText`, `normalizedText`. |
 
 ### Segment rules
@@ -56,7 +56,7 @@ normalizationOutput:
 |-------|------|
 | `segmentId` | Integer matching `segments[].segmentId` in the diplomatic transcript. |
 | `diplomaticText` | **Must exactly equal** the `text` field of the corresponding diplomatic segment (string equality after same normalization as validator: exact). |
-| `normalizedText` | Derivative only; **same natural language(s) as the diplomatic segment** — translation is invalid ([normalization-addon-protocol-norm-1.1.0.md §1.2](normalization-addon-protocol-norm-1.1.0.md), §5). Must obey [normalization-addon-protocol-norm-1.1.0.md §5](normalization-addon-protocol-norm-1.1.0.md) for the declared `editorialLevel`. |
+| `normalizedText` | Derivative only; **same natural language(s) as the diplomatic segment** — translation is invalid ([normalization-addon-protocol.md §1.2](normalization-addon-protocol.md), §5). Must obey [normalization-addon-protocol.md §5](normalization-addon-protocol.md) for the declared `editorialLevel`. |
 | `alignmentNotes` | Optional; **required** when policy choices need justification (e.g. picking one branch of `[uncertain: A / B]` at `conservative_editorial` or `scholarly_editorial`, or documenting scholarly choices at `scholarly_editorial`). |
 
 ---

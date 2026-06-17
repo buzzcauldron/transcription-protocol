@@ -77,10 +77,10 @@ There are three ways to use this protocol, from simplest to most automated.
 
 No installation required. Works with Claude, ChatGPT, Gemini, or any LLM that accepts image uploads.
 
-1. Open [prompt-templates-v1.1.0.md](prompt-templates-v1.1.0.md) and copy the **Transcriber Prompt** (Section 1).
+1. Open [prompt-templates.md](prompt-templates.md) and copy the **Transcriber Prompt** (Section 1).
 2. Fill in the configuration variables at the top:
-   - `{targetLanguage}` — e.g., `eng-Latn` for English, `lat-Latn` for Latin ([full list](diplomatic-transcription-protocol-v1.1.0.md#21-target-language))
-   - `{targetEra}` — e.g., `medieval`, `early_modern`, `nineteenth_century` ([full list](diplomatic-transcription-protocol-v1.1.0.md#22-target-era))
+   - `{targetLanguage}` — e.g., `eng-Latn` for English, `lat-Latn` for Latin ([full list](diplomatic-transcription-protocol.md#21-target-language))
+   - `{targetEra}` — e.g., `medieval`, `early_modern`, `nineteenth_century` ([full list](diplomatic-transcription-protocol.md#22-target-era))
    - `{diplomaticProfile}` — start with `strict` ([options explained below](#diplomatic-profiles))
    - `{normalizationMode}` — use `diplomatic` unless you need a searchable modernized layer
    - `{sourcePageId}` — any identifier for your page (e.g., `MS-1234-folio-5r`)
@@ -97,9 +97,9 @@ For batch processing with programmatic quality control:
 
 ## Configuration Reference
 
-The protocol’s **conservative epistemic stance** (default skeptical confidence, honest mismatch reporting, optional **`metadata.epistemicNotes`**) is in [diplomatic-transcription-protocol-v1.1.0.md §1.1](diplomatic-transcription-protocol-v1.1.0.md#11-conservative-epistemic-stance).
+The protocol’s **conservative epistemic stance** (default skeptical confidence, honest mismatch reporting, optional **`metadata.epistemicNotes`**) is in [diplomatic-transcription-protocol.md §1.1](diplomatic-transcription-protocol.md#11-conservative-epistemic-stance).
 
-**Run mode** (`runMode`): Choose `standard` (default -- full two-pass verification, all tokens) or `efficient` (single pass, core tokens only, faster throughput). Efficient mode is incompatible with `layout_aware` and `diplomatic_plus` profiles. See [diplomatic-transcription-protocol-v1.1.0.md §2.9](diplomatic-transcription-protocol-v1.1.0.md#29-run-mode).
+**Run mode** (`runMode`): Choose `standard` (default -- full two-pass verification, all tokens) or `efficient` (single pass, core tokens only, faster throughput). Efficient mode is incompatible with `layout_aware` and `diplomatic_plus` profiles. See [diplomatic-transcription-protocol.md §2.9](diplomatic-transcription-protocol.md#29-run-mode).
 
 ### Target Language
 
@@ -117,7 +117,7 @@ Use ISO 639-3 codes with a script tag. Common values:
 | `heb-Hebr` | Hebrew |
 | `mixed` | Multiple languages (add `languageSet` array) |
 
-For unlisted languages, use the ISO 639-3 code with a hyphenated script identifier. For **historical English handwriting**, optionally set `englishHandwritingModality` in output metadata (e.g. `secretary`, `copperplate`) — see [diplomatic-transcription-protocol-v1.1.0.md](diplomatic-transcription-protocol-v1.1.0.md) §2.8.
+For unlisted languages, use the ISO 639-3 code with a hyphenated script identifier. For **historical English handwriting**, optionally set `englishHandwritingModality` in output metadata (e.g. `secretary`, `copperplate`) — see [diplomatic-transcription-protocol.md](diplomatic-transcription-protocol.md) §2.8.
 
 ### Target Era
 
@@ -166,7 +166,7 @@ Fine-tune behavior within your chosen profile:
 
 **Evaluation firewall:** Do not compare diplomatic output against expanded ground truth — the CER will be inflated by 20–40 points. The evaluator (`benchmark/evaluate.py`) enforces this as a hard gate. Prompt config files designed for use with `transcriber-shell` are provided in pairs (e.g. `prompt_charter.yaml` / `prompt_charter_expanded.yaml`) so the intended mode is unambiguous from the filename.
 
-Full expansion rules — what the model must and must not output when `preserveOriginalAbbreviations: false` — are in [diplomatic-transcription-protocol-v1.1.0.md §2.4.1](diplomatic-transcription-protocol-v1.1.0.md#241-expansion-mode-preserveoriginalabbreviations-false).
+Full expansion rules — what the model must and must not output when `preserveOriginalAbbreviations: false` — are in [diplomatic-transcription-protocol.md §2.4.1](diplomatic-transcription-protocol.md#241-expansion-mode-preserveoriginalabbreviations-false).
 
 ## How Uncertainty Is Marked
 
@@ -212,11 +212,11 @@ Step-by-step for using **Cursor’s model picker** (no API keys): [`benchmark/CU
 
 ## Versioning
 
-The protocol uses **Semantic Versioning** ([semver.org](https://semver.org/)): see the root [`VERSION`](VERSION) file and [`CHANGELOG.md`](CHANGELOG.md). Machine-readable transcript outputs set `protocolVersion` to semver (`1.1.0` is current). The validator accepts legacy `v1.0` / `v1.1` strings as aliases of `1.0.0` / `1.1.0` ([`benchmark/validate_schema.py`](benchmark/validate_schema.py), [transcription-output-schema-v1.1.0.md](transcription-output-schema-v1.1.0.md)).
+The protocol uses **Semantic Versioning** ([semver.org](https://semver.org/)): see the root [`VERSION`](VERSION) file and [`CHANGELOG.md`](CHANGELOG.md). Machine-readable transcript outputs set `protocolVersion` to semver (`1.2.0` is current). The validator accepts legacy `v1.0` / `v1.1` strings as aliases of `1.0.0` / `1.1.0` ([`benchmark/validate_schema.py`](benchmark/validate_schema.py), [diplomatic-transcription-protocol.md](diplomatic-transcription-protocol.md)).
 
 **Benchmarks:** Optional case **`BM-CROP`** in [`benchmark/manifest.yaml`](benchmark/manifest.yaml) targets binding-edge / scan **`[crop]`** tokens; see [`benchmark/test-results/BM-CROP.md`](benchmark/test-results/BM-CROP.md).
 
-For **high-stakes** or **very long** runs, split work across pages or sessions, use the **Verifier** prompt in a separate call, and allow higher output limits—see [diplomatic-transcription-protocol-v1.1.0.md](diplomatic-transcription-protocol-v1.1.0.md) §5.2 and [quality-rubric-v1.1.0.md](quality-rubric-v1.1.0.md) §6.2.1.
+For **high-stakes** or **very long** runs, split work across pages or sessions, use the **Verifier** prompt in a separate call, and allow higher output limits—see [diplomatic-transcription-protocol.md](diplomatic-transcription-protocol.md) §5.2 and [quality-rubric.md](quality-rubric.md) §6.2.1.
 
 ### Optional: post-hoc normalization
 
@@ -227,16 +227,15 @@ If you already have a diplomatic transcript and want a **separate derivative** n
 ```
 VERSION                              Current protocol semver for this repo
 CHANGELOG.md                         Human-readable version history
-diplomatic-transcription-protocol-v1.1.0.md   Core protocol and rules
-prompt-templates-v1.1.0.md                      Copy-paste prompts for chat/API use
-transcription-output-schema-v1.1.0.md         Required diplomatic output structure
-quality-rubric-v1.1.0.md                      Pass/fail rubric, benchmarks, adversarial limits
+diplomatic-transcription-protocol.md   Core protocol, rules, and output schema (Appendix A)
+prompt-templates.md                    Copy-paste prompts for chat/API use
+quality-rubric.md                      Pass/fail rubric, benchmarks, adversarial limits
 
 normalization-protocol/              Optional post-hoc normalization (derivative layer)
   README.md                          Entry point for add-on
-  normalization-addon-protocol-norm-1.1.0.md          Rules (`norm-1.1.0`)
-  normalization-output-schema-norm-1.1.0.md            Standalone normalizationOutput shape
-  normalization-prompt-templates-norm-1.1.0.md        Normalizer-only copy-paste prompts
+  normalization-addon-protocol.md    Rules (`norm-1.1.0`)
+  normalization-output-schema.md     Standalone normalizationOutput shape
+  normalization-prompt-templates.md  Normalizer-only copy-paste prompts
 
 framework/
   FRAMEWORK_PLAN.md                  Automated pipeline architecture

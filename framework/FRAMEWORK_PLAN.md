@@ -131,7 +131,7 @@ Two independent transcription runs per page, using the Transcriber prompt templa
 
 **Provider routing**: The framework selects which LLM provider to use for each pass from `providerConfig`. Passes must be independent — Transcriber B must not see Transcriber A's output.
 
-**Per-pass output**: A complete transcription document conforming to `transcription-output-schema-v1.1.0.md`.
+**Per-pass output**: A complete transcription document conforming to `diplomatic-transcription-protocol.md` Appendix A.
 
 **Concurrency**: Passes A and B run in parallel. No information flows between them.
 
@@ -180,7 +180,7 @@ Triggered only when conflicts exist. Uses the Arbitrator prompt template.
 
 ### 2.5 Validation Gate
 
-The canonical transcript is evaluated against the full Quality Rubric (see `quality-rubric-v1.1.0.md`).
+The canonical transcript is evaluated against the full Quality Rubric (see `quality-rubric.md`).
 
 **Automated checks**:
 1. Schema validation (all required fields, controlled vocabulary, format rules).
@@ -339,8 +339,7 @@ Job Manifest (config + pages)
 ## 5. Configuration Reference
 
 All configuration fields and their validation rules are defined in:
-- [diplomatic-transcription-protocol-v1.1.0.md](../diplomatic-transcription-protocol-v1.1.0.md) — Section 2.
-- [transcription-output-schema-v1.1.0.md](../transcription-output-schema-v1.1.0.md) — Section 2.
-- [quality-rubric-v1.1.0.md](../quality-rubric-v1.1.0.md) — full rubric and adversarial limits.
-- [prompt-templates-v1.1.0.md](../prompt-templates-v1.1.0.md) — template variables.
+- [diplomatic-transcription-protocol.md](../diplomatic-transcription-protocol.md) — Section 2 (config) and Appendix A (output schema).
+- [quality-rubric.md](../quality-rubric.md) — full rubric and adversarial limits.
+- [prompt-templates.md](../prompt-templates.md) — template variables.
 - [skill/PROVIDER_ADAPTERS.md](../skill/PROVIDER_ADAPTERS.md) — API mappings.

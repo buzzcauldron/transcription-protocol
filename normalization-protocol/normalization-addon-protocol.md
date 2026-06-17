@@ -1,8 +1,8 @@
 # Normalization Protocol
 
-> **Document file:** `normalization-addon-protocol-norm-1.1.0.md` · **Add-on version `norm-1.1.0`** — Post-hoc **editorial** normalization of diplomatic transcripts.
+> **Document file:** `normalization-addon-protocol.md` · **Add-on version `norm-1.1.0`** — Post-hoc **editorial** normalization of diplomatic transcripts.
 
-This document defines **only** the normalization add-on: **editorial levels**, derivative rules, and the `normalizationOutput` artifact. It does **not** define diplomatic transcription. The [Academic Handwriting Transcription Protocol](../diplomatic-transcription-protocol-v1.1.0.md) remains the sole specification for `transcriptionOutput`; `normalizationProtocolVersion` is **not** the same field as `transcriptionOutput.protocolVersion`.
+This document defines **only** the normalization add-on: **editorial levels**, derivative rules, and the `normalizationOutput` artifact. It does **not** define diplomatic transcription. The [Academic Handwriting Transcription Protocol](../diplomatic-transcription-protocol.md) remains the sole specification for `transcriptionOutput`; `normalizationProtocolVersion` is **not** the same field as `transcriptionOutput.protocolVersion`.
 
 ---
 
@@ -65,9 +65,9 @@ Every normalization run **must** declare exactly one **editorial level** in `nor
 
 ## 3. Inputs
 
-1. **Diplomatic source** — A `transcriptionOutput` (or export) whose `segments[].text` is treated as **read-only** evidence. Structural validity is defined by [transcription-output-schema-v1.1.0.md](../transcription-output-schema-v1.1.0.md); this add-on does not re-validate the full diplomatic protocol beyond what the optional transcript cross-check needs.
+1. **Diplomatic source** — A `transcriptionOutput` (or export) whose `segments[].text` is treated as **read-only** evidence. Structural validity is defined by [Appendix A of diplomatic-transcription-protocol.md](../diplomatic-transcription-protocol.md); this add-on does not re-validate the full diplomatic protocol beyond what the optional transcript cross-check needs.
 
-2. **Normalization policy** — Must include `editorialLevel` (§2) and the fields in [normalization-output-schema-norm-1.1.0.md](normalization-output-schema-norm-1.1.0.md).
+2. **Normalization policy** — Must include `editorialLevel` (§2) and the fields in [normalization-output-schema.md](normalization-output-schema.md).
 
 Optional **image access** must not introduce content not licensed by the diplomatic text and tokens (§5).
 
@@ -107,7 +107,7 @@ A `normalizationOutput` is **invalid** if any of the following hold:
 
 ## 6. Policy block (required)
 
-See [normalization-output-schema-norm-1.1.0.md](normalization-output-schema-norm-1.1.0.md). The policy **must** name:
+See [normalization-output-schema.md](normalization-output-schema.md). The policy **must** name:
 
 - **`editorialLevel`** — §2.
 - **`orthographyTarget`** — Target orthography **within the document language(s)** or `none` / `unchanged` for mechanical-only runs. Must not encode or imply cross-language translation (see §1.2).
@@ -119,7 +119,7 @@ See [normalization-output-schema-norm-1.1.0.md](normalization-output-schema-norm
 
 ## 7. Relationship to embedded `normalizedLayer`
 
-The diplomatic [transcription-output-schema-v1.1.0.md](../transcription-output-schema-v1.1.0.md) allows an optional embedded `normalizedLayer` on a single `transcriptionOutput`. That is one **combined** workflow. This add-on defines a **standalone** `normalizationOutput` file—same **editorial-level** ideas apply if you embed or split.
+The diplomatic [Appendix A of diplomatic-transcription-protocol.md](../diplomatic-transcription-protocol.md) allows an optional embedded `normalizedLayer` on a single `transcriptionOutput`. That is one **combined** workflow. This add-on defines a **standalone** `normalizationOutput` file—same **editorial-level** ideas apply if you embed or split.
 
 ---
 
@@ -132,6 +132,6 @@ The diplomatic [transcription-output-schema-v1.1.0.md](../transcription-output-s
 
 ## References
 
-- [normalization-output-schema-norm-1.1.0.md](normalization-output-schema-norm-1.1.0.md)
-- [normalization-prompt-templates-norm-1.1.0.md](normalization-prompt-templates-norm-1.1.0.md)
+- [normalization-output-schema.md](normalization-output-schema.md)
+- [normalization-prompt-templates.md](normalization-prompt-templates.md)
 - Validator: [`benchmark/validate_normalization.py`](../benchmark/validate_normalization.py)

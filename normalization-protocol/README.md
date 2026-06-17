@@ -2,7 +2,7 @@
 
 > **Add-on version:** `norm-1.1.0` (see document filenames below).
 
-This folder defines a **separate** protocol for producing a **normalized / searchable text layer** from an existing **diplomatic** transcript. It does **not** replace or modify the [Academic Handwriting Transcription Protocol](../diplomatic-transcription-protocol-v1.1.0.md): transcription remains a no-addition, diplomatic-first product validated by [`benchmark/validate_schema.py`](../benchmark/validate_schema.py).
+This folder defines a **separate** protocol for producing a **normalized / searchable text layer** from an existing **diplomatic** transcript. It does **not** replace or modify the [Academic Handwriting Transcription Protocol](../diplomatic-transcription-protocol.md): transcription remains a no-addition, diplomatic-first product validated by [`benchmark/validate_schema.py`](../benchmark/validate_schema.py).
 
 ## Editorial levels (core control)
 
@@ -14,7 +14,7 @@ Normalization is governed by **`normalizationPolicy.editorialLevel`** — not by
 | B | `conservative_editorial` | Mechanical plus orthography/expansion **only** where the diplomatic text already licenses it (e.g. `[exp: …]`). |
 | C | `scholarly_editorial` | Conservative plus **documented** interpretive choices in `alignmentNotes` where policy requires; still no §5 hard fails. |
 
-See [normalization-addon-protocol-norm-1.1.0.md §2](normalization-addon-protocol-norm-1.1.0.md).
+See [normalization-addon-protocol.md §2](normalization-addon-protocol.md).
 
 ## When to use this
 
@@ -24,18 +24,18 @@ See [normalization-addon-protocol-norm-1.1.0.md §2](normalization-addon-protoco
 
 ## What this is not
 
-- Not **translation** — `normalizedText` stays in the **document language(s)** as the diplomatic transcript; switching to another language is out of scope and invalid (see [normalization-addon-protocol-norm-1.1.0.md §1.2](normalization-addon-protocol-norm-1.1.0.md)).
+- Not **translation** — `normalizedText` stays in the **document language(s)** as the diplomatic transcript; switching to another language is out of scope and invalid (see [normalization-addon-protocol.md §1.2](normalization-addon-protocol.md)).
 - Not a license to “fix” or modernize the diplomatic layer during the initial image-to-text pass.
-- Not a path to reconstruct or derive diplomatic `transcriptionOutput` from normalized text; the workflow is **one-way** (diplomatic → normalization only). See [normalization-addon-protocol-norm-1.1.0.md §1.1](normalization-addon-protocol-norm-1.1.0.md).
+- Not a path to reconstruct or derive diplomatic `transcriptionOutput` from normalized text; the workflow is **one-way** (diplomatic → normalization only). See [normalization-addon-protocol.md §1.1](normalization-addon-protocol.md).
 - Not merged into `validate_schema.py`; optional validation lives in [`benchmark/validate_normalization.py`](../benchmark/validate_normalization.py).
 
 ## Documents
 
 | Document | Role |
 |----------|------|
-| [normalization-addon-protocol-norm-1.1.0.md](normalization-addon-protocol-norm-1.1.0.md) | One-way dependency (§1.1), editorial levels (§2), hierarchy of truth, hard fails, policy fields. |
-| [normalization-output-schema-norm-1.1.0.md](normalization-output-schema-norm-1.1.0.md) | Standalone `normalizationOutput` shape and checklist. |
-| [normalization-prompt-templates-norm-1.1.0.md](normalization-prompt-templates-norm-1.1.0.md) | Copy-paste normalizer-only prompts. |
+| [normalization-addon-protocol.md](normalization-addon-protocol.md) | One-way dependency (§1.1), editorial levels (§2), hierarchy of truth, hard fails, policy fields. |
+| [normalization-output-schema.md](normalization-output-schema.md) | Standalone `normalizationOutput` shape and checklist. |
+| [normalization-prompt-templates.md](normalization-prompt-templates.md) | Copy-paste normalizer-only prompts. |
 
 ## Versioning
 

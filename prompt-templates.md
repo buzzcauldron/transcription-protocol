@@ -1,6 +1,6 @@
 # Prompt Templates Pack
 
-> **Document file:** `prompt-templates-v1.1.0.md` · **Protocol:** **1.1.0** — Role-specific prompts for handwritten document transcription with provider abstraction. · **Author:** Seth Strickland
+> **Document file:** `prompt-templates.md` · **Protocol:** **1.2.0** — Role-specific prompts for handwritten document transcription with provider abstraction. · **Author:** Seth Strickland
 
 ---
 
@@ -111,7 +111,7 @@ WORKFLOW:
 Use the target language and era ONLY to assist in recognizing letter forms and script conventions. They must NEVER be used to infer, guess, or complete content.
 
 OUTPUT FORMAT:
-Emit your response as a structured document following the transcription-output-schema (see repository `transcription-output-schema-v1.1.0.md`). Include:
+Emit your response as a structured document following the transcription-output-schema (see Appendix A in `diplomatic-transcription-protocol.md`). Include:
 - preCheck block
 - For each segment: segmentId, lineRange, text, confidence
 - mismatchReport (non-empty when any segment exists—Pass 2 confirmation or discrepancy per §5.2)

@@ -1,6 +1,6 @@
 # Quality Rubric and Acceptance Tests
 
-> **Document file:** `quality-rubric-v1.1.0.md` · **Protocol:** 1.1.0 (semver; see repo [`VERSION`](VERSION)) · Defines pass/fail criteria, scoring methodology, benchmark validation, and adversarial limits. · **Author:** Seth Strickland
+> **Document file:** `quality-rubric.md` · **Protocol:** 1.2.0 (semver; see repo [`VERSION`](VERSION)) · Defines pass/fail criteria, scoring methodology, benchmark validation, and adversarial limits. · **Author:** Seth Strickland
 
 ---
 
@@ -81,7 +81,7 @@ Every transcription output is evaluated across five categories. A single critica
 | Invalid eraRange format | Major | `eraRange` present but does not match `YYYY-YYYY` with start < end. |
 | Missing preCheck | Critical | Pre-check block is absent. |
 | Token count mismatch | Major | `uncertaintyTokenCount` does not match actual count in segment text. |
-| Missing protocolVersion | Critical | `protocolVersion` is absent on the root or in metadata, or top-level and metadata denote different protocol releases. Use semver `1.1.0` (current) or `1.0.0` (legacy); `v1.1` / `v1.0` are accepted aliases. See [transcription-output-schema-v1.1.0.md](transcription-output-schema-v1.1.0.md) and [`benchmark/validate_schema.py`](benchmark/validate_schema.py). |
+| Missing protocolVersion | Critical | `protocolVersion` is absent on the root or in metadata, or top-level and metadata denote different protocol releases. Use semver `1.2.0` (current) or `1.1.0` / `1.0.0` (legacy); `v1.1` / `v1.0` are accepted aliases. See [Appendix A in diplomatic-transcription-protocol.md](diplomatic-transcription-protocol.md) and [`benchmark/validate_schema.py`](benchmark/validate_schema.py). |
 | Honest epistemic metadata | Positive (review) | Non-empty `epistemicNotes` and/or candid `mismatchReport` entries that record limits, pass-2 changes, or residual doubt (§1.1). |
 
 ### 1.6 Adversarial Robustness and Cross-Checks (Protocol 1.1.0)
@@ -103,7 +103,7 @@ Every transcription output is evaluated across five categories. A single critica
 | Config-field injection | Critical | Researcher-supplied config fields contain embedded instructions rather than controlled-vocabulary values (§2.7). |
 | Coverage self-report discrepancy | Major | `preCheck.pageCount` and segment `lineRange` declarations are internally inconsistent, suggesting under-declared lines (§7.4.7). |
 
-**Test method**: Automated checks where specified in [transcription-output-schema-v1.1.0.md](transcription-output-schema-v1.1.0.md) checklist; human review for borderline cases.
+**Test method**: Automated checks where specified in [Appendix A of diplomatic-transcription-protocol.md](diplomatic-transcription-protocol.md) checklist; human review for borderline cases.
 
 ---
 
@@ -219,7 +219,7 @@ Maintain a compatibility matrix per provider showing pass rates across the full 
 
 ## 6. Adversarial limits and threat model
 
-This section indexes **known gaps** between what a `transcriptionOutput` document can *claim* and what can be **mechanically verified** from YAML/JSON alone. It complements [diplomatic-transcription-protocol-v1.1.0.md](diplomatic-transcription-protocol-v1.1.0.md) (especially §5.2, §5.6, §7.3–§7.4). It does **not** replace external or image-grounded verification.
+This section indexes **known gaps** between what a `transcriptionOutput` document can *claim* and what can be **mechanically verified** from YAML/JSON alone. It complements [diplomatic-transcription-protocol.md](diplomatic-transcription-protocol.md) (especially §5.2, §5.6, §7.3–§7.4). It does **not** replace external or image-grounded verification.
 
 ### 6.1 Index: risk → protocol reference → mitigation class
 
@@ -250,15 +250,15 @@ These are **design limits**, not oversights. The protocol requires honest proces
 
 1. **`hallucinationAudit` is self-reported** — Catches careless inconsistency; does not detect deliberate coordinated lying (§7.3).
 2. **Pass 2 is not independent** in typical single-call deployments — Bias can persist across both passes (§5.2 note).
-3. **External verifier** — Prompts and pipeline hooks exist ([`prompt-templates-v1.1.0.md`](prompt-templates-v1.1.0.md), [`skill/SKILL.md`](skill/SKILL.md)); high-stakes work should use them.
+3. **External verifier** — Prompts and pipeline hooks exist ([`prompt-templates.md`](prompt-templates.md), [`skill/SKILL.md`](skill/SKILL.md)); high-stakes work should use them.
 
 ### 6.2.1 Known LLM architectural limits (normative pointers)
 
-Single autoregressive completions cannot reliably perform **exact** display-pass substitution across very long markdown, honor **coverage** rules without inventing text when **damage** dominates (see [diplomatic-transcription-protocol-v1.1.0.md](diplomatic-transcription-protocol-v1.1.0.md) §5.5–§5.6), or avoid **uncertainty-density** tension on idiosyncratic shorthand without **documented** cause (§5.6 carve-out). **Tiered output** and **verifier sessions** are operational mitigations ([`skill/SKILL.md`](skill/SKILL.md) Final Document; Verifier prompt §2).
+Single autoregressive completions cannot reliably perform **exact** display-pass substitution across very long markdown, honor **coverage** rules without inventing text when **damage** dominates (see [diplomatic-transcription-protocol.md](diplomatic-transcription-protocol.md) §5.5–§5.6), or avoid **uncertainty-density** tension on idiosyncratic shorthand without **documented** cause (§5.6 carve-out). **Tiered output** and **verifier sessions** are operational mitigations ([`skill/SKILL.md`](skill/SKILL.md) Final Document; Verifier prompt §2).
 
 ### 6.3 Tier 2 — Partially closable (documentation + tooling)
 
-Normative **§5.6 word counting** is defined in [transcription-output-schema-v1.1.0.md](transcription-output-schema-v1.1.0.md) §4a and implemented in [`benchmark/validate_schema.py`](benchmark/validate_schema.py).
+Normative **§5.6 word counting** is defined in [Appendix A of diplomatic-transcription-protocol.md](diplomatic-transcription-protocol.md) §4a and implemented in [`benchmark/validate_schema.py`](benchmark/validate_schema.py).
 
 **Backlog (prioritized for future revisions)**
 

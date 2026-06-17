@@ -18,7 +18,7 @@ platforms:
 
 # Academic Handwriting Transcription
 
-> **Document:** `skill/SKILL.md` · **Protocol:** 1.1.0 (see repo [`VERSION`](../VERSION) and [`diplomatic-transcription-protocol-v1.1.0.md`](../diplomatic-transcription-protocol-v1.1.0.md)).  
+> **Document:** `skill/SKILL.md` · **Protocol:** 1.2.0 (see repo [`VERSION`](../VERSION) and [`diplomatic-transcription-protocol.md`](../diplomatic-transcription-protocol.md)).  
 > This file works as a **Cursor Agent Skill**, a **Claude Project instruction** (paste into Project Instructions), or a **system prompt** for any LLM with vision. No code dependencies required.
 
 ## Quick Start
@@ -34,7 +34,7 @@ When the user provides a handwritten document image for transcription:
    - State the configuration you chose in a brief line before starting (e.g. "Running efficient/strict on what appears to be 19th-century English copperplate."). Only pause to ask the user if the language or era is truly unclear from the image.
 2. Run the **Pre-Transcription Checklist**.
 3. Transcribe using the **Transcriber** workflow below.
-4. Self-verify using the **Two-Pass Check** only if `runMode` is `standard`. **Honesty constraint:** In one continuous generation, Pass 2 is at best a disciplined re-read of your own draft; it does **not** replace a **separate** verifier inference or human check. If evidence-grade independence is required, run the **Verifier** prompt ([`prompt-templates-v1.1.0.md`](../prompt-templates-v1.1.0.md) §2) in a **new** session or use tooling; schema validators only check YAML shape, not truth of `mismatchReport`.
+4. Self-verify using the **Two-Pass Check** only if `runMode` is `standard`. **Honesty constraint:** In one continuous generation, Pass 2 is at best a disciplined re-read of your own draft; it does **not** replace a **separate** verifier inference or human check. If evidence-grade independence is required, run the **Verifier** prompt ([`prompt-templates.md`](../prompt-templates.md) §2) in a **new** session or use tooling; schema validators only check YAML shape, not truth of `mismatchReport`.
 5. Emit the `transcriptionOutput` in the required schema.
 6. **Normalize (optional by budget)** — when token budget allows and the user wants a derivative layer, run the normalization protocol (conservative_editorial, reflow_to_spaces) on the diplomatic segments to produce a `normalizationOutput` ([`normalization-protocol/`](../normalization-protocol/) is separable). If the run is **diplomatic-only** or the model risks **truncating mid-YAML**, skip normalization in this response and deliver **§Final Document** with **## Diplomatic Transcription** only.
 7. **Emit the final document** — produce a readable markdown layer (see §Final Document). Anything the user reads **after** internal thinking must include the **full diplomatic text** (at minimum **## Diplomatic Transcription** or equivalent concatenation of `segments[].text`), not metadata-only. Apply the **Final Document display pass** only to markdown sections as described below; fenced YAML stays protocol-canonical.

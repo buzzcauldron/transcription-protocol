@@ -2,7 +2,7 @@
 
 Purpose: pressure-test transcription runs so fabricated text is caught before adoption.
 
-This checklist complements `quality-rubric-v1.1.0.md` and focuses only on one failure class:
+This checklist complements `quality-rubric.md` and focuses only on one failure class:
 adding text not grounded in visible glyphs.
 
 ## Pass Rule

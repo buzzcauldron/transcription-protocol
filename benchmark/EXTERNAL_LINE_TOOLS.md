@@ -1,6 +1,6 @@
 # External line tools and `lineRange`
 
-This protocol expects each segment to declare **`lineRange`** (e.g. `"3-8"`) and **`pageNumber`** on [`transcriptionOutput`](../transcription-output-schema-v1.1.0.md). Researchers sometimes use **third-party line detectors** to propose line boundaries before transcribing under the protocol. This note clarifies what is compatible and what is not.
+This protocol expects each segment to declare **`lineRange`** (e.g. `"3-8"`) and **`pageNumber`** on [`transcriptionOutput`](../diplomatic-transcription-protocol.md). Researchers sometimes use **third-party line detectors** to propose line boundaries before transcribing under the protocol. This note clarifies what is compatible and what is not.
 
 ## Compatible use: line structure only
 
@@ -8,7 +8,7 @@ Tools that output **line geometry**, **line order**, or **line IDs** (often afte
 
 1. Run the external tool through **line identification** (and manual **line editing** if needed).
 2. Optionally **export** a lines file if the tool offers one (e.g. PageXML-oriented download/upload).
-3. Transcribe the **same crop or page** using this protocol ([`prompt-templates-v1.1.0.md`](../prompt-templates-v1.1.0.md)); produce **`segments[].text`** only from that process.
+3. Transcribe the **same crop or page** using this protocol ([`prompt-templates.md`](../prompt-templates.md)); produce **`segments[].text`** only from that process.
 4. Set **`lineRange`** (and segment boundaries) to **match** the line groups you are accounting for, consistent with the tool’s line count and reading order where you rely on it.
 
 The [schema validator](validate_schema.py) does **not** ingest PageXML or vendor line files; `lineRange` remains a **string convention** you maintain.
@@ -17,7 +17,7 @@ The [schema validator](validate_schema.py) does **not** ingest PageXML or vendor
 
 ## Incompatible use: vendor text as ground truth
 
-Do **not** treat machine **extracted**, **spell-checked**, **corrected**, or **translated** text from an external line/OCR pipeline as the **canonical** diplomatic transcript for this protocol unless you **re-derive** that text under [`diplomatic-transcription-protocol-v1.1.0.md`](../diplomatic-transcription-protocol-v1.1.0.md) (no silent additions, explicit uncertainty, etc.).
+Do **not** treat machine **extracted**, **spell-checked**, **corrected**, or **translated** text from an external line/OCR pipeline as the **canonical** diplomatic transcript for this protocol unless you **re-derive** that text under [`diplomatic-transcription-protocol.md`](../diplomatic-transcription-protocol.md) (no silent additions, explicit uncertainty, etc.).
 
 If a tool’s default output uses **silent abbreviation expansion**, **readable normalization**, or steps that **do not refer back to the manuscript**, that output is **not** interchangeable with protocol-compliant `segments[].text` without a full rework.
 

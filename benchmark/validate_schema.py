@@ -1,6 +1,6 @@
-"""Minimal schema gate aligned with transcription-output-schema-v1.1.0.md and quality-rubric-v1.1.0.md §1.5.
+"""Minimal schema gate aligned with Appendix A of diplomatic-transcription-protocol.md and quality-rubric.md §1.5.
 
-protocolVersion accepts semver (1.0.0, 1.1.0) and legacy v1.0 / v1.1 aliases.
+protocolVersion accepts semver (1.0.0, 1.1.0, 1.2.0) and legacy v1.0 / v1.1 aliases.
 """
 
 from __future__ import annotations

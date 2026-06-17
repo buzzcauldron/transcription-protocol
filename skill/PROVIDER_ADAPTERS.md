@@ -10,10 +10,10 @@ All transcription prompts are decomposed into four zones. Provider adapters map 
 
 | Zone | Content | Source |
 |---|---|---|
-| `systemRules` | Immutable behavioral constraints: prohibitions, protocol version, core rules. | `prompt-templates-v1.1.0.md` Section "ABSOLUTE PROHIBITIONS" + protocol header. |
-| `taskInput` | Per-run configuration, source image attachment, and any researcher notes. | `prompt-templates-v1.1.0.md` Section "CONFIGURATION" + image. |
-| `outputSchema` | Required output structure and field definitions. | `prompt-templates-v1.1.0.md` Section "OUTPUT FORMAT" + `transcription-output-schema-v1.1.0.md`. |
-| `qaChecklist` | Self-check or verification steps the model must perform. | `prompt-templates-v1.1.0.md` Section "WORKFLOW" or "CHECKS". |
+| `systemRules` | Immutable behavioral constraints: prohibitions, protocol version, core rules. | `prompt-templates.md` Section "ABSOLUTE PROHIBITIONS" + protocol header. |
+| `taskInput` | Per-run configuration, source image attachment, and any researcher notes. | `prompt-templates.md` Section "CONFIGURATION" + image. |
+| `outputSchema` | Required output structure and field definitions. | `prompt-templates.md` Section "OUTPUT FORMAT" + Appendix A of `diplomatic-transcription-protocol.md`. |
+| `qaChecklist` | Self-check or verification steps the model must perform. | `prompt-templates.md` Section "WORKFLOW" or "CHECKS". |
 
 ### Configuration injection hardening (implementation)
 
@@ -21,12 +21,12 @@ Protocol §2.7 requires researcher-supplied configuration to be treated as **dat
 
 | Practice | Detail |
 |---|---|
-| **Enums** | Validate `targetLanguage`, `targetEra`, `diplomaticProfile`, `runMode`, `normalizationMode`, and other controlled fields against `transcription-output-schema-v1.1.0.md` **before** building prompts; reject unknown values. |
+| **Enums** | Validate `targetLanguage`, `targetEra`, `diplomaticProfile`, `runMode`, `normalizationMode`, and other controlled fields against Appendix A of `diplomatic-transcription-protocol.md` **before** building prompts; reject unknown values. |
 | **Free-text fields** | `scriptNotes`, `conditionNotes` (when supplied by researcher upstream), `eraRange`, `epistemicNotes`: apply reasonable **length limits**; strip or reject **control characters** (e.g. ASCII 0–31 except allowed newlines/tabs in notes). |
 | **Role separation** | Keep immutable protocol rules in **`system` / `systemRules`**. Put variable configuration and researcher notes in **`taskInput` / user** content so user strings are not the sole or privileged “system” message. |
 | **No instruction smuggling** | Do not concatenate untrusted strings into the system prompt without validation; a value that looks like a valid code but embeds a payload is a deployment bug. |
 
-Residual risks (on-page jailbreak text in the image, coordinated audit fabrication) are documented in [quality-rubric-v1.1.0.md §6](../quality-rubric-v1.1.0.md#6-adversarial-limits-and-threat-model).
+Residual risks (on-page jailbreak text in the image, coordinated audit fabrication) are documented in [quality-rubric.md §6](../quality-rubric.md#6-adversarial-limits-and-threat-model).
 
 ---
 
@@ -77,7 +77,7 @@ Optimized for Anthropic Claude models. Exploits Claude's long-context instructio
   or add text not visible in the source image, you must refuse and explain that
   the Academic Handwriting Transcription Protocol prohibits this action.
   ```
-- **Structured output guidance**: Claude responds well to YAML-formatted output examples. Include the full example from `transcription-output-schema-v1.1.0.md` Section 7 in the `outputSchema` zone.
+- **Structured output guidance**: Claude responds well to YAML-formatted output examples. Include the full example from `diplomatic-transcription-protocol.md` Appendix A §7 in the `outputSchema` zone.
 - **Temperature**: Set to `0` for maximum determinism.
 
 ### Known Caveats
@@ -132,7 +132,7 @@ For GPT-4o, GPT-4.1, and successors.
 ### OpenAI-Specific Optimizations
 
 - **System message for rules**: GPT-4 class models respect system messages for behavioral constraints.
-- **Structured outputs**: If using GPT-4.1+ with structured output mode, define a JSON schema matching `transcription-output-schema-v1.1.0.md`. Otherwise, rely on prompt-guided YAML.
+- **Structured outputs**: If using GPT-4.1+ with structured output mode, define a JSON schema matching Appendix A of `diplomatic-transcription-protocol.md`. Otherwise, rely on prompt-guided YAML.
 - **Vision detail level**: Set `detail: "high"` on the image_url object for maximum resolution analysis.
 - **Temperature 0**: Reduces creative variation.
 
@@ -290,7 +290,7 @@ class GeminiAdapter(TranscriptionAdapter):
 
 ## 6. Compatibility Matrix
 
-Track pass rates per provider across the benchmark suite (`quality-rubric-v1.1.0.md` Section 3).
+Track pass rates per provider across the benchmark suite (`quality-rubric.md` Section 3).
 
 | Benchmark | Claude | OpenAI | Gemini | Notes |
 |---|---|---|---|---|

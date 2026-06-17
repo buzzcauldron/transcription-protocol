@@ -2,7 +2,7 @@
 
 **Status:** partially superseded — **Phase 1** items (**`[crop]`** token, long-s guidance, **Option A** marginalia routing, validator/tests, **`BM-CROP`** notes) are implemented in the main repo at [`VERSION`](../../VERSION) (see [`CHANGELOG.md`](../../CHANGELOG.md)). This draft still describes **hypothetical** extras (e.g. a future protocol file rename, auto-normalization as normative) that are **not** adopted here.
 
-This file preserves additional skill/system-prompt ideas (consolidated markdown as sole output, etc.) that may diverge from current [`skill/SKILL.md`](../../skill/SKILL.md). Illustrative links below use a **hypothetical** next protocol line (e.g. `*-v1.2.0.md`); the normative spec file remains [`diplomatic-transcription-protocol-v1.1.0.md`](../../diplomatic-transcription-protocol-v1.1.0.md) with **`protocolVersion` 1.1.0**.
+This file preserves additional skill/system-prompt ideas (consolidated markdown as sole output, etc.) that may diverge from current [`skill/SKILL.md`](../../skill/SKILL.md). Illustrative links below use a **hypothetical** next protocol line (e.g. `*-v1.2.0.md`); the normative spec file is now [`diplomatic-transcription-protocol.md`](../../diplomatic-transcription-protocol.md) with **`protocolVersion` 1.2.0**.
 
 ---
 
