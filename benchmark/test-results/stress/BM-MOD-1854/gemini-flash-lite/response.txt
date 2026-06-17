@@ -1,0 +1,95 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "london-cw-1854"
+    modelId: "claude-3-opus-20240229"
+    timestamp: "2024-05-15T10:00:00Z"
+    protocolVersion: "1.1.0"
+    targetLanguage: "eng-Latn"
+    languageSet: []
+    targetEra: "nineteenth_century"
+    eraRange: "1850-1860"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: { mixedLanguage: false, mixedEra: false }
+    scriptNotes: "formal copperplate cursive; London, Canada West, 3 September 1854; salutation 'My Dear George'; subject is Scottish emigrant family (the Whiteheads) from Fenton Barns; transcribe all visible text"
+    englishHandwritingModality: "copperplate"
+    epistemicNotes: null
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "eng-Latn"
+    scriptMatchesConfig: true
+    conditionNotes: null
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-10"
+      position: "body"
+      text: |
+        London A:M: 3 September 1854.
+
+        My Dear George, I suppose I should begin this letter in
+        the usual way by making an apology for delaying so
+        long in writing you. Your letter 19 June was duly received,
+        and to day we had the pleasure of receiving your letter of
+        the 14th by which we are glad to see that Isabella the
+        Children and yourself are in the enjoyment of good health
+        and that things are all prospering at Fenton Barns. We
+        were glad to receive Lepie's letter for Jane and Pam.
+        Happy to hear that my Dear Sister continues well and
+        seems to enjoy herself. We have had a great time here
+        with the arrivals of the immigrants from Fenton Barns, viz
+        the Whiteheads. Andrew made his appearance first, having left
+        his Father and Mother & Sisters along with, "Pack" at some out-
+        post in Lower Canada. We told him he had
+        better get his folks out of that, but before Andrew's letter
+        reached Lower Canada the Family had left for Upper Canada
+        Andrew is engaged as Porter in our Hardware Store and seems
+        to do well and is considered a good specimen of Fenton Barns
+        raising. One of the girls Helen has been engaged by my wife
+        for the Kitchen and the other is with Jane. They appear
+        to be good active girls and, please well. The old
+        man is working "Corry" in this Town. The old Woman
+        regrets that she ever left Fenton Barns, but will get
+        over it. Of course the young people have a far better
+        chance to improve their Circumstances in Canada than
+        in Scotland. Mr Falkner was here. He staid over
+        Saturday and Sunday, and he spent the Sunday evening at
+        our House. Would to take him to be as you remark,
+        Changeable. He had made up his mind to settle at
+        Detroit amongst the Harkees, and the. I told him I thought
+        he would be more Comfortable amongst his own people
+        in Canada. He was well fortified with all sorts of
+        Introductory letters, amongst others, one from Sir Geo. Grey to
+      confidence: "medium"
+      uncertaintyTokenCount: 10
+      notes: null
+  pass2Summary:
+    segmentsReviewed: 1
+    segmentsAltered: 0
+    notes: "Pass 2 complete. All readings confirmed; no edits made."
+  mismatchReport: null
+  hallucinationAudit:
+    totalWords: 240
+    wordsGroundedInGlyphs: 240
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```

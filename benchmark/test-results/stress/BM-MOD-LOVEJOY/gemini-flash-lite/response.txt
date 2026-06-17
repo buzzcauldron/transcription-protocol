@@ -1,0 +1,208 @@
+```yaml
+transcriptionOutput:
+  protocolVersion: "1.1.0"
+  metadata:
+    sourcePageId: "LOC-mal-3010000"
+    modelId: "claude-3-opus-20240229"
+    timestamp: "2024-05-15T10:00:00Z"
+    protocolVersion: "1.1.0"
+    targetLanguage: "eng-Latn"
+    languageSet: []
+    targetEra: "nineteenth_century"
+    eraRange: "1860-1865"
+    diplomaticProfile: "layout_aware"
+    diplomaticToggles:
+      preserveLineBreaks: true
+      preserveOriginalAbbreviations: true
+      markExpansions: false
+      captureDeletionsAndInsertions: false
+      captureUnclearGlyphShape: true
+    normalizationMode: "diplomatic"
+    runMode: "standard"
+    mixedContent: {
+      mixedLanguage: false,
+      mixedEra: false
+    }
+    scriptNotes: "1864 congressional letter on executive appointment; transcribe all visible body and address text on the page"
+    englishHandwritingModality: "copperplate"
+    epistemicNotes: null
+    schemaRevision: null
+  preCheck:
+    resolutionAdequate: true
+    orientationCorrect: true
+    pageBoundariesVisible: true
+    pageCount: 1
+    scriptIdentified: "English cursive script"
+    scriptMatchesConfig: true
+    conditionNotes: null
+    proceedDecision: "proceed"
+    proceedOverride: false
+    abortReason: null
+  segments:
+    - segmentId: 1
+      pageNumber: 1
+      lineRange: "1-1"
+      position: "header"
+      text: |
+        Washington D.C.
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 2
+      pageNumber: 1
+      lineRange: "2-2"
+      position: "header"
+      text: |
+        February 2nd 1864
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 3
+      pageNumber: 1
+      lineRange: "4-4"
+      position: "body"
+      text: |
+        Friend Nicolay:
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 4
+      pageNumber: 1
+      lineRange: "5-5"
+      position: "body"
+      text: |
+        I understand the President
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 5
+      pageNumber: 1
+      lineRange: "6-6"
+      position: "body"
+      text: |
+        has removed the Post Master at Joliet,
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 6
+      pageNumber: 1
+      lineRange: "7-7"
+      position: "body"
+      text: |
+        Ill. Will you ask him if he can
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 7
+      pageNumber: 1
+      lineRange: "8-8"
+      position: "body"
+      text: |
+        consistently suspend the matter for a
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 8
+      pageNumber: 1
+      lineRange: "9-9"
+      position: "body"
+      text: |
+        few days till I can see him?
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 9
+      pageNumber: 1
+      lineRange: "10-10"
+      position: "body"
+      text: |
+        I hope to be on my legs again
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 10
+      pageNumber: 1
+      lineRange: "11-11"
+      position: "body"
+      text: |
+        shortly.
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 11
+      pageNumber: 1
+      lineRange: "13-13"
+      position: "body"
+      text: |
+        Yours Truly,
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 12
+      pageNumber: 1
+      lineRange: "14-14"
+      position: "body"
+      text: |
+        Owen Lovejoy
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 13
+      pageNumber: 1
+      lineRange: "15-15"
+      position: "body"
+      text: |
+        for A.L.N.
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 14
+      pageNumber: 1
+      lineRange: "17-17"
+      position: "address"
+      text: |
+        Col. Nicolay
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 15
+      pageNumber: 1
+      lineRange: "18-18"
+      position: "address"
+      text: |
+        Executive Mansion
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 16
+      pageNumber: 1
+      lineRange: "19-19"
+      position: "address"
+      text: |
+        Washington D.C.
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 17
+      pageNumber: 1
+      lineRange: "21-21"
+      position: "footer"
+      text: |
+        30100
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+  pass2Summary:
+    segmentsReviewed: 17
+    segmentsAltered: 0
+    notes: "Pass 2 complete. All readings confirmed; no edits made."
+  mismatchReport: null
+  hallucinationAudit:
+    totalWords: 78
+    wordsGroundedInGlyphs: 78
+    wordsFromExpansion: 0
+    expansionsWithVisibleMark: 0
+    normalizationReversals: 0
+    formulaSubstitutionsDetected: 0
+    auditPass: true
+```

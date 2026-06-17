@@ -241,6 +241,28 @@ cases:
     evaluator: "london_cw_1854"
     optional: true
 
+  BM-MOD-1854-P2:
+    description: "London, Canada West, 1854 — letter p.2 (Whiteheads, calotypes, Lord Elgin)"
+    source_note: "Researcher's photograph; continuation of BM-MOD-1854 letter"
+    image_urls: []
+    image_paths:
+      - "benchmark/images/BM-MOD-1854-P2/london_cw_1854_p2.png"
+    media_type: "image/png"
+    prompt:
+      targetLanguage: "eng-Latn"
+      targetEra: "nineteenth_century"
+      eraRange: "1850-1860"
+      diplomaticProfile: "layout_aware"
+      diplomaticToggles: "{}"
+      normalizationMode: "diplomatic"
+      languageSet: "[]"
+      scriptNotesOptional: "formal copperplate cursive; London, Canada West, 1854; page 2 of a letter to 'My Dear George'; topics include calotypes, the Whitehead family, Lord Elgin, Fenton Barns comparisons, continental travel; right margin partially cropped"
+      englishHandwritingModality: "copperplate"
+      sourcePageId: "london-cw-1854-p2"
+      protocolVersion: "1.2.0"
+    evaluator: "lincoln"
+    optional: true
+
   BM-LAT-001:
     description: "BGO-511 (SBB-PK Ms.germ.oct.511 25r) — penitential psalms opening, decorated initial (12th–13th c.)"
     source_note: "CREMMA Medieval Latin corpus (CC BY 4.0), SBB-PK Berlin; GT: CREMMA diplomatic, preserved in benchmark/images/BM-LAT-001/"

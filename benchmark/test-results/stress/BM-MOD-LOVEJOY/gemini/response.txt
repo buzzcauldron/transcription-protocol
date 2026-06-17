@@ -3,8 +3,8 @@ transcriptionOutput:
   protocolVersion: "1.1.0"
   metadata:
     sourcePageId: "LOC-mal-3010000"
-    modelId: "claude-3-opus-20240229"
-    timestamp: "2024-07-29T12:00:00Z"
+    modelId: "N/A"
+    timestamp: "2024-07-30T12:00:00Z"
     protocolVersion: "1.1.0"
     targetLanguage: "eng-Latn"
     languageSet: []
@@ -19,7 +19,7 @@ transcriptionOutput:
       captureUnclearGlyphShape: true
     normalizationMode: "diplomatic"
     runMode: "standard"
-    mixedContent: { mixedLanguage: false, mixedEra: false }
+    mixedContent: {mixedLanguage: false, mixedEra: false}
     scriptNotes: null
     englishHandwritingModality: "copperplate"
     epistemicNotes: null
@@ -29,7 +29,7 @@ transcriptionOutput:
     orientationCorrect: true
     pageBoundariesVisible: true
     pageCount: 1
-    scriptIdentified: "copperplate"
+    scriptIdentified: "eng-Latn"
     scriptMatchesConfig: true
     conditionNotes: null
     proceedDecision: "proceed"
@@ -38,29 +38,69 @@ transcriptionOutput:
   segments:
     - segmentId: 1
       pageNumber: 1
-      lineRange: "1-13"
+      lineRange: "1-2"
       position: "body"
       text: |
         Washington D.C.
         February 2nd 1864
-        Friend Nicolay:
-        I understand the President
-        has removed the Post Master at Joliet,
-        Ill. Will you ask him if he can
-        consistently suspend the matter for a
-        few days till I can see him?
-        I hope to be on my pegs again
-        shortly.
-        Yours Truly
-        Owen Lovejoy
-        pr Alex.
       confidence: "medium"
       uncertaintyTokenCount: 0
       notes: null
     - segmentId: 2
       pageNumber: 1
-      lineRange: "15-17"
-      position: "address"
+      lineRange: "4-4"
+      position: "body"
+      text: |
+        Friend Nicolay:
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 3
+      pageNumber: 1
+      lineRange: "5-9"
+      position: "body"
+      text: |
+        I understand the President
+        has removed the Post Master at Joliet,
+        Ill. Will you ask him if he can
+        consistently suspend the matter for a
+        few days till I can see him?
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 4
+      pageNumber: 1
+      lineRange: "10-11"
+      position: "body"
+      text: |
+        I hope to be on my pegs again
+        shortly.
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 5
+      pageNumber: 1
+      lineRange: "13-13"
+      position: "body"
+      text: |
+        Yours Truly
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 6
+      pageNumber: 1
+      lineRange: "14-15"
+      position: "body"
+      text: |
+        Owen Lovejoy
+        pr Alex.
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 7
+      pageNumber: 1
+      lineRange: "18-20"
+      position: "body"
       text: |
         Col. Nicolay
         Executive Mansion
@@ -68,22 +108,23 @@ transcriptionOutput:
       confidence: "medium"
       uncertaintyTokenCount: 0
       notes: null
-  mismatchReport:
-    - mismatchId: 1
-      segmentId: 1
-      pass1Reading: "Washington D.C.\nFebruary 2nd 1864\nFriend Nicolay:\nI understand the President\nhas removed the Post Master at Joliet,\nIll. Will you ask him if he can\nconsistently suspend the matter for a\nfew days till I can see him?\nI hope to be on my pegs again\nshortly.\nYours Truly\nOwen Lovejoy\npr Alex."
-      pass2Reading: "Washington D.C.\nFebruary 2nd 1864\nFriend Nicolay:\nI understand the President\nhas removed the Post Master at Joliet,\nIll. Will you ask him if he can\nconsistently suspend the matter for a\nfew days till I can see him?\nI hope to be on my pegs again\nshortly.\nYours Truly\nOwen Lovejoy\npr Alex."
-      resolution: "pass2 confirms final text; no edit"
-      resolved: true
-    - mismatchId: 2
-      segmentId: 2
-      pass1Reading: "Col. Nicolay\nExecutive Mansion\nWashington D.C."
-      pass2Reading: "Col. Nicolay\nExecutive Mansion\nWashington D.C."
-      resolution: "pass2 confirms final text; no edit"
-      resolved: true
+    - segmentId: 8
+      pageNumber: 1
+      lineRange: "25-25"
+      position: "page_number"
+      text: |
+        30100
+      confidence: "high"
+      uncertaintyTokenCount: 0
+      notes: null
+  pass2Summary:
+    segmentsReviewed: 8
+    segmentsAltered: 0
+    notes: "Pass 2 complete. All readings confirmed; no edits made."
+  mismatchReport: null
   hallucinationAudit:
-    totalWords: 64
-    wordsGroundedInGlyphs: 64
+    totalWords: 63
+    wordsGroundedInGlyphs: 63
     wordsFromExpansion: 0
     expansionsWithVisibleMark: 0
     normalizationReversals: 0

@@ -3,8 +3,9 @@ transcriptionOutput:
   protocolVersion: "1.1.0"
   metadata:
     sourcePageId: "london-cw-1854"
-    modelId: "gemini-1.5-pro"
-    timestamp: "2025-03-02T12:00:00Z"
+    modelId: "g4o-001"
+    timestamp: "2024-07-30T12:00:00Z"
+    protocolVersion: "1.1.0"
     targetLanguage: "eng-Latn"
     languageSet: []
     targetEra: "nineteenth_century"
@@ -18,76 +19,89 @@ transcriptionOutput:
       captureUnclearGlyphShape: true
     normalizationMode: "diplomatic"
     runMode: "standard"
-    mixedContent:
-      mixedLanguage: false
-      mixedEra: false
+    mixedContent: { mixedLanguage: false, mixedEra: false }
     scriptNotes: "formal copperplate cursive; London, Canada West, 3 September 1854; salutation 'My Dear George'; subject is Scottish emigrant family (the Whiteheads) from Fenton Barns; transcribe all visible text"
     englishHandwritingModality: "copperplate"
-    epistemicNotes: "The text is written in a clear 19th-century copperplate hand. A horizontal crease runs through the middle of the page, but the text remains fully legible."
+    epistemicNotes: null
     schemaRevision: null
   preCheck:
     resolutionAdequate: true
     orientationCorrect: true
     pageBoundariesVisible: true
     pageCount: 1
-    scriptIdentified: "19th-century English copperplate cursive"
+    scriptIdentified: "eng-Latn"
     scriptMatchesConfig: true
-    conditionNotes: "Horizontal crease across the middle of the page; minor ink show-through from the reverse side, but legibility is excellent."
+    conditionNotes: null
     proceedDecision: "proceed"
     proceedOverride: false
     abortReason: null
   segments:
     - segmentId: 1
       pageNumber: 1
-      lineRange: "1-41"
+      lineRange: "1-1"
+      position: "header"
+      text: |
+        London C.W. 3 September 1854.
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 2
+      pageNumber: 1
+      lineRange: "2-2"
+      position: "salutation"
+      text: |
+        My Dear George.
+      confidence: "medium"
+      uncertaintyTokenCount: 0
+      notes: null
+    - segmentId: 3
+      pageNumber: 1
+      lineRange: "2-33"
       position: "body"
       text: |
-        London C.W: 3[superscript: d] September 1854.
-        My Dear George
-                       I suppose I should begin this letter in
+        I suppose I should begin this letter in
         the usual way by making an apology for delaying so
-        long in writing you. Your letter 17[superscript: th] June was duly received
-        and today we had the pleasure of receiving your letter of
-        the 14[superscript: th] ult. by which we are glad to see that Isabella the
-        children and yourself are in the enjoyment of good health
+        long in writing you. Your letter 19 June was duly received
+        and to day we had the pleasure of receiving your letter of
+        the 14th ult. by which we are glad to see that Isabella the
+        Children and yourself are in the enjoyment of good Health
         and that things are all prospering at Fenton Barns. We
-        were glad to receive Jessie's letter for Jane and I am
+        were glad to receive Leslie's letter for Jane and I am
         happy to hear that my Dear Sister continues well and
         seems to enjoy herself. We have had a great time here
         with the arrival of the immigrants from Fenton Barns, viz
         the Whiteheads. Andrew made his appearance first, having left
-        his Father and mother & sisters along with "Pack" at some outland
-        ish French settlement in Lower Canada. We told him he had
-        "better get his folks out of that", but before Andrew's letter
-        reach'd Lower Canada the family had left for Upper Canada
+        His Father and Mother & Sisters along with "Pack" at some outhant
+        in the French settlement in Lower Canada. We told him he had
+        better get his folks out of that, but before Andrew's letter
+        reach'd Lower Canada the Family had left for Upper Canada
         Andrew is engaged as a Porter in our Hardware Store and seems
-        to do well & and is considered a good specimen of Fenton Barns
+        to do well and is considered a good specimen of Fenton Barns
         raising. One of the girls Helen has been engaged by my wife
-        for the kitchen and the other is with Jane. They appear
-        to be good active girls and please well. The old
-        man is working "orry" in this Town. The old woman
-        regrets that she ever left Fenton Barns, but will get
-        over it. of course the young people have a far better
+        for the Kitchen and the other is with Jane. They appear
+        to be good active girls and, please well. The old
+        man is working "Corry" in this Town. The old Woman
+        regrets that she ever left Fenton Barns, but will get a
         chance to improve their circumstances in Canada than
-        in Scotland. Mr. Faulkner was here. He stayed over
+        in Scotland. Mr Falkner was here. He stayed over
         Saturday and Sunday and, he spent the Sunday evening at
-        our house. I would take him to be, as you remark,
-        changeable. He had made up his mind to settle at
+        our House. I would take him to be as you remark
+        Changeable. He had made up his mind to settle at
         Detroit amongst the Yankees, altho' I told him I thought
-        he would be more comfortable amongst his own people
+        he would be more Comfortable amongst his own People
         in Canada. He was well fortified with all sorts of
         introductory letters, amongst others, one from Sir Geo. Grey to
-      confidence: "high"
+      confidence: "medium"
       uncertaintyTokenCount: 0
-      notes: "The transcription is highly confident due to the exceptionally clear copperplate hand."
+      notes: null
   pass2Summary:
-    segmentsReviewed: 1
+    segmentsReviewed: 3
     segmentsAltered: 0
     notes: "Pass 2 complete. All readings confirmed; no edits made."
   mismatchReport: null
   hallucinationAudit:
-    totalWords: 358
-    wordsGroundedInGlyphs: 358
+    totalWords: 308
+    wordsGroundedInGlyphs: 308
     wordsFromExpansion: 0
     expansionsWithVisibleMark: 0
     normalizationReversals: 0

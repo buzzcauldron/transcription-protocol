@@ -1,7 +1,7 @@
 {
-  "caseId": "BM-001",
+  "caseId": "BM-MOD-1854",
   "modelKey": "gemini-flash-lite",
   "provider": "gemini",
   "modelId": "gemini-2.5-flash-lite",
-  "started": "2026-06-17T14:04:39Z"
+  "started": "2026-06-17T14:37:21Z"
 }
